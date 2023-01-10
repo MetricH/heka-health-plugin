@@ -1,0 +1,1144 @@
+// coverage:ignore-file
+// GENERATED CODE - DO NOT MODIFY BY HAND
+// ignore_for_file: type=lint
+// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
+
+part of 'google_fit_connect_cubit.dart';
+
+// **************************************************************************
+// FreezedGenerator
+// **************************************************************************
+
+T _$identity<T>(T value) => value;
+
+final _privateConstructorUsedError = UnsupportedError(
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
+
+/// @nodoc
+mixin _$GoogleFitConnectState {
+  String get userUuid => throw _privateConstructorUsedError;
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(String userUuid) initial,
+    required TResult Function(String userUuid) checkingConnection,
+    required TResult Function(String userUuid) noConnection,
+    required TResult Function(Connection connection, String userUuid)
+        tokenInvalidated,
+    required TResult Function(String userUuid) makingConnection,
+    required TResult Function(Connection connection, String userUuid) connected,
+  }) =>
+      throw _privateConstructorUsedError;
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(String userUuid)? initial,
+    TResult? Function(String userUuid)? checkingConnection,
+    TResult? Function(String userUuid)? noConnection,
+    TResult? Function(Connection connection, String userUuid)? tokenInvalidated,
+    TResult? Function(String userUuid)? makingConnection,
+    TResult? Function(Connection connection, String userUuid)? connected,
+  }) =>
+      throw _privateConstructorUsedError;
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(String userUuid)? initial,
+    TResult Function(String userUuid)? checkingConnection,
+    TResult Function(String userUuid)? noConnection,
+    TResult Function(Connection connection, String userUuid)? tokenInvalidated,
+    TResult Function(String userUuid)? makingConnection,
+    TResult Function(Connection connection, String userUuid)? connected,
+    required TResult orElse(),
+  }) =>
+      throw _privateConstructorUsedError;
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Initial value) initial,
+    required TResult Function(_CheckingConnection value) checkingConnection,
+    required TResult Function(_NoConnection value) noConnection,
+    required TResult Function(_TokenInvalidated value) tokenInvalidated,
+    required TResult Function(_MakingConnection value) makingConnection,
+    required TResult Function(_Connected value) connected,
+  }) =>
+      throw _privateConstructorUsedError;
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_Initial value)? initial,
+    TResult? Function(_CheckingConnection value)? checkingConnection,
+    TResult? Function(_NoConnection value)? noConnection,
+    TResult? Function(_TokenInvalidated value)? tokenInvalidated,
+    TResult? Function(_MakingConnection value)? makingConnection,
+    TResult? Function(_Connected value)? connected,
+  }) =>
+      throw _privateConstructorUsedError;
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Initial value)? initial,
+    TResult Function(_CheckingConnection value)? checkingConnection,
+    TResult Function(_NoConnection value)? noConnection,
+    TResult Function(_TokenInvalidated value)? tokenInvalidated,
+    TResult Function(_MakingConnection value)? makingConnection,
+    TResult Function(_Connected value)? connected,
+    required TResult orElse(),
+  }) =>
+      throw _privateConstructorUsedError;
+
+  @JsonKey(ignore: true)
+  $GoogleFitConnectStateCopyWith<GoogleFitConnectState> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class $GoogleFitConnectStateCopyWith<$Res> {
+  factory $GoogleFitConnectStateCopyWith(GoogleFitConnectState value,
+          $Res Function(GoogleFitConnectState) then) =
+      _$GoogleFitConnectStateCopyWithImpl<$Res, GoogleFitConnectState>;
+  @useResult
+  $Res call({String userUuid});
+}
+
+/// @nodoc
+class _$GoogleFitConnectStateCopyWithImpl<$Res,
+        $Val extends GoogleFitConnectState>
+    implements $GoogleFitConnectStateCopyWith<$Res> {
+  _$GoogleFitConnectStateCopyWithImpl(this._value, this._then);
+
+  // ignore: unused_field
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? userUuid = null,
+  }) {
+    return _then(_value.copyWith(
+      userUuid: null == userUuid
+          ? _value.userUuid
+          : userUuid // ignore: cast_nullable_to_non_nullable
+              as String,
+    ) as $Val);
+  }
+}
+
+/// @nodoc
+abstract class _$$_InitialCopyWith<$Res>
+    implements $GoogleFitConnectStateCopyWith<$Res> {
+  factory _$$_InitialCopyWith(
+          _$_Initial value, $Res Function(_$_Initial) then) =
+      __$$_InitialCopyWithImpl<$Res>;
+  @override
+  @useResult
+  $Res call({String userUuid});
+}
+
+/// @nodoc
+class __$$_InitialCopyWithImpl<$Res>
+    extends _$GoogleFitConnectStateCopyWithImpl<$Res, _$_Initial>
+    implements _$$_InitialCopyWith<$Res> {
+  __$$_InitialCopyWithImpl(_$_Initial _value, $Res Function(_$_Initial) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? userUuid = null,
+  }) {
+    return _then(_$_Initial(
+      userUuid: null == userUuid
+          ? _value.userUuid
+          : userUuid // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$_Initial implements _Initial {
+  const _$_Initial({required this.userUuid});
+
+  @override
+  final String userUuid;
+
+  @override
+  String toString() {
+    return 'GoogleFitConnectState.initial(userUuid: $userUuid)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$_Initial &&
+            (identical(other.userUuid, userUuid) ||
+                other.userUuid == userUuid));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, userUuid);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$_InitialCopyWith<_$_Initial> get copyWith =>
+      __$$_InitialCopyWithImpl<_$_Initial>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(String userUuid) initial,
+    required TResult Function(String userUuid) checkingConnection,
+    required TResult Function(String userUuid) noConnection,
+    required TResult Function(Connection connection, String userUuid)
+        tokenInvalidated,
+    required TResult Function(String userUuid) makingConnection,
+    required TResult Function(Connection connection, String userUuid) connected,
+  }) {
+    return initial(userUuid);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(String userUuid)? initial,
+    TResult? Function(String userUuid)? checkingConnection,
+    TResult? Function(String userUuid)? noConnection,
+    TResult? Function(Connection connection, String userUuid)? tokenInvalidated,
+    TResult? Function(String userUuid)? makingConnection,
+    TResult? Function(Connection connection, String userUuid)? connected,
+  }) {
+    return initial?.call(userUuid);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(String userUuid)? initial,
+    TResult Function(String userUuid)? checkingConnection,
+    TResult Function(String userUuid)? noConnection,
+    TResult Function(Connection connection, String userUuid)? tokenInvalidated,
+    TResult Function(String userUuid)? makingConnection,
+    TResult Function(Connection connection, String userUuid)? connected,
+    required TResult orElse(),
+  }) {
+    if (initial != null) {
+      return initial(userUuid);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Initial value) initial,
+    required TResult Function(_CheckingConnection value) checkingConnection,
+    required TResult Function(_NoConnection value) noConnection,
+    required TResult Function(_TokenInvalidated value) tokenInvalidated,
+    required TResult Function(_MakingConnection value) makingConnection,
+    required TResult Function(_Connected value) connected,
+  }) {
+    return initial(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_Initial value)? initial,
+    TResult? Function(_CheckingConnection value)? checkingConnection,
+    TResult? Function(_NoConnection value)? noConnection,
+    TResult? Function(_TokenInvalidated value)? tokenInvalidated,
+    TResult? Function(_MakingConnection value)? makingConnection,
+    TResult? Function(_Connected value)? connected,
+  }) {
+    return initial?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Initial value)? initial,
+    TResult Function(_CheckingConnection value)? checkingConnection,
+    TResult Function(_NoConnection value)? noConnection,
+    TResult Function(_TokenInvalidated value)? tokenInvalidated,
+    TResult Function(_MakingConnection value)? makingConnection,
+    TResult Function(_Connected value)? connected,
+    required TResult orElse(),
+  }) {
+    if (initial != null) {
+      return initial(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _Initial implements GoogleFitConnectState {
+  const factory _Initial({required final String userUuid}) = _$_Initial;
+
+  @override
+  String get userUuid;
+  @override
+  @JsonKey(ignore: true)
+  _$$_InitialCopyWith<_$_Initial> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$_CheckingConnectionCopyWith<$Res>
+    implements $GoogleFitConnectStateCopyWith<$Res> {
+  factory _$$_CheckingConnectionCopyWith(_$_CheckingConnection value,
+          $Res Function(_$_CheckingConnection) then) =
+      __$$_CheckingConnectionCopyWithImpl<$Res>;
+  @override
+  @useResult
+  $Res call({String userUuid});
+}
+
+/// @nodoc
+class __$$_CheckingConnectionCopyWithImpl<$Res>
+    extends _$GoogleFitConnectStateCopyWithImpl<$Res, _$_CheckingConnection>
+    implements _$$_CheckingConnectionCopyWith<$Res> {
+  __$$_CheckingConnectionCopyWithImpl(
+      _$_CheckingConnection _value, $Res Function(_$_CheckingConnection) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? userUuid = null,
+  }) {
+    return _then(_$_CheckingConnection(
+      userUuid: null == userUuid
+          ? _value.userUuid
+          : userUuid // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$_CheckingConnection implements _CheckingConnection {
+  const _$_CheckingConnection({required this.userUuid});
+
+  @override
+  final String userUuid;
+
+  @override
+  String toString() {
+    return 'GoogleFitConnectState.checkingConnection(userUuid: $userUuid)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$_CheckingConnection &&
+            (identical(other.userUuid, userUuid) ||
+                other.userUuid == userUuid));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, userUuid);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$_CheckingConnectionCopyWith<_$_CheckingConnection> get copyWith =>
+      __$$_CheckingConnectionCopyWithImpl<_$_CheckingConnection>(
+          this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(String userUuid) initial,
+    required TResult Function(String userUuid) checkingConnection,
+    required TResult Function(String userUuid) noConnection,
+    required TResult Function(Connection connection, String userUuid)
+        tokenInvalidated,
+    required TResult Function(String userUuid) makingConnection,
+    required TResult Function(Connection connection, String userUuid) connected,
+  }) {
+    return checkingConnection(userUuid);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(String userUuid)? initial,
+    TResult? Function(String userUuid)? checkingConnection,
+    TResult? Function(String userUuid)? noConnection,
+    TResult? Function(Connection connection, String userUuid)? tokenInvalidated,
+    TResult? Function(String userUuid)? makingConnection,
+    TResult? Function(Connection connection, String userUuid)? connected,
+  }) {
+    return checkingConnection?.call(userUuid);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(String userUuid)? initial,
+    TResult Function(String userUuid)? checkingConnection,
+    TResult Function(String userUuid)? noConnection,
+    TResult Function(Connection connection, String userUuid)? tokenInvalidated,
+    TResult Function(String userUuid)? makingConnection,
+    TResult Function(Connection connection, String userUuid)? connected,
+    required TResult orElse(),
+  }) {
+    if (checkingConnection != null) {
+      return checkingConnection(userUuid);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Initial value) initial,
+    required TResult Function(_CheckingConnection value) checkingConnection,
+    required TResult Function(_NoConnection value) noConnection,
+    required TResult Function(_TokenInvalidated value) tokenInvalidated,
+    required TResult Function(_MakingConnection value) makingConnection,
+    required TResult Function(_Connected value) connected,
+  }) {
+    return checkingConnection(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_Initial value)? initial,
+    TResult? Function(_CheckingConnection value)? checkingConnection,
+    TResult? Function(_NoConnection value)? noConnection,
+    TResult? Function(_TokenInvalidated value)? tokenInvalidated,
+    TResult? Function(_MakingConnection value)? makingConnection,
+    TResult? Function(_Connected value)? connected,
+  }) {
+    return checkingConnection?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Initial value)? initial,
+    TResult Function(_CheckingConnection value)? checkingConnection,
+    TResult Function(_NoConnection value)? noConnection,
+    TResult Function(_TokenInvalidated value)? tokenInvalidated,
+    TResult Function(_MakingConnection value)? makingConnection,
+    TResult Function(_Connected value)? connected,
+    required TResult orElse(),
+  }) {
+    if (checkingConnection != null) {
+      return checkingConnection(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _CheckingConnection implements GoogleFitConnectState {
+  const factory _CheckingConnection({required final String userUuid}) =
+      _$_CheckingConnection;
+
+  @override
+  String get userUuid;
+  @override
+  @JsonKey(ignore: true)
+  _$$_CheckingConnectionCopyWith<_$_CheckingConnection> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$_NoConnectionCopyWith<$Res>
+    implements $GoogleFitConnectStateCopyWith<$Res> {
+  factory _$$_NoConnectionCopyWith(
+          _$_NoConnection value, $Res Function(_$_NoConnection) then) =
+      __$$_NoConnectionCopyWithImpl<$Res>;
+  @override
+  @useResult
+  $Res call({String userUuid});
+}
+
+/// @nodoc
+class __$$_NoConnectionCopyWithImpl<$Res>
+    extends _$GoogleFitConnectStateCopyWithImpl<$Res, _$_NoConnection>
+    implements _$$_NoConnectionCopyWith<$Res> {
+  __$$_NoConnectionCopyWithImpl(
+      _$_NoConnection _value, $Res Function(_$_NoConnection) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? userUuid = null,
+  }) {
+    return _then(_$_NoConnection(
+      userUuid: null == userUuid
+          ? _value.userUuid
+          : userUuid // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$_NoConnection implements _NoConnection {
+  const _$_NoConnection({required this.userUuid});
+
+  @override
+  final String userUuid;
+
+  @override
+  String toString() {
+    return 'GoogleFitConnectState.noConnection(userUuid: $userUuid)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$_NoConnection &&
+            (identical(other.userUuid, userUuid) ||
+                other.userUuid == userUuid));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, userUuid);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$_NoConnectionCopyWith<_$_NoConnection> get copyWith =>
+      __$$_NoConnectionCopyWithImpl<_$_NoConnection>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(String userUuid) initial,
+    required TResult Function(String userUuid) checkingConnection,
+    required TResult Function(String userUuid) noConnection,
+    required TResult Function(Connection connection, String userUuid)
+        tokenInvalidated,
+    required TResult Function(String userUuid) makingConnection,
+    required TResult Function(Connection connection, String userUuid) connected,
+  }) {
+    return noConnection(userUuid);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(String userUuid)? initial,
+    TResult? Function(String userUuid)? checkingConnection,
+    TResult? Function(String userUuid)? noConnection,
+    TResult? Function(Connection connection, String userUuid)? tokenInvalidated,
+    TResult? Function(String userUuid)? makingConnection,
+    TResult? Function(Connection connection, String userUuid)? connected,
+  }) {
+    return noConnection?.call(userUuid);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(String userUuid)? initial,
+    TResult Function(String userUuid)? checkingConnection,
+    TResult Function(String userUuid)? noConnection,
+    TResult Function(Connection connection, String userUuid)? tokenInvalidated,
+    TResult Function(String userUuid)? makingConnection,
+    TResult Function(Connection connection, String userUuid)? connected,
+    required TResult orElse(),
+  }) {
+    if (noConnection != null) {
+      return noConnection(userUuid);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Initial value) initial,
+    required TResult Function(_CheckingConnection value) checkingConnection,
+    required TResult Function(_NoConnection value) noConnection,
+    required TResult Function(_TokenInvalidated value) tokenInvalidated,
+    required TResult Function(_MakingConnection value) makingConnection,
+    required TResult Function(_Connected value) connected,
+  }) {
+    return noConnection(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_Initial value)? initial,
+    TResult? Function(_CheckingConnection value)? checkingConnection,
+    TResult? Function(_NoConnection value)? noConnection,
+    TResult? Function(_TokenInvalidated value)? tokenInvalidated,
+    TResult? Function(_MakingConnection value)? makingConnection,
+    TResult? Function(_Connected value)? connected,
+  }) {
+    return noConnection?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Initial value)? initial,
+    TResult Function(_CheckingConnection value)? checkingConnection,
+    TResult Function(_NoConnection value)? noConnection,
+    TResult Function(_TokenInvalidated value)? tokenInvalidated,
+    TResult Function(_MakingConnection value)? makingConnection,
+    TResult Function(_Connected value)? connected,
+    required TResult orElse(),
+  }) {
+    if (noConnection != null) {
+      return noConnection(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _NoConnection implements GoogleFitConnectState {
+  const factory _NoConnection({required final String userUuid}) =
+      _$_NoConnection;
+
+  @override
+  String get userUuid;
+  @override
+  @JsonKey(ignore: true)
+  _$$_NoConnectionCopyWith<_$_NoConnection> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$_TokenInvalidatedCopyWith<$Res>
+    implements $GoogleFitConnectStateCopyWith<$Res> {
+  factory _$$_TokenInvalidatedCopyWith(
+          _$_TokenInvalidated value, $Res Function(_$_TokenInvalidated) then) =
+      __$$_TokenInvalidatedCopyWithImpl<$Res>;
+  @override
+  @useResult
+  $Res call({Connection connection, String userUuid});
+
+  $ConnectionCopyWith<$Res> get connection;
+}
+
+/// @nodoc
+class __$$_TokenInvalidatedCopyWithImpl<$Res>
+    extends _$GoogleFitConnectStateCopyWithImpl<$Res, _$_TokenInvalidated>
+    implements _$$_TokenInvalidatedCopyWith<$Res> {
+  __$$_TokenInvalidatedCopyWithImpl(
+      _$_TokenInvalidated _value, $Res Function(_$_TokenInvalidated) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? connection = null,
+    Object? userUuid = null,
+  }) {
+    return _then(_$_TokenInvalidated(
+      null == connection
+          ? _value.connection
+          : connection // ignore: cast_nullable_to_non_nullable
+              as Connection,
+      userUuid: null == userUuid
+          ? _value.userUuid
+          : userUuid // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
+  }
+
+  @override
+  @pragma('vm:prefer-inline')
+  $ConnectionCopyWith<$Res> get connection {
+    return $ConnectionCopyWith<$Res>(_value.connection, (value) {
+      return _then(_value.copyWith(connection: value));
+    });
+  }
+}
+
+/// @nodoc
+
+class _$_TokenInvalidated implements _TokenInvalidated {
+  const _$_TokenInvalidated(this.connection, {required this.userUuid});
+
+  @override
+  final Connection connection;
+  @override
+  final String userUuid;
+
+  @override
+  String toString() {
+    return 'GoogleFitConnectState.tokenInvalidated(connection: $connection, userUuid: $userUuid)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$_TokenInvalidated &&
+            (identical(other.connection, connection) ||
+                other.connection == connection) &&
+            (identical(other.userUuid, userUuid) ||
+                other.userUuid == userUuid));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, connection, userUuid);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$_TokenInvalidatedCopyWith<_$_TokenInvalidated> get copyWith =>
+      __$$_TokenInvalidatedCopyWithImpl<_$_TokenInvalidated>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(String userUuid) initial,
+    required TResult Function(String userUuid) checkingConnection,
+    required TResult Function(String userUuid) noConnection,
+    required TResult Function(Connection connection, String userUuid)
+        tokenInvalidated,
+    required TResult Function(String userUuid) makingConnection,
+    required TResult Function(Connection connection, String userUuid) connected,
+  }) {
+    return tokenInvalidated(connection, userUuid);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(String userUuid)? initial,
+    TResult? Function(String userUuid)? checkingConnection,
+    TResult? Function(String userUuid)? noConnection,
+    TResult? Function(Connection connection, String userUuid)? tokenInvalidated,
+    TResult? Function(String userUuid)? makingConnection,
+    TResult? Function(Connection connection, String userUuid)? connected,
+  }) {
+    return tokenInvalidated?.call(connection, userUuid);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(String userUuid)? initial,
+    TResult Function(String userUuid)? checkingConnection,
+    TResult Function(String userUuid)? noConnection,
+    TResult Function(Connection connection, String userUuid)? tokenInvalidated,
+    TResult Function(String userUuid)? makingConnection,
+    TResult Function(Connection connection, String userUuid)? connected,
+    required TResult orElse(),
+  }) {
+    if (tokenInvalidated != null) {
+      return tokenInvalidated(connection, userUuid);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Initial value) initial,
+    required TResult Function(_CheckingConnection value) checkingConnection,
+    required TResult Function(_NoConnection value) noConnection,
+    required TResult Function(_TokenInvalidated value) tokenInvalidated,
+    required TResult Function(_MakingConnection value) makingConnection,
+    required TResult Function(_Connected value) connected,
+  }) {
+    return tokenInvalidated(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_Initial value)? initial,
+    TResult? Function(_CheckingConnection value)? checkingConnection,
+    TResult? Function(_NoConnection value)? noConnection,
+    TResult? Function(_TokenInvalidated value)? tokenInvalidated,
+    TResult? Function(_MakingConnection value)? makingConnection,
+    TResult? Function(_Connected value)? connected,
+  }) {
+    return tokenInvalidated?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Initial value)? initial,
+    TResult Function(_CheckingConnection value)? checkingConnection,
+    TResult Function(_NoConnection value)? noConnection,
+    TResult Function(_TokenInvalidated value)? tokenInvalidated,
+    TResult Function(_MakingConnection value)? makingConnection,
+    TResult Function(_Connected value)? connected,
+    required TResult orElse(),
+  }) {
+    if (tokenInvalidated != null) {
+      return tokenInvalidated(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _TokenInvalidated implements GoogleFitConnectState {
+  const factory _TokenInvalidated(final Connection connection,
+      {required final String userUuid}) = _$_TokenInvalidated;
+
+  Connection get connection;
+  @override
+  String get userUuid;
+  @override
+  @JsonKey(ignore: true)
+  _$$_TokenInvalidatedCopyWith<_$_TokenInvalidated> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$_MakingConnectionCopyWith<$Res>
+    implements $GoogleFitConnectStateCopyWith<$Res> {
+  factory _$$_MakingConnectionCopyWith(
+          _$_MakingConnection value, $Res Function(_$_MakingConnection) then) =
+      __$$_MakingConnectionCopyWithImpl<$Res>;
+  @override
+  @useResult
+  $Res call({String userUuid});
+}
+
+/// @nodoc
+class __$$_MakingConnectionCopyWithImpl<$Res>
+    extends _$GoogleFitConnectStateCopyWithImpl<$Res, _$_MakingConnection>
+    implements _$$_MakingConnectionCopyWith<$Res> {
+  __$$_MakingConnectionCopyWithImpl(
+      _$_MakingConnection _value, $Res Function(_$_MakingConnection) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? userUuid = null,
+  }) {
+    return _then(_$_MakingConnection(
+      userUuid: null == userUuid
+          ? _value.userUuid
+          : userUuid // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$_MakingConnection implements _MakingConnection {
+  const _$_MakingConnection({required this.userUuid});
+
+  @override
+  final String userUuid;
+
+  @override
+  String toString() {
+    return 'GoogleFitConnectState.makingConnection(userUuid: $userUuid)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$_MakingConnection &&
+            (identical(other.userUuid, userUuid) ||
+                other.userUuid == userUuid));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, userUuid);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$_MakingConnectionCopyWith<_$_MakingConnection> get copyWith =>
+      __$$_MakingConnectionCopyWithImpl<_$_MakingConnection>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(String userUuid) initial,
+    required TResult Function(String userUuid) checkingConnection,
+    required TResult Function(String userUuid) noConnection,
+    required TResult Function(Connection connection, String userUuid)
+        tokenInvalidated,
+    required TResult Function(String userUuid) makingConnection,
+    required TResult Function(Connection connection, String userUuid) connected,
+  }) {
+    return makingConnection(userUuid);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(String userUuid)? initial,
+    TResult? Function(String userUuid)? checkingConnection,
+    TResult? Function(String userUuid)? noConnection,
+    TResult? Function(Connection connection, String userUuid)? tokenInvalidated,
+    TResult? Function(String userUuid)? makingConnection,
+    TResult? Function(Connection connection, String userUuid)? connected,
+  }) {
+    return makingConnection?.call(userUuid);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(String userUuid)? initial,
+    TResult Function(String userUuid)? checkingConnection,
+    TResult Function(String userUuid)? noConnection,
+    TResult Function(Connection connection, String userUuid)? tokenInvalidated,
+    TResult Function(String userUuid)? makingConnection,
+    TResult Function(Connection connection, String userUuid)? connected,
+    required TResult orElse(),
+  }) {
+    if (makingConnection != null) {
+      return makingConnection(userUuid);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Initial value) initial,
+    required TResult Function(_CheckingConnection value) checkingConnection,
+    required TResult Function(_NoConnection value) noConnection,
+    required TResult Function(_TokenInvalidated value) tokenInvalidated,
+    required TResult Function(_MakingConnection value) makingConnection,
+    required TResult Function(_Connected value) connected,
+  }) {
+    return makingConnection(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_Initial value)? initial,
+    TResult? Function(_CheckingConnection value)? checkingConnection,
+    TResult? Function(_NoConnection value)? noConnection,
+    TResult? Function(_TokenInvalidated value)? tokenInvalidated,
+    TResult? Function(_MakingConnection value)? makingConnection,
+    TResult? Function(_Connected value)? connected,
+  }) {
+    return makingConnection?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Initial value)? initial,
+    TResult Function(_CheckingConnection value)? checkingConnection,
+    TResult Function(_NoConnection value)? noConnection,
+    TResult Function(_TokenInvalidated value)? tokenInvalidated,
+    TResult Function(_MakingConnection value)? makingConnection,
+    TResult Function(_Connected value)? connected,
+    required TResult orElse(),
+  }) {
+    if (makingConnection != null) {
+      return makingConnection(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _MakingConnection implements GoogleFitConnectState {
+  const factory _MakingConnection({required final String userUuid}) =
+      _$_MakingConnection;
+
+  @override
+  String get userUuid;
+  @override
+  @JsonKey(ignore: true)
+  _$$_MakingConnectionCopyWith<_$_MakingConnection> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$_ConnectedCopyWith<$Res>
+    implements $GoogleFitConnectStateCopyWith<$Res> {
+  factory _$$_ConnectedCopyWith(
+          _$_Connected value, $Res Function(_$_Connected) then) =
+      __$$_ConnectedCopyWithImpl<$Res>;
+  @override
+  @useResult
+  $Res call({Connection connection, String userUuid});
+
+  $ConnectionCopyWith<$Res> get connection;
+}
+
+/// @nodoc
+class __$$_ConnectedCopyWithImpl<$Res>
+    extends _$GoogleFitConnectStateCopyWithImpl<$Res, _$_Connected>
+    implements _$$_ConnectedCopyWith<$Res> {
+  __$$_ConnectedCopyWithImpl(
+      _$_Connected _value, $Res Function(_$_Connected) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? connection = null,
+    Object? userUuid = null,
+  }) {
+    return _then(_$_Connected(
+      null == connection
+          ? _value.connection
+          : connection // ignore: cast_nullable_to_non_nullable
+              as Connection,
+      userUuid: null == userUuid
+          ? _value.userUuid
+          : userUuid // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
+  }
+
+  @override
+  @pragma('vm:prefer-inline')
+  $ConnectionCopyWith<$Res> get connection {
+    return $ConnectionCopyWith<$Res>(_value.connection, (value) {
+      return _then(_value.copyWith(connection: value));
+    });
+  }
+}
+
+/// @nodoc
+
+class _$_Connected implements _Connected {
+  const _$_Connected(this.connection, {required this.userUuid});
+
+  @override
+  final Connection connection;
+  @override
+  final String userUuid;
+
+  @override
+  String toString() {
+    return 'GoogleFitConnectState.connected(connection: $connection, userUuid: $userUuid)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$_Connected &&
+            (identical(other.connection, connection) ||
+                other.connection == connection) &&
+            (identical(other.userUuid, userUuid) ||
+                other.userUuid == userUuid));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, connection, userUuid);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$_ConnectedCopyWith<_$_Connected> get copyWith =>
+      __$$_ConnectedCopyWithImpl<_$_Connected>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(String userUuid) initial,
+    required TResult Function(String userUuid) checkingConnection,
+    required TResult Function(String userUuid) noConnection,
+    required TResult Function(Connection connection, String userUuid)
+        tokenInvalidated,
+    required TResult Function(String userUuid) makingConnection,
+    required TResult Function(Connection connection, String userUuid) connected,
+  }) {
+    return connected(connection, userUuid);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(String userUuid)? initial,
+    TResult? Function(String userUuid)? checkingConnection,
+    TResult? Function(String userUuid)? noConnection,
+    TResult? Function(Connection connection, String userUuid)? tokenInvalidated,
+    TResult? Function(String userUuid)? makingConnection,
+    TResult? Function(Connection connection, String userUuid)? connected,
+  }) {
+    return connected?.call(connection, userUuid);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(String userUuid)? initial,
+    TResult Function(String userUuid)? checkingConnection,
+    TResult Function(String userUuid)? noConnection,
+    TResult Function(Connection connection, String userUuid)? tokenInvalidated,
+    TResult Function(String userUuid)? makingConnection,
+    TResult Function(Connection connection, String userUuid)? connected,
+    required TResult orElse(),
+  }) {
+    if (connected != null) {
+      return connected(connection, userUuid);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Initial value) initial,
+    required TResult Function(_CheckingConnection value) checkingConnection,
+    required TResult Function(_NoConnection value) noConnection,
+    required TResult Function(_TokenInvalidated value) tokenInvalidated,
+    required TResult Function(_MakingConnection value) makingConnection,
+    required TResult Function(_Connected value) connected,
+  }) {
+    return connected(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_Initial value)? initial,
+    TResult? Function(_CheckingConnection value)? checkingConnection,
+    TResult? Function(_NoConnection value)? noConnection,
+    TResult? Function(_TokenInvalidated value)? tokenInvalidated,
+    TResult? Function(_MakingConnection value)? makingConnection,
+    TResult? Function(_Connected value)? connected,
+  }) {
+    return connected?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Initial value)? initial,
+    TResult Function(_CheckingConnection value)? checkingConnection,
+    TResult Function(_NoConnection value)? noConnection,
+    TResult Function(_TokenInvalidated value)? tokenInvalidated,
+    TResult Function(_MakingConnection value)? makingConnection,
+    TResult Function(_Connected value)? connected,
+    required TResult orElse(),
+  }) {
+    if (connected != null) {
+      return connected(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _Connected implements GoogleFitConnectState {
+  const factory _Connected(final Connection connection,
+      {required final String userUuid}) = _$_Connected;
+
+  Connection get connection;
+  @override
+  String get userUuid;
+  @override
+  @JsonKey(ignore: true)
+  _$$_ConnectedCopyWith<_$_Connected> get copyWith =>
+      throw _privateConstructorUsedError;
+}

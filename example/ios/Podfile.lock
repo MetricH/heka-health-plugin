@@ -1,0 +1,52 @@
+PODS:
+  - AppAuth (1.6.0):
+    - AppAuth/Core (= 1.6.0)
+    - AppAuth/ExternalUserAgent (= 1.6.0)
+  - AppAuth/Core (1.6.0)
+  - AppAuth/ExternalUserAgent (1.6.0):
+    - AppAuth/Core
+  - Flutter (1.0.0)
+  - flutter_appauth (0.0.1):
+    - AppAuth (= 1.6.0)
+    - Flutter
+  - heka_health (0.0.1):
+    - Flutter
+    - PromiseKit
+  - PromiseKit (6.18.1):
+    - PromiseKit/CorePromise (= 6.18.1)
+    - PromiseKit/Foundation (= 6.18.1)
+    - PromiseKit/UIKit (= 6.18.1)
+  - PromiseKit/CorePromise (6.18.1)
+  - PromiseKit/Foundation (6.18.1):
+    - PromiseKit/CorePromise
+  - PromiseKit/UIKit (6.18.1):
+    - PromiseKit/CorePromise
+
+DEPENDENCIES:
+  - Flutter (from `Flutter`)
+  - flutter_appauth (from `.symlinks/plugins/flutter_appauth/ios`)
+  - heka_health (from `.symlinks/plugins/heka_health/ios`)
+
+SPEC REPOS:
+  trunk:
+    - AppAuth
+    - PromiseKit
+
+EXTERNAL SOURCES:
+  Flutter:
+    :path: Flutter
+  flutter_appauth:
+    :path: ".symlinks/plugins/flutter_appauth/ios"
+  heka_health:
+    :path: ".symlinks/plugins/heka_health/ios"
+
+SPEC CHECKSUMS:
+  AppAuth: 8fca6b5563a5baef2c04bee27538025e4ceb2add
+  Flutter: f04841e97a9d0b0a8025694d0796dd46242b2854
+  flutter_appauth: 525652bda90e43ca5eb7ed748ecc106b79d1f5a1
+  heka_health: 28bfc9b36fd637e9e4d5f273dee3cc7359ccd598
+  PromiseKit: 49d70c53d5d20e346beaea4b276b5dd2ab446bb4
+
+PODFILE CHECKSUM: cc1f88378b4bfcf93a6ce00d2c587857c6008d3b
+
+COCOAPODS: 1.11.3
