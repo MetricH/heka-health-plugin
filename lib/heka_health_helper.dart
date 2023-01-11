@@ -41,7 +41,7 @@ class HekaHealth {
   Future<Connection?> fetchConnection(String userUuid) async {
     try {
       final response = await _dio.get(
-        '/watch_connection',
+        '/check_watch_connection',
         queryParameters: {
           'key': _apiKey,
           'user_uuid': userUuid,
