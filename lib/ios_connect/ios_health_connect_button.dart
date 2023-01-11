@@ -37,6 +37,11 @@ class _IosHealthConnectButtonState extends State<IosHealthConnectButton> {
   @override
   void initState() {
     super.initState();
+    // context.read<IosConnectCubit>().requestHealthKitPermissions();
+    // context
+    //     .read<IosConnectCubit>()
+    //     .checkHealthKitPermissions()
+    //     .then((value) => print("Hello: $value"));
     context.read<IosConnectCubit>().checkConnection(_syncData);
   }
 
@@ -62,6 +67,18 @@ class _IosHealthConnectButtonState extends State<IosHealthConnectButton> {
             onPressed: () =>
                 context.read<IosConnectCubit>().checkConnection(_syncData),
             label: const Text('Sync Health Data'),
+          ),
+          permissionsDenied: (_) => Center(
+            child: Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: Text(
+                'Heath Permissions are denied. Kindly grant permission on the Health App and restart.',
+                style: Theme.of(context)
+                    .textTheme
+                    .caption!
+                    .copyWith(color: Colors.red),
+              ),
+            ),
           ),
           checkingConnection: (_) =>
               const Loader(text: 'Checking connection...'),

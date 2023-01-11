@@ -334,6 +334,18 @@ class HealthStore {
         }
         
     }
+
+     func checkHealthKitPermissions() -> Bool {
+        let healthKitTypesToRead: Set<HKObjectType> = Set(healthDataTypes)
+        var permissionsGranted = true
+        for healthKitType in healthKitTypesToRead {
+            if self.healthStore!.authorizationStatus(for: healthKitType) != .sharingAuthorized {
+                permissionsGranted = false
+                break
+            }
+        }
+        return permissionsGranted
+    }
     
     func setupStepsObserverQuery(apiKey: String, userUuid: String) {
         let stepCountType = HKObjectType.quantityType(forIdentifier: .stepCount)!;

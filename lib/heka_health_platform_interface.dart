@@ -26,4 +26,12 @@ abstract class HekaHealthPlatform extends PlatformInterface {
   Future<int> syncIosHealthData(String apiKey, String userUuid) {
     throw UnimplementedError('syncIosHealthData() has not been implemented.');
   }
+
+  Future<bool> requestHealthKitPermissions() {
+    throw UnimplementedError('syncIosHealthData() has not been implemented.');
+  }
+
+  Future<bool?> checkHealthKitPermissions() {
+    throw UnimplementedError('syncIosHealthData() has not been implemented.');
+  }
 }

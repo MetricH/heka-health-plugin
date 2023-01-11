@@ -12,6 +12,29 @@ public class SwiftHekaHealthPlugin: NSObject, FlutterPlugin {
     if (call.method.elementsEqual("syncIosHealthData")){
             syncIosHealthData(call: call, result: result)
         }
+    if (call.method.elementsEqual("requestAuthorization")){
+            requestAuthorization(call: call, result: result)
+        }
+     if (call.method.elementsEqual("checkHealthKitPermissions")){
+            checkHealthKitPermissions(call: call, result: result)
+        }
+  }
+
+  func requestAuthorization(call: FlutterMethodCall, result: @escaping FlutterResult) {
+         let healthStore = HealthStore()
+       healthStore.requestAuthorization {
+        success in 
+        if success {
+          result(true)
+        } else {
+          result(false)
+        }
+       }
+  }
+
+  func checkHealthKitPermissions(call: FlutterMethodCall, result: @escaping FlutterResult) {
+    let healthStore = HealthStore()
+    result(healthStore.checkHealthKitPermissions())
   }
 
   func syncIosHealthData(call: FlutterMethodCall, result: @escaping FlutterResult) {
@@ -25,8 +48,9 @@ public class SwiftHekaHealthPlugin: NSObject, FlutterPlugin {
                let userUuid = args["userUuid"]!
                
                healthStore.setupStepsObserverQuery(apiKey: apiKey, userUuid: userUuid)
-           }
+              
+           } 
+           result(0)
        }
-       result(0)
     }
 }

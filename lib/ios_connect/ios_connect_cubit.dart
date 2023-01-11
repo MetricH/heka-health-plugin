@@ -15,20 +15,23 @@ class IosConnectCubit extends Cubit<IosConnectState> {
     this._manager,
   ) : super(IosConnectState.initial(userUuid: _userUuid));
 
-  void editUserUuid(String value) {
-    emit(IosConnectState.initial(userUuid: value));
-  }
-
   Future<void> checkConnection(
       Future<dynamic> Function(String, String) onConnect) async {
-    emit(IosConnectState.checkingConnection(userUuid: state.userUuid));
-    // Cache user uuid
-    final connection = await _manager.fetchConnection(state.userUuid);
-    if (connection == null) {
-      await _createConnection(onConnect);
+    if (await checkHealthKitPermissions() ?? false) {
+      emit(IosConnectState.checkingConnection(userUuid: state.userUuid));
+      // Cache user uuid
+      final connection = await _manager.fetchConnection(state.userUuid);
+      if (connection == null) {
+        await _createConnection(onConnect);
+      } else {
+        await onConnect(_manager.apiKey, state.userUuid);
+        emit(IosConnectState.syncingData(connection, userUuid: state.userUuid));
+      }
     } else {
-      await onConnect(_manager.apiKey, state.userUuid);
-      emit(IosConnectState.syncingData(connection, userUuid: state.userUuid));
+      await requestHealthKitPermissions();
+      if (!(await checkHealthKitPermissions() ?? false)) {
+        emit(IosConnectState.permissionsDenied(userUuid: state.userUuid));
+      }
     }
   }
 
@@ -45,4 +48,10 @@ class IosConnectCubit extends Cubit<IosConnectState> {
 
   Future<void> syncData(String userUuid) async =>
       _manager.syncIosHealthData(userUuid: userUuid);
+
+  Future<bool> requestHealthKitPermissions() =>
+      _manager.requestHealthKitPermissions();
+
+  Future<bool?> checkHealthKitPermissions() =>
+      _manager.checkHealthKitPermissions();
 }

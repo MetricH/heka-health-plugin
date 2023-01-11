@@ -5,6 +5,9 @@ class IosConnectState with _$IosConnectState {
   const factory IosConnectState.initial({
     required String userUuid,
   }) = _Initial;
+   const factory IosConnectState.permissionsDenied({
+    required String userUuid,
+  }) = _PermissionsDenied;
   const factory IosConnectState.checkingConnection({
     required String userUuid,
   }) = _CheckingConnection;

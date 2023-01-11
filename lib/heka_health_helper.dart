@@ -146,4 +146,10 @@ class HekaHealth {
         _apiKey,
         userUuid,
       );
+
+  Future<bool> requestHealthKitPermissions() =>
+      HekaHealthPlatform.instance.requestHealthKitPermissions();
+
+  Future<bool?> checkHealthKitPermissions() =>
+      HekaHealthPlatform.instance.checkHealthKitPermissions();
 }
