@@ -1,6 +1,6 @@
 name: heka_health
 description: Plugin for integrating HekaHealth SDK in your Flutter Application.
-version: 0.0.1
+version: 0.0.2
 homepage: https://github.com/HekaHealth/heka-health-plugin
 
 environment:
