@@ -5,19 +5,21 @@ import 'heka_health_helper.dart';
 import 'ios_connect/ios_health_connect_button.dart';
 
 class HekaHealthWidget extends StatelessWidget {
-  final HekaHealth hekaHealth;
+  final String apiKey;
   final String userUuid;
 
   const HekaHealthWidget({
     super.key,
-    required this.hekaHealth,
+    required this.apiKey,
     required this.userUuid,
   });
 
   @override
   Widget build(BuildContext context) {
     return Platform.isAndroid
-        ? GoogleFitConnectWidget(hekaHealth: hekaHealth, userUuid: userUuid)
-        : IosHealthConnectWidget(hekaHealth: hekaHealth, userUuid: userUuid);
+        ? GoogleFitConnectWidget(
+            hekaHealth: HekaHealth(apiKey), userUuid: userUuid)
+        : IosHealthConnectWidget(
+            hekaHealth: HekaHealth(apiKey), userUuid: userUuid);
   }
 }

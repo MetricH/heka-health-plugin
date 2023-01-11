@@ -1,5 +1,5 @@
 name: heka_health
-description: A new Flutter plugin project.
+description: Plugin for integrating HekaHealth SDK in your Flutter Application.
 version: 0.0.1
 homepage:
 

@@ -12,7 +12,6 @@ class HomePage extends StatefulWidget {
 
 class _HomePageState extends State<HomePage> {
   static const _apiKey = '6370f2c7-ddda-49bf-868d-aa9d704b1644';
-  final _hekaHealth = HekaHealth(_apiKey);
   final _userUuid = 'moksh@pravegak.in';
 
   @override
@@ -23,7 +22,7 @@ class _HomePageState extends State<HomePage> {
       ),
       body: Center(
         child: HekaHealthWidget(
-          hekaHealth: _hekaHealth,
+          apiKey: _apiKey,
           userUuid: _userUuid,
         ),
       ),
