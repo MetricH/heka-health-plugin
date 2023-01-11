@@ -433,6 +433,10 @@ class HealthStore {
         var predicate: NSPredicate? = nil
         if let lastSync = UserDefaults.standard.object(forKey: "lastSyncTime") as? Date {
             predicate =  HKQuery.predicateForSamples(withStart: lastSync, end: Date(), options: .strictStartDate)
+        } else {
+            let today = Date()
+            let start = Calendar.current.date(byAdding: .day, value: -120, to: today)!
+            predicate =  HKQuery.predicateForSamples(withStart: start, end: today, options: .strictStartDate)
         }
         
         let q = HKSampleQuery(sampleType: dataType!, predicate: predicate, limit: HKObjectQueryNoLimit, sortDescriptors: nil) {
