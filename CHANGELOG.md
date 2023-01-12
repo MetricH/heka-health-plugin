@@ -1,3 +1,8 @@
+## 0.0.4
+
+-   HekaHealthWidget UI improvements
+-   Added support for more HeathDataPoints syncing for apple kit
+
 ## 0.0.3
 
 -   Update with changes in API
