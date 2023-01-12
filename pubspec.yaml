@@ -14,7 +14,9 @@ dependencies:
   flutter_appauth: ^4.2.1
   flutter_bloc: ^8.1.1
   freezed_annotation: ^2.2.0
+  material_design_icons_flutter: ^6.0.7096
   plugin_platform_interface: ^2.0.2
+  timeago: ^3.3.0
 
 dev_dependencies:
   flutter_test:

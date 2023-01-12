@@ -1,8 +1,8 @@
 import 'package:heka_health/heka_health_helper.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-
-import '../loader.dart';
+import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
+import 'package:timeago/timeago.dart' as timeago;
 import 'google_fit_connect_cubit.dart';
 
 class GoogleFitConnectWidget extends StatelessWidget {
@@ -44,64 +44,97 @@ class _GoogleFitConectButtonState extends State<GoogleFitConectButton> {
   Widget build(BuildContext context) {
     return BlocBuilder<GoogleFitConnectCubit, GoogleFitConnectState>(
       builder: (context, state) {
-        if (state.userUuid.isEmpty) {
-          return const SizedBox();
-        }
-        return state.when(
-          initial: (cachedUserUuid) => const SizedBox(),
-          checkingConnection: (_) =>
-              const Loader(text: 'Checking connection...'),
-          noConnection: (_) => ElevatedButton.icon(
-            style: ElevatedButton.styleFrom(
-                padding:
-                    const EdgeInsets.symmetric(vertical: 24, horizontal: 24)),
-            icon: const Icon(Icons.fitbit),
-            onPressed: context.read<GoogleFitConnectCubit>().createConnection,
-            label: const Text('Connect Google Fit'),
-          ),
-          tokenInvalidated: (connection, userUuid) {
-            return Column(
-              children: [
-                Text(
-                  "You've logged out from our systems!",
-                  style: Theme.of(context).textTheme.caption!.copyWith(
-                        color: Theme.of(context).errorColor,
-                      ),
+        return Padding(
+          padding: const EdgeInsets.all(8.0),
+          child: Card(
+            elevation: 2,
+            child: ListTile(
+              contentPadding: const EdgeInsets.symmetric(horizontal: 16),
+              leading: const Icon(
+                MdiIcons.googleFit,
+                color: Colors.red,
+              ),
+              title: const Text(
+                'Google Fit',
+                style: TextStyle(
+                  fontWeight: FontWeight.bold,
+                  fontSize: 16,
                 ),
-                const SizedBox(
-                  height: 8,
+              ),
+              subtitle: state.when(
+                initial: (_) => Text(
+                  '',
+                  style: Theme.of(context).textTheme.caption,
                 ),
-                ElevatedButton.icon(
+                checkingConnection: (_) => Text(
+                  'Checking connection...',
+                  style: Theme.of(context).textTheme.caption,
+                ),
+                noConnection: (_) => Text(
+                  '',
+                  style: Theme.of(context).textTheme.caption,
+                ),
+                tokenInvalidated: (_, __) => Text(
+                  'Disconnected from our systems',
+                  style: Theme.of(context).textTheme.caption,
+                ),
+                makingConnection: (_) => Text(
+                  'Making connection...',
+                  style: Theme.of(context).textTheme.caption,
+                ),
+                connected: (_, __) => Text(
+                  _.lastSync == null
+                      ? 'Last synced 1 min ago'
+                      : 'Last synced ${timeago.format(DateTime.parse(_.lastSync!))}',
+                  style: Theme.of(context).textTheme.caption,
+                ),
+              ),
+              trailing: state.maybeWhen(
+                checkingConnection: (userUuid) => const SizedBox.square(
+                  dimension: 16,
+                  child: CircularProgressIndicator(
+                    color: Colors.red,
+                  ),
+                ),
+                makingConnection: (userUuid) => const SizedBox.square(
+                  dimension: 16,
+                  child: CircularProgressIndicator(
+                    color: Colors.red,
+                  ),
+                ),
+                orElse: () => ElevatedButton(
+                  onPressed: state.when(
+                    initial: (_) => null,
+                    checkingConnection: (_) => null,
+                    noConnection: (_) =>
+                        context.read<GoogleFitConnectCubit>().createConnection,
+                    tokenInvalidated: (connection, __) => () => context
+                        .read<GoogleFitConnectCubit>()
+                        .connectAgain(connection.id),
+                    makingConnection: (_) => null,
+                    connected: (_, __) => null,
+                  ),
                   style: ElevatedButton.styleFrom(
-                      padding: const EdgeInsets.symmetric(
-                          vertical: 24, horizontal: 24)),
-                  icon: const Icon(Icons.fitbit),
-                  onPressed: () => context
-                      .read<GoogleFitConnectCubit>()
-                      .connectAgain(connection.id),
-                  label: const Text('Connect Again'),
+                    elevation: 1,
+                    backgroundColor: Colors.red,
+                    padding: const EdgeInsets.symmetric(
+                      horizontal: 24,
+                    ),
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(24),
+                    ),
+                  ),
+                  child: state.when(
+                    initial: (_) => const Text(''),
+                    checkingConnection: (_) => const Text('...'),
+                    noConnection: (_) => const Text('Connect'),
+                    tokenInvalidated: (_, __) => const Text('Connect Again'),
+                    makingConnection: (_) => const Text('...'),
+                    connected: (_, __) => const Text('Connected'),
+                  ),
                 ),
-              ],
-            );
-          },
-          makingConnection: (_) => const Loader(text: 'Making connection...'),
-          connected: (_, __) => Column(
-            mainAxisSize: MainAxisSize.min,
-            children: [
-              Text(
-                'Connected!',
-                style: Theme.of(context)
-                    .textTheme
-                    .headline5!
-                    .copyWith(color: Colors.green),
               ),
-              const SizedBox(height: 24),
-              Text(
-                'id: ${_.id}\nuser uuid: ${_.userUuid}\nplatform: ${_.platform}\napp: ${_.app}\nlast sync: ${_.lastSync}',
-                style: Theme.of(context).textTheme.caption,
-                textAlign: TextAlign.center,
-              ),
-            ],
+            ),
           ),
         );
       },
