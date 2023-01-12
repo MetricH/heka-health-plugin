@@ -363,7 +363,7 @@ class HealthStore {
             query.initialResultsHandler = { query, statisticsCollection, error in
                 
                 firstly {
-                    self.combineResults(healthDataTypes: [self.STEPS, self.HEART_RATE])
+                    self.combineResults(healthDataTypes: [self.STEPS, self.HEART_RATE, self.DISTANCE_WALKING_RUNNING, self.ACTIVE_ENERGY_BURNED, self.BLOOD_PRESSURE_SYSTOLIC, self.BLOOD_OXYGEN, self.BLOOD_GLUCOSE, self.BODY_TEMPERATURE, self.HEIGHT, self.WEIGHT, self.BODY_MASS_INDEX, self.WATER, self.BODY_FAT_PERCENTAGE])
                 }.done{
                     samples in
                     
