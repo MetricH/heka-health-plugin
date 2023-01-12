@@ -20,7 +20,7 @@ mixin _$IosConnectState {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(String userUuid) initial,
-    required TResult Function(String userUuid) permissionsDenied,
+    required TResult Function(String userUuid) noConnection,
     required TResult Function(String userUuid) checkingConnection,
     required TResult Function(String userUuid) makingConnection,
     required TResult Function(Connection connection, String userUuid)
@@ -30,7 +30,7 @@ mixin _$IosConnectState {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(String userUuid)? initial,
-    TResult? Function(String userUuid)? permissionsDenied,
+    TResult? Function(String userUuid)? noConnection,
     TResult? Function(String userUuid)? checkingConnection,
     TResult? Function(String userUuid)? makingConnection,
     TResult? Function(Connection connection, String userUuid)? syncingData,
@@ -39,7 +39,7 @@ mixin _$IosConnectState {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(String userUuid)? initial,
-    TResult Function(String userUuid)? permissionsDenied,
+    TResult Function(String userUuid)? noConnection,
     TResult Function(String userUuid)? checkingConnection,
     TResult Function(String userUuid)? makingConnection,
     TResult Function(Connection connection, String userUuid)? syncingData,
@@ -49,7 +49,7 @@ mixin _$IosConnectState {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_Initial value) initial,
-    required TResult Function(_PermissionsDenied value) permissionsDenied,
+    required TResult Function(_NoConnection value) noConnection,
     required TResult Function(_CheckingConnection value) checkingConnection,
     required TResult Function(_MakingConnection value) makingConnection,
     required TResult Function(_SyncingData value) syncingData,
@@ -58,7 +58,7 @@ mixin _$IosConnectState {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Initial value)? initial,
-    TResult? Function(_PermissionsDenied value)? permissionsDenied,
+    TResult? Function(_NoConnection value)? noConnection,
     TResult? Function(_CheckingConnection value)? checkingConnection,
     TResult? Function(_MakingConnection value)? makingConnection,
     TResult? Function(_SyncingData value)? syncingData,
@@ -67,7 +67,7 @@ mixin _$IosConnectState {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Initial value)? initial,
-    TResult Function(_PermissionsDenied value)? permissionsDenied,
+    TResult Function(_NoConnection value)? noConnection,
     TResult Function(_CheckingConnection value)? checkingConnection,
     TResult Function(_MakingConnection value)? makingConnection,
     TResult Function(_SyncingData value)? syncingData,
@@ -180,7 +180,7 @@ class _$_Initial implements _Initial {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(String userUuid) initial,
-    required TResult Function(String userUuid) permissionsDenied,
+    required TResult Function(String userUuid) noConnection,
     required TResult Function(String userUuid) checkingConnection,
     required TResult Function(String userUuid) makingConnection,
     required TResult Function(Connection connection, String userUuid)
@@ -193,7 +193,7 @@ class _$_Initial implements _Initial {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(String userUuid)? initial,
-    TResult? Function(String userUuid)? permissionsDenied,
+    TResult? Function(String userUuid)? noConnection,
     TResult? Function(String userUuid)? checkingConnection,
     TResult? Function(String userUuid)? makingConnection,
     TResult? Function(Connection connection, String userUuid)? syncingData,
@@ -205,7 +205,7 @@ class _$_Initial implements _Initial {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(String userUuid)? initial,
-    TResult Function(String userUuid)? permissionsDenied,
+    TResult Function(String userUuid)? noConnection,
     TResult Function(String userUuid)? checkingConnection,
     TResult Function(String userUuid)? makingConnection,
     TResult Function(Connection connection, String userUuid)? syncingData,
@@ -221,7 +221,7 @@ class _$_Initial implements _Initial {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_Initial value) initial,
-    required TResult Function(_PermissionsDenied value) permissionsDenied,
+    required TResult Function(_NoConnection value) noConnection,
     required TResult Function(_CheckingConnection value) checkingConnection,
     required TResult Function(_MakingConnection value) makingConnection,
     required TResult Function(_SyncingData value) syncingData,
@@ -233,7 +233,7 @@ class _$_Initial implements _Initial {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Initial value)? initial,
-    TResult? Function(_PermissionsDenied value)? permissionsDenied,
+    TResult? Function(_NoConnection value)? noConnection,
     TResult? Function(_CheckingConnection value)? checkingConnection,
     TResult? Function(_MakingConnection value)? makingConnection,
     TResult? Function(_SyncingData value)? syncingData,
@@ -245,7 +245,7 @@ class _$_Initial implements _Initial {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Initial value)? initial,
-    TResult Function(_PermissionsDenied value)? permissionsDenied,
+    TResult Function(_NoConnection value)? noConnection,
     TResult Function(_CheckingConnection value)? checkingConnection,
     TResult Function(_MakingConnection value)? makingConnection,
     TResult Function(_SyncingData value)? syncingData,
@@ -270,22 +270,22 @@ abstract class _Initial implements IosConnectState {
 }
 
 /// @nodoc
-abstract class _$$_PermissionsDeniedCopyWith<$Res>
+abstract class _$$_NoConnectionCopyWith<$Res>
     implements $IosConnectStateCopyWith<$Res> {
-  factory _$$_PermissionsDeniedCopyWith(_$_PermissionsDenied value,
-          $Res Function(_$_PermissionsDenied) then) =
-      __$$_PermissionsDeniedCopyWithImpl<$Res>;
+  factory _$$_NoConnectionCopyWith(
+          _$_NoConnection value, $Res Function(_$_NoConnection) then) =
+      __$$_NoConnectionCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call({String userUuid});
 }
 
 /// @nodoc
-class __$$_PermissionsDeniedCopyWithImpl<$Res>
-    extends _$IosConnectStateCopyWithImpl<$Res, _$_PermissionsDenied>
-    implements _$$_PermissionsDeniedCopyWith<$Res> {
-  __$$_PermissionsDeniedCopyWithImpl(
-      _$_PermissionsDenied _value, $Res Function(_$_PermissionsDenied) _then)
+class __$$_NoConnectionCopyWithImpl<$Res>
+    extends _$IosConnectStateCopyWithImpl<$Res, _$_NoConnection>
+    implements _$$_NoConnectionCopyWith<$Res> {
+  __$$_NoConnectionCopyWithImpl(
+      _$_NoConnection _value, $Res Function(_$_NoConnection) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -293,7 +293,7 @@ class __$$_PermissionsDeniedCopyWithImpl<$Res>
   $Res call({
     Object? userUuid = null,
   }) {
-    return _then(_$_PermissionsDenied(
+    return _then(_$_NoConnection(
       userUuid: null == userUuid
           ? _value.userUuid
           : userUuid // ignore: cast_nullable_to_non_nullable
@@ -304,22 +304,22 @@ class __$$_PermissionsDeniedCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_PermissionsDenied implements _PermissionsDenied {
-  const _$_PermissionsDenied({required this.userUuid});
+class _$_NoConnection implements _NoConnection {
+  const _$_NoConnection({required this.userUuid});
 
   @override
   final String userUuid;
 
   @override
   String toString() {
-    return 'IosConnectState.permissionsDenied(userUuid: $userUuid)';
+    return 'IosConnectState.noConnection(userUuid: $userUuid)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_PermissionsDenied &&
+            other is _$_NoConnection &&
             (identical(other.userUuid, userUuid) ||
                 other.userUuid == userUuid));
   }
@@ -330,47 +330,46 @@ class _$_PermissionsDenied implements _PermissionsDenied {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_PermissionsDeniedCopyWith<_$_PermissionsDenied> get copyWith =>
-      __$$_PermissionsDeniedCopyWithImpl<_$_PermissionsDenied>(
-          this, _$identity);
+  _$$_NoConnectionCopyWith<_$_NoConnection> get copyWith =>
+      __$$_NoConnectionCopyWithImpl<_$_NoConnection>(this, _$identity);
 
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(String userUuid) initial,
-    required TResult Function(String userUuid) permissionsDenied,
+    required TResult Function(String userUuid) noConnection,
     required TResult Function(String userUuid) checkingConnection,
     required TResult Function(String userUuid) makingConnection,
     required TResult Function(Connection connection, String userUuid)
         syncingData,
   }) {
-    return permissionsDenied(userUuid);
+    return noConnection(userUuid);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(String userUuid)? initial,
-    TResult? Function(String userUuid)? permissionsDenied,
+    TResult? Function(String userUuid)? noConnection,
     TResult? Function(String userUuid)? checkingConnection,
     TResult? Function(String userUuid)? makingConnection,
     TResult? Function(Connection connection, String userUuid)? syncingData,
   }) {
-    return permissionsDenied?.call(userUuid);
+    return noConnection?.call(userUuid);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(String userUuid)? initial,
-    TResult Function(String userUuid)? permissionsDenied,
+    TResult Function(String userUuid)? noConnection,
     TResult Function(String userUuid)? checkingConnection,
     TResult Function(String userUuid)? makingConnection,
     TResult Function(Connection connection, String userUuid)? syncingData,
     required TResult orElse(),
   }) {
-    if (permissionsDenied != null) {
-      return permissionsDenied(userUuid);
+    if (noConnection != null) {
+      return noConnection(userUuid);
     }
     return orElse();
   }
@@ -379,52 +378,52 @@ class _$_PermissionsDenied implements _PermissionsDenied {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_Initial value) initial,
-    required TResult Function(_PermissionsDenied value) permissionsDenied,
+    required TResult Function(_NoConnection value) noConnection,
     required TResult Function(_CheckingConnection value) checkingConnection,
     required TResult Function(_MakingConnection value) makingConnection,
     required TResult Function(_SyncingData value) syncingData,
   }) {
-    return permissionsDenied(this);
+    return noConnection(this);
   }
 
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Initial value)? initial,
-    TResult? Function(_PermissionsDenied value)? permissionsDenied,
+    TResult? Function(_NoConnection value)? noConnection,
     TResult? Function(_CheckingConnection value)? checkingConnection,
     TResult? Function(_MakingConnection value)? makingConnection,
     TResult? Function(_SyncingData value)? syncingData,
   }) {
-    return permissionsDenied?.call(this);
+    return noConnection?.call(this);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Initial value)? initial,
-    TResult Function(_PermissionsDenied value)? permissionsDenied,
+    TResult Function(_NoConnection value)? noConnection,
     TResult Function(_CheckingConnection value)? checkingConnection,
     TResult Function(_MakingConnection value)? makingConnection,
     TResult Function(_SyncingData value)? syncingData,
     required TResult orElse(),
   }) {
-    if (permissionsDenied != null) {
-      return permissionsDenied(this);
+    if (noConnection != null) {
+      return noConnection(this);
     }
     return orElse();
   }
 }
 
-abstract class _PermissionsDenied implements IosConnectState {
-  const factory _PermissionsDenied({required final String userUuid}) =
-      _$_PermissionsDenied;
+abstract class _NoConnection implements IosConnectState {
+  const factory _NoConnection({required final String userUuid}) =
+      _$_NoConnection;
 
   @override
   String get userUuid;
   @override
   @JsonKey(ignore: true)
-  _$$_PermissionsDeniedCopyWith<_$_PermissionsDenied> get copyWith =>
+  _$$_NoConnectionCopyWith<_$_NoConnection> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
@@ -497,7 +496,7 @@ class _$_CheckingConnection implements _CheckingConnection {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(String userUuid) initial,
-    required TResult Function(String userUuid) permissionsDenied,
+    required TResult Function(String userUuid) noConnection,
     required TResult Function(String userUuid) checkingConnection,
     required TResult Function(String userUuid) makingConnection,
     required TResult Function(Connection connection, String userUuid)
@@ -510,7 +509,7 @@ class _$_CheckingConnection implements _CheckingConnection {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(String userUuid)? initial,
-    TResult? Function(String userUuid)? permissionsDenied,
+    TResult? Function(String userUuid)? noConnection,
     TResult? Function(String userUuid)? checkingConnection,
     TResult? Function(String userUuid)? makingConnection,
     TResult? Function(Connection connection, String userUuid)? syncingData,
@@ -522,7 +521,7 @@ class _$_CheckingConnection implements _CheckingConnection {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(String userUuid)? initial,
-    TResult Function(String userUuid)? permissionsDenied,
+    TResult Function(String userUuid)? noConnection,
     TResult Function(String userUuid)? checkingConnection,
     TResult Function(String userUuid)? makingConnection,
     TResult Function(Connection connection, String userUuid)? syncingData,
@@ -538,7 +537,7 @@ class _$_CheckingConnection implements _CheckingConnection {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_Initial value) initial,
-    required TResult Function(_PermissionsDenied value) permissionsDenied,
+    required TResult Function(_NoConnection value) noConnection,
     required TResult Function(_CheckingConnection value) checkingConnection,
     required TResult Function(_MakingConnection value) makingConnection,
     required TResult Function(_SyncingData value) syncingData,
@@ -550,7 +549,7 @@ class _$_CheckingConnection implements _CheckingConnection {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Initial value)? initial,
-    TResult? Function(_PermissionsDenied value)? permissionsDenied,
+    TResult? Function(_NoConnection value)? noConnection,
     TResult? Function(_CheckingConnection value)? checkingConnection,
     TResult? Function(_MakingConnection value)? makingConnection,
     TResult? Function(_SyncingData value)? syncingData,
@@ -562,7 +561,7 @@ class _$_CheckingConnection implements _CheckingConnection {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Initial value)? initial,
-    TResult Function(_PermissionsDenied value)? permissionsDenied,
+    TResult Function(_NoConnection value)? noConnection,
     TResult Function(_CheckingConnection value)? checkingConnection,
     TResult Function(_MakingConnection value)? makingConnection,
     TResult Function(_SyncingData value)? syncingData,
@@ -655,7 +654,7 @@ class _$_MakingConnection implements _MakingConnection {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(String userUuid) initial,
-    required TResult Function(String userUuid) permissionsDenied,
+    required TResult Function(String userUuid) noConnection,
     required TResult Function(String userUuid) checkingConnection,
     required TResult Function(String userUuid) makingConnection,
     required TResult Function(Connection connection, String userUuid)
@@ -668,7 +667,7 @@ class _$_MakingConnection implements _MakingConnection {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(String userUuid)? initial,
-    TResult? Function(String userUuid)? permissionsDenied,
+    TResult? Function(String userUuid)? noConnection,
     TResult? Function(String userUuid)? checkingConnection,
     TResult? Function(String userUuid)? makingConnection,
     TResult? Function(Connection connection, String userUuid)? syncingData,
@@ -680,7 +679,7 @@ class _$_MakingConnection implements _MakingConnection {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(String userUuid)? initial,
-    TResult Function(String userUuid)? permissionsDenied,
+    TResult Function(String userUuid)? noConnection,
     TResult Function(String userUuid)? checkingConnection,
     TResult Function(String userUuid)? makingConnection,
     TResult Function(Connection connection, String userUuid)? syncingData,
@@ -696,7 +695,7 @@ class _$_MakingConnection implements _MakingConnection {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_Initial value) initial,
-    required TResult Function(_PermissionsDenied value) permissionsDenied,
+    required TResult Function(_NoConnection value) noConnection,
     required TResult Function(_CheckingConnection value) checkingConnection,
     required TResult Function(_MakingConnection value) makingConnection,
     required TResult Function(_SyncingData value) syncingData,
@@ -708,7 +707,7 @@ class _$_MakingConnection implements _MakingConnection {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Initial value)? initial,
-    TResult? Function(_PermissionsDenied value)? permissionsDenied,
+    TResult? Function(_NoConnection value)? noConnection,
     TResult? Function(_CheckingConnection value)? checkingConnection,
     TResult? Function(_MakingConnection value)? makingConnection,
     TResult? Function(_SyncingData value)? syncingData,
@@ -720,7 +719,7 @@ class _$_MakingConnection implements _MakingConnection {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Initial value)? initial,
-    TResult Function(_PermissionsDenied value)? permissionsDenied,
+    TResult Function(_NoConnection value)? noConnection,
     TResult Function(_CheckingConnection value)? checkingConnection,
     TResult Function(_MakingConnection value)? makingConnection,
     TResult Function(_SyncingData value)? syncingData,
@@ -832,7 +831,7 @@ class _$_SyncingData implements _SyncingData {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(String userUuid) initial,
-    required TResult Function(String userUuid) permissionsDenied,
+    required TResult Function(String userUuid) noConnection,
     required TResult Function(String userUuid) checkingConnection,
     required TResult Function(String userUuid) makingConnection,
     required TResult Function(Connection connection, String userUuid)
@@ -845,7 +844,7 @@ class _$_SyncingData implements _SyncingData {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(String userUuid)? initial,
-    TResult? Function(String userUuid)? permissionsDenied,
+    TResult? Function(String userUuid)? noConnection,
     TResult? Function(String userUuid)? checkingConnection,
     TResult? Function(String userUuid)? makingConnection,
     TResult? Function(Connection connection, String userUuid)? syncingData,
@@ -857,7 +856,7 @@ class _$_SyncingData implements _SyncingData {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(String userUuid)? initial,
-    TResult Function(String userUuid)? permissionsDenied,
+    TResult Function(String userUuid)? noConnection,
     TResult Function(String userUuid)? checkingConnection,
     TResult Function(String userUuid)? makingConnection,
     TResult Function(Connection connection, String userUuid)? syncingData,
@@ -873,7 +872,7 @@ class _$_SyncingData implements _SyncingData {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_Initial value) initial,
-    required TResult Function(_PermissionsDenied value) permissionsDenied,
+    required TResult Function(_NoConnection value) noConnection,
     required TResult Function(_CheckingConnection value) checkingConnection,
     required TResult Function(_MakingConnection value) makingConnection,
     required TResult Function(_SyncingData value) syncingData,
@@ -885,7 +884,7 @@ class _$_SyncingData implements _SyncingData {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Initial value)? initial,
-    TResult? Function(_PermissionsDenied value)? permissionsDenied,
+    TResult? Function(_NoConnection value)? noConnection,
     TResult? Function(_CheckingConnection value)? checkingConnection,
     TResult? Function(_MakingConnection value)? makingConnection,
     TResult? Function(_SyncingData value)? syncingData,
@@ -897,7 +896,7 @@ class _$_SyncingData implements _SyncingData {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Initial value)? initial,
-    TResult Function(_PermissionsDenied value)? permissionsDenied,
+    TResult Function(_NoConnection value)? noConnection,
     TResult Function(_CheckingConnection value)? checkingConnection,
     TResult Function(_MakingConnection value)? makingConnection,
     TResult Function(_SyncingData value)? syncingData,

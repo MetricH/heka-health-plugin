@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
 
 import '../heka_health_helper.dart';
-import '../loader.dart';
 import 'ios_connect_cubit.dart';
 
 class IosHealthConnectWidget extends StatelessWidget {
@@ -55,51 +55,88 @@ class _IosHealthConnectButtonState extends State<IosHealthConnectButton> {
   Widget build(BuildContext context) {
     return BlocBuilder<IosConnectCubit, IosConnectState>(
       builder: (context, state) {
-        if (state.userUuid.isEmpty) {
-          return const SizedBox();
-        }
-        return state.when(
-          initial: (cachedUserUuid) => ElevatedButton.icon(
-            style: ElevatedButton.styleFrom(
-                padding:
-                    const EdgeInsets.symmetric(vertical: 24, horizontal: 24)),
-            icon: const Icon(Icons.fitbit),
-            onPressed: () =>
-                context.read<IosConnectCubit>().checkConnection(_syncData),
-            label: const Text('Sync Health Data'),
-          ),
-          permissionsDenied: (_) => Center(
-            child: Padding(
-              padding: const EdgeInsets.all(8.0),
-              child: Text(
-                'Heath Permissions are denied. Kindly grant permission on the Health App and restart.',
-                style: Theme.of(context)
-                    .textTheme
-                    .caption!
-                    .copyWith(color: Colors.red),
+        return Padding(
+          padding: const EdgeInsets.all(8.0),
+          child: Card(
+            elevation: 2,
+            child: ListTile(
+              contentPadding: const EdgeInsets.symmetric(horizontal: 16),
+              leading: const Icon(
+                MdiIcons.apple,
+                color: Colors.red,
+              ),
+              title: const Text(
+                'Apple HealthKit',
+                style: TextStyle(
+                  fontWeight: FontWeight.bold,
+                  fontSize: 16,
+                ),
+              ),
+              subtitle: state.when(
+                initial: (_) => Text(
+                  '',
+                  style: Theme.of(context).textTheme.caption,
+                ),
+                checkingConnection: (_) => Text(
+                  'Checking connection...',
+                  style: Theme.of(context).textTheme.caption,
+                ),
+                noConnection: (_) => Text(
+                  '',
+                  style: Theme.of(context).textTheme.caption,
+                ),
+                makingConnection: (_) => Text(
+                  'Making connection...',
+                  style: Theme.of(context).textTheme.caption,
+                ),
+                syncingData: (_, __) => Text(
+                  'Syncing data...',
+                  style: Theme.of(context).textTheme.caption,
+                ),
+              ),
+              trailing: state.maybeWhen(
+                checkingConnection: (userUuid) => const SizedBox.square(
+                  dimension: 16,
+                  child: CircularProgressIndicator(
+                    color: Colors.red,
+                  ),
+                ),
+                makingConnection: (userUuid) => const SizedBox.square(
+                  dimension: 16,
+                  child: CircularProgressIndicator(
+                    color: Colors.red,
+                  ),
+                ),
+                orElse: () => ElevatedButton(
+                  onPressed: state.when(
+                    initial: (_) => null,
+                    checkingConnection: (_) => null,
+                    noConnection: (_) => () => context
+                        .read<IosConnectCubit>()
+                        .createConnection(_syncData),
+                    makingConnection: (_) => null,
+                    syncingData: (_, __) => null,
+                  ),
+                  style: ElevatedButton.styleFrom(
+                    elevation: 1,
+                    backgroundColor: Colors.red,
+                    padding: const EdgeInsets.symmetric(
+                      horizontal: 24,
+                    ),
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(24),
+                    ),
+                  ),
+                  child: state.when(
+                    initial: (_) => const Text(''),
+                    checkingConnection: (_) => const Text('...'),
+                    noConnection: (_) => const Text('Connect'),
+                    makingConnection: (_) => const Text('...'),
+                    syncingData: (_, __) => const Text('Syncing'),
+                  ),
+                ),
               ),
             ),
-          ),
-          checkingConnection: (_) =>
-              const Loader(text: 'Checking connection...'),
-          makingConnection: (_) => const Loader(text: 'Making connection...'),
-          syncingData: (_, __) => Column(
-            mainAxisSize: MainAxisSize.min,
-            children: [
-              Text(
-                'Syncing Data...',
-                style: Theme.of(context)
-                    .textTheme
-                    .headline5!
-                    .copyWith(color: Colors.green),
-              ),
-              const SizedBox(height: 24),
-              Text(
-                'id: ${_.id}\nuser uuid: ${_.userUuid}\nplatform: ${_.platform}\napp: ${_.app}',
-                style: Theme.of(context).textTheme.caption,
-                textAlign: TextAlign.center,
-              ),
-            ],
           ),
         );
       },

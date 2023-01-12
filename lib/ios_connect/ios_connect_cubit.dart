@@ -17,25 +17,17 @@ class IosConnectCubit extends Cubit<IosConnectState> {
 
   Future<void> checkConnection(
       Future<dynamic> Function(String, String) onConnect) async {
-    if (await checkHealthKitPermissions() ?? false) {
-      emit(IosConnectState.checkingConnection(userUuid: state.userUuid));
-      // Cache user uuid
-      final connection = await _manager.fetchConnection(state.userUuid);
-      if (connection == null) {
-        await _createConnection(onConnect);
-      } else {
-        await onConnect(_manager.apiKey, state.userUuid);
-        emit(IosConnectState.syncingData(connection, userUuid: state.userUuid));
-      }
+    emit(IosConnectState.checkingConnection(userUuid: state.userUuid));
+    final connection = await _manager.fetchConnection(state.userUuid);
+    if (connection == null) {
+      emit(IosConnectState.noConnection(userUuid: state.userUuid));
     } else {
-      await requestHealthKitPermissions();
-      if (!(await checkHealthKitPermissions() ?? false)) {
-        emit(IosConnectState.permissionsDenied(userUuid: state.userUuid));
-      }
+      await onConnect(_manager.apiKey, state.userUuid);
+      emit(IosConnectState.syncingData(connection, userUuid: state.userUuid));
     }
   }
 
-  Future<void> _createConnection(
+  Future<void> createConnection(
       Future<dynamic> Function(String, String) onConnect) async {
     emit(IosConnectState.makingConnection(userUuid: state.userUuid));
     final connection = await _manager.makeConnection(
