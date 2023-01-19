@@ -90,7 +90,7 @@ class _IosHealthConnectButtonState extends State<IosHealthConnectButton> {
                   style: Theme.of(context).textTheme.caption,
                 ),
                 syncingData: (_, __) => Text(
-                  'Syncing data...',
+                  '',
                   style: Theme.of(context).textTheme.caption,
                 ),
               ),
@@ -132,7 +132,7 @@ class _IosHealthConnectButtonState extends State<IosHealthConnectButton> {
                     checkingConnection: (_) => const Text('...'),
                     noConnection: (_) => const Text('Connect'),
                     makingConnection: (_) => const Text('...'),
-                    syncingData: (_, __) => const Text('Syncing'),
+                    syncingData: (_, __) => const Text('Connected'),
                   ),
                 ),
               ),
