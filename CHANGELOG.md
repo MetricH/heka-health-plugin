@@ -3,6 +3,10 @@
 -   Minor code unification
 -   Update README.md
 
+## 0.0.5
+
+-   HekaHealthWidget UI improvements for ios
+
 ## 0.0.4
 
 -   HekaHealthWidget UI improvements

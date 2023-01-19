@@ -115,7 +115,11 @@ packages:
       path: ".."
       relative: true
     source: path
+<<<<<<< HEAD
     version: "0.0.6"
+=======
+    version: "0.0.5"
+>>>>>>> dc12835 (bumped version no. for release)
   http_parser:
     dependency: transitive
     description:
