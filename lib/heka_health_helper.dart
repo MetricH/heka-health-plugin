@@ -61,6 +61,7 @@ class HekaHealth {
     required String userUuid,
     required String platform,
     String? googleFitRefreshToken,
+    String? emailId,
   }) async {
     try {
       final response = await _dio.post(
@@ -72,6 +73,7 @@ class HekaHealth {
         },
         data: {
           'google_fit_refresh_token': googleFitRefreshToken,
+          'google_fit_email': emailId,
         }..removeWhere((key, value) => value == null),
       );
       return Connection.fromJson(response.data['data']);
