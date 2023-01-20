@@ -1,5 +1,5 @@
 name: heka_health
-description: Plugin for integrating HekaHealth SDK in your Flutter Application.
+description: Just 4 lines of code to integrate with Google Fit, Apple HealthKit and other fitness devices.
 version: 0.0.4
 homepage: https://github.com/HekaHealth/heka-health-plugin
 
