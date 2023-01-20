@@ -41,29 +41,12 @@ class GoogleFitConnectCubit extends Cubit<GoogleFitConnectState> {
     }
   }
 
-  Future<void> connectAgain(int connectionId) async {
-    final clientId = await _manager.getGoogleClientId();
-    if (clientId != null) {
-      final credentials = await _manager.signInWithGoogle(
-        clientId: clientId,
-        redirectUrl: redirectUrl(clientId),
-        issuer: _googleIssuer,
-      );
-
-      if (credentials != null) {
-        emit(GoogleFitConnectState.makingConnection(userUuid: state.userUuid));
-        final connection = await _manager.reConnect(
-            connectionId: connectionId,
-            googleFitRefreshToken: credentials.refreshToken);
-        emit(GoogleFitConnectState.connected(
-          connection,
-          userUuid: state.userUuid,
-        ));
-      }
-    }
+  Future<void> connectAgain(int id) async {
+    createConnection(reconnect: true, connectionId: id);
   }
 
-  Future<void> createConnection() async {
+  Future<void> createConnection(
+      {bool reconnect = false, int? connectionId}) async {
     final clientId = await _manager.getGoogleClientId();
     if (clientId != null) {
       final credentials = await _manager.signInWithGoogle(
@@ -73,11 +56,18 @@ class GoogleFitConnectCubit extends Cubit<GoogleFitConnectState> {
       );
       if (credentials != null) {
         emit(GoogleFitConnectState.makingConnection(userUuid: state.userUuid));
-        final connection = await _manager.makeConnection(
-          userUuid: state.userUuid,
-          platform: 'android',
-          googleFitRefreshToken: credentials.refreshToken,
-        );
+        final Connection connection;
+        if (reconnect) {
+          connection = await _manager.reConnect(
+              connectionId: connectionId!,
+              googleFitRefreshToken: credentials.refreshToken);
+        } else {
+          connection = await _manager.makeConnection(
+            userUuid: state.userUuid,
+            platform: 'android',
+            googleFitRefreshToken: credentials.refreshToken,
+          );
+        }
         emit(GoogleFitConnectState.connected(connection,
             userUuid: state.userUuid));
       }
