@@ -1,3 +1,8 @@
+## 0.0.6
+
+-   Minor code unification
+-   Update README.md
+
 ## 0.0.4
 
 -   HekaHealthWidget UI improvements
