@@ -18,4 +18,8 @@ class IosConnectState with _$IosConnectState {
     Connection connection, {
     required String userUuid,
   }) = _SyncingData;
+  const factory IosConnectState.error(
+    HekaHealthError error, {
+    required String userUuid,
+  }) = _Error;
 }

@@ -62,6 +62,12 @@ class _GoogleFitConectButtonState extends State<GoogleFitConectButton> {
                 ),
               ),
               subtitle: state.when(
+                error: (error, userUuid) {
+                  return Text(
+                    error.message,
+                    style: const TextStyle(color: Colors.red),
+                  );
+                },
                 initial: (_) => Text(
                   '',
                   style: Theme.of(context).textTheme.caption,
@@ -90,6 +96,7 @@ class _GoogleFitConectButtonState extends State<GoogleFitConectButton> {
                 ),
               ),
               trailing: state.maybeWhen(
+                error: (error, userUuid) => const SizedBox(),
                 checkingConnection: (userUuid) => const SizedBox.square(
                   dimension: 16,
                   child: CircularProgressIndicator(
@@ -104,6 +111,7 @@ class _GoogleFitConectButtonState extends State<GoogleFitConectButton> {
                 ),
                 orElse: () => ElevatedButton(
                   onPressed: state.when(
+                    error: (error, userUuid) => null,
                     initial: (_) => null,
                     checkingConnection: (_) => null,
                     noConnection: (_) =>
@@ -127,6 +135,7 @@ class _GoogleFitConectButtonState extends State<GoogleFitConectButton> {
                     ),
                   ),
                   child: state.when(
+                    error: (error, userUuid) => const SizedBox(),
                     initial: (_) => const Text(''),
                     checkingConnection: (_) => const Text('...'),
                     noConnection: (_) => const Text('Connect'),

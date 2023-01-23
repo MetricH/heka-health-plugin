@@ -22,4 +22,8 @@ class GoogleFitConnectState with _$GoogleFitConnectState {
     Connection connection, {
     required String userUuid,
   }) = _Connected;
+  const factory GoogleFitConnectState.error(
+    HekaHealthError error, {
+    required String userUuid,
+  }) = _Error;
 }

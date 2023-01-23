@@ -4,6 +4,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:dio/dio.dart';
 import 'package:flutter_appauth/flutter_appauth.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
+import 'package:heka_health/heka_health_error.dart';
 
 import '../connection.dart';
 import '../heka_health.dart';
@@ -27,18 +28,22 @@ class GoogleFitConnectCubit extends Cubit<GoogleFitConnectState> {
   Future<void> checkConnection() async {
     emit(GoogleFitConnectState.checkingConnection(userUuid: state.userUuid));
 
-    final connection = await _manager.fetchConnection(state.userUuid);
-    if (connection == null) {
-      emit(GoogleFitConnectState.noConnection(userUuid: state.userUuid));
-    } else {
-      emit(
-        connection.loggedIn
-            ? GoogleFitConnectState.connected(connection,
-                userUuid: state.userUuid)
-            : GoogleFitConnectState.tokenInvalidated(connection,
-                userUuid: state.userUuid),
-      );
-    }
+    final failureOrSuccess = await _manager.fetchConnection(state.userUuid);
+    failureOrSuccess.fold((error) {
+      emit(GoogleFitConnectState.error(error, userUuid: state.userUuid));
+    }, (connection) {
+      if (connection == null) {
+        emit(GoogleFitConnectState.noConnection(userUuid: state.userUuid));
+      } else {
+        emit(
+          connection.loggedIn
+              ? GoogleFitConnectState.connected(connection,
+                  userUuid: state.userUuid)
+              : GoogleFitConnectState.tokenInvalidated(connection,
+                  userUuid: state.userUuid),
+        );
+      }
+    });
   }
 
   Future<void> connectAgain(int id) async {
@@ -47,8 +52,10 @@ class GoogleFitConnectCubit extends Cubit<GoogleFitConnectState> {
 
   Future<void> createConnection(
       {bool reconnect = false, int? connectionId}) async {
-    final clientId = await _manager.getGoogleClientId();
-    if (clientId != null) {
+    final failureOrSuccess = await _manager.getGoogleClientId();
+    failureOrSuccess.fold((error) {
+      emit(GoogleFitConnectState.error(error, userUuid: state.userUuid));
+    }, (clientId) async {
       final credentials = await _manager.signInWithGoogle(
         clientId: clientId,
         redirectUrl: redirectUrl(clientId),
@@ -56,31 +63,46 @@ class GoogleFitConnectCubit extends Cubit<GoogleFitConnectState> {
       );
       if (credentials != null) {
         emit(GoogleFitConnectState.makingConnection(userUuid: state.userUuid));
-        final Connection connection;
+
         if (reconnect) {
-          connection = await _manager.reConnect(
+          final failureOrSuccess = await _manager.reConnect(
               connectionId: connectionId!,
               googleFitRefreshToken: credentials.refreshToken);
+          failureOrSuccess.fold((error) {
+            emit(GoogleFitConnectState.error(error, userUuid: state.userUuid));
+          }, (connection) {
+            emit(GoogleFitConnectState.connected(connection,
+                userUuid: state.userUuid));
+          });
         } else {
-          connection = await _manager.makeConnection(
+          final failureOrSuccess = await _manager.makeConnection(
             userUuid: state.userUuid,
             platform: 'android',
             googleFitRefreshToken: credentials.refreshToken,
           );
+          failureOrSuccess.fold((error) {
+            emit(GoogleFitConnectState.error(error, userUuid: state.userUuid));
+          }, (connection) {
+            emit(GoogleFitConnectState.connected(connection,
+                userUuid: state.userUuid));
+          });
         }
-        emit(GoogleFitConnectState.connected(connection,
-            userUuid: state.userUuid));
       }
-    }
+    });
   }
 
   Future<void> disconnect(int connectionId) async {
     emit(GoogleFitConnectState.makingConnection(userUuid: state.userUuid));
-    final connection = await _manager.disconnect(
+    final failureOrSuccess = await _manager.disconnect(
       connectionId: connectionId,
     );
-    emit(GoogleFitConnectState.tokenInvalidated(connection,
-        userUuid: state.userUuid));
+
+    failureOrSuccess.fold((error) {
+      emit(GoogleFitConnectState.error(error, userUuid: state.userUuid));
+    }, (connection) {
+      emit(GoogleFitConnectState.tokenInvalidated(connection,
+          userUuid: state.userUuid));
+    });
   }
 }
 

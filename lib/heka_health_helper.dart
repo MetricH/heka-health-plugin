@@ -1,5 +1,8 @@
+import 'package:dartz/dartz.dart';
 import 'package:dio/dio.dart';
 import 'package:flutter_appauth/flutter_appauth.dart';
+import 'package:heka_health/extensions.dart';
+import 'package:heka_health/heka_health_error.dart';
 
 import 'connection.dart';
 import 'heka_health_platform_interface.dart';
@@ -15,8 +18,7 @@ class HekaHealth {
 
   HekaHealth(this._apiKey);
 
-  Future<String?> getGoogleClientId() async {
-    //  GET {{baseUrl}}/user_app?key={{apiKey}}
+  Future<Either<HekaHealthError, String>> getGoogleClientId() async {
     try {
       final response = await _dio.get(
         '/user_app_from_key',
@@ -27,18 +29,22 @@ class HekaHealth {
       final clientId = response.data?['data']?['google_auth_client_id'] ?? '';
 
       if (clientId.isEmpty) {
-        return null;
+        return left(const HekaHealthError.googleClientIdNotRegistered());
       }
-      return clientId;
+      return right(clientId as String);
     } on DioError catch (e) {
       print('----error getting client Id-------');
       print(e);
       print(e.response?.data);
-      return null;
+      if (e.isNoConnectionError) {
+        return left(const HekaHealthError.noConnection());
+      }
+      rethrow;
     }
   }
 
-  Future<Connection?> fetchConnection(String userUuid) async {
+  Future<Either<HekaHealthError, Connection?>> fetchConnection(
+      String userUuid) async {
     try {
       final response = await _dio.get(
         '/check_watch_connection',
@@ -48,16 +54,22 @@ class HekaHealth {
         },
       );
       print(response.data);
-      return Connection.fromJson(response.data['data']);
+      return right(Connection.fromJson(response.data['data']));
     } on DioError catch (e) {
       print('----error check connection-------');
       print(e);
       print(e.response?.data);
-      return null;
+      if (e.isNoConnectionError) {
+        return left(const HekaHealthError.noConnection());
+      }
+      if (e.response?.statusCode == 404) {
+        return right(null);
+      }
+      rethrow;
     }
   }
 
-  Future<Connection> makeConnection({
+  Future<Either<HekaHealthError, Connection>> makeConnection({
     required String userUuid,
     required String platform,
     String? googleFitRefreshToken,
@@ -76,14 +88,17 @@ class HekaHealth {
           'google_fit_email': emailId,
         }..removeWhere((key, value) => value == null),
       );
-      return Connection.fromJson(response.data['data']);
+      return right(Connection.fromJson(response.data['data']));
     } on DioError catch (e) {
       print(e);
+      if (e.isNoConnectionError) {
+        return left(const HekaHealthError.noConnection());
+      }
       rethrow;
     }
   }
 
-  Future<Connection> reConnect({
+  Future<Either<HekaHealthError, Connection>> reConnect({
     required int connectionId,
     required String googleFitRefreshToken,
   }) async {
@@ -98,14 +113,17 @@ class HekaHealth {
           "logged_in": true,
         },
       );
-      return Connection.fromJson(response.data);
+      return right(Connection.fromJson(response.data));
     } on DioError catch (e) {
       print(e);
+      if (e.isNoConnectionError) {
+        return left(const HekaHealthError.noConnection());
+      }
       rethrow;
     }
   }
 
-  Future<Connection> disconnect({
+  Future<Either<HekaHealthError, Connection>> disconnect({
     required int connectionId,
   }) async {
     try {
@@ -119,9 +137,12 @@ class HekaHealth {
           "logged_in": false,
         },
       );
-      return Connection.fromJson(response.data);
+      return right(Connection.fromJson(response.data));
     } on DioError catch (e) {
       print(e);
+      if (e.isNoConnectionError) {
+        return left(const HekaHealthError.noConnection());
+      }
       rethrow;
     }
   }

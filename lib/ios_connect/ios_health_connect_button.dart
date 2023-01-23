@@ -73,6 +73,12 @@ class _IosHealthConnectButtonState extends State<IosHealthConnectButton> {
                 ),
               ),
               subtitle: state.when(
+                error: (error, userUuid) {
+                  return Text(
+                    error.message,
+                    style: const TextStyle(color: Colors.red),
+                  );
+                },
                 initial: (_) => Text(
                   '',
                   style: Theme.of(context).textTheme.caption,
@@ -95,6 +101,7 @@ class _IosHealthConnectButtonState extends State<IosHealthConnectButton> {
                 ),
               ),
               trailing: state.maybeWhen(
+                error: (error, userUuid) => const SizedBox(),
                 checkingConnection: (userUuid) => const SizedBox.square(
                   dimension: 16,
                   child: CircularProgressIndicator(
@@ -109,6 +116,7 @@ class _IosHealthConnectButtonState extends State<IosHealthConnectButton> {
                 ),
                 orElse: () => ElevatedButton(
                   onPressed: state.when(
+                    error: (error, userUuid) => null,
                     initial: (_) => null,
                     checkingConnection: (_) => null,
                     noConnection: (_) => () => context
@@ -128,6 +136,7 @@ class _IosHealthConnectButtonState extends State<IosHealthConnectButton> {
                     ),
                   ),
                   child: state.when(
+                    error: (error, userUuid) => const SizedBox(),
                     initial: (_) => const Text(''),
                     checkingConnection: (_) => const Text('...'),
                     noConnection: (_) => const Text('Connect'),

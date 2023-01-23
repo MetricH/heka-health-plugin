@@ -26,6 +26,7 @@ mixin _$GoogleFitConnectState {
         tokenInvalidated,
     required TResult Function(String userUuid) makingConnection,
     required TResult Function(Connection connection, String userUuid) connected,
+    required TResult Function(HekaHealthError error, String userUuid) error,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -36,6 +37,7 @@ mixin _$GoogleFitConnectState {
     TResult? Function(Connection connection, String userUuid)? tokenInvalidated,
     TResult? Function(String userUuid)? makingConnection,
     TResult? Function(Connection connection, String userUuid)? connected,
+    TResult? Function(HekaHealthError error, String userUuid)? error,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -46,6 +48,7 @@ mixin _$GoogleFitConnectState {
     TResult Function(Connection connection, String userUuid)? tokenInvalidated,
     TResult Function(String userUuid)? makingConnection,
     TResult Function(Connection connection, String userUuid)? connected,
+    TResult Function(HekaHealthError error, String userUuid)? error,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -57,6 +60,7 @@ mixin _$GoogleFitConnectState {
     required TResult Function(_TokenInvalidated value) tokenInvalidated,
     required TResult Function(_MakingConnection value) makingConnection,
     required TResult Function(_Connected value) connected,
+    required TResult Function(_Error value) error,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -67,6 +71,7 @@ mixin _$GoogleFitConnectState {
     TResult? Function(_TokenInvalidated value)? tokenInvalidated,
     TResult? Function(_MakingConnection value)? makingConnection,
     TResult? Function(_Connected value)? connected,
+    TResult? Function(_Error value)? error,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -77,6 +82,7 @@ mixin _$GoogleFitConnectState {
     TResult Function(_TokenInvalidated value)? tokenInvalidated,
     TResult Function(_MakingConnection value)? makingConnection,
     TResult Function(_Connected value)? connected,
+    TResult Function(_Error value)? error,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -193,6 +199,7 @@ class _$_Initial implements _Initial {
         tokenInvalidated,
     required TResult Function(String userUuid) makingConnection,
     required TResult Function(Connection connection, String userUuid) connected,
+    required TResult Function(HekaHealthError error, String userUuid) error,
   }) {
     return initial(userUuid);
   }
@@ -206,6 +213,7 @@ class _$_Initial implements _Initial {
     TResult? Function(Connection connection, String userUuid)? tokenInvalidated,
     TResult? Function(String userUuid)? makingConnection,
     TResult? Function(Connection connection, String userUuid)? connected,
+    TResult? Function(HekaHealthError error, String userUuid)? error,
   }) {
     return initial?.call(userUuid);
   }
@@ -219,6 +227,7 @@ class _$_Initial implements _Initial {
     TResult Function(Connection connection, String userUuid)? tokenInvalidated,
     TResult Function(String userUuid)? makingConnection,
     TResult Function(Connection connection, String userUuid)? connected,
+    TResult Function(HekaHealthError error, String userUuid)? error,
     required TResult orElse(),
   }) {
     if (initial != null) {
@@ -236,6 +245,7 @@ class _$_Initial implements _Initial {
     required TResult Function(_TokenInvalidated value) tokenInvalidated,
     required TResult Function(_MakingConnection value) makingConnection,
     required TResult Function(_Connected value) connected,
+    required TResult Function(_Error value) error,
   }) {
     return initial(this);
   }
@@ -249,6 +259,7 @@ class _$_Initial implements _Initial {
     TResult? Function(_TokenInvalidated value)? tokenInvalidated,
     TResult? Function(_MakingConnection value)? makingConnection,
     TResult? Function(_Connected value)? connected,
+    TResult? Function(_Error value)? error,
   }) {
     return initial?.call(this);
   }
@@ -262,6 +273,7 @@ class _$_Initial implements _Initial {
     TResult Function(_TokenInvalidated value)? tokenInvalidated,
     TResult Function(_MakingConnection value)? makingConnection,
     TResult Function(_Connected value)? connected,
+    TResult Function(_Error value)? error,
     required TResult orElse(),
   }) {
     if (initial != null) {
@@ -357,6 +369,7 @@ class _$_CheckingConnection implements _CheckingConnection {
         tokenInvalidated,
     required TResult Function(String userUuid) makingConnection,
     required TResult Function(Connection connection, String userUuid) connected,
+    required TResult Function(HekaHealthError error, String userUuid) error,
   }) {
     return checkingConnection(userUuid);
   }
@@ -370,6 +383,7 @@ class _$_CheckingConnection implements _CheckingConnection {
     TResult? Function(Connection connection, String userUuid)? tokenInvalidated,
     TResult? Function(String userUuid)? makingConnection,
     TResult? Function(Connection connection, String userUuid)? connected,
+    TResult? Function(HekaHealthError error, String userUuid)? error,
   }) {
     return checkingConnection?.call(userUuid);
   }
@@ -383,6 +397,7 @@ class _$_CheckingConnection implements _CheckingConnection {
     TResult Function(Connection connection, String userUuid)? tokenInvalidated,
     TResult Function(String userUuid)? makingConnection,
     TResult Function(Connection connection, String userUuid)? connected,
+    TResult Function(HekaHealthError error, String userUuid)? error,
     required TResult orElse(),
   }) {
     if (checkingConnection != null) {
@@ -400,6 +415,7 @@ class _$_CheckingConnection implements _CheckingConnection {
     required TResult Function(_TokenInvalidated value) tokenInvalidated,
     required TResult Function(_MakingConnection value) makingConnection,
     required TResult Function(_Connected value) connected,
+    required TResult Function(_Error value) error,
   }) {
     return checkingConnection(this);
   }
@@ -413,6 +429,7 @@ class _$_CheckingConnection implements _CheckingConnection {
     TResult? Function(_TokenInvalidated value)? tokenInvalidated,
     TResult? Function(_MakingConnection value)? makingConnection,
     TResult? Function(_Connected value)? connected,
+    TResult? Function(_Error value)? error,
   }) {
     return checkingConnection?.call(this);
   }
@@ -426,6 +443,7 @@ class _$_CheckingConnection implements _CheckingConnection {
     TResult Function(_TokenInvalidated value)? tokenInvalidated,
     TResult Function(_MakingConnection value)? makingConnection,
     TResult Function(_Connected value)? connected,
+    TResult Function(_Error value)? error,
     required TResult orElse(),
   }) {
     if (checkingConnection != null) {
@@ -521,6 +539,7 @@ class _$_NoConnection implements _NoConnection {
         tokenInvalidated,
     required TResult Function(String userUuid) makingConnection,
     required TResult Function(Connection connection, String userUuid) connected,
+    required TResult Function(HekaHealthError error, String userUuid) error,
   }) {
     return noConnection(userUuid);
   }
@@ -534,6 +553,7 @@ class _$_NoConnection implements _NoConnection {
     TResult? Function(Connection connection, String userUuid)? tokenInvalidated,
     TResult? Function(String userUuid)? makingConnection,
     TResult? Function(Connection connection, String userUuid)? connected,
+    TResult? Function(HekaHealthError error, String userUuid)? error,
   }) {
     return noConnection?.call(userUuid);
   }
@@ -547,6 +567,7 @@ class _$_NoConnection implements _NoConnection {
     TResult Function(Connection connection, String userUuid)? tokenInvalidated,
     TResult Function(String userUuid)? makingConnection,
     TResult Function(Connection connection, String userUuid)? connected,
+    TResult Function(HekaHealthError error, String userUuid)? error,
     required TResult orElse(),
   }) {
     if (noConnection != null) {
@@ -564,6 +585,7 @@ class _$_NoConnection implements _NoConnection {
     required TResult Function(_TokenInvalidated value) tokenInvalidated,
     required TResult Function(_MakingConnection value) makingConnection,
     required TResult Function(_Connected value) connected,
+    required TResult Function(_Error value) error,
   }) {
     return noConnection(this);
   }
@@ -577,6 +599,7 @@ class _$_NoConnection implements _NoConnection {
     TResult? Function(_TokenInvalidated value)? tokenInvalidated,
     TResult? Function(_MakingConnection value)? makingConnection,
     TResult? Function(_Connected value)? connected,
+    TResult? Function(_Error value)? error,
   }) {
     return noConnection?.call(this);
   }
@@ -590,6 +613,7 @@ class _$_NoConnection implements _NoConnection {
     TResult Function(_TokenInvalidated value)? tokenInvalidated,
     TResult Function(_MakingConnection value)? makingConnection,
     TResult Function(_Connected value)? connected,
+    TResult Function(_Error value)? error,
     required TResult orElse(),
   }) {
     if (noConnection != null) {
@@ -704,6 +728,7 @@ class _$_TokenInvalidated implements _TokenInvalidated {
         tokenInvalidated,
     required TResult Function(String userUuid) makingConnection,
     required TResult Function(Connection connection, String userUuid) connected,
+    required TResult Function(HekaHealthError error, String userUuid) error,
   }) {
     return tokenInvalidated(connection, userUuid);
   }
@@ -717,6 +742,7 @@ class _$_TokenInvalidated implements _TokenInvalidated {
     TResult? Function(Connection connection, String userUuid)? tokenInvalidated,
     TResult? Function(String userUuid)? makingConnection,
     TResult? Function(Connection connection, String userUuid)? connected,
+    TResult? Function(HekaHealthError error, String userUuid)? error,
   }) {
     return tokenInvalidated?.call(connection, userUuid);
   }
@@ -730,6 +756,7 @@ class _$_TokenInvalidated implements _TokenInvalidated {
     TResult Function(Connection connection, String userUuid)? tokenInvalidated,
     TResult Function(String userUuid)? makingConnection,
     TResult Function(Connection connection, String userUuid)? connected,
+    TResult Function(HekaHealthError error, String userUuid)? error,
     required TResult orElse(),
   }) {
     if (tokenInvalidated != null) {
@@ -747,6 +774,7 @@ class _$_TokenInvalidated implements _TokenInvalidated {
     required TResult Function(_TokenInvalidated value) tokenInvalidated,
     required TResult Function(_MakingConnection value) makingConnection,
     required TResult Function(_Connected value) connected,
+    required TResult Function(_Error value) error,
   }) {
     return tokenInvalidated(this);
   }
@@ -760,6 +788,7 @@ class _$_TokenInvalidated implements _TokenInvalidated {
     TResult? Function(_TokenInvalidated value)? tokenInvalidated,
     TResult? Function(_MakingConnection value)? makingConnection,
     TResult? Function(_Connected value)? connected,
+    TResult? Function(_Error value)? error,
   }) {
     return tokenInvalidated?.call(this);
   }
@@ -773,6 +802,7 @@ class _$_TokenInvalidated implements _TokenInvalidated {
     TResult Function(_TokenInvalidated value)? tokenInvalidated,
     TResult Function(_MakingConnection value)? makingConnection,
     TResult Function(_Connected value)? connected,
+    TResult Function(_Error value)? error,
     required TResult orElse(),
   }) {
     if (tokenInvalidated != null) {
@@ -869,6 +899,7 @@ class _$_MakingConnection implements _MakingConnection {
         tokenInvalidated,
     required TResult Function(String userUuid) makingConnection,
     required TResult Function(Connection connection, String userUuid) connected,
+    required TResult Function(HekaHealthError error, String userUuid) error,
   }) {
     return makingConnection(userUuid);
   }
@@ -882,6 +913,7 @@ class _$_MakingConnection implements _MakingConnection {
     TResult? Function(Connection connection, String userUuid)? tokenInvalidated,
     TResult? Function(String userUuid)? makingConnection,
     TResult? Function(Connection connection, String userUuid)? connected,
+    TResult? Function(HekaHealthError error, String userUuid)? error,
   }) {
     return makingConnection?.call(userUuid);
   }
@@ -895,6 +927,7 @@ class _$_MakingConnection implements _MakingConnection {
     TResult Function(Connection connection, String userUuid)? tokenInvalidated,
     TResult Function(String userUuid)? makingConnection,
     TResult Function(Connection connection, String userUuid)? connected,
+    TResult Function(HekaHealthError error, String userUuid)? error,
     required TResult orElse(),
   }) {
     if (makingConnection != null) {
@@ -912,6 +945,7 @@ class _$_MakingConnection implements _MakingConnection {
     required TResult Function(_TokenInvalidated value) tokenInvalidated,
     required TResult Function(_MakingConnection value) makingConnection,
     required TResult Function(_Connected value) connected,
+    required TResult Function(_Error value) error,
   }) {
     return makingConnection(this);
   }
@@ -925,6 +959,7 @@ class _$_MakingConnection implements _MakingConnection {
     TResult? Function(_TokenInvalidated value)? tokenInvalidated,
     TResult? Function(_MakingConnection value)? makingConnection,
     TResult? Function(_Connected value)? connected,
+    TResult? Function(_Error value)? error,
   }) {
     return makingConnection?.call(this);
   }
@@ -938,6 +973,7 @@ class _$_MakingConnection implements _MakingConnection {
     TResult Function(_TokenInvalidated value)? tokenInvalidated,
     TResult Function(_MakingConnection value)? makingConnection,
     TResult Function(_Connected value)? connected,
+    TResult Function(_Error value)? error,
     required TResult orElse(),
   }) {
     if (makingConnection != null) {
@@ -1052,6 +1088,7 @@ class _$_Connected implements _Connected {
         tokenInvalidated,
     required TResult Function(String userUuid) makingConnection,
     required TResult Function(Connection connection, String userUuid) connected,
+    required TResult Function(HekaHealthError error, String userUuid) error,
   }) {
     return connected(connection, userUuid);
   }
@@ -1065,6 +1102,7 @@ class _$_Connected implements _Connected {
     TResult? Function(Connection connection, String userUuid)? tokenInvalidated,
     TResult? Function(String userUuid)? makingConnection,
     TResult? Function(Connection connection, String userUuid)? connected,
+    TResult? Function(HekaHealthError error, String userUuid)? error,
   }) {
     return connected?.call(connection, userUuid);
   }
@@ -1078,6 +1116,7 @@ class _$_Connected implements _Connected {
     TResult Function(Connection connection, String userUuid)? tokenInvalidated,
     TResult Function(String userUuid)? makingConnection,
     TResult Function(Connection connection, String userUuid)? connected,
+    TResult Function(HekaHealthError error, String userUuid)? error,
     required TResult orElse(),
   }) {
     if (connected != null) {
@@ -1095,6 +1134,7 @@ class _$_Connected implements _Connected {
     required TResult Function(_TokenInvalidated value) tokenInvalidated,
     required TResult Function(_MakingConnection value) makingConnection,
     required TResult Function(_Connected value) connected,
+    required TResult Function(_Error value) error,
   }) {
     return connected(this);
   }
@@ -1108,6 +1148,7 @@ class _$_Connected implements _Connected {
     TResult? Function(_TokenInvalidated value)? tokenInvalidated,
     TResult? Function(_MakingConnection value)? makingConnection,
     TResult? Function(_Connected value)? connected,
+    TResult? Function(_Error value)? error,
   }) {
     return connected?.call(this);
   }
@@ -1121,6 +1162,7 @@ class _$_Connected implements _Connected {
     TResult Function(_TokenInvalidated value)? tokenInvalidated,
     TResult Function(_MakingConnection value)? makingConnection,
     TResult Function(_Connected value)? connected,
+    TResult Function(_Error value)? error,
     required TResult orElse(),
   }) {
     if (connected != null) {
@@ -1140,5 +1182,192 @@ abstract class _Connected implements GoogleFitConnectState {
   @override
   @JsonKey(ignore: true)
   _$$_ConnectedCopyWith<_$_Connected> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$_ErrorCopyWith<$Res>
+    implements $GoogleFitConnectStateCopyWith<$Res> {
+  factory _$$_ErrorCopyWith(_$_Error value, $Res Function(_$_Error) then) =
+      __$$_ErrorCopyWithImpl<$Res>;
+  @override
+  @useResult
+  $Res call({HekaHealthError error, String userUuid});
+
+  $HekaHealthErrorCopyWith<$Res> get error;
+}
+
+/// @nodoc
+class __$$_ErrorCopyWithImpl<$Res>
+    extends _$GoogleFitConnectStateCopyWithImpl<$Res, _$_Error>
+    implements _$$_ErrorCopyWith<$Res> {
+  __$$_ErrorCopyWithImpl(_$_Error _value, $Res Function(_$_Error) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? error = null,
+    Object? userUuid = null,
+  }) {
+    return _then(_$_Error(
+      null == error
+          ? _value.error
+          : error // ignore: cast_nullable_to_non_nullable
+              as HekaHealthError,
+      userUuid: null == userUuid
+          ? _value.userUuid
+          : userUuid // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
+  }
+
+  @override
+  @pragma('vm:prefer-inline')
+  $HekaHealthErrorCopyWith<$Res> get error {
+    return $HekaHealthErrorCopyWith<$Res>(_value.error, (value) {
+      return _then(_value.copyWith(error: value));
+    });
+  }
+}
+
+/// @nodoc
+
+class _$_Error implements _Error {
+  const _$_Error(this.error, {required this.userUuid});
+
+  @override
+  final HekaHealthError error;
+  @override
+  final String userUuid;
+
+  @override
+  String toString() {
+    return 'GoogleFitConnectState.error(error: $error, userUuid: $userUuid)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$_Error &&
+            (identical(other.error, error) || other.error == error) &&
+            (identical(other.userUuid, userUuid) ||
+                other.userUuid == userUuid));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, error, userUuid);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$_ErrorCopyWith<_$_Error> get copyWith =>
+      __$$_ErrorCopyWithImpl<_$_Error>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(String userUuid) initial,
+    required TResult Function(String userUuid) checkingConnection,
+    required TResult Function(String userUuid) noConnection,
+    required TResult Function(Connection connection, String userUuid)
+        tokenInvalidated,
+    required TResult Function(String userUuid) makingConnection,
+    required TResult Function(Connection connection, String userUuid) connected,
+    required TResult Function(HekaHealthError error, String userUuid) error,
+  }) {
+    return error(this.error, userUuid);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(String userUuid)? initial,
+    TResult? Function(String userUuid)? checkingConnection,
+    TResult? Function(String userUuid)? noConnection,
+    TResult? Function(Connection connection, String userUuid)? tokenInvalidated,
+    TResult? Function(String userUuid)? makingConnection,
+    TResult? Function(Connection connection, String userUuid)? connected,
+    TResult? Function(HekaHealthError error, String userUuid)? error,
+  }) {
+    return error?.call(this.error, userUuid);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(String userUuid)? initial,
+    TResult Function(String userUuid)? checkingConnection,
+    TResult Function(String userUuid)? noConnection,
+    TResult Function(Connection connection, String userUuid)? tokenInvalidated,
+    TResult Function(String userUuid)? makingConnection,
+    TResult Function(Connection connection, String userUuid)? connected,
+    TResult Function(HekaHealthError error, String userUuid)? error,
+    required TResult orElse(),
+  }) {
+    if (error != null) {
+      return error(this.error, userUuid);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Initial value) initial,
+    required TResult Function(_CheckingConnection value) checkingConnection,
+    required TResult Function(_NoConnection value) noConnection,
+    required TResult Function(_TokenInvalidated value) tokenInvalidated,
+    required TResult Function(_MakingConnection value) makingConnection,
+    required TResult Function(_Connected value) connected,
+    required TResult Function(_Error value) error,
+  }) {
+    return error(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_Initial value)? initial,
+    TResult? Function(_CheckingConnection value)? checkingConnection,
+    TResult? Function(_NoConnection value)? noConnection,
+    TResult? Function(_TokenInvalidated value)? tokenInvalidated,
+    TResult? Function(_MakingConnection value)? makingConnection,
+    TResult? Function(_Connected value)? connected,
+    TResult? Function(_Error value)? error,
+  }) {
+    return error?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Initial value)? initial,
+    TResult Function(_CheckingConnection value)? checkingConnection,
+    TResult Function(_NoConnection value)? noConnection,
+    TResult Function(_TokenInvalidated value)? tokenInvalidated,
+    TResult Function(_MakingConnection value)? makingConnection,
+    TResult Function(_Connected value)? connected,
+    TResult Function(_Error value)? error,
+    required TResult orElse(),
+  }) {
+    if (error != null) {
+      return error(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _Error implements GoogleFitConnectState {
+  const factory _Error(final HekaHealthError error,
+      {required final String userUuid}) = _$_Error;
+
+  HekaHealthError get error;
+  @override
+  String get userUuid;
+  @override
+  @JsonKey(ignore: true)
+  _$$_ErrorCopyWith<_$_Error> get copyWith =>
       throw _privateConstructorUsedError;
 }
