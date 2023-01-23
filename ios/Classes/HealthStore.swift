@@ -373,6 +373,9 @@ class HealthStore {
                         
                         let url = URL(string: "https://apidev.hekahealth.co/watch_sdk/upload_health_data?key=\(apiKey)&user_uuid=\(userUuid)&data_source=sdk_healthkit")!
                         var request = URLRequest(url: url)
+                        request.allHTTPHeaderFields = [
+                            "Content-Type": "application/json",
+                        ]
                         request.httpMethod = "POST"
                         
                         let parameters: [String: Any] = samples
