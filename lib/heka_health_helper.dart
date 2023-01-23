@@ -105,6 +105,27 @@ class HekaHealth {
     }
   }
 
+  Future<Connection> disconnect({
+    required int connectionId,
+  }) async {
+    try {
+      final response = await _dio.patch(
+        '/watch_connection/$connectionId',
+        queryParameters: {
+          'key': _apiKey,
+        },
+        data: {
+          'google_fit_refresh_token': null,
+          "logged_in": false,
+        },
+      );
+      return Connection.fromJson(response.data);
+    } on DioError catch (e) {
+      print(e);
+      rethrow;
+    }
+  }
+
   Future<GoogleCredentials?> signInWithGoogle({
     required String clientId,
     required String redirectUrl,

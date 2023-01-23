@@ -112,7 +112,9 @@ class _GoogleFitConectButtonState extends State<GoogleFitConectButton> {
                         .read<GoogleFitConnectCubit>()
                         .connectAgain(connection.id),
                     makingConnection: (_) => null,
-                    connected: (_, __) => null,
+                    connected: (connection, __) => () => context
+                        .read<GoogleFitConnectCubit>()
+                        .disconnect(connection.id),
                   ),
                   style: ElevatedButton.styleFrom(
                     elevation: 1,
@@ -130,7 +132,7 @@ class _GoogleFitConectButtonState extends State<GoogleFitConectButton> {
                     noConnection: (_) => const Text('Connect'),
                     tokenInvalidated: (_, __) => const Text('Connect Again'),
                     makingConnection: (_) => const Text('...'),
-                    connected: (_, __) => const Text('Connected'),
+                    connected: (_, __) => const Text('Disconnect'),
                   ),
                 ),
               ),

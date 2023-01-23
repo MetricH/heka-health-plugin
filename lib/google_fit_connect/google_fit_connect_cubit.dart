@@ -73,6 +73,15 @@ class GoogleFitConnectCubit extends Cubit<GoogleFitConnectState> {
       }
     }
   }
+
+  Future<void> disconnect(int connectionId) async {
+    emit(GoogleFitConnectState.makingConnection(userUuid: state.userUuid));
+    final connection = await _manager.disconnect(
+      connectionId: connectionId,
+    );
+    emit(GoogleFitConnectState.tokenInvalidated(connection,
+        userUuid: state.userUuid));
+  }
 }
 
 extension UserProfileX on AuthorizationTokenResponse {
