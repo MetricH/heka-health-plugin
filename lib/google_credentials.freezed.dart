@@ -17,6 +17,7 @@ final _privateConstructorUsedError = UnsupportedError(
 /// @nodoc
 mixin _$GoogleCredentials {
   String get refreshToken => throw _privateConstructorUsedError;
+  String? get email => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $GoogleCredentialsCopyWith<GoogleCredentials> get copyWith =>
@@ -29,7 +30,7 @@ abstract class $GoogleCredentialsCopyWith<$Res> {
           GoogleCredentials value, $Res Function(GoogleCredentials) then) =
       _$GoogleCredentialsCopyWithImpl<$Res, GoogleCredentials>;
   @useResult
-  $Res call({String refreshToken});
+  $Res call({String refreshToken, String? email});
 }
 
 /// @nodoc
@@ -46,12 +47,17 @@ class _$GoogleCredentialsCopyWithImpl<$Res, $Val extends GoogleCredentials>
   @override
   $Res call({
     Object? refreshToken = null,
+    Object? email = freezed,
   }) {
     return _then(_value.copyWith(
       refreshToken: null == refreshToken
           ? _value.refreshToken
           : refreshToken // ignore: cast_nullable_to_non_nullable
               as String,
+      email: freezed == email
+          ? _value.email
+          : email // ignore: cast_nullable_to_non_nullable
+              as String?,
     ) as $Val);
   }
 }
@@ -64,7 +70,7 @@ abstract class _$$_GoogleCredentialsCopyWith<$Res>
       __$$_GoogleCredentialsCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({String refreshToken});
+  $Res call({String refreshToken, String? email});
 }
 
 /// @nodoc
@@ -79,12 +85,17 @@ class __$$_GoogleCredentialsCopyWithImpl<$Res>
   @override
   $Res call({
     Object? refreshToken = null,
+    Object? email = freezed,
   }) {
     return _then(_$_GoogleCredentials(
       refreshToken: null == refreshToken
           ? _value.refreshToken
           : refreshToken // ignore: cast_nullable_to_non_nullable
               as String,
+      email: freezed == email
+          ? _value.email
+          : email // ignore: cast_nullable_to_non_nullable
+              as String?,
     ));
   }
 }
@@ -92,14 +103,17 @@ class __$$_GoogleCredentialsCopyWithImpl<$Res>
 /// @nodoc
 
 class _$_GoogleCredentials extends _GoogleCredentials {
-  const _$_GoogleCredentials({required this.refreshToken}) : super._();
+  const _$_GoogleCredentials({required this.refreshToken, required this.email})
+      : super._();
 
   @override
   final String refreshToken;
+  @override
+  final String? email;
 
   @override
   String toString() {
-    return 'GoogleCredentials(refreshToken: $refreshToken)';
+    return 'GoogleCredentials(refreshToken: $refreshToken, email: $email)';
   }
 
   @override
@@ -108,11 +122,12 @@ class _$_GoogleCredentials extends _GoogleCredentials {
         (other.runtimeType == runtimeType &&
             other is _$_GoogleCredentials &&
             (identical(other.refreshToken, refreshToken) ||
-                other.refreshToken == refreshToken));
+                other.refreshToken == refreshToken) &&
+            (identical(other.email, email) || other.email == email));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, refreshToken);
+  int get hashCode => Object.hash(runtimeType, refreshToken, email);
 
   @JsonKey(ignore: true)
   @override
@@ -123,12 +138,15 @@ class _$_GoogleCredentials extends _GoogleCredentials {
 }
 
 abstract class _GoogleCredentials extends GoogleCredentials {
-  const factory _GoogleCredentials({required final String refreshToken}) =
-      _$_GoogleCredentials;
+  const factory _GoogleCredentials(
+      {required final String refreshToken,
+      required final String? email}) = _$_GoogleCredentials;
   const _GoogleCredentials._() : super._();
 
   @override
   String get refreshToken;
+  @override
+  String? get email;
   @override
   @JsonKey(ignore: true)
   _$$_GoogleCredentialsCopyWith<_$_GoogleCredentials> get copyWith =>

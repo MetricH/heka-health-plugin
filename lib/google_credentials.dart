@@ -6,5 +6,6 @@ class GoogleCredentials with _$GoogleCredentials {
   const GoogleCredentials._();
   const factory GoogleCredentials({
     required String refreshToken,
+    required String? email,
   }) = _GoogleCredentials;
 }

@@ -175,7 +175,9 @@ class HekaHealth {
         ),
       );
       if (authTokenResponse != null) {
-        return GoogleCredentials(refreshToken: authTokenResponse.refreshToken!);
+        return GoogleCredentials(
+            refreshToken: authTokenResponse.refreshToken!,
+            email: await authTokenResponse.email);
       }
       return null;
     } catch (e) {
@@ -196,4 +198,17 @@ class HekaHealth {
 
   Future<bool?> checkHealthKitPermissions() =>
       HekaHealthPlatform.instance.checkHealthKitPermissions();
+}
+
+extension UserProfileX on AuthorizationTokenResponse {
+  Future<String?> get email async {
+    try {
+      final requestUri = Uri.https('www.googleapis.com', 'oauth2/v1/userinfo',
+          {'access_token': accessToken});
+      final response = await Dio().getUri(requestUri);
+      return response.data['email'];
+    } on DioError {
+      return null;
+    }
+  }
 }

@@ -20,15 +20,19 @@ Connection _$ConnectionFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$Connection {
-  int get id => throw _privateConstructorUsedError;
+  int get id =>
+      throw _privateConstructorUsedError; // ignore: invalid_annotation_target
   @JsonKey(name: 'user_uuid')
   String get userUuid => throw _privateConstructorUsedError;
-  String get platform => throw _privateConstructorUsedError;
+  String get platform =>
+      throw _privateConstructorUsedError; // ignore: invalid_annotation_target
   @JsonKey(name: 'google_fit_refresh_token')
   String? get googleFitRefreshToken => throw _privateConstructorUsedError;
-  int get app => throw _privateConstructorUsedError;
+  int get app =>
+      throw _privateConstructorUsedError; // ignore: invalid_annotation_target
   @JsonKey(name: 'logged_in')
-  bool get loggedIn => throw _privateConstructorUsedError;
+  bool get loggedIn =>
+      throw _privateConstructorUsedError; // ignore: invalid_annotation_target
   @JsonKey(name: 'last_sync')
   String? get lastSync => throw _privateConstructorUsedError;
 
@@ -196,19 +200,23 @@ class _$_Connection extends _Connection {
 
   @override
   final int id;
+// ignore: invalid_annotation_target
   @override
   @JsonKey(name: 'user_uuid')
   final String userUuid;
   @override
   final String platform;
+// ignore: invalid_annotation_target
   @override
   @JsonKey(name: 'google_fit_refresh_token')
   final String? googleFitRefreshToken;
   @override
   final int app;
+// ignore: invalid_annotation_target
   @override
   @JsonKey(name: 'logged_in')
   final bool loggedIn;
+// ignore: invalid_annotation_target
   @override
   @JsonKey(name: 'last_sync')
   final String? lastSync;
@@ -276,20 +284,20 @@ abstract class _Connection extends Connection {
 
   @override
   int get id;
-  @override
+  @override // ignore: invalid_annotation_target
   @JsonKey(name: 'user_uuid')
   String get userUuid;
   @override
   String get platform;
-  @override
+  @override // ignore: invalid_annotation_target
   @JsonKey(name: 'google_fit_refresh_token')
   String? get googleFitRefreshToken;
   @override
   int get app;
-  @override
+  @override // ignore: invalid_annotation_target
   @JsonKey(name: 'logged_in')
   bool get loggedIn;
-  @override
+  @override // ignore: invalid_annotation_target
   @JsonKey(name: 'last_sync')
   String? get lastSync;
   @override

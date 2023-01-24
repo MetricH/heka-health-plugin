@@ -78,6 +78,7 @@ class GoogleFitConnectCubit extends Cubit<GoogleFitConnectState> {
           final failureOrSuccess = await _manager.makeConnection(
             userUuid: state.userUuid,
             platform: 'android',
+            emailId: credentials.email,
             googleFitRefreshToken: credentials.refreshToken,
           );
           failureOrSuccess.fold((error) {
@@ -103,19 +104,6 @@ class GoogleFitConnectCubit extends Cubit<GoogleFitConnectState> {
       emit(GoogleFitConnectState.tokenInvalidated(connection,
           userUuid: state.userUuid));
     });
-  }
-}
-
-extension UserProfileX on AuthorizationTokenResponse {
-  Future<String?> get email async {
-    try {
-      final requestUri = Uri.https('www.googleapis.com', 'oauth2/v1/userinfo',
-          {'access_token': accessToken});
-      final response = await Dio().getUri(requestUri);
-      return response.data['email'];
-    } on DioError {
-      return null;
-    }
   }
 }
 
