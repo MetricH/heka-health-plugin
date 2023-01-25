@@ -1,3 +1,8 @@
+## 0.0.7
+
+- Error handling for various cases
+- HekaHealth Watermark for free plan
+
 ## 0.0.6
 
 -   Minor code unification
