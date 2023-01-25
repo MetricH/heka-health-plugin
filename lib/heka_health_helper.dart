@@ -43,6 +43,34 @@ class HekaHealth {
     }
   }
 
+  Future<Either<HekaHealthError, String>> getPlan() async {
+    try {
+      final response = await _dio.get(
+        '/user_app_from_key',
+        queryParameters: {
+          'key': _apiKey,
+        },
+      );
+      final paymentPlan = response.data?['data']?['payment_plan'] ?? '';
+
+      if (paymentPlan.isEmpty) {
+        return right('free');
+      }
+      return right(paymentPlan as String);
+    } on DioError catch (e) {
+      print('----error getting payment plan-------');
+      print(e);
+      print(e.response?.data);
+      if (e.isNoConnectionError) {
+        return left(const HekaHealthError.noConnection());
+      }
+      if (e.response?.statusCode == 403) {
+        return right('free');
+      }
+      rethrow;
+    }
+  }
+
   Future<Either<HekaHealthError, Connection?>> fetchConnection(
       String userUuid) async {
     try {

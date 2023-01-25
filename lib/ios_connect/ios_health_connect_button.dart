@@ -76,42 +76,43 @@ class _IosHealthConnectButtonState extends State<IosHealthConnectButton> {
                     ),
                   ),
                   subtitle: state.when(
-                    error: (error, userUuid) {
+                    error: (error, userUuid, plan) {
                       return Text(
                         error.message,
                         style: const TextStyle(color: Colors.red),
                       );
                     },
-                    initial: (_) => Text(
+                    initial: (_, plan) => Text(
                       '',
                       style: Theme.of(context).textTheme.caption,
                     ),
-                    checkingConnection: (_) => Text(
+                    checkingConnection: (_, plan) => Text(
                       'Checking connection...',
                       style: Theme.of(context).textTheme.caption,
                     ),
-                    noConnection: (_) => Text(
+                    noConnection: (_, plan) => Text(
                       '',
                       style: Theme.of(context).textTheme.caption,
                     ),
-                    makingConnection: (_) => Text(
+                    makingConnection: (_, plan) => Text(
                       'Making connection...',
                       style: Theme.of(context).textTheme.caption,
                     ),
-                    syncingData: (_, __) => Text(
+                    syncingData: (_, __, plan) => Text(
                       '',
                       style: Theme.of(context).textTheme.caption,
                     ),
                   ),
                   trailing: state.maybeWhen(
-                    error: (error, userUuid) => const SizedBox(),
-                    checkingConnection: (userUuid) => const SizedBox.square(
+                    error: (error, userUuid, plan) => const SizedBox(),
+                    checkingConnection: (userUuid, plan) =>
+                        const SizedBox.square(
                       dimension: 16,
                       child: CircularProgressIndicator(
                         color: Colors.red,
                       ),
                     ),
-                    makingConnection: (userUuid) => const SizedBox.square(
+                    makingConnection: (userUuid, plan) => const SizedBox.square(
                       dimension: 16,
                       child: CircularProgressIndicator(
                         color: Colors.red,
@@ -119,14 +120,14 @@ class _IosHealthConnectButtonState extends State<IosHealthConnectButton> {
                     ),
                     orElse: () => ElevatedButton(
                       onPressed: state.when(
-                        error: (error, userUuid) => null,
-                        initial: (_) => null,
-                        checkingConnection: (_) => null,
-                        noConnection: (_) => () => context
+                        error: (error, userUuid, plan) => null,
+                        initial: (_, plan) => null,
+                        checkingConnection: (_, plan) => null,
+                        noConnection: (_, plan) => () => context
                             .read<IosConnectCubit>()
                             .createConnection(_syncData),
-                        makingConnection: (_) => null,
-                        syncingData: (_, __) => null,
+                        makingConnection: (_, plan) => null,
+                        syncingData: (_, __, plan) => null,
                       ),
                       style: ElevatedButton.styleFrom(
                         elevation: 1,
@@ -139,43 +140,44 @@ class _IosHealthConnectButtonState extends State<IosHealthConnectButton> {
                         ),
                       ),
                       child: state.when(
-                        error: (error, userUuid) => const SizedBox(),
-                        initial: (_) => const Text(''),
-                        checkingConnection: (_) => const Text('...'),
-                        noConnection: (_) => const Text('Connect'),
-                        makingConnection: (_) => const Text('...'),
-                        syncingData: (_, __) => const Text('Connected'),
+                        error: (error, userUuid, plan) => const SizedBox(),
+                        initial: (_, plan) => const Text(''),
+                        checkingConnection: (_, plan) => const Text('...'),
+                        noConnection: (_, plan) => const Text('Connect'),
+                        makingConnection: (_, plan) => const Text('...'),
+                        syncingData: (_, __, plan) => const Text('Connected'),
                       ),
                     ),
                   ),
                 ),
               ),
-              Positioned(
-                bottom: 8,
-                right: 8,
-                child: Row(
-                  children: [
-                    Text(
-                      'Powered by ',
-                      style: Theme.of(context).textTheme.caption,
-                    ),
-                    InkWell(
-                      onTap: () {
-                        launch('https://www.hekahealth.co/');
-                      },
-                      child: const Text(
-                        'Heka',
-                        style: TextStyle(
-                          color: Color(
-                            0xff2351C1,
-                          ),
-                          fontWeight: FontWeight.bold,
-                        ),
+              if (state.paymentPlan == 'free')
+                Positioned(
+                  bottom: 8,
+                  right: 8,
+                  child: Row(
+                    children: [
+                      Text(
+                        'Powered by ',
+                        style: Theme.of(context).textTheme.caption,
                       ),
-                    )
-                  ],
-                ),
-              )
+                      InkWell(
+                        onTap: () {
+                          launch('https://www.hekahealth.co/');
+                        },
+                        child: const Text(
+                          'Heka',
+                          style: TextStyle(
+                            color: Color(
+                              0xff2351C1,
+                            ),
+                            fontWeight: FontWeight.bold,
+                          ),
+                        ),
+                      )
+                    ],
+                  ),
+                )
             ],
           ),
         );

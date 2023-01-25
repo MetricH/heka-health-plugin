@@ -65,33 +65,33 @@ class _GoogleFitConectButtonState extends State<GoogleFitConectButton> {
                     ),
                   ),
                   subtitle: state.when(
-                    error: (error, userUuid) {
+                    error: (error, userUuid, plan) {
                       return Text(
                         error.message,
                         style: const TextStyle(color: Colors.red),
                       );
                     },
-                    initial: (_) => Text(
+                    initial: (_, plan) => Text(
                       '',
                       style: Theme.of(context).textTheme.caption,
                     ),
-                    checkingConnection: (_) => Text(
+                    checkingConnection: (_, plan) => Text(
                       'Checking connection...',
                       style: Theme.of(context).textTheme.caption,
                     ),
-                    noConnection: (_) => Text(
+                    noConnection: (_, plan) => Text(
                       '',
                       style: Theme.of(context).textTheme.caption,
                     ),
-                    tokenInvalidated: (_, __) => Text(
+                    tokenInvalidated: (_, __, plan) => Text(
                       'Disconnected from our systems',
                       style: Theme.of(context).textTheme.caption,
                     ),
-                    makingConnection: (_) => Text(
+                    makingConnection: (_, plan) => Text(
                       'Making connection...',
                       style: Theme.of(context).textTheme.caption,
                     ),
-                    connected: (_, __) => Text(
+                    connected: (_, __, plan) => Text(
                       _.lastSync == null
                           ? 'Last synced 1 min ago'
                           : 'Last synced ${timeago.format(DateTime.parse(_.lastSync!))}',
@@ -99,14 +99,15 @@ class _GoogleFitConectButtonState extends State<GoogleFitConectButton> {
                     ),
                   ),
                   trailing: state.maybeWhen(
-                    error: (error, userUuid) => const SizedBox(),
-                    checkingConnection: (userUuid) => const SizedBox.square(
+                    error: (error, userUuid, plan) => const SizedBox(),
+                    checkingConnection: (userUuid, plan) =>
+                        const SizedBox.square(
                       dimension: 16,
                       child: CircularProgressIndicator(
                         color: Colors.red,
                       ),
                     ),
-                    makingConnection: (userUuid) => const SizedBox.square(
+                    makingConnection: (userUuid, plan) => const SizedBox.square(
                       dimension: 16,
                       child: CircularProgressIndicator(
                         color: Colors.red,
@@ -114,17 +115,18 @@ class _GoogleFitConectButtonState extends State<GoogleFitConectButton> {
                     ),
                     orElse: () => ElevatedButton(
                       onPressed: state.when(
-                        error: (error, userUuid) => null,
-                        initial: (_) => null,
-                        checkingConnection: (_) => null,
-                        noConnection: (_) => context
+                        error: (error, userUuid, plan) => null,
+                        initial: (_, plan) => null,
+                        checkingConnection: (_, plan) => null,
+                        noConnection: (_, plan) => context
                             .read<GoogleFitConnectCubit>()
                             .createConnection,
-                        tokenInvalidated: (connection, __) => () => context
-                            .read<GoogleFitConnectCubit>()
-                            .connectAgain(connection.id),
-                        makingConnection: (_) => null,
-                        connected: (connection, __) => () => context
+                        tokenInvalidated: (connection, __, plan) => () =>
+                            context
+                                .read<GoogleFitConnectCubit>()
+                                .connectAgain(connection.id),
+                        makingConnection: (_, plan) => null,
+                        connected: (connection, __, plan) => () => context
                             .read<GoogleFitConnectCubit>()
                             .disconnect(connection.id),
                       ),
@@ -139,33 +141,34 @@ class _GoogleFitConectButtonState extends State<GoogleFitConectButton> {
                         ),
                       ),
                       child: state.when(
-                        error: (error, userUuid) => const SizedBox(),
-                        initial: (_) => const Text(''),
-                        checkingConnection: (_) => const Text('...'),
-                        noConnection: (_) => const Text('Connect'),
-                        tokenInvalidated: (_, __) =>
+                        error: (error, userUuid, plan) => const SizedBox(),
+                        initial: (_, plan) => const Text(''),
+                        checkingConnection: (_, plan) => const Text('...'),
+                        noConnection: (_, plan) => const Text('Connect'),
+                        tokenInvalidated: (_, __, plan) =>
                             const Text('Connect Again'),
-                        makingConnection: (_) => const Text('...'),
-                        connected: (_, __) => const Text('Disconnect'),
+                        makingConnection: (_, plan) => const Text('...'),
+                        connected: (_, __, plan) => const Text('Disconnect'),
                       ),
                     ),
                   ),
                 ),
               ),
-              InkWell(
-                onTap: () {
-                  launch('https://www.hekahealth.co/');
-                },
-                child: const Text(
-                  'Heka',
-                  style: TextStyle(
-                    color: Color(
-                      0xff2351C1,
+              if (state.paymentPlan == 'free')
+                InkWell(
+                  onTap: () {
+                    launch('https://www.hekahealth.co/');
+                  },
+                  child: const Text(
+                    'Heka',
+                    style: TextStyle(
+                      color: Color(
+                        0xff2351C1,
+                      ),
+                      fontWeight: FontWeight.bold,
                     ),
-                    fontWeight: FontWeight.bold,
                   ),
-                ),
-              )
+                )
             ],
           ),
         );

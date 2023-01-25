@@ -22,25 +22,52 @@ class GoogleFitConnectCubit extends Cubit<GoogleFitConnectState> {
     this._manager,
     this._userUuid,
   ) : super(
-          GoogleFitConnectState.initial(userUuid: _userUuid),
-        );
+          GoogleFitConnectState.initial(
+            userUuid: _userUuid,
+            paymentPlan: null,
+          ),
+        ) {
+    _manager.getPlan().then((value) {
+      value.fold((l) {
+        emit(state.copyWith(paymentPlan: 'free'));
+      }, (r) {
+        emit(state.copyWith(paymentPlan: r));
+      });
+    });
+  }
 
   Future<void> checkConnection() async {
-    emit(GoogleFitConnectState.checkingConnection(userUuid: state.userUuid));
+    emit(GoogleFitConnectState.checkingConnection(
+      userUuid: state.userUuid,
+      paymentPlan: state.paymentPlan,
+    ));
 
     final failureOrSuccess = await _manager.fetchConnection(state.userUuid);
     failureOrSuccess.fold((error) {
-      emit(GoogleFitConnectState.error(error, userUuid: state.userUuid));
+      emit(GoogleFitConnectState.error(
+        error,
+        userUuid: state.userUuid,
+        paymentPlan: state.paymentPlan,
+      ));
     }, (connection) {
       if (connection == null) {
-        emit(GoogleFitConnectState.noConnection(userUuid: state.userUuid));
+        emit(GoogleFitConnectState.noConnection(
+          userUuid: state.userUuid,
+          paymentPlan: state.paymentPlan,
+        ));
       } else {
         emit(
           connection.loggedIn
-              ? GoogleFitConnectState.connected(connection,
-                  userUuid: state.userUuid)
-              : GoogleFitConnectState.tokenInvalidated(connection,
-                  userUuid: state.userUuid),
+              ? GoogleFitConnectState.connected(
+                  connection,
+                  userUuid: state.userUuid,
+                  paymentPlan: state.paymentPlan,
+                )
+              : GoogleFitConnectState.tokenInvalidated(
+                  connection,
+                  userUuid: state.userUuid,
+                  paymentPlan: state.paymentPlan,
+                ),
         );
       }
     });
@@ -54,7 +81,11 @@ class GoogleFitConnectCubit extends Cubit<GoogleFitConnectState> {
       {bool reconnect = false, int? connectionId}) async {
     final failureOrSuccess = await _manager.getGoogleClientId();
     failureOrSuccess.fold((error) {
-      emit(GoogleFitConnectState.error(error, userUuid: state.userUuid));
+      emit(GoogleFitConnectState.error(
+        error,
+        userUuid: state.userUuid,
+        paymentPlan: state.paymentPlan,
+      ));
     }, (clientId) async {
       final credentials = await _manager.signInWithGoogle(
         clientId: clientId,
@@ -62,17 +93,27 @@ class GoogleFitConnectCubit extends Cubit<GoogleFitConnectState> {
         issuer: _googleIssuer,
       );
       if (credentials != null) {
-        emit(GoogleFitConnectState.makingConnection(userUuid: state.userUuid));
+        emit(GoogleFitConnectState.makingConnection(
+          userUuid: state.userUuid,
+          paymentPlan: state.paymentPlan,
+        ));
 
         if (reconnect) {
           final failureOrSuccess = await _manager.reConnect(
               connectionId: connectionId!,
               googleFitRefreshToken: credentials.refreshToken);
           failureOrSuccess.fold((error) {
-            emit(GoogleFitConnectState.error(error, userUuid: state.userUuid));
+            emit(GoogleFitConnectState.error(
+              error,
+              userUuid: state.userUuid,
+              paymentPlan: state.paymentPlan,
+            ));
           }, (connection) {
-            emit(GoogleFitConnectState.connected(connection,
-                userUuid: state.userUuid));
+            emit(GoogleFitConnectState.connected(
+              connection,
+              userUuid: state.userUuid,
+              paymentPlan: state.paymentPlan,
+            ));
           });
         } else {
           final failureOrSuccess = await _manager.makeConnection(
@@ -82,10 +123,17 @@ class GoogleFitConnectCubit extends Cubit<GoogleFitConnectState> {
             googleFitRefreshToken: credentials.refreshToken,
           );
           failureOrSuccess.fold((error) {
-            emit(GoogleFitConnectState.error(error, userUuid: state.userUuid));
+            emit(GoogleFitConnectState.error(
+              error,
+              userUuid: state.userUuid,
+              paymentPlan: state.paymentPlan,
+            ));
           }, (connection) {
-            emit(GoogleFitConnectState.connected(connection,
-                userUuid: state.userUuid));
+            emit(GoogleFitConnectState.connected(
+              connection,
+              userUuid: state.userUuid,
+              paymentPlan: state.paymentPlan,
+            ));
           });
         }
       }
@@ -93,16 +141,26 @@ class GoogleFitConnectCubit extends Cubit<GoogleFitConnectState> {
   }
 
   Future<void> disconnect(int connectionId) async {
-    emit(GoogleFitConnectState.makingConnection(userUuid: state.userUuid));
+    emit(GoogleFitConnectState.makingConnection(
+      userUuid: state.userUuid,
+      paymentPlan: state.paymentPlan,
+    ));
     final failureOrSuccess = await _manager.disconnect(
       connectionId: connectionId,
     );
 
     failureOrSuccess.fold((error) {
-      emit(GoogleFitConnectState.error(error, userUuid: state.userUuid));
+      emit(GoogleFitConnectState.error(
+        error,
+        userUuid: state.userUuid,
+        paymentPlan: state.paymentPlan,
+      ));
     }, (connection) {
-      emit(GoogleFitConnectState.tokenInvalidated(connection,
-          userUuid: state.userUuid));
+      emit(GoogleFitConnectState.tokenInvalidated(
+        connection,
+        userUuid: state.userUuid,
+        paymentPlan: state.paymentPlan,
+      ));
     });
   }
 }

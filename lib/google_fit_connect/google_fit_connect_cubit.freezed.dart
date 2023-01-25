@@ -17,38 +17,59 @@ final _privateConstructorUsedError = UnsupportedError(
 /// @nodoc
 mixin _$GoogleFitConnectState {
   String get userUuid => throw _privateConstructorUsedError;
+  String? get paymentPlan => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(String userUuid) initial,
-    required TResult Function(String userUuid) checkingConnection,
-    required TResult Function(String userUuid) noConnection,
-    required TResult Function(Connection connection, String userUuid)
+    required TResult Function(String userUuid, String? paymentPlan) initial,
+    required TResult Function(String userUuid, String? paymentPlan)
+        checkingConnection,
+    required TResult Function(String userUuid, String? paymentPlan)
+        noConnection,
+    required TResult Function(
+            Connection connection, String userUuid, String? paymentPlan)
         tokenInvalidated,
-    required TResult Function(String userUuid) makingConnection,
-    required TResult Function(Connection connection, String userUuid) connected,
-    required TResult Function(HekaHealthError error, String userUuid) error,
+    required TResult Function(String userUuid, String? paymentPlan)
+        makingConnection,
+    required TResult Function(
+            Connection connection, String userUuid, String? paymentPlan)
+        connected,
+    required TResult Function(
+            HekaHealthError error, String userUuid, String? paymentPlan)
+        error,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(String userUuid)? initial,
-    TResult? Function(String userUuid)? checkingConnection,
-    TResult? Function(String userUuid)? noConnection,
-    TResult? Function(Connection connection, String userUuid)? tokenInvalidated,
-    TResult? Function(String userUuid)? makingConnection,
-    TResult? Function(Connection connection, String userUuid)? connected,
-    TResult? Function(HekaHealthError error, String userUuid)? error,
+    TResult? Function(String userUuid, String? paymentPlan)? initial,
+    TResult? Function(String userUuid, String? paymentPlan)? checkingConnection,
+    TResult? Function(String userUuid, String? paymentPlan)? noConnection,
+    TResult? Function(
+            Connection connection, String userUuid, String? paymentPlan)?
+        tokenInvalidated,
+    TResult? Function(String userUuid, String? paymentPlan)? makingConnection,
+    TResult? Function(
+            Connection connection, String userUuid, String? paymentPlan)?
+        connected,
+    TResult? Function(
+            HekaHealthError error, String userUuid, String? paymentPlan)?
+        error,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(String userUuid)? initial,
-    TResult Function(String userUuid)? checkingConnection,
-    TResult Function(String userUuid)? noConnection,
-    TResult Function(Connection connection, String userUuid)? tokenInvalidated,
-    TResult Function(String userUuid)? makingConnection,
-    TResult Function(Connection connection, String userUuid)? connected,
-    TResult Function(HekaHealthError error, String userUuid)? error,
+    TResult Function(String userUuid, String? paymentPlan)? initial,
+    TResult Function(String userUuid, String? paymentPlan)? checkingConnection,
+    TResult Function(String userUuid, String? paymentPlan)? noConnection,
+    TResult Function(
+            Connection connection, String userUuid, String? paymentPlan)?
+        tokenInvalidated,
+    TResult Function(String userUuid, String? paymentPlan)? makingConnection,
+    TResult Function(
+            Connection connection, String userUuid, String? paymentPlan)?
+        connected,
+    TResult Function(
+            HekaHealthError error, String userUuid, String? paymentPlan)?
+        error,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -98,7 +119,7 @@ abstract class $GoogleFitConnectStateCopyWith<$Res> {
           $Res Function(GoogleFitConnectState) then) =
       _$GoogleFitConnectStateCopyWithImpl<$Res, GoogleFitConnectState>;
   @useResult
-  $Res call({String userUuid});
+  $Res call({String userUuid, String? paymentPlan});
 }
 
 /// @nodoc
@@ -116,12 +137,17 @@ class _$GoogleFitConnectStateCopyWithImpl<$Res,
   @override
   $Res call({
     Object? userUuid = null,
+    Object? paymentPlan = freezed,
   }) {
     return _then(_value.copyWith(
       userUuid: null == userUuid
           ? _value.userUuid
           : userUuid // ignore: cast_nullable_to_non_nullable
               as String,
+      paymentPlan: freezed == paymentPlan
+          ? _value.paymentPlan
+          : paymentPlan // ignore: cast_nullable_to_non_nullable
+              as String?,
     ) as $Val);
   }
 }
@@ -134,7 +160,7 @@ abstract class _$$_InitialCopyWith<$Res>
       __$$_InitialCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({String userUuid});
+  $Res call({String userUuid, String? paymentPlan});
 }
 
 /// @nodoc
@@ -148,12 +174,17 @@ class __$$_InitialCopyWithImpl<$Res>
   @override
   $Res call({
     Object? userUuid = null,
+    Object? paymentPlan = freezed,
   }) {
     return _then(_$_Initial(
       userUuid: null == userUuid
           ? _value.userUuid
           : userUuid // ignore: cast_nullable_to_non_nullable
               as String,
+      paymentPlan: freezed == paymentPlan
+          ? _value.paymentPlan
+          : paymentPlan // ignore: cast_nullable_to_non_nullable
+              as String?,
     ));
   }
 }
@@ -161,14 +192,16 @@ class __$$_InitialCopyWithImpl<$Res>
 /// @nodoc
 
 class _$_Initial implements _Initial {
-  const _$_Initial({required this.userUuid});
+  const _$_Initial({required this.userUuid, required this.paymentPlan});
 
   @override
   final String userUuid;
+  @override
+  final String? paymentPlan;
 
   @override
   String toString() {
-    return 'GoogleFitConnectState.initial(userUuid: $userUuid)';
+    return 'GoogleFitConnectState.initial(userUuid: $userUuid, paymentPlan: $paymentPlan)';
   }
 
   @override
@@ -177,11 +210,13 @@ class _$_Initial implements _Initial {
         (other.runtimeType == runtimeType &&
             other is _$_Initial &&
             (identical(other.userUuid, userUuid) ||
-                other.userUuid == userUuid));
+                other.userUuid == userUuid) &&
+            (identical(other.paymentPlan, paymentPlan) ||
+                other.paymentPlan == paymentPlan));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, userUuid);
+  int get hashCode => Object.hash(runtimeType, userUuid, paymentPlan);
 
   @JsonKey(ignore: true)
   @override
@@ -192,46 +227,66 @@ class _$_Initial implements _Initial {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(String userUuid) initial,
-    required TResult Function(String userUuid) checkingConnection,
-    required TResult Function(String userUuid) noConnection,
-    required TResult Function(Connection connection, String userUuid)
+    required TResult Function(String userUuid, String? paymentPlan) initial,
+    required TResult Function(String userUuid, String? paymentPlan)
+        checkingConnection,
+    required TResult Function(String userUuid, String? paymentPlan)
+        noConnection,
+    required TResult Function(
+            Connection connection, String userUuid, String? paymentPlan)
         tokenInvalidated,
-    required TResult Function(String userUuid) makingConnection,
-    required TResult Function(Connection connection, String userUuid) connected,
-    required TResult Function(HekaHealthError error, String userUuid) error,
+    required TResult Function(String userUuid, String? paymentPlan)
+        makingConnection,
+    required TResult Function(
+            Connection connection, String userUuid, String? paymentPlan)
+        connected,
+    required TResult Function(
+            HekaHealthError error, String userUuid, String? paymentPlan)
+        error,
   }) {
-    return initial(userUuid);
+    return initial(userUuid, paymentPlan);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(String userUuid)? initial,
-    TResult? Function(String userUuid)? checkingConnection,
-    TResult? Function(String userUuid)? noConnection,
-    TResult? Function(Connection connection, String userUuid)? tokenInvalidated,
-    TResult? Function(String userUuid)? makingConnection,
-    TResult? Function(Connection connection, String userUuid)? connected,
-    TResult? Function(HekaHealthError error, String userUuid)? error,
+    TResult? Function(String userUuid, String? paymentPlan)? initial,
+    TResult? Function(String userUuid, String? paymentPlan)? checkingConnection,
+    TResult? Function(String userUuid, String? paymentPlan)? noConnection,
+    TResult? Function(
+            Connection connection, String userUuid, String? paymentPlan)?
+        tokenInvalidated,
+    TResult? Function(String userUuid, String? paymentPlan)? makingConnection,
+    TResult? Function(
+            Connection connection, String userUuid, String? paymentPlan)?
+        connected,
+    TResult? Function(
+            HekaHealthError error, String userUuid, String? paymentPlan)?
+        error,
   }) {
-    return initial?.call(userUuid);
+    return initial?.call(userUuid, paymentPlan);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(String userUuid)? initial,
-    TResult Function(String userUuid)? checkingConnection,
-    TResult Function(String userUuid)? noConnection,
-    TResult Function(Connection connection, String userUuid)? tokenInvalidated,
-    TResult Function(String userUuid)? makingConnection,
-    TResult Function(Connection connection, String userUuid)? connected,
-    TResult Function(HekaHealthError error, String userUuid)? error,
+    TResult Function(String userUuid, String? paymentPlan)? initial,
+    TResult Function(String userUuid, String? paymentPlan)? checkingConnection,
+    TResult Function(String userUuid, String? paymentPlan)? noConnection,
+    TResult Function(
+            Connection connection, String userUuid, String? paymentPlan)?
+        tokenInvalidated,
+    TResult Function(String userUuid, String? paymentPlan)? makingConnection,
+    TResult Function(
+            Connection connection, String userUuid, String? paymentPlan)?
+        connected,
+    TResult Function(
+            HekaHealthError error, String userUuid, String? paymentPlan)?
+        error,
     required TResult orElse(),
   }) {
     if (initial != null) {
-      return initial(userUuid);
+      return initial(userUuid, paymentPlan);
     }
     return orElse();
   }
@@ -284,10 +339,14 @@ class _$_Initial implements _Initial {
 }
 
 abstract class _Initial implements GoogleFitConnectState {
-  const factory _Initial({required final String userUuid}) = _$_Initial;
+  const factory _Initial(
+      {required final String userUuid,
+      required final String? paymentPlan}) = _$_Initial;
 
   @override
   String get userUuid;
+  @override
+  String? get paymentPlan;
   @override
   @JsonKey(ignore: true)
   _$$_InitialCopyWith<_$_Initial> get copyWith =>
@@ -302,7 +361,7 @@ abstract class _$$_CheckingConnectionCopyWith<$Res>
       __$$_CheckingConnectionCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({String userUuid});
+  $Res call({String userUuid, String? paymentPlan});
 }
 
 /// @nodoc
@@ -317,12 +376,17 @@ class __$$_CheckingConnectionCopyWithImpl<$Res>
   @override
   $Res call({
     Object? userUuid = null,
+    Object? paymentPlan = freezed,
   }) {
     return _then(_$_CheckingConnection(
       userUuid: null == userUuid
           ? _value.userUuid
           : userUuid // ignore: cast_nullable_to_non_nullable
               as String,
+      paymentPlan: freezed == paymentPlan
+          ? _value.paymentPlan
+          : paymentPlan // ignore: cast_nullable_to_non_nullable
+              as String?,
     ));
   }
 }
@@ -330,14 +394,17 @@ class __$$_CheckingConnectionCopyWithImpl<$Res>
 /// @nodoc
 
 class _$_CheckingConnection implements _CheckingConnection {
-  const _$_CheckingConnection({required this.userUuid});
+  const _$_CheckingConnection(
+      {required this.userUuid, required this.paymentPlan});
 
   @override
   final String userUuid;
+  @override
+  final String? paymentPlan;
 
   @override
   String toString() {
-    return 'GoogleFitConnectState.checkingConnection(userUuid: $userUuid)';
+    return 'GoogleFitConnectState.checkingConnection(userUuid: $userUuid, paymentPlan: $paymentPlan)';
   }
 
   @override
@@ -346,11 +413,13 @@ class _$_CheckingConnection implements _CheckingConnection {
         (other.runtimeType == runtimeType &&
             other is _$_CheckingConnection &&
             (identical(other.userUuid, userUuid) ||
-                other.userUuid == userUuid));
+                other.userUuid == userUuid) &&
+            (identical(other.paymentPlan, paymentPlan) ||
+                other.paymentPlan == paymentPlan));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, userUuid);
+  int get hashCode => Object.hash(runtimeType, userUuid, paymentPlan);
 
   @JsonKey(ignore: true)
   @override
@@ -362,46 +431,66 @@ class _$_CheckingConnection implements _CheckingConnection {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(String userUuid) initial,
-    required TResult Function(String userUuid) checkingConnection,
-    required TResult Function(String userUuid) noConnection,
-    required TResult Function(Connection connection, String userUuid)
+    required TResult Function(String userUuid, String? paymentPlan) initial,
+    required TResult Function(String userUuid, String? paymentPlan)
+        checkingConnection,
+    required TResult Function(String userUuid, String? paymentPlan)
+        noConnection,
+    required TResult Function(
+            Connection connection, String userUuid, String? paymentPlan)
         tokenInvalidated,
-    required TResult Function(String userUuid) makingConnection,
-    required TResult Function(Connection connection, String userUuid) connected,
-    required TResult Function(HekaHealthError error, String userUuid) error,
+    required TResult Function(String userUuid, String? paymentPlan)
+        makingConnection,
+    required TResult Function(
+            Connection connection, String userUuid, String? paymentPlan)
+        connected,
+    required TResult Function(
+            HekaHealthError error, String userUuid, String? paymentPlan)
+        error,
   }) {
-    return checkingConnection(userUuid);
+    return checkingConnection(userUuid, paymentPlan);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(String userUuid)? initial,
-    TResult? Function(String userUuid)? checkingConnection,
-    TResult? Function(String userUuid)? noConnection,
-    TResult? Function(Connection connection, String userUuid)? tokenInvalidated,
-    TResult? Function(String userUuid)? makingConnection,
-    TResult? Function(Connection connection, String userUuid)? connected,
-    TResult? Function(HekaHealthError error, String userUuid)? error,
+    TResult? Function(String userUuid, String? paymentPlan)? initial,
+    TResult? Function(String userUuid, String? paymentPlan)? checkingConnection,
+    TResult? Function(String userUuid, String? paymentPlan)? noConnection,
+    TResult? Function(
+            Connection connection, String userUuid, String? paymentPlan)?
+        tokenInvalidated,
+    TResult? Function(String userUuid, String? paymentPlan)? makingConnection,
+    TResult? Function(
+            Connection connection, String userUuid, String? paymentPlan)?
+        connected,
+    TResult? Function(
+            HekaHealthError error, String userUuid, String? paymentPlan)?
+        error,
   }) {
-    return checkingConnection?.call(userUuid);
+    return checkingConnection?.call(userUuid, paymentPlan);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(String userUuid)? initial,
-    TResult Function(String userUuid)? checkingConnection,
-    TResult Function(String userUuid)? noConnection,
-    TResult Function(Connection connection, String userUuid)? tokenInvalidated,
-    TResult Function(String userUuid)? makingConnection,
-    TResult Function(Connection connection, String userUuid)? connected,
-    TResult Function(HekaHealthError error, String userUuid)? error,
+    TResult Function(String userUuid, String? paymentPlan)? initial,
+    TResult Function(String userUuid, String? paymentPlan)? checkingConnection,
+    TResult Function(String userUuid, String? paymentPlan)? noConnection,
+    TResult Function(
+            Connection connection, String userUuid, String? paymentPlan)?
+        tokenInvalidated,
+    TResult Function(String userUuid, String? paymentPlan)? makingConnection,
+    TResult Function(
+            Connection connection, String userUuid, String? paymentPlan)?
+        connected,
+    TResult Function(
+            HekaHealthError error, String userUuid, String? paymentPlan)?
+        error,
     required TResult orElse(),
   }) {
     if (checkingConnection != null) {
-      return checkingConnection(userUuid);
+      return checkingConnection(userUuid, paymentPlan);
     }
     return orElse();
   }
@@ -454,11 +543,14 @@ class _$_CheckingConnection implements _CheckingConnection {
 }
 
 abstract class _CheckingConnection implements GoogleFitConnectState {
-  const factory _CheckingConnection({required final String userUuid}) =
-      _$_CheckingConnection;
+  const factory _CheckingConnection(
+      {required final String userUuid,
+      required final String? paymentPlan}) = _$_CheckingConnection;
 
   @override
   String get userUuid;
+  @override
+  String? get paymentPlan;
   @override
   @JsonKey(ignore: true)
   _$$_CheckingConnectionCopyWith<_$_CheckingConnection> get copyWith =>
@@ -473,7 +565,7 @@ abstract class _$$_NoConnectionCopyWith<$Res>
       __$$_NoConnectionCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({String userUuid});
+  $Res call({String userUuid, String? paymentPlan});
 }
 
 /// @nodoc
@@ -488,12 +580,17 @@ class __$$_NoConnectionCopyWithImpl<$Res>
   @override
   $Res call({
     Object? userUuid = null,
+    Object? paymentPlan = freezed,
   }) {
     return _then(_$_NoConnection(
       userUuid: null == userUuid
           ? _value.userUuid
           : userUuid // ignore: cast_nullable_to_non_nullable
               as String,
+      paymentPlan: freezed == paymentPlan
+          ? _value.paymentPlan
+          : paymentPlan // ignore: cast_nullable_to_non_nullable
+              as String?,
     ));
   }
 }
@@ -501,14 +598,16 @@ class __$$_NoConnectionCopyWithImpl<$Res>
 /// @nodoc
 
 class _$_NoConnection implements _NoConnection {
-  const _$_NoConnection({required this.userUuid});
+  const _$_NoConnection({required this.userUuid, required this.paymentPlan});
 
   @override
   final String userUuid;
+  @override
+  final String? paymentPlan;
 
   @override
   String toString() {
-    return 'GoogleFitConnectState.noConnection(userUuid: $userUuid)';
+    return 'GoogleFitConnectState.noConnection(userUuid: $userUuid, paymentPlan: $paymentPlan)';
   }
 
   @override
@@ -517,11 +616,13 @@ class _$_NoConnection implements _NoConnection {
         (other.runtimeType == runtimeType &&
             other is _$_NoConnection &&
             (identical(other.userUuid, userUuid) ||
-                other.userUuid == userUuid));
+                other.userUuid == userUuid) &&
+            (identical(other.paymentPlan, paymentPlan) ||
+                other.paymentPlan == paymentPlan));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, userUuid);
+  int get hashCode => Object.hash(runtimeType, userUuid, paymentPlan);
 
   @JsonKey(ignore: true)
   @override
@@ -532,46 +633,66 @@ class _$_NoConnection implements _NoConnection {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(String userUuid) initial,
-    required TResult Function(String userUuid) checkingConnection,
-    required TResult Function(String userUuid) noConnection,
-    required TResult Function(Connection connection, String userUuid)
+    required TResult Function(String userUuid, String? paymentPlan) initial,
+    required TResult Function(String userUuid, String? paymentPlan)
+        checkingConnection,
+    required TResult Function(String userUuid, String? paymentPlan)
+        noConnection,
+    required TResult Function(
+            Connection connection, String userUuid, String? paymentPlan)
         tokenInvalidated,
-    required TResult Function(String userUuid) makingConnection,
-    required TResult Function(Connection connection, String userUuid) connected,
-    required TResult Function(HekaHealthError error, String userUuid) error,
+    required TResult Function(String userUuid, String? paymentPlan)
+        makingConnection,
+    required TResult Function(
+            Connection connection, String userUuid, String? paymentPlan)
+        connected,
+    required TResult Function(
+            HekaHealthError error, String userUuid, String? paymentPlan)
+        error,
   }) {
-    return noConnection(userUuid);
+    return noConnection(userUuid, paymentPlan);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(String userUuid)? initial,
-    TResult? Function(String userUuid)? checkingConnection,
-    TResult? Function(String userUuid)? noConnection,
-    TResult? Function(Connection connection, String userUuid)? tokenInvalidated,
-    TResult? Function(String userUuid)? makingConnection,
-    TResult? Function(Connection connection, String userUuid)? connected,
-    TResult? Function(HekaHealthError error, String userUuid)? error,
+    TResult? Function(String userUuid, String? paymentPlan)? initial,
+    TResult? Function(String userUuid, String? paymentPlan)? checkingConnection,
+    TResult? Function(String userUuid, String? paymentPlan)? noConnection,
+    TResult? Function(
+            Connection connection, String userUuid, String? paymentPlan)?
+        tokenInvalidated,
+    TResult? Function(String userUuid, String? paymentPlan)? makingConnection,
+    TResult? Function(
+            Connection connection, String userUuid, String? paymentPlan)?
+        connected,
+    TResult? Function(
+            HekaHealthError error, String userUuid, String? paymentPlan)?
+        error,
   }) {
-    return noConnection?.call(userUuid);
+    return noConnection?.call(userUuid, paymentPlan);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(String userUuid)? initial,
-    TResult Function(String userUuid)? checkingConnection,
-    TResult Function(String userUuid)? noConnection,
-    TResult Function(Connection connection, String userUuid)? tokenInvalidated,
-    TResult Function(String userUuid)? makingConnection,
-    TResult Function(Connection connection, String userUuid)? connected,
-    TResult Function(HekaHealthError error, String userUuid)? error,
+    TResult Function(String userUuid, String? paymentPlan)? initial,
+    TResult Function(String userUuid, String? paymentPlan)? checkingConnection,
+    TResult Function(String userUuid, String? paymentPlan)? noConnection,
+    TResult Function(
+            Connection connection, String userUuid, String? paymentPlan)?
+        tokenInvalidated,
+    TResult Function(String userUuid, String? paymentPlan)? makingConnection,
+    TResult Function(
+            Connection connection, String userUuid, String? paymentPlan)?
+        connected,
+    TResult Function(
+            HekaHealthError error, String userUuid, String? paymentPlan)?
+        error,
     required TResult orElse(),
   }) {
     if (noConnection != null) {
-      return noConnection(userUuid);
+      return noConnection(userUuid, paymentPlan);
     }
     return orElse();
   }
@@ -624,11 +745,14 @@ class _$_NoConnection implements _NoConnection {
 }
 
 abstract class _NoConnection implements GoogleFitConnectState {
-  const factory _NoConnection({required final String userUuid}) =
-      _$_NoConnection;
+  const factory _NoConnection(
+      {required final String userUuid,
+      required final String? paymentPlan}) = _$_NoConnection;
 
   @override
   String get userUuid;
+  @override
+  String? get paymentPlan;
   @override
   @JsonKey(ignore: true)
   _$$_NoConnectionCopyWith<_$_NoConnection> get copyWith =>
@@ -643,7 +767,7 @@ abstract class _$$_TokenInvalidatedCopyWith<$Res>
       __$$_TokenInvalidatedCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({Connection connection, String userUuid});
+  $Res call({Connection connection, String userUuid, String? paymentPlan});
 
   $ConnectionCopyWith<$Res> get connection;
 }
@@ -661,6 +785,7 @@ class __$$_TokenInvalidatedCopyWithImpl<$Res>
   $Res call({
     Object? connection = null,
     Object? userUuid = null,
+    Object? paymentPlan = freezed,
   }) {
     return _then(_$_TokenInvalidated(
       null == connection
@@ -671,6 +796,10 @@ class __$$_TokenInvalidatedCopyWithImpl<$Res>
           ? _value.userUuid
           : userUuid // ignore: cast_nullable_to_non_nullable
               as String,
+      paymentPlan: freezed == paymentPlan
+          ? _value.paymentPlan
+          : paymentPlan // ignore: cast_nullable_to_non_nullable
+              as String?,
     ));
   }
 
@@ -686,16 +815,19 @@ class __$$_TokenInvalidatedCopyWithImpl<$Res>
 /// @nodoc
 
 class _$_TokenInvalidated implements _TokenInvalidated {
-  const _$_TokenInvalidated(this.connection, {required this.userUuid});
+  const _$_TokenInvalidated(this.connection,
+      {required this.userUuid, required this.paymentPlan});
 
   @override
   final Connection connection;
   @override
   final String userUuid;
+  @override
+  final String? paymentPlan;
 
   @override
   String toString() {
-    return 'GoogleFitConnectState.tokenInvalidated(connection: $connection, userUuid: $userUuid)';
+    return 'GoogleFitConnectState.tokenInvalidated(connection: $connection, userUuid: $userUuid, paymentPlan: $paymentPlan)';
   }
 
   @override
@@ -706,11 +838,14 @@ class _$_TokenInvalidated implements _TokenInvalidated {
             (identical(other.connection, connection) ||
                 other.connection == connection) &&
             (identical(other.userUuid, userUuid) ||
-                other.userUuid == userUuid));
+                other.userUuid == userUuid) &&
+            (identical(other.paymentPlan, paymentPlan) ||
+                other.paymentPlan == paymentPlan));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, connection, userUuid);
+  int get hashCode =>
+      Object.hash(runtimeType, connection, userUuid, paymentPlan);
 
   @JsonKey(ignore: true)
   @override
@@ -721,46 +856,66 @@ class _$_TokenInvalidated implements _TokenInvalidated {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(String userUuid) initial,
-    required TResult Function(String userUuid) checkingConnection,
-    required TResult Function(String userUuid) noConnection,
-    required TResult Function(Connection connection, String userUuid)
+    required TResult Function(String userUuid, String? paymentPlan) initial,
+    required TResult Function(String userUuid, String? paymentPlan)
+        checkingConnection,
+    required TResult Function(String userUuid, String? paymentPlan)
+        noConnection,
+    required TResult Function(
+            Connection connection, String userUuid, String? paymentPlan)
         tokenInvalidated,
-    required TResult Function(String userUuid) makingConnection,
-    required TResult Function(Connection connection, String userUuid) connected,
-    required TResult Function(HekaHealthError error, String userUuid) error,
+    required TResult Function(String userUuid, String? paymentPlan)
+        makingConnection,
+    required TResult Function(
+            Connection connection, String userUuid, String? paymentPlan)
+        connected,
+    required TResult Function(
+            HekaHealthError error, String userUuid, String? paymentPlan)
+        error,
   }) {
-    return tokenInvalidated(connection, userUuid);
+    return tokenInvalidated(connection, userUuid, paymentPlan);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(String userUuid)? initial,
-    TResult? Function(String userUuid)? checkingConnection,
-    TResult? Function(String userUuid)? noConnection,
-    TResult? Function(Connection connection, String userUuid)? tokenInvalidated,
-    TResult? Function(String userUuid)? makingConnection,
-    TResult? Function(Connection connection, String userUuid)? connected,
-    TResult? Function(HekaHealthError error, String userUuid)? error,
+    TResult? Function(String userUuid, String? paymentPlan)? initial,
+    TResult? Function(String userUuid, String? paymentPlan)? checkingConnection,
+    TResult? Function(String userUuid, String? paymentPlan)? noConnection,
+    TResult? Function(
+            Connection connection, String userUuid, String? paymentPlan)?
+        tokenInvalidated,
+    TResult? Function(String userUuid, String? paymentPlan)? makingConnection,
+    TResult? Function(
+            Connection connection, String userUuid, String? paymentPlan)?
+        connected,
+    TResult? Function(
+            HekaHealthError error, String userUuid, String? paymentPlan)?
+        error,
   }) {
-    return tokenInvalidated?.call(connection, userUuid);
+    return tokenInvalidated?.call(connection, userUuid, paymentPlan);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(String userUuid)? initial,
-    TResult Function(String userUuid)? checkingConnection,
-    TResult Function(String userUuid)? noConnection,
-    TResult Function(Connection connection, String userUuid)? tokenInvalidated,
-    TResult Function(String userUuid)? makingConnection,
-    TResult Function(Connection connection, String userUuid)? connected,
-    TResult Function(HekaHealthError error, String userUuid)? error,
+    TResult Function(String userUuid, String? paymentPlan)? initial,
+    TResult Function(String userUuid, String? paymentPlan)? checkingConnection,
+    TResult Function(String userUuid, String? paymentPlan)? noConnection,
+    TResult Function(
+            Connection connection, String userUuid, String? paymentPlan)?
+        tokenInvalidated,
+    TResult Function(String userUuid, String? paymentPlan)? makingConnection,
+    TResult Function(
+            Connection connection, String userUuid, String? paymentPlan)?
+        connected,
+    TResult Function(
+            HekaHealthError error, String userUuid, String? paymentPlan)?
+        error,
     required TResult orElse(),
   }) {
     if (tokenInvalidated != null) {
-      return tokenInvalidated(connection, userUuid);
+      return tokenInvalidated(connection, userUuid, paymentPlan);
     }
     return orElse();
   }
@@ -814,11 +969,14 @@ class _$_TokenInvalidated implements _TokenInvalidated {
 
 abstract class _TokenInvalidated implements GoogleFitConnectState {
   const factory _TokenInvalidated(final Connection connection,
-      {required final String userUuid}) = _$_TokenInvalidated;
+      {required final String userUuid,
+      required final String? paymentPlan}) = _$_TokenInvalidated;
 
   Connection get connection;
   @override
   String get userUuid;
+  @override
+  String? get paymentPlan;
   @override
   @JsonKey(ignore: true)
   _$$_TokenInvalidatedCopyWith<_$_TokenInvalidated> get copyWith =>
@@ -833,7 +991,7 @@ abstract class _$$_MakingConnectionCopyWith<$Res>
       __$$_MakingConnectionCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({String userUuid});
+  $Res call({String userUuid, String? paymentPlan});
 }
 
 /// @nodoc
@@ -848,12 +1006,17 @@ class __$$_MakingConnectionCopyWithImpl<$Res>
   @override
   $Res call({
     Object? userUuid = null,
+    Object? paymentPlan = freezed,
   }) {
     return _then(_$_MakingConnection(
       userUuid: null == userUuid
           ? _value.userUuid
           : userUuid // ignore: cast_nullable_to_non_nullable
               as String,
+      paymentPlan: freezed == paymentPlan
+          ? _value.paymentPlan
+          : paymentPlan // ignore: cast_nullable_to_non_nullable
+              as String?,
     ));
   }
 }
@@ -861,14 +1024,17 @@ class __$$_MakingConnectionCopyWithImpl<$Res>
 /// @nodoc
 
 class _$_MakingConnection implements _MakingConnection {
-  const _$_MakingConnection({required this.userUuid});
+  const _$_MakingConnection(
+      {required this.userUuid, required this.paymentPlan});
 
   @override
   final String userUuid;
+  @override
+  final String? paymentPlan;
 
   @override
   String toString() {
-    return 'GoogleFitConnectState.makingConnection(userUuid: $userUuid)';
+    return 'GoogleFitConnectState.makingConnection(userUuid: $userUuid, paymentPlan: $paymentPlan)';
   }
 
   @override
@@ -877,11 +1043,13 @@ class _$_MakingConnection implements _MakingConnection {
         (other.runtimeType == runtimeType &&
             other is _$_MakingConnection &&
             (identical(other.userUuid, userUuid) ||
-                other.userUuid == userUuid));
+                other.userUuid == userUuid) &&
+            (identical(other.paymentPlan, paymentPlan) ||
+                other.paymentPlan == paymentPlan));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, userUuid);
+  int get hashCode => Object.hash(runtimeType, userUuid, paymentPlan);
 
   @JsonKey(ignore: true)
   @override
@@ -892,46 +1060,66 @@ class _$_MakingConnection implements _MakingConnection {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(String userUuid) initial,
-    required TResult Function(String userUuid) checkingConnection,
-    required TResult Function(String userUuid) noConnection,
-    required TResult Function(Connection connection, String userUuid)
+    required TResult Function(String userUuid, String? paymentPlan) initial,
+    required TResult Function(String userUuid, String? paymentPlan)
+        checkingConnection,
+    required TResult Function(String userUuid, String? paymentPlan)
+        noConnection,
+    required TResult Function(
+            Connection connection, String userUuid, String? paymentPlan)
         tokenInvalidated,
-    required TResult Function(String userUuid) makingConnection,
-    required TResult Function(Connection connection, String userUuid) connected,
-    required TResult Function(HekaHealthError error, String userUuid) error,
+    required TResult Function(String userUuid, String? paymentPlan)
+        makingConnection,
+    required TResult Function(
+            Connection connection, String userUuid, String? paymentPlan)
+        connected,
+    required TResult Function(
+            HekaHealthError error, String userUuid, String? paymentPlan)
+        error,
   }) {
-    return makingConnection(userUuid);
+    return makingConnection(userUuid, paymentPlan);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(String userUuid)? initial,
-    TResult? Function(String userUuid)? checkingConnection,
-    TResult? Function(String userUuid)? noConnection,
-    TResult? Function(Connection connection, String userUuid)? tokenInvalidated,
-    TResult? Function(String userUuid)? makingConnection,
-    TResult? Function(Connection connection, String userUuid)? connected,
-    TResult? Function(HekaHealthError error, String userUuid)? error,
+    TResult? Function(String userUuid, String? paymentPlan)? initial,
+    TResult? Function(String userUuid, String? paymentPlan)? checkingConnection,
+    TResult? Function(String userUuid, String? paymentPlan)? noConnection,
+    TResult? Function(
+            Connection connection, String userUuid, String? paymentPlan)?
+        tokenInvalidated,
+    TResult? Function(String userUuid, String? paymentPlan)? makingConnection,
+    TResult? Function(
+            Connection connection, String userUuid, String? paymentPlan)?
+        connected,
+    TResult? Function(
+            HekaHealthError error, String userUuid, String? paymentPlan)?
+        error,
   }) {
-    return makingConnection?.call(userUuid);
+    return makingConnection?.call(userUuid, paymentPlan);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(String userUuid)? initial,
-    TResult Function(String userUuid)? checkingConnection,
-    TResult Function(String userUuid)? noConnection,
-    TResult Function(Connection connection, String userUuid)? tokenInvalidated,
-    TResult Function(String userUuid)? makingConnection,
-    TResult Function(Connection connection, String userUuid)? connected,
-    TResult Function(HekaHealthError error, String userUuid)? error,
+    TResult Function(String userUuid, String? paymentPlan)? initial,
+    TResult Function(String userUuid, String? paymentPlan)? checkingConnection,
+    TResult Function(String userUuid, String? paymentPlan)? noConnection,
+    TResult Function(
+            Connection connection, String userUuid, String? paymentPlan)?
+        tokenInvalidated,
+    TResult Function(String userUuid, String? paymentPlan)? makingConnection,
+    TResult Function(
+            Connection connection, String userUuid, String? paymentPlan)?
+        connected,
+    TResult Function(
+            HekaHealthError error, String userUuid, String? paymentPlan)?
+        error,
     required TResult orElse(),
   }) {
     if (makingConnection != null) {
-      return makingConnection(userUuid);
+      return makingConnection(userUuid, paymentPlan);
     }
     return orElse();
   }
@@ -984,11 +1172,14 @@ class _$_MakingConnection implements _MakingConnection {
 }
 
 abstract class _MakingConnection implements GoogleFitConnectState {
-  const factory _MakingConnection({required final String userUuid}) =
-      _$_MakingConnection;
+  const factory _MakingConnection(
+      {required final String userUuid,
+      required final String? paymentPlan}) = _$_MakingConnection;
 
   @override
   String get userUuid;
+  @override
+  String? get paymentPlan;
   @override
   @JsonKey(ignore: true)
   _$$_MakingConnectionCopyWith<_$_MakingConnection> get copyWith =>
@@ -1003,7 +1194,7 @@ abstract class _$$_ConnectedCopyWith<$Res>
       __$$_ConnectedCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({Connection connection, String userUuid});
+  $Res call({Connection connection, String userUuid, String? paymentPlan});
 
   $ConnectionCopyWith<$Res> get connection;
 }
@@ -1021,6 +1212,7 @@ class __$$_ConnectedCopyWithImpl<$Res>
   $Res call({
     Object? connection = null,
     Object? userUuid = null,
+    Object? paymentPlan = freezed,
   }) {
     return _then(_$_Connected(
       null == connection
@@ -1031,6 +1223,10 @@ class __$$_ConnectedCopyWithImpl<$Res>
           ? _value.userUuid
           : userUuid // ignore: cast_nullable_to_non_nullable
               as String,
+      paymentPlan: freezed == paymentPlan
+          ? _value.paymentPlan
+          : paymentPlan // ignore: cast_nullable_to_non_nullable
+              as String?,
     ));
   }
 
@@ -1046,16 +1242,19 @@ class __$$_ConnectedCopyWithImpl<$Res>
 /// @nodoc
 
 class _$_Connected implements _Connected {
-  const _$_Connected(this.connection, {required this.userUuid});
+  const _$_Connected(this.connection,
+      {required this.userUuid, required this.paymentPlan});
 
   @override
   final Connection connection;
   @override
   final String userUuid;
+  @override
+  final String? paymentPlan;
 
   @override
   String toString() {
-    return 'GoogleFitConnectState.connected(connection: $connection, userUuid: $userUuid)';
+    return 'GoogleFitConnectState.connected(connection: $connection, userUuid: $userUuid, paymentPlan: $paymentPlan)';
   }
 
   @override
@@ -1066,11 +1265,14 @@ class _$_Connected implements _Connected {
             (identical(other.connection, connection) ||
                 other.connection == connection) &&
             (identical(other.userUuid, userUuid) ||
-                other.userUuid == userUuid));
+                other.userUuid == userUuid) &&
+            (identical(other.paymentPlan, paymentPlan) ||
+                other.paymentPlan == paymentPlan));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, connection, userUuid);
+  int get hashCode =>
+      Object.hash(runtimeType, connection, userUuid, paymentPlan);
 
   @JsonKey(ignore: true)
   @override
@@ -1081,46 +1283,66 @@ class _$_Connected implements _Connected {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(String userUuid) initial,
-    required TResult Function(String userUuid) checkingConnection,
-    required TResult Function(String userUuid) noConnection,
-    required TResult Function(Connection connection, String userUuid)
+    required TResult Function(String userUuid, String? paymentPlan) initial,
+    required TResult Function(String userUuid, String? paymentPlan)
+        checkingConnection,
+    required TResult Function(String userUuid, String? paymentPlan)
+        noConnection,
+    required TResult Function(
+            Connection connection, String userUuid, String? paymentPlan)
         tokenInvalidated,
-    required TResult Function(String userUuid) makingConnection,
-    required TResult Function(Connection connection, String userUuid) connected,
-    required TResult Function(HekaHealthError error, String userUuid) error,
+    required TResult Function(String userUuid, String? paymentPlan)
+        makingConnection,
+    required TResult Function(
+            Connection connection, String userUuid, String? paymentPlan)
+        connected,
+    required TResult Function(
+            HekaHealthError error, String userUuid, String? paymentPlan)
+        error,
   }) {
-    return connected(connection, userUuid);
+    return connected(connection, userUuid, paymentPlan);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(String userUuid)? initial,
-    TResult? Function(String userUuid)? checkingConnection,
-    TResult? Function(String userUuid)? noConnection,
-    TResult? Function(Connection connection, String userUuid)? tokenInvalidated,
-    TResult? Function(String userUuid)? makingConnection,
-    TResult? Function(Connection connection, String userUuid)? connected,
-    TResult? Function(HekaHealthError error, String userUuid)? error,
+    TResult? Function(String userUuid, String? paymentPlan)? initial,
+    TResult? Function(String userUuid, String? paymentPlan)? checkingConnection,
+    TResult? Function(String userUuid, String? paymentPlan)? noConnection,
+    TResult? Function(
+            Connection connection, String userUuid, String? paymentPlan)?
+        tokenInvalidated,
+    TResult? Function(String userUuid, String? paymentPlan)? makingConnection,
+    TResult? Function(
+            Connection connection, String userUuid, String? paymentPlan)?
+        connected,
+    TResult? Function(
+            HekaHealthError error, String userUuid, String? paymentPlan)?
+        error,
   }) {
-    return connected?.call(connection, userUuid);
+    return connected?.call(connection, userUuid, paymentPlan);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(String userUuid)? initial,
-    TResult Function(String userUuid)? checkingConnection,
-    TResult Function(String userUuid)? noConnection,
-    TResult Function(Connection connection, String userUuid)? tokenInvalidated,
-    TResult Function(String userUuid)? makingConnection,
-    TResult Function(Connection connection, String userUuid)? connected,
-    TResult Function(HekaHealthError error, String userUuid)? error,
+    TResult Function(String userUuid, String? paymentPlan)? initial,
+    TResult Function(String userUuid, String? paymentPlan)? checkingConnection,
+    TResult Function(String userUuid, String? paymentPlan)? noConnection,
+    TResult Function(
+            Connection connection, String userUuid, String? paymentPlan)?
+        tokenInvalidated,
+    TResult Function(String userUuid, String? paymentPlan)? makingConnection,
+    TResult Function(
+            Connection connection, String userUuid, String? paymentPlan)?
+        connected,
+    TResult Function(
+            HekaHealthError error, String userUuid, String? paymentPlan)?
+        error,
     required TResult orElse(),
   }) {
     if (connected != null) {
-      return connected(connection, userUuid);
+      return connected(connection, userUuid, paymentPlan);
     }
     return orElse();
   }
@@ -1174,11 +1396,14 @@ class _$_Connected implements _Connected {
 
 abstract class _Connected implements GoogleFitConnectState {
   const factory _Connected(final Connection connection,
-      {required final String userUuid}) = _$_Connected;
+      {required final String userUuid,
+      required final String? paymentPlan}) = _$_Connected;
 
   Connection get connection;
   @override
   String get userUuid;
+  @override
+  String? get paymentPlan;
   @override
   @JsonKey(ignore: true)
   _$$_ConnectedCopyWith<_$_Connected> get copyWith =>
@@ -1192,7 +1417,7 @@ abstract class _$$_ErrorCopyWith<$Res>
       __$$_ErrorCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({HekaHealthError error, String userUuid});
+  $Res call({HekaHealthError error, String userUuid, String? paymentPlan});
 
   $HekaHealthErrorCopyWith<$Res> get error;
 }
@@ -1209,6 +1434,7 @@ class __$$_ErrorCopyWithImpl<$Res>
   $Res call({
     Object? error = null,
     Object? userUuid = null,
+    Object? paymentPlan = freezed,
   }) {
     return _then(_$_Error(
       null == error
@@ -1219,6 +1445,10 @@ class __$$_ErrorCopyWithImpl<$Res>
           ? _value.userUuid
           : userUuid // ignore: cast_nullable_to_non_nullable
               as String,
+      paymentPlan: freezed == paymentPlan
+          ? _value.paymentPlan
+          : paymentPlan // ignore: cast_nullable_to_non_nullable
+              as String?,
     ));
   }
 
@@ -1234,16 +1464,19 @@ class __$$_ErrorCopyWithImpl<$Res>
 /// @nodoc
 
 class _$_Error implements _Error {
-  const _$_Error(this.error, {required this.userUuid});
+  const _$_Error(this.error,
+      {required this.userUuid, required this.paymentPlan});
 
   @override
   final HekaHealthError error;
   @override
   final String userUuid;
+  @override
+  final String? paymentPlan;
 
   @override
   String toString() {
-    return 'GoogleFitConnectState.error(error: $error, userUuid: $userUuid)';
+    return 'GoogleFitConnectState.error(error: $error, userUuid: $userUuid, paymentPlan: $paymentPlan)';
   }
 
   @override
@@ -1253,11 +1486,13 @@ class _$_Error implements _Error {
             other is _$_Error &&
             (identical(other.error, error) || other.error == error) &&
             (identical(other.userUuid, userUuid) ||
-                other.userUuid == userUuid));
+                other.userUuid == userUuid) &&
+            (identical(other.paymentPlan, paymentPlan) ||
+                other.paymentPlan == paymentPlan));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, error, userUuid);
+  int get hashCode => Object.hash(runtimeType, error, userUuid, paymentPlan);
 
   @JsonKey(ignore: true)
   @override
@@ -1268,46 +1503,66 @@ class _$_Error implements _Error {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(String userUuid) initial,
-    required TResult Function(String userUuid) checkingConnection,
-    required TResult Function(String userUuid) noConnection,
-    required TResult Function(Connection connection, String userUuid)
+    required TResult Function(String userUuid, String? paymentPlan) initial,
+    required TResult Function(String userUuid, String? paymentPlan)
+        checkingConnection,
+    required TResult Function(String userUuid, String? paymentPlan)
+        noConnection,
+    required TResult Function(
+            Connection connection, String userUuid, String? paymentPlan)
         tokenInvalidated,
-    required TResult Function(String userUuid) makingConnection,
-    required TResult Function(Connection connection, String userUuid) connected,
-    required TResult Function(HekaHealthError error, String userUuid) error,
+    required TResult Function(String userUuid, String? paymentPlan)
+        makingConnection,
+    required TResult Function(
+            Connection connection, String userUuid, String? paymentPlan)
+        connected,
+    required TResult Function(
+            HekaHealthError error, String userUuid, String? paymentPlan)
+        error,
   }) {
-    return error(this.error, userUuid);
+    return error(this.error, userUuid, paymentPlan);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(String userUuid)? initial,
-    TResult? Function(String userUuid)? checkingConnection,
-    TResult? Function(String userUuid)? noConnection,
-    TResult? Function(Connection connection, String userUuid)? tokenInvalidated,
-    TResult? Function(String userUuid)? makingConnection,
-    TResult? Function(Connection connection, String userUuid)? connected,
-    TResult? Function(HekaHealthError error, String userUuid)? error,
+    TResult? Function(String userUuid, String? paymentPlan)? initial,
+    TResult? Function(String userUuid, String? paymentPlan)? checkingConnection,
+    TResult? Function(String userUuid, String? paymentPlan)? noConnection,
+    TResult? Function(
+            Connection connection, String userUuid, String? paymentPlan)?
+        tokenInvalidated,
+    TResult? Function(String userUuid, String? paymentPlan)? makingConnection,
+    TResult? Function(
+            Connection connection, String userUuid, String? paymentPlan)?
+        connected,
+    TResult? Function(
+            HekaHealthError error, String userUuid, String? paymentPlan)?
+        error,
   }) {
-    return error?.call(this.error, userUuid);
+    return error?.call(this.error, userUuid, paymentPlan);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(String userUuid)? initial,
-    TResult Function(String userUuid)? checkingConnection,
-    TResult Function(String userUuid)? noConnection,
-    TResult Function(Connection connection, String userUuid)? tokenInvalidated,
-    TResult Function(String userUuid)? makingConnection,
-    TResult Function(Connection connection, String userUuid)? connected,
-    TResult Function(HekaHealthError error, String userUuid)? error,
+    TResult Function(String userUuid, String? paymentPlan)? initial,
+    TResult Function(String userUuid, String? paymentPlan)? checkingConnection,
+    TResult Function(String userUuid, String? paymentPlan)? noConnection,
+    TResult Function(
+            Connection connection, String userUuid, String? paymentPlan)?
+        tokenInvalidated,
+    TResult Function(String userUuid, String? paymentPlan)? makingConnection,
+    TResult Function(
+            Connection connection, String userUuid, String? paymentPlan)?
+        connected,
+    TResult Function(
+            HekaHealthError error, String userUuid, String? paymentPlan)?
+        error,
     required TResult orElse(),
   }) {
     if (error != null) {
-      return error(this.error, userUuid);
+      return error(this.error, userUuid, paymentPlan);
     }
     return orElse();
   }
@@ -1361,11 +1616,14 @@ class _$_Error implements _Error {
 
 abstract class _Error implements GoogleFitConnectState {
   const factory _Error(final HekaHealthError error,
-      {required final String userUuid}) = _$_Error;
+      {required final String userUuid,
+      required final String? paymentPlan}) = _$_Error;
 
   HekaHealthError get error;
   @override
   String get userUuid;
+  @override
+  String? get paymentPlan;
   @override
   @JsonKey(ignore: true)
   _$$_ErrorCopyWith<_$_Error> get copyWith =>

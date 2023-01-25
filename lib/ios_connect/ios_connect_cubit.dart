@@ -14,23 +14,47 @@ class IosConnectCubit extends Cubit<IosConnectState> {
   IosConnectCubit(
     this._userUuid,
     this._manager,
-  ) : super(IosConnectState.initial(userUuid: _userUuid));
+  ) : super(IosConnectState.initial(
+          userUuid: _userUuid,
+          paymentPlan: null,
+        )) {
+    _manager.getPlan().then((value) {
+      value.fold((l) {
+        emit(state.copyWith(paymentPlan: 'free'));
+      }, (r) {
+        emit(state.copyWith(paymentPlan: r));
+      });
+    });
+  }
 
   Future<void> checkConnection(
       Future<dynamic> Function(String, String) onConnect) async {
-    emit(IosConnectState.checkingConnection(userUuid: state.userUuid));
+    emit(IosConnectState.checkingConnection(
+      userUuid: state.userUuid,
+      paymentPlan: state.paymentPlan,
+    ));
     final failureOrSuccess = await _manager.fetchConnection(state.userUuid);
     failureOrSuccess.fold(
       (error) {
-        emit(IosConnectState.error(error, userUuid: state.userUuid));
+        emit(IosConnectState.error(
+          error,
+          userUuid: state.userUuid,
+          paymentPlan: state.paymentPlan,
+        ));
       },
       (connection) async {
         if (connection == null) {
-          emit(IosConnectState.noConnection(userUuid: state.userUuid));
+          emit(IosConnectState.noConnection(
+            userUuid: state.userUuid,
+            paymentPlan: state.paymentPlan,
+          ));
         } else {
           await onConnect(_manager.apiKey, state.userUuid);
-          emit(IosConnectState.syncingData(connection,
-              userUuid: state.userUuid));
+          emit(IosConnectState.syncingData(
+            connection,
+            userUuid: state.userUuid,
+            paymentPlan: state.paymentPlan,
+          ));
         }
       },
     );
@@ -38,16 +62,27 @@ class IosConnectCubit extends Cubit<IosConnectState> {
 
   Future<void> createConnection(
       Future<dynamic> Function(String, String) onConnect) async {
-    emit(IosConnectState.makingConnection(userUuid: state.userUuid));
+    emit(IosConnectState.makingConnection(
+      userUuid: state.userUuid,
+      paymentPlan: state.paymentPlan,
+    ));
     final failureOrSuccess = await _manager.makeConnection(
       userUuid: state.userUuid,
       platform: 'ios',
     );
     failureOrSuccess.fold((error) {
-      emit(IosConnectState.error(error, userUuid: state.userUuid));
+      emit(IosConnectState.error(
+        error,
+        userUuid: state.userUuid,
+        paymentPlan: state.paymentPlan,
+      ));
     }, (connection) async {
       await onConnect(_manager.apiKey, state.userUuid);
-      emit(IosConnectState.syncingData(connection, userUuid: state.userUuid));
+      emit(IosConnectState.syncingData(
+        connection,
+        userUuid: state.userUuid,
+        paymentPlan: state.paymentPlan,
+      ));
     });
   }
 

@@ -17,35 +17,50 @@ final _privateConstructorUsedError = UnsupportedError(
 /// @nodoc
 mixin _$IosConnectState {
   String get userUuid => throw _privateConstructorUsedError;
+  String? get paymentPlan => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(String userUuid) initial,
-    required TResult Function(String userUuid) noConnection,
-    required TResult Function(String userUuid) checkingConnection,
-    required TResult Function(String userUuid) makingConnection,
-    required TResult Function(Connection connection, String userUuid)
+    required TResult Function(String userUuid, String? paymentPlan) initial,
+    required TResult Function(String userUuid, String? paymentPlan)
+        noConnection,
+    required TResult Function(String userUuid, String? paymentPlan)
+        checkingConnection,
+    required TResult Function(String userUuid, String? paymentPlan)
+        makingConnection,
+    required TResult Function(
+            Connection connection, String userUuid, String? paymentPlan)
         syncingData,
-    required TResult Function(HekaHealthError error, String userUuid) error,
+    required TResult Function(
+            HekaHealthError error, String userUuid, String? paymentPlan)
+        error,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(String userUuid)? initial,
-    TResult? Function(String userUuid)? noConnection,
-    TResult? Function(String userUuid)? checkingConnection,
-    TResult? Function(String userUuid)? makingConnection,
-    TResult? Function(Connection connection, String userUuid)? syncingData,
-    TResult? Function(HekaHealthError error, String userUuid)? error,
+    TResult? Function(String userUuid, String? paymentPlan)? initial,
+    TResult? Function(String userUuid, String? paymentPlan)? noConnection,
+    TResult? Function(String userUuid, String? paymentPlan)? checkingConnection,
+    TResult? Function(String userUuid, String? paymentPlan)? makingConnection,
+    TResult? Function(
+            Connection connection, String userUuid, String? paymentPlan)?
+        syncingData,
+    TResult? Function(
+            HekaHealthError error, String userUuid, String? paymentPlan)?
+        error,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(String userUuid)? initial,
-    TResult Function(String userUuid)? noConnection,
-    TResult Function(String userUuid)? checkingConnection,
-    TResult Function(String userUuid)? makingConnection,
-    TResult Function(Connection connection, String userUuid)? syncingData,
-    TResult Function(HekaHealthError error, String userUuid)? error,
+    TResult Function(String userUuid, String? paymentPlan)? initial,
+    TResult Function(String userUuid, String? paymentPlan)? noConnection,
+    TResult Function(String userUuid, String? paymentPlan)? checkingConnection,
+    TResult Function(String userUuid, String? paymentPlan)? makingConnection,
+    TResult Function(
+            Connection connection, String userUuid, String? paymentPlan)?
+        syncingData,
+    TResult Function(
+            HekaHealthError error, String userUuid, String? paymentPlan)?
+        error,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -92,7 +107,7 @@ abstract class $IosConnectStateCopyWith<$Res> {
           IosConnectState value, $Res Function(IosConnectState) then) =
       _$IosConnectStateCopyWithImpl<$Res, IosConnectState>;
   @useResult
-  $Res call({String userUuid});
+  $Res call({String userUuid, String? paymentPlan});
 }
 
 /// @nodoc
@@ -109,12 +124,17 @@ class _$IosConnectStateCopyWithImpl<$Res, $Val extends IosConnectState>
   @override
   $Res call({
     Object? userUuid = null,
+    Object? paymentPlan = freezed,
   }) {
     return _then(_value.copyWith(
       userUuid: null == userUuid
           ? _value.userUuid
           : userUuid // ignore: cast_nullable_to_non_nullable
               as String,
+      paymentPlan: freezed == paymentPlan
+          ? _value.paymentPlan
+          : paymentPlan // ignore: cast_nullable_to_non_nullable
+              as String?,
     ) as $Val);
   }
 }
@@ -127,7 +147,7 @@ abstract class _$$_InitialCopyWith<$Res>
       __$$_InitialCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({String userUuid});
+  $Res call({String userUuid, String? paymentPlan});
 }
 
 /// @nodoc
@@ -141,12 +161,17 @@ class __$$_InitialCopyWithImpl<$Res>
   @override
   $Res call({
     Object? userUuid = null,
+    Object? paymentPlan = freezed,
   }) {
     return _then(_$_Initial(
       userUuid: null == userUuid
           ? _value.userUuid
           : userUuid // ignore: cast_nullable_to_non_nullable
               as String,
+      paymentPlan: freezed == paymentPlan
+          ? _value.paymentPlan
+          : paymentPlan // ignore: cast_nullable_to_non_nullable
+              as String?,
     ));
   }
 }
@@ -154,14 +179,16 @@ class __$$_InitialCopyWithImpl<$Res>
 /// @nodoc
 
 class _$_Initial implements _Initial {
-  const _$_Initial({required this.userUuid});
+  const _$_Initial({required this.userUuid, required this.paymentPlan});
 
   @override
   final String userUuid;
+  @override
+  final String? paymentPlan;
 
   @override
   String toString() {
-    return 'IosConnectState.initial(userUuid: $userUuid)';
+    return 'IosConnectState.initial(userUuid: $userUuid, paymentPlan: $paymentPlan)';
   }
 
   @override
@@ -170,11 +197,13 @@ class _$_Initial implements _Initial {
         (other.runtimeType == runtimeType &&
             other is _$_Initial &&
             (identical(other.userUuid, userUuid) ||
-                other.userUuid == userUuid));
+                other.userUuid == userUuid) &&
+            (identical(other.paymentPlan, paymentPlan) ||
+                other.paymentPlan == paymentPlan));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, userUuid);
+  int get hashCode => Object.hash(runtimeType, userUuid, paymentPlan);
 
   @JsonKey(ignore: true)
   @override
@@ -185,43 +214,57 @@ class _$_Initial implements _Initial {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(String userUuid) initial,
-    required TResult Function(String userUuid) noConnection,
-    required TResult Function(String userUuid) checkingConnection,
-    required TResult Function(String userUuid) makingConnection,
-    required TResult Function(Connection connection, String userUuid)
+    required TResult Function(String userUuid, String? paymentPlan) initial,
+    required TResult Function(String userUuid, String? paymentPlan)
+        noConnection,
+    required TResult Function(String userUuid, String? paymentPlan)
+        checkingConnection,
+    required TResult Function(String userUuid, String? paymentPlan)
+        makingConnection,
+    required TResult Function(
+            Connection connection, String userUuid, String? paymentPlan)
         syncingData,
-    required TResult Function(HekaHealthError error, String userUuid) error,
+    required TResult Function(
+            HekaHealthError error, String userUuid, String? paymentPlan)
+        error,
   }) {
-    return initial(userUuid);
+    return initial(userUuid, paymentPlan);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(String userUuid)? initial,
-    TResult? Function(String userUuid)? noConnection,
-    TResult? Function(String userUuid)? checkingConnection,
-    TResult? Function(String userUuid)? makingConnection,
-    TResult? Function(Connection connection, String userUuid)? syncingData,
-    TResult? Function(HekaHealthError error, String userUuid)? error,
+    TResult? Function(String userUuid, String? paymentPlan)? initial,
+    TResult? Function(String userUuid, String? paymentPlan)? noConnection,
+    TResult? Function(String userUuid, String? paymentPlan)? checkingConnection,
+    TResult? Function(String userUuid, String? paymentPlan)? makingConnection,
+    TResult? Function(
+            Connection connection, String userUuid, String? paymentPlan)?
+        syncingData,
+    TResult? Function(
+            HekaHealthError error, String userUuid, String? paymentPlan)?
+        error,
   }) {
-    return initial?.call(userUuid);
+    return initial?.call(userUuid, paymentPlan);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(String userUuid)? initial,
-    TResult Function(String userUuid)? noConnection,
-    TResult Function(String userUuid)? checkingConnection,
-    TResult Function(String userUuid)? makingConnection,
-    TResult Function(Connection connection, String userUuid)? syncingData,
-    TResult Function(HekaHealthError error, String userUuid)? error,
+    TResult Function(String userUuid, String? paymentPlan)? initial,
+    TResult Function(String userUuid, String? paymentPlan)? noConnection,
+    TResult Function(String userUuid, String? paymentPlan)? checkingConnection,
+    TResult Function(String userUuid, String? paymentPlan)? makingConnection,
+    TResult Function(
+            Connection connection, String userUuid, String? paymentPlan)?
+        syncingData,
+    TResult Function(
+            HekaHealthError error, String userUuid, String? paymentPlan)?
+        error,
     required TResult orElse(),
   }) {
     if (initial != null) {
-      return initial(userUuid);
+      return initial(userUuid, paymentPlan);
     }
     return orElse();
   }
@@ -271,10 +314,14 @@ class _$_Initial implements _Initial {
 }
 
 abstract class _Initial implements IosConnectState {
-  const factory _Initial({required final String userUuid}) = _$_Initial;
+  const factory _Initial(
+      {required final String userUuid,
+      required final String? paymentPlan}) = _$_Initial;
 
   @override
   String get userUuid;
+  @override
+  String? get paymentPlan;
   @override
   @JsonKey(ignore: true)
   _$$_InitialCopyWith<_$_Initial> get copyWith =>
@@ -289,7 +336,7 @@ abstract class _$$_NoConnectionCopyWith<$Res>
       __$$_NoConnectionCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({String userUuid});
+  $Res call({String userUuid, String? paymentPlan});
 }
 
 /// @nodoc
@@ -304,12 +351,17 @@ class __$$_NoConnectionCopyWithImpl<$Res>
   @override
   $Res call({
     Object? userUuid = null,
+    Object? paymentPlan = freezed,
   }) {
     return _then(_$_NoConnection(
       userUuid: null == userUuid
           ? _value.userUuid
           : userUuid // ignore: cast_nullable_to_non_nullable
               as String,
+      paymentPlan: freezed == paymentPlan
+          ? _value.paymentPlan
+          : paymentPlan // ignore: cast_nullable_to_non_nullable
+              as String?,
     ));
   }
 }
@@ -317,14 +369,16 @@ class __$$_NoConnectionCopyWithImpl<$Res>
 /// @nodoc
 
 class _$_NoConnection implements _NoConnection {
-  const _$_NoConnection({required this.userUuid});
+  const _$_NoConnection({required this.userUuid, required this.paymentPlan});
 
   @override
   final String userUuid;
+  @override
+  final String? paymentPlan;
 
   @override
   String toString() {
-    return 'IosConnectState.noConnection(userUuid: $userUuid)';
+    return 'IosConnectState.noConnection(userUuid: $userUuid, paymentPlan: $paymentPlan)';
   }
 
   @override
@@ -333,11 +387,13 @@ class _$_NoConnection implements _NoConnection {
         (other.runtimeType == runtimeType &&
             other is _$_NoConnection &&
             (identical(other.userUuid, userUuid) ||
-                other.userUuid == userUuid));
+                other.userUuid == userUuid) &&
+            (identical(other.paymentPlan, paymentPlan) ||
+                other.paymentPlan == paymentPlan));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, userUuid);
+  int get hashCode => Object.hash(runtimeType, userUuid, paymentPlan);
 
   @JsonKey(ignore: true)
   @override
@@ -348,43 +404,57 @@ class _$_NoConnection implements _NoConnection {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(String userUuid) initial,
-    required TResult Function(String userUuid) noConnection,
-    required TResult Function(String userUuid) checkingConnection,
-    required TResult Function(String userUuid) makingConnection,
-    required TResult Function(Connection connection, String userUuid)
+    required TResult Function(String userUuid, String? paymentPlan) initial,
+    required TResult Function(String userUuid, String? paymentPlan)
+        noConnection,
+    required TResult Function(String userUuid, String? paymentPlan)
+        checkingConnection,
+    required TResult Function(String userUuid, String? paymentPlan)
+        makingConnection,
+    required TResult Function(
+            Connection connection, String userUuid, String? paymentPlan)
         syncingData,
-    required TResult Function(HekaHealthError error, String userUuid) error,
+    required TResult Function(
+            HekaHealthError error, String userUuid, String? paymentPlan)
+        error,
   }) {
-    return noConnection(userUuid);
+    return noConnection(userUuid, paymentPlan);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(String userUuid)? initial,
-    TResult? Function(String userUuid)? noConnection,
-    TResult? Function(String userUuid)? checkingConnection,
-    TResult? Function(String userUuid)? makingConnection,
-    TResult? Function(Connection connection, String userUuid)? syncingData,
-    TResult? Function(HekaHealthError error, String userUuid)? error,
+    TResult? Function(String userUuid, String? paymentPlan)? initial,
+    TResult? Function(String userUuid, String? paymentPlan)? noConnection,
+    TResult? Function(String userUuid, String? paymentPlan)? checkingConnection,
+    TResult? Function(String userUuid, String? paymentPlan)? makingConnection,
+    TResult? Function(
+            Connection connection, String userUuid, String? paymentPlan)?
+        syncingData,
+    TResult? Function(
+            HekaHealthError error, String userUuid, String? paymentPlan)?
+        error,
   }) {
-    return noConnection?.call(userUuid);
+    return noConnection?.call(userUuid, paymentPlan);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(String userUuid)? initial,
-    TResult Function(String userUuid)? noConnection,
-    TResult Function(String userUuid)? checkingConnection,
-    TResult Function(String userUuid)? makingConnection,
-    TResult Function(Connection connection, String userUuid)? syncingData,
-    TResult Function(HekaHealthError error, String userUuid)? error,
+    TResult Function(String userUuid, String? paymentPlan)? initial,
+    TResult Function(String userUuid, String? paymentPlan)? noConnection,
+    TResult Function(String userUuid, String? paymentPlan)? checkingConnection,
+    TResult Function(String userUuid, String? paymentPlan)? makingConnection,
+    TResult Function(
+            Connection connection, String userUuid, String? paymentPlan)?
+        syncingData,
+    TResult Function(
+            HekaHealthError error, String userUuid, String? paymentPlan)?
+        error,
     required TResult orElse(),
   }) {
     if (noConnection != null) {
-      return noConnection(userUuid);
+      return noConnection(userUuid, paymentPlan);
     }
     return orElse();
   }
@@ -434,11 +504,14 @@ class _$_NoConnection implements _NoConnection {
 }
 
 abstract class _NoConnection implements IosConnectState {
-  const factory _NoConnection({required final String userUuid}) =
-      _$_NoConnection;
+  const factory _NoConnection(
+      {required final String userUuid,
+      required final String? paymentPlan}) = _$_NoConnection;
 
   @override
   String get userUuid;
+  @override
+  String? get paymentPlan;
   @override
   @JsonKey(ignore: true)
   _$$_NoConnectionCopyWith<_$_NoConnection> get copyWith =>
@@ -453,7 +526,7 @@ abstract class _$$_CheckingConnectionCopyWith<$Res>
       __$$_CheckingConnectionCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({String userUuid});
+  $Res call({String userUuid, String? paymentPlan});
 }
 
 /// @nodoc
@@ -468,12 +541,17 @@ class __$$_CheckingConnectionCopyWithImpl<$Res>
   @override
   $Res call({
     Object? userUuid = null,
+    Object? paymentPlan = freezed,
   }) {
     return _then(_$_CheckingConnection(
       userUuid: null == userUuid
           ? _value.userUuid
           : userUuid // ignore: cast_nullable_to_non_nullable
               as String,
+      paymentPlan: freezed == paymentPlan
+          ? _value.paymentPlan
+          : paymentPlan // ignore: cast_nullable_to_non_nullable
+              as String?,
     ));
   }
 }
@@ -481,14 +559,17 @@ class __$$_CheckingConnectionCopyWithImpl<$Res>
 /// @nodoc
 
 class _$_CheckingConnection implements _CheckingConnection {
-  const _$_CheckingConnection({required this.userUuid});
+  const _$_CheckingConnection(
+      {required this.userUuid, required this.paymentPlan});
 
   @override
   final String userUuid;
+  @override
+  final String? paymentPlan;
 
   @override
   String toString() {
-    return 'IosConnectState.checkingConnection(userUuid: $userUuid)';
+    return 'IosConnectState.checkingConnection(userUuid: $userUuid, paymentPlan: $paymentPlan)';
   }
 
   @override
@@ -497,11 +578,13 @@ class _$_CheckingConnection implements _CheckingConnection {
         (other.runtimeType == runtimeType &&
             other is _$_CheckingConnection &&
             (identical(other.userUuid, userUuid) ||
-                other.userUuid == userUuid));
+                other.userUuid == userUuid) &&
+            (identical(other.paymentPlan, paymentPlan) ||
+                other.paymentPlan == paymentPlan));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, userUuid);
+  int get hashCode => Object.hash(runtimeType, userUuid, paymentPlan);
 
   @JsonKey(ignore: true)
   @override
@@ -513,43 +596,57 @@ class _$_CheckingConnection implements _CheckingConnection {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(String userUuid) initial,
-    required TResult Function(String userUuid) noConnection,
-    required TResult Function(String userUuid) checkingConnection,
-    required TResult Function(String userUuid) makingConnection,
-    required TResult Function(Connection connection, String userUuid)
+    required TResult Function(String userUuid, String? paymentPlan) initial,
+    required TResult Function(String userUuid, String? paymentPlan)
+        noConnection,
+    required TResult Function(String userUuid, String? paymentPlan)
+        checkingConnection,
+    required TResult Function(String userUuid, String? paymentPlan)
+        makingConnection,
+    required TResult Function(
+            Connection connection, String userUuid, String? paymentPlan)
         syncingData,
-    required TResult Function(HekaHealthError error, String userUuid) error,
+    required TResult Function(
+            HekaHealthError error, String userUuid, String? paymentPlan)
+        error,
   }) {
-    return checkingConnection(userUuid);
+    return checkingConnection(userUuid, paymentPlan);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(String userUuid)? initial,
-    TResult? Function(String userUuid)? noConnection,
-    TResult? Function(String userUuid)? checkingConnection,
-    TResult? Function(String userUuid)? makingConnection,
-    TResult? Function(Connection connection, String userUuid)? syncingData,
-    TResult? Function(HekaHealthError error, String userUuid)? error,
+    TResult? Function(String userUuid, String? paymentPlan)? initial,
+    TResult? Function(String userUuid, String? paymentPlan)? noConnection,
+    TResult? Function(String userUuid, String? paymentPlan)? checkingConnection,
+    TResult? Function(String userUuid, String? paymentPlan)? makingConnection,
+    TResult? Function(
+            Connection connection, String userUuid, String? paymentPlan)?
+        syncingData,
+    TResult? Function(
+            HekaHealthError error, String userUuid, String? paymentPlan)?
+        error,
   }) {
-    return checkingConnection?.call(userUuid);
+    return checkingConnection?.call(userUuid, paymentPlan);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(String userUuid)? initial,
-    TResult Function(String userUuid)? noConnection,
-    TResult Function(String userUuid)? checkingConnection,
-    TResult Function(String userUuid)? makingConnection,
-    TResult Function(Connection connection, String userUuid)? syncingData,
-    TResult Function(HekaHealthError error, String userUuid)? error,
+    TResult Function(String userUuid, String? paymentPlan)? initial,
+    TResult Function(String userUuid, String? paymentPlan)? noConnection,
+    TResult Function(String userUuid, String? paymentPlan)? checkingConnection,
+    TResult Function(String userUuid, String? paymentPlan)? makingConnection,
+    TResult Function(
+            Connection connection, String userUuid, String? paymentPlan)?
+        syncingData,
+    TResult Function(
+            HekaHealthError error, String userUuid, String? paymentPlan)?
+        error,
     required TResult orElse(),
   }) {
     if (checkingConnection != null) {
-      return checkingConnection(userUuid);
+      return checkingConnection(userUuid, paymentPlan);
     }
     return orElse();
   }
@@ -599,11 +696,14 @@ class _$_CheckingConnection implements _CheckingConnection {
 }
 
 abstract class _CheckingConnection implements IosConnectState {
-  const factory _CheckingConnection({required final String userUuid}) =
-      _$_CheckingConnection;
+  const factory _CheckingConnection(
+      {required final String userUuid,
+      required final String? paymentPlan}) = _$_CheckingConnection;
 
   @override
   String get userUuid;
+  @override
+  String? get paymentPlan;
   @override
   @JsonKey(ignore: true)
   _$$_CheckingConnectionCopyWith<_$_CheckingConnection> get copyWith =>
@@ -618,7 +718,7 @@ abstract class _$$_MakingConnectionCopyWith<$Res>
       __$$_MakingConnectionCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({String userUuid});
+  $Res call({String userUuid, String? paymentPlan});
 }
 
 /// @nodoc
@@ -633,12 +733,17 @@ class __$$_MakingConnectionCopyWithImpl<$Res>
   @override
   $Res call({
     Object? userUuid = null,
+    Object? paymentPlan = freezed,
   }) {
     return _then(_$_MakingConnection(
       userUuid: null == userUuid
           ? _value.userUuid
           : userUuid // ignore: cast_nullable_to_non_nullable
               as String,
+      paymentPlan: freezed == paymentPlan
+          ? _value.paymentPlan
+          : paymentPlan // ignore: cast_nullable_to_non_nullable
+              as String?,
     ));
   }
 }
@@ -646,14 +751,17 @@ class __$$_MakingConnectionCopyWithImpl<$Res>
 /// @nodoc
 
 class _$_MakingConnection implements _MakingConnection {
-  const _$_MakingConnection({required this.userUuid});
+  const _$_MakingConnection(
+      {required this.userUuid, required this.paymentPlan});
 
   @override
   final String userUuid;
+  @override
+  final String? paymentPlan;
 
   @override
   String toString() {
-    return 'IosConnectState.makingConnection(userUuid: $userUuid)';
+    return 'IosConnectState.makingConnection(userUuid: $userUuid, paymentPlan: $paymentPlan)';
   }
 
   @override
@@ -662,11 +770,13 @@ class _$_MakingConnection implements _MakingConnection {
         (other.runtimeType == runtimeType &&
             other is _$_MakingConnection &&
             (identical(other.userUuid, userUuid) ||
-                other.userUuid == userUuid));
+                other.userUuid == userUuid) &&
+            (identical(other.paymentPlan, paymentPlan) ||
+                other.paymentPlan == paymentPlan));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, userUuid);
+  int get hashCode => Object.hash(runtimeType, userUuid, paymentPlan);
 
   @JsonKey(ignore: true)
   @override
@@ -677,43 +787,57 @@ class _$_MakingConnection implements _MakingConnection {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(String userUuid) initial,
-    required TResult Function(String userUuid) noConnection,
-    required TResult Function(String userUuid) checkingConnection,
-    required TResult Function(String userUuid) makingConnection,
-    required TResult Function(Connection connection, String userUuid)
+    required TResult Function(String userUuid, String? paymentPlan) initial,
+    required TResult Function(String userUuid, String? paymentPlan)
+        noConnection,
+    required TResult Function(String userUuid, String? paymentPlan)
+        checkingConnection,
+    required TResult Function(String userUuid, String? paymentPlan)
+        makingConnection,
+    required TResult Function(
+            Connection connection, String userUuid, String? paymentPlan)
         syncingData,
-    required TResult Function(HekaHealthError error, String userUuid) error,
+    required TResult Function(
+            HekaHealthError error, String userUuid, String? paymentPlan)
+        error,
   }) {
-    return makingConnection(userUuid);
+    return makingConnection(userUuid, paymentPlan);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(String userUuid)? initial,
-    TResult? Function(String userUuid)? noConnection,
-    TResult? Function(String userUuid)? checkingConnection,
-    TResult? Function(String userUuid)? makingConnection,
-    TResult? Function(Connection connection, String userUuid)? syncingData,
-    TResult? Function(HekaHealthError error, String userUuid)? error,
+    TResult? Function(String userUuid, String? paymentPlan)? initial,
+    TResult? Function(String userUuid, String? paymentPlan)? noConnection,
+    TResult? Function(String userUuid, String? paymentPlan)? checkingConnection,
+    TResult? Function(String userUuid, String? paymentPlan)? makingConnection,
+    TResult? Function(
+            Connection connection, String userUuid, String? paymentPlan)?
+        syncingData,
+    TResult? Function(
+            HekaHealthError error, String userUuid, String? paymentPlan)?
+        error,
   }) {
-    return makingConnection?.call(userUuid);
+    return makingConnection?.call(userUuid, paymentPlan);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(String userUuid)? initial,
-    TResult Function(String userUuid)? noConnection,
-    TResult Function(String userUuid)? checkingConnection,
-    TResult Function(String userUuid)? makingConnection,
-    TResult Function(Connection connection, String userUuid)? syncingData,
-    TResult Function(HekaHealthError error, String userUuid)? error,
+    TResult Function(String userUuid, String? paymentPlan)? initial,
+    TResult Function(String userUuid, String? paymentPlan)? noConnection,
+    TResult Function(String userUuid, String? paymentPlan)? checkingConnection,
+    TResult Function(String userUuid, String? paymentPlan)? makingConnection,
+    TResult Function(
+            Connection connection, String userUuid, String? paymentPlan)?
+        syncingData,
+    TResult Function(
+            HekaHealthError error, String userUuid, String? paymentPlan)?
+        error,
     required TResult orElse(),
   }) {
     if (makingConnection != null) {
-      return makingConnection(userUuid);
+      return makingConnection(userUuid, paymentPlan);
     }
     return orElse();
   }
@@ -763,11 +887,14 @@ class _$_MakingConnection implements _MakingConnection {
 }
 
 abstract class _MakingConnection implements IosConnectState {
-  const factory _MakingConnection({required final String userUuid}) =
-      _$_MakingConnection;
+  const factory _MakingConnection(
+      {required final String userUuid,
+      required final String? paymentPlan}) = _$_MakingConnection;
 
   @override
   String get userUuid;
+  @override
+  String? get paymentPlan;
   @override
   @JsonKey(ignore: true)
   _$$_MakingConnectionCopyWith<_$_MakingConnection> get copyWith =>
@@ -782,7 +909,7 @@ abstract class _$$_SyncingDataCopyWith<$Res>
       __$$_SyncingDataCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({Connection connection, String userUuid});
+  $Res call({Connection connection, String userUuid, String? paymentPlan});
 
   $ConnectionCopyWith<$Res> get connection;
 }
@@ -800,6 +927,7 @@ class __$$_SyncingDataCopyWithImpl<$Res>
   $Res call({
     Object? connection = null,
     Object? userUuid = null,
+    Object? paymentPlan = freezed,
   }) {
     return _then(_$_SyncingData(
       null == connection
@@ -810,6 +938,10 @@ class __$$_SyncingDataCopyWithImpl<$Res>
           ? _value.userUuid
           : userUuid // ignore: cast_nullable_to_non_nullable
               as String,
+      paymentPlan: freezed == paymentPlan
+          ? _value.paymentPlan
+          : paymentPlan // ignore: cast_nullable_to_non_nullable
+              as String?,
     ));
   }
 
@@ -825,16 +957,19 @@ class __$$_SyncingDataCopyWithImpl<$Res>
 /// @nodoc
 
 class _$_SyncingData implements _SyncingData {
-  const _$_SyncingData(this.connection, {required this.userUuid});
+  const _$_SyncingData(this.connection,
+      {required this.userUuid, required this.paymentPlan});
 
   @override
   final Connection connection;
   @override
   final String userUuid;
+  @override
+  final String? paymentPlan;
 
   @override
   String toString() {
-    return 'IosConnectState.syncingData(connection: $connection, userUuid: $userUuid)';
+    return 'IosConnectState.syncingData(connection: $connection, userUuid: $userUuid, paymentPlan: $paymentPlan)';
   }
 
   @override
@@ -845,11 +980,14 @@ class _$_SyncingData implements _SyncingData {
             (identical(other.connection, connection) ||
                 other.connection == connection) &&
             (identical(other.userUuid, userUuid) ||
-                other.userUuid == userUuid));
+                other.userUuid == userUuid) &&
+            (identical(other.paymentPlan, paymentPlan) ||
+                other.paymentPlan == paymentPlan));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, connection, userUuid);
+  int get hashCode =>
+      Object.hash(runtimeType, connection, userUuid, paymentPlan);
 
   @JsonKey(ignore: true)
   @override
@@ -860,43 +998,57 @@ class _$_SyncingData implements _SyncingData {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(String userUuid) initial,
-    required TResult Function(String userUuid) noConnection,
-    required TResult Function(String userUuid) checkingConnection,
-    required TResult Function(String userUuid) makingConnection,
-    required TResult Function(Connection connection, String userUuid)
+    required TResult Function(String userUuid, String? paymentPlan) initial,
+    required TResult Function(String userUuid, String? paymentPlan)
+        noConnection,
+    required TResult Function(String userUuid, String? paymentPlan)
+        checkingConnection,
+    required TResult Function(String userUuid, String? paymentPlan)
+        makingConnection,
+    required TResult Function(
+            Connection connection, String userUuid, String? paymentPlan)
         syncingData,
-    required TResult Function(HekaHealthError error, String userUuid) error,
+    required TResult Function(
+            HekaHealthError error, String userUuid, String? paymentPlan)
+        error,
   }) {
-    return syncingData(connection, userUuid);
+    return syncingData(connection, userUuid, paymentPlan);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(String userUuid)? initial,
-    TResult? Function(String userUuid)? noConnection,
-    TResult? Function(String userUuid)? checkingConnection,
-    TResult? Function(String userUuid)? makingConnection,
-    TResult? Function(Connection connection, String userUuid)? syncingData,
-    TResult? Function(HekaHealthError error, String userUuid)? error,
+    TResult? Function(String userUuid, String? paymentPlan)? initial,
+    TResult? Function(String userUuid, String? paymentPlan)? noConnection,
+    TResult? Function(String userUuid, String? paymentPlan)? checkingConnection,
+    TResult? Function(String userUuid, String? paymentPlan)? makingConnection,
+    TResult? Function(
+            Connection connection, String userUuid, String? paymentPlan)?
+        syncingData,
+    TResult? Function(
+            HekaHealthError error, String userUuid, String? paymentPlan)?
+        error,
   }) {
-    return syncingData?.call(connection, userUuid);
+    return syncingData?.call(connection, userUuid, paymentPlan);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(String userUuid)? initial,
-    TResult Function(String userUuid)? noConnection,
-    TResult Function(String userUuid)? checkingConnection,
-    TResult Function(String userUuid)? makingConnection,
-    TResult Function(Connection connection, String userUuid)? syncingData,
-    TResult Function(HekaHealthError error, String userUuid)? error,
+    TResult Function(String userUuid, String? paymentPlan)? initial,
+    TResult Function(String userUuid, String? paymentPlan)? noConnection,
+    TResult Function(String userUuid, String? paymentPlan)? checkingConnection,
+    TResult Function(String userUuid, String? paymentPlan)? makingConnection,
+    TResult Function(
+            Connection connection, String userUuid, String? paymentPlan)?
+        syncingData,
+    TResult Function(
+            HekaHealthError error, String userUuid, String? paymentPlan)?
+        error,
     required TResult orElse(),
   }) {
     if (syncingData != null) {
-      return syncingData(connection, userUuid);
+      return syncingData(connection, userUuid, paymentPlan);
     }
     return orElse();
   }
@@ -947,11 +1099,14 @@ class _$_SyncingData implements _SyncingData {
 
 abstract class _SyncingData implements IosConnectState {
   const factory _SyncingData(final Connection connection,
-      {required final String userUuid}) = _$_SyncingData;
+      {required final String userUuid,
+      required final String? paymentPlan}) = _$_SyncingData;
 
   Connection get connection;
   @override
   String get userUuid;
+  @override
+  String? get paymentPlan;
   @override
   @JsonKey(ignore: true)
   _$$_SyncingDataCopyWith<_$_SyncingData> get copyWith =>
@@ -965,7 +1120,7 @@ abstract class _$$_ErrorCopyWith<$Res>
       __$$_ErrorCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({HekaHealthError error, String userUuid});
+  $Res call({HekaHealthError error, String userUuid, String? paymentPlan});
 
   $HekaHealthErrorCopyWith<$Res> get error;
 }
@@ -982,6 +1137,7 @@ class __$$_ErrorCopyWithImpl<$Res>
   $Res call({
     Object? error = null,
     Object? userUuid = null,
+    Object? paymentPlan = freezed,
   }) {
     return _then(_$_Error(
       null == error
@@ -992,6 +1148,10 @@ class __$$_ErrorCopyWithImpl<$Res>
           ? _value.userUuid
           : userUuid // ignore: cast_nullable_to_non_nullable
               as String,
+      paymentPlan: freezed == paymentPlan
+          ? _value.paymentPlan
+          : paymentPlan // ignore: cast_nullable_to_non_nullable
+              as String?,
     ));
   }
 
@@ -1007,16 +1167,19 @@ class __$$_ErrorCopyWithImpl<$Res>
 /// @nodoc
 
 class _$_Error implements _Error {
-  const _$_Error(this.error, {required this.userUuid});
+  const _$_Error(this.error,
+      {required this.userUuid, required this.paymentPlan});
 
   @override
   final HekaHealthError error;
   @override
   final String userUuid;
+  @override
+  final String? paymentPlan;
 
   @override
   String toString() {
-    return 'IosConnectState.error(error: $error, userUuid: $userUuid)';
+    return 'IosConnectState.error(error: $error, userUuid: $userUuid, paymentPlan: $paymentPlan)';
   }
 
   @override
@@ -1026,11 +1189,13 @@ class _$_Error implements _Error {
             other is _$_Error &&
             (identical(other.error, error) || other.error == error) &&
             (identical(other.userUuid, userUuid) ||
-                other.userUuid == userUuid));
+                other.userUuid == userUuid) &&
+            (identical(other.paymentPlan, paymentPlan) ||
+                other.paymentPlan == paymentPlan));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, error, userUuid);
+  int get hashCode => Object.hash(runtimeType, error, userUuid, paymentPlan);
 
   @JsonKey(ignore: true)
   @override
@@ -1041,43 +1206,57 @@ class _$_Error implements _Error {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(String userUuid) initial,
-    required TResult Function(String userUuid) noConnection,
-    required TResult Function(String userUuid) checkingConnection,
-    required TResult Function(String userUuid) makingConnection,
-    required TResult Function(Connection connection, String userUuid)
+    required TResult Function(String userUuid, String? paymentPlan) initial,
+    required TResult Function(String userUuid, String? paymentPlan)
+        noConnection,
+    required TResult Function(String userUuid, String? paymentPlan)
+        checkingConnection,
+    required TResult Function(String userUuid, String? paymentPlan)
+        makingConnection,
+    required TResult Function(
+            Connection connection, String userUuid, String? paymentPlan)
         syncingData,
-    required TResult Function(HekaHealthError error, String userUuid) error,
+    required TResult Function(
+            HekaHealthError error, String userUuid, String? paymentPlan)
+        error,
   }) {
-    return error(this.error, userUuid);
+    return error(this.error, userUuid, paymentPlan);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(String userUuid)? initial,
-    TResult? Function(String userUuid)? noConnection,
-    TResult? Function(String userUuid)? checkingConnection,
-    TResult? Function(String userUuid)? makingConnection,
-    TResult? Function(Connection connection, String userUuid)? syncingData,
-    TResult? Function(HekaHealthError error, String userUuid)? error,
+    TResult? Function(String userUuid, String? paymentPlan)? initial,
+    TResult? Function(String userUuid, String? paymentPlan)? noConnection,
+    TResult? Function(String userUuid, String? paymentPlan)? checkingConnection,
+    TResult? Function(String userUuid, String? paymentPlan)? makingConnection,
+    TResult? Function(
+            Connection connection, String userUuid, String? paymentPlan)?
+        syncingData,
+    TResult? Function(
+            HekaHealthError error, String userUuid, String? paymentPlan)?
+        error,
   }) {
-    return error?.call(this.error, userUuid);
+    return error?.call(this.error, userUuid, paymentPlan);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(String userUuid)? initial,
-    TResult Function(String userUuid)? noConnection,
-    TResult Function(String userUuid)? checkingConnection,
-    TResult Function(String userUuid)? makingConnection,
-    TResult Function(Connection connection, String userUuid)? syncingData,
-    TResult Function(HekaHealthError error, String userUuid)? error,
+    TResult Function(String userUuid, String? paymentPlan)? initial,
+    TResult Function(String userUuid, String? paymentPlan)? noConnection,
+    TResult Function(String userUuid, String? paymentPlan)? checkingConnection,
+    TResult Function(String userUuid, String? paymentPlan)? makingConnection,
+    TResult Function(
+            Connection connection, String userUuid, String? paymentPlan)?
+        syncingData,
+    TResult Function(
+            HekaHealthError error, String userUuid, String? paymentPlan)?
+        error,
     required TResult orElse(),
   }) {
     if (error != null) {
-      return error(this.error, userUuid);
+      return error(this.error, userUuid, paymentPlan);
     }
     return orElse();
   }
@@ -1128,11 +1307,14 @@ class _$_Error implements _Error {
 
 abstract class _Error implements IosConnectState {
   const factory _Error(final HekaHealthError error,
-      {required final String userUuid}) = _$_Error;
+      {required final String userUuid,
+      required final String? paymentPlan}) = _$_Error;
 
   HekaHealthError get error;
   @override
   String get userUuid;
+  @override
+  String? get paymentPlan;
   @override
   @JsonKey(ignore: true)
   _$$_ErrorCopyWith<_$_Error> get copyWith =>
