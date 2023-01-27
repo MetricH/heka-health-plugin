@@ -1,5 +1,11 @@
+import 'dart:async';
+
 import 'package:flutter/material.dart';
+import 'package:flutter_web_auth/flutter_web_auth.dart';
 import 'package:heka_health/heka_health.dart';
+import 'package:heka_health_example/strava.dart';
+
+import 'authorization_page.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -43,9 +49,24 @@ class _HomePageState extends State<HomePage> {
         title: const Text('HekaHealth Demo'),
       ),
       body: Center(
-        child: HekaHealthWidget(
-          apiKey: _apiKey,
-          userUuid: _userUuid,
+        child: Column(
+          children: [
+            HekaHealthWidget(
+              apiKey: _apiKey,
+              userUuid: _userUuid,
+            ),
+            ElevatedButton(
+                onPressed: () async {
+                  final result = await FlutterWebAuth.authenticate(
+                      url:
+                          "https://www.strava.com/oauth/authorize?client_id=101208&response_type=code&redirect_uri=com.heka.health://callback&approval_prompt=force&scope=read",
+                      callbackUrlScheme: "com.heka.health");
+
+                  final code = Uri.parse(result).queryParameters['code'];
+                  print(code);
+                },
+                child: const Text('Sign In'))
+          ],
         ),
       ),
     );
