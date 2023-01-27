@@ -30,6 +30,8 @@ mixin _$GoogleFitConnectState {
         tokenInvalidated,
     required TResult Function(String userUuid, String? paymentPlan)
         makingConnection,
+    required TResult Function(String userUuid, String? paymentPlan)
+        disconnecting,
     required TResult Function(
             Connection connection, String userUuid, String? paymentPlan)
         connected,
@@ -47,6 +49,7 @@ mixin _$GoogleFitConnectState {
             Connection connection, String userUuid, String? paymentPlan)?
         tokenInvalidated,
     TResult? Function(String userUuid, String? paymentPlan)? makingConnection,
+    TResult? Function(String userUuid, String? paymentPlan)? disconnecting,
     TResult? Function(
             Connection connection, String userUuid, String? paymentPlan)?
         connected,
@@ -64,6 +67,7 @@ mixin _$GoogleFitConnectState {
             Connection connection, String userUuid, String? paymentPlan)?
         tokenInvalidated,
     TResult Function(String userUuid, String? paymentPlan)? makingConnection,
+    TResult Function(String userUuid, String? paymentPlan)? disconnecting,
     TResult Function(
             Connection connection, String userUuid, String? paymentPlan)?
         connected,
@@ -80,6 +84,7 @@ mixin _$GoogleFitConnectState {
     required TResult Function(_NoConnection value) noConnection,
     required TResult Function(_TokenInvalidated value) tokenInvalidated,
     required TResult Function(_MakingConnection value) makingConnection,
+    required TResult Function(_Disconnecting value) disconnecting,
     required TResult Function(_Connected value) connected,
     required TResult Function(_Error value) error,
   }) =>
@@ -91,6 +96,7 @@ mixin _$GoogleFitConnectState {
     TResult? Function(_NoConnection value)? noConnection,
     TResult? Function(_TokenInvalidated value)? tokenInvalidated,
     TResult? Function(_MakingConnection value)? makingConnection,
+    TResult? Function(_Disconnecting value)? disconnecting,
     TResult? Function(_Connected value)? connected,
     TResult? Function(_Error value)? error,
   }) =>
@@ -102,6 +108,7 @@ mixin _$GoogleFitConnectState {
     TResult Function(_NoConnection value)? noConnection,
     TResult Function(_TokenInvalidated value)? tokenInvalidated,
     TResult Function(_MakingConnection value)? makingConnection,
+    TResult Function(_Disconnecting value)? disconnecting,
     TResult Function(_Connected value)? connected,
     TResult Function(_Error value)? error,
     required TResult orElse(),
@@ -237,6 +244,8 @@ class _$_Initial implements _Initial {
         tokenInvalidated,
     required TResult Function(String userUuid, String? paymentPlan)
         makingConnection,
+    required TResult Function(String userUuid, String? paymentPlan)
+        disconnecting,
     required TResult Function(
             Connection connection, String userUuid, String? paymentPlan)
         connected,
@@ -257,6 +266,7 @@ class _$_Initial implements _Initial {
             Connection connection, String userUuid, String? paymentPlan)?
         tokenInvalidated,
     TResult? Function(String userUuid, String? paymentPlan)? makingConnection,
+    TResult? Function(String userUuid, String? paymentPlan)? disconnecting,
     TResult? Function(
             Connection connection, String userUuid, String? paymentPlan)?
         connected,
@@ -277,6 +287,7 @@ class _$_Initial implements _Initial {
             Connection connection, String userUuid, String? paymentPlan)?
         tokenInvalidated,
     TResult Function(String userUuid, String? paymentPlan)? makingConnection,
+    TResult Function(String userUuid, String? paymentPlan)? disconnecting,
     TResult Function(
             Connection connection, String userUuid, String? paymentPlan)?
         connected,
@@ -299,6 +310,7 @@ class _$_Initial implements _Initial {
     required TResult Function(_NoConnection value) noConnection,
     required TResult Function(_TokenInvalidated value) tokenInvalidated,
     required TResult Function(_MakingConnection value) makingConnection,
+    required TResult Function(_Disconnecting value) disconnecting,
     required TResult Function(_Connected value) connected,
     required TResult Function(_Error value) error,
   }) {
@@ -313,6 +325,7 @@ class _$_Initial implements _Initial {
     TResult? Function(_NoConnection value)? noConnection,
     TResult? Function(_TokenInvalidated value)? tokenInvalidated,
     TResult? Function(_MakingConnection value)? makingConnection,
+    TResult? Function(_Disconnecting value)? disconnecting,
     TResult? Function(_Connected value)? connected,
     TResult? Function(_Error value)? error,
   }) {
@@ -327,6 +340,7 @@ class _$_Initial implements _Initial {
     TResult Function(_NoConnection value)? noConnection,
     TResult Function(_TokenInvalidated value)? tokenInvalidated,
     TResult Function(_MakingConnection value)? makingConnection,
+    TResult Function(_Disconnecting value)? disconnecting,
     TResult Function(_Connected value)? connected,
     TResult Function(_Error value)? error,
     required TResult orElse(),
@@ -441,6 +455,8 @@ class _$_CheckingConnection implements _CheckingConnection {
         tokenInvalidated,
     required TResult Function(String userUuid, String? paymentPlan)
         makingConnection,
+    required TResult Function(String userUuid, String? paymentPlan)
+        disconnecting,
     required TResult Function(
             Connection connection, String userUuid, String? paymentPlan)
         connected,
@@ -461,6 +477,7 @@ class _$_CheckingConnection implements _CheckingConnection {
             Connection connection, String userUuid, String? paymentPlan)?
         tokenInvalidated,
     TResult? Function(String userUuid, String? paymentPlan)? makingConnection,
+    TResult? Function(String userUuid, String? paymentPlan)? disconnecting,
     TResult? Function(
             Connection connection, String userUuid, String? paymentPlan)?
         connected,
@@ -481,6 +498,7 @@ class _$_CheckingConnection implements _CheckingConnection {
             Connection connection, String userUuid, String? paymentPlan)?
         tokenInvalidated,
     TResult Function(String userUuid, String? paymentPlan)? makingConnection,
+    TResult Function(String userUuid, String? paymentPlan)? disconnecting,
     TResult Function(
             Connection connection, String userUuid, String? paymentPlan)?
         connected,
@@ -503,6 +521,7 @@ class _$_CheckingConnection implements _CheckingConnection {
     required TResult Function(_NoConnection value) noConnection,
     required TResult Function(_TokenInvalidated value) tokenInvalidated,
     required TResult Function(_MakingConnection value) makingConnection,
+    required TResult Function(_Disconnecting value) disconnecting,
     required TResult Function(_Connected value) connected,
     required TResult Function(_Error value) error,
   }) {
@@ -517,6 +536,7 @@ class _$_CheckingConnection implements _CheckingConnection {
     TResult? Function(_NoConnection value)? noConnection,
     TResult? Function(_TokenInvalidated value)? tokenInvalidated,
     TResult? Function(_MakingConnection value)? makingConnection,
+    TResult? Function(_Disconnecting value)? disconnecting,
     TResult? Function(_Connected value)? connected,
     TResult? Function(_Error value)? error,
   }) {
@@ -531,6 +551,7 @@ class _$_CheckingConnection implements _CheckingConnection {
     TResult Function(_NoConnection value)? noConnection,
     TResult Function(_TokenInvalidated value)? tokenInvalidated,
     TResult Function(_MakingConnection value)? makingConnection,
+    TResult Function(_Disconnecting value)? disconnecting,
     TResult Function(_Connected value)? connected,
     TResult Function(_Error value)? error,
     required TResult orElse(),
@@ -643,6 +664,8 @@ class _$_NoConnection implements _NoConnection {
         tokenInvalidated,
     required TResult Function(String userUuid, String? paymentPlan)
         makingConnection,
+    required TResult Function(String userUuid, String? paymentPlan)
+        disconnecting,
     required TResult Function(
             Connection connection, String userUuid, String? paymentPlan)
         connected,
@@ -663,6 +686,7 @@ class _$_NoConnection implements _NoConnection {
             Connection connection, String userUuid, String? paymentPlan)?
         tokenInvalidated,
     TResult? Function(String userUuid, String? paymentPlan)? makingConnection,
+    TResult? Function(String userUuid, String? paymentPlan)? disconnecting,
     TResult? Function(
             Connection connection, String userUuid, String? paymentPlan)?
         connected,
@@ -683,6 +707,7 @@ class _$_NoConnection implements _NoConnection {
             Connection connection, String userUuid, String? paymentPlan)?
         tokenInvalidated,
     TResult Function(String userUuid, String? paymentPlan)? makingConnection,
+    TResult Function(String userUuid, String? paymentPlan)? disconnecting,
     TResult Function(
             Connection connection, String userUuid, String? paymentPlan)?
         connected,
@@ -705,6 +730,7 @@ class _$_NoConnection implements _NoConnection {
     required TResult Function(_NoConnection value) noConnection,
     required TResult Function(_TokenInvalidated value) tokenInvalidated,
     required TResult Function(_MakingConnection value) makingConnection,
+    required TResult Function(_Disconnecting value) disconnecting,
     required TResult Function(_Connected value) connected,
     required TResult Function(_Error value) error,
   }) {
@@ -719,6 +745,7 @@ class _$_NoConnection implements _NoConnection {
     TResult? Function(_NoConnection value)? noConnection,
     TResult? Function(_TokenInvalidated value)? tokenInvalidated,
     TResult? Function(_MakingConnection value)? makingConnection,
+    TResult? Function(_Disconnecting value)? disconnecting,
     TResult? Function(_Connected value)? connected,
     TResult? Function(_Error value)? error,
   }) {
@@ -733,6 +760,7 @@ class _$_NoConnection implements _NoConnection {
     TResult Function(_NoConnection value)? noConnection,
     TResult Function(_TokenInvalidated value)? tokenInvalidated,
     TResult Function(_MakingConnection value)? makingConnection,
+    TResult Function(_Disconnecting value)? disconnecting,
     TResult Function(_Connected value)? connected,
     TResult Function(_Error value)? error,
     required TResult orElse(),
@@ -866,6 +894,8 @@ class _$_TokenInvalidated implements _TokenInvalidated {
         tokenInvalidated,
     required TResult Function(String userUuid, String? paymentPlan)
         makingConnection,
+    required TResult Function(String userUuid, String? paymentPlan)
+        disconnecting,
     required TResult Function(
             Connection connection, String userUuid, String? paymentPlan)
         connected,
@@ -886,6 +916,7 @@ class _$_TokenInvalidated implements _TokenInvalidated {
             Connection connection, String userUuid, String? paymentPlan)?
         tokenInvalidated,
     TResult? Function(String userUuid, String? paymentPlan)? makingConnection,
+    TResult? Function(String userUuid, String? paymentPlan)? disconnecting,
     TResult? Function(
             Connection connection, String userUuid, String? paymentPlan)?
         connected,
@@ -906,6 +937,7 @@ class _$_TokenInvalidated implements _TokenInvalidated {
             Connection connection, String userUuid, String? paymentPlan)?
         tokenInvalidated,
     TResult Function(String userUuid, String? paymentPlan)? makingConnection,
+    TResult Function(String userUuid, String? paymentPlan)? disconnecting,
     TResult Function(
             Connection connection, String userUuid, String? paymentPlan)?
         connected,
@@ -928,6 +960,7 @@ class _$_TokenInvalidated implements _TokenInvalidated {
     required TResult Function(_NoConnection value) noConnection,
     required TResult Function(_TokenInvalidated value) tokenInvalidated,
     required TResult Function(_MakingConnection value) makingConnection,
+    required TResult Function(_Disconnecting value) disconnecting,
     required TResult Function(_Connected value) connected,
     required TResult Function(_Error value) error,
   }) {
@@ -942,6 +975,7 @@ class _$_TokenInvalidated implements _TokenInvalidated {
     TResult? Function(_NoConnection value)? noConnection,
     TResult? Function(_TokenInvalidated value)? tokenInvalidated,
     TResult? Function(_MakingConnection value)? makingConnection,
+    TResult? Function(_Disconnecting value)? disconnecting,
     TResult? Function(_Connected value)? connected,
     TResult? Function(_Error value)? error,
   }) {
@@ -956,6 +990,7 @@ class _$_TokenInvalidated implements _TokenInvalidated {
     TResult Function(_NoConnection value)? noConnection,
     TResult Function(_TokenInvalidated value)? tokenInvalidated,
     TResult Function(_MakingConnection value)? makingConnection,
+    TResult Function(_Disconnecting value)? disconnecting,
     TResult Function(_Connected value)? connected,
     TResult Function(_Error value)? error,
     required TResult orElse(),
@@ -1070,6 +1105,8 @@ class _$_MakingConnection implements _MakingConnection {
         tokenInvalidated,
     required TResult Function(String userUuid, String? paymentPlan)
         makingConnection,
+    required TResult Function(String userUuid, String? paymentPlan)
+        disconnecting,
     required TResult Function(
             Connection connection, String userUuid, String? paymentPlan)
         connected,
@@ -1090,6 +1127,7 @@ class _$_MakingConnection implements _MakingConnection {
             Connection connection, String userUuid, String? paymentPlan)?
         tokenInvalidated,
     TResult? Function(String userUuid, String? paymentPlan)? makingConnection,
+    TResult? Function(String userUuid, String? paymentPlan)? disconnecting,
     TResult? Function(
             Connection connection, String userUuid, String? paymentPlan)?
         connected,
@@ -1110,6 +1148,7 @@ class _$_MakingConnection implements _MakingConnection {
             Connection connection, String userUuid, String? paymentPlan)?
         tokenInvalidated,
     TResult Function(String userUuid, String? paymentPlan)? makingConnection,
+    TResult Function(String userUuid, String? paymentPlan)? disconnecting,
     TResult Function(
             Connection connection, String userUuid, String? paymentPlan)?
         connected,
@@ -1132,6 +1171,7 @@ class _$_MakingConnection implements _MakingConnection {
     required TResult Function(_NoConnection value) noConnection,
     required TResult Function(_TokenInvalidated value) tokenInvalidated,
     required TResult Function(_MakingConnection value) makingConnection,
+    required TResult Function(_Disconnecting value) disconnecting,
     required TResult Function(_Connected value) connected,
     required TResult Function(_Error value) error,
   }) {
@@ -1146,6 +1186,7 @@ class _$_MakingConnection implements _MakingConnection {
     TResult? Function(_NoConnection value)? noConnection,
     TResult? Function(_TokenInvalidated value)? tokenInvalidated,
     TResult? Function(_MakingConnection value)? makingConnection,
+    TResult? Function(_Disconnecting value)? disconnecting,
     TResult? Function(_Connected value)? connected,
     TResult? Function(_Error value)? error,
   }) {
@@ -1160,6 +1201,7 @@ class _$_MakingConnection implements _MakingConnection {
     TResult Function(_NoConnection value)? noConnection,
     TResult Function(_TokenInvalidated value)? tokenInvalidated,
     TResult Function(_MakingConnection value)? makingConnection,
+    TResult Function(_Disconnecting value)? disconnecting,
     TResult Function(_Connected value)? connected,
     TResult Function(_Error value)? error,
     required TResult orElse(),
@@ -1183,6 +1225,215 @@ abstract class _MakingConnection implements GoogleFitConnectState {
   @override
   @JsonKey(ignore: true)
   _$$_MakingConnectionCopyWith<_$_MakingConnection> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$_DisconnectingCopyWith<$Res>
+    implements $GoogleFitConnectStateCopyWith<$Res> {
+  factory _$$_DisconnectingCopyWith(
+          _$_Disconnecting value, $Res Function(_$_Disconnecting) then) =
+      __$$_DisconnectingCopyWithImpl<$Res>;
+  @override
+  @useResult
+  $Res call({String userUuid, String? paymentPlan});
+}
+
+/// @nodoc
+class __$$_DisconnectingCopyWithImpl<$Res>
+    extends _$GoogleFitConnectStateCopyWithImpl<$Res, _$_Disconnecting>
+    implements _$$_DisconnectingCopyWith<$Res> {
+  __$$_DisconnectingCopyWithImpl(
+      _$_Disconnecting _value, $Res Function(_$_Disconnecting) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? userUuid = null,
+    Object? paymentPlan = freezed,
+  }) {
+    return _then(_$_Disconnecting(
+      userUuid: null == userUuid
+          ? _value.userUuid
+          : userUuid // ignore: cast_nullable_to_non_nullable
+              as String,
+      paymentPlan: freezed == paymentPlan
+          ? _value.paymentPlan
+          : paymentPlan // ignore: cast_nullable_to_non_nullable
+              as String?,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$_Disconnecting implements _Disconnecting {
+  const _$_Disconnecting({required this.userUuid, required this.paymentPlan});
+
+  @override
+  final String userUuid;
+  @override
+  final String? paymentPlan;
+
+  @override
+  String toString() {
+    return 'GoogleFitConnectState.disconnecting(userUuid: $userUuid, paymentPlan: $paymentPlan)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$_Disconnecting &&
+            (identical(other.userUuid, userUuid) ||
+                other.userUuid == userUuid) &&
+            (identical(other.paymentPlan, paymentPlan) ||
+                other.paymentPlan == paymentPlan));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, userUuid, paymentPlan);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$_DisconnectingCopyWith<_$_Disconnecting> get copyWith =>
+      __$$_DisconnectingCopyWithImpl<_$_Disconnecting>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(String userUuid, String? paymentPlan) initial,
+    required TResult Function(String userUuid, String? paymentPlan)
+        checkingConnection,
+    required TResult Function(String userUuid, String? paymentPlan)
+        noConnection,
+    required TResult Function(
+            Connection connection, String userUuid, String? paymentPlan)
+        tokenInvalidated,
+    required TResult Function(String userUuid, String? paymentPlan)
+        makingConnection,
+    required TResult Function(String userUuid, String? paymentPlan)
+        disconnecting,
+    required TResult Function(
+            Connection connection, String userUuid, String? paymentPlan)
+        connected,
+    required TResult Function(
+            HekaHealthError error, String userUuid, String? paymentPlan)
+        error,
+  }) {
+    return disconnecting(userUuid, paymentPlan);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(String userUuid, String? paymentPlan)? initial,
+    TResult? Function(String userUuid, String? paymentPlan)? checkingConnection,
+    TResult? Function(String userUuid, String? paymentPlan)? noConnection,
+    TResult? Function(
+            Connection connection, String userUuid, String? paymentPlan)?
+        tokenInvalidated,
+    TResult? Function(String userUuid, String? paymentPlan)? makingConnection,
+    TResult? Function(String userUuid, String? paymentPlan)? disconnecting,
+    TResult? Function(
+            Connection connection, String userUuid, String? paymentPlan)?
+        connected,
+    TResult? Function(
+            HekaHealthError error, String userUuid, String? paymentPlan)?
+        error,
+  }) {
+    return disconnecting?.call(userUuid, paymentPlan);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(String userUuid, String? paymentPlan)? initial,
+    TResult Function(String userUuid, String? paymentPlan)? checkingConnection,
+    TResult Function(String userUuid, String? paymentPlan)? noConnection,
+    TResult Function(
+            Connection connection, String userUuid, String? paymentPlan)?
+        tokenInvalidated,
+    TResult Function(String userUuid, String? paymentPlan)? makingConnection,
+    TResult Function(String userUuid, String? paymentPlan)? disconnecting,
+    TResult Function(
+            Connection connection, String userUuid, String? paymentPlan)?
+        connected,
+    TResult Function(
+            HekaHealthError error, String userUuid, String? paymentPlan)?
+        error,
+    required TResult orElse(),
+  }) {
+    if (disconnecting != null) {
+      return disconnecting(userUuid, paymentPlan);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Initial value) initial,
+    required TResult Function(_CheckingConnection value) checkingConnection,
+    required TResult Function(_NoConnection value) noConnection,
+    required TResult Function(_TokenInvalidated value) tokenInvalidated,
+    required TResult Function(_MakingConnection value) makingConnection,
+    required TResult Function(_Disconnecting value) disconnecting,
+    required TResult Function(_Connected value) connected,
+    required TResult Function(_Error value) error,
+  }) {
+    return disconnecting(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_Initial value)? initial,
+    TResult? Function(_CheckingConnection value)? checkingConnection,
+    TResult? Function(_NoConnection value)? noConnection,
+    TResult? Function(_TokenInvalidated value)? tokenInvalidated,
+    TResult? Function(_MakingConnection value)? makingConnection,
+    TResult? Function(_Disconnecting value)? disconnecting,
+    TResult? Function(_Connected value)? connected,
+    TResult? Function(_Error value)? error,
+  }) {
+    return disconnecting?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Initial value)? initial,
+    TResult Function(_CheckingConnection value)? checkingConnection,
+    TResult Function(_NoConnection value)? noConnection,
+    TResult Function(_TokenInvalidated value)? tokenInvalidated,
+    TResult Function(_MakingConnection value)? makingConnection,
+    TResult Function(_Disconnecting value)? disconnecting,
+    TResult Function(_Connected value)? connected,
+    TResult Function(_Error value)? error,
+    required TResult orElse(),
+  }) {
+    if (disconnecting != null) {
+      return disconnecting(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _Disconnecting implements GoogleFitConnectState {
+  const factory _Disconnecting(
+      {required final String userUuid,
+      required final String? paymentPlan}) = _$_Disconnecting;
+
+  @override
+  String get userUuid;
+  @override
+  String? get paymentPlan;
+  @override
+  @JsonKey(ignore: true)
+  _$$_DisconnectingCopyWith<_$_Disconnecting> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
@@ -1293,6 +1544,8 @@ class _$_Connected implements _Connected {
         tokenInvalidated,
     required TResult Function(String userUuid, String? paymentPlan)
         makingConnection,
+    required TResult Function(String userUuid, String? paymentPlan)
+        disconnecting,
     required TResult Function(
             Connection connection, String userUuid, String? paymentPlan)
         connected,
@@ -1313,6 +1566,7 @@ class _$_Connected implements _Connected {
             Connection connection, String userUuid, String? paymentPlan)?
         tokenInvalidated,
     TResult? Function(String userUuid, String? paymentPlan)? makingConnection,
+    TResult? Function(String userUuid, String? paymentPlan)? disconnecting,
     TResult? Function(
             Connection connection, String userUuid, String? paymentPlan)?
         connected,
@@ -1333,6 +1587,7 @@ class _$_Connected implements _Connected {
             Connection connection, String userUuid, String? paymentPlan)?
         tokenInvalidated,
     TResult Function(String userUuid, String? paymentPlan)? makingConnection,
+    TResult Function(String userUuid, String? paymentPlan)? disconnecting,
     TResult Function(
             Connection connection, String userUuid, String? paymentPlan)?
         connected,
@@ -1355,6 +1610,7 @@ class _$_Connected implements _Connected {
     required TResult Function(_NoConnection value) noConnection,
     required TResult Function(_TokenInvalidated value) tokenInvalidated,
     required TResult Function(_MakingConnection value) makingConnection,
+    required TResult Function(_Disconnecting value) disconnecting,
     required TResult Function(_Connected value) connected,
     required TResult Function(_Error value) error,
   }) {
@@ -1369,6 +1625,7 @@ class _$_Connected implements _Connected {
     TResult? Function(_NoConnection value)? noConnection,
     TResult? Function(_TokenInvalidated value)? tokenInvalidated,
     TResult? Function(_MakingConnection value)? makingConnection,
+    TResult? Function(_Disconnecting value)? disconnecting,
     TResult? Function(_Connected value)? connected,
     TResult? Function(_Error value)? error,
   }) {
@@ -1383,6 +1640,7 @@ class _$_Connected implements _Connected {
     TResult Function(_NoConnection value)? noConnection,
     TResult Function(_TokenInvalidated value)? tokenInvalidated,
     TResult Function(_MakingConnection value)? makingConnection,
+    TResult Function(_Disconnecting value)? disconnecting,
     TResult Function(_Connected value)? connected,
     TResult Function(_Error value)? error,
     required TResult orElse(),
@@ -1513,6 +1771,8 @@ class _$_Error implements _Error {
         tokenInvalidated,
     required TResult Function(String userUuid, String? paymentPlan)
         makingConnection,
+    required TResult Function(String userUuid, String? paymentPlan)
+        disconnecting,
     required TResult Function(
             Connection connection, String userUuid, String? paymentPlan)
         connected,
@@ -1533,6 +1793,7 @@ class _$_Error implements _Error {
             Connection connection, String userUuid, String? paymentPlan)?
         tokenInvalidated,
     TResult? Function(String userUuid, String? paymentPlan)? makingConnection,
+    TResult? Function(String userUuid, String? paymentPlan)? disconnecting,
     TResult? Function(
             Connection connection, String userUuid, String? paymentPlan)?
         connected,
@@ -1553,6 +1814,7 @@ class _$_Error implements _Error {
             Connection connection, String userUuid, String? paymentPlan)?
         tokenInvalidated,
     TResult Function(String userUuid, String? paymentPlan)? makingConnection,
+    TResult Function(String userUuid, String? paymentPlan)? disconnecting,
     TResult Function(
             Connection connection, String userUuid, String? paymentPlan)?
         connected,
@@ -1575,6 +1837,7 @@ class _$_Error implements _Error {
     required TResult Function(_NoConnection value) noConnection,
     required TResult Function(_TokenInvalidated value) tokenInvalidated,
     required TResult Function(_MakingConnection value) makingConnection,
+    required TResult Function(_Disconnecting value) disconnecting,
     required TResult Function(_Connected value) connected,
     required TResult Function(_Error value) error,
   }) {
@@ -1589,6 +1852,7 @@ class _$_Error implements _Error {
     TResult? Function(_NoConnection value)? noConnection,
     TResult? Function(_TokenInvalidated value)? tokenInvalidated,
     TResult? Function(_MakingConnection value)? makingConnection,
+    TResult? Function(_Disconnecting value)? disconnecting,
     TResult? Function(_Connected value)? connected,
     TResult? Function(_Error value)? error,
   }) {
@@ -1603,6 +1867,7 @@ class _$_Error implements _Error {
     TResult Function(_NoConnection value)? noConnection,
     TResult Function(_TokenInvalidated value)? tokenInvalidated,
     TResult Function(_MakingConnection value)? makingConnection,
+    TResult Function(_Disconnecting value)? disconnecting,
     TResult Function(_Connected value)? connected,
     TResult Function(_Error value)? error,
     required TResult orElse(),

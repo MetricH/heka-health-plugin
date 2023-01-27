@@ -141,7 +141,7 @@ class GoogleFitConnectCubit extends Cubit<GoogleFitConnectState> {
   }
 
   Future<void> disconnect(int connectionId) async {
-    emit(GoogleFitConnectState.makingConnection(
+    emit(GoogleFitConnectState.disconnecting(
       userUuid: state.userUuid,
       paymentPlan: state.paymentPlan,
     ));

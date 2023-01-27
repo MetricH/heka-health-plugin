@@ -75,6 +75,10 @@ class _GoogleFitConectButtonState extends State<GoogleFitConectButton> {
                       '',
                       style: Theme.of(context).textTheme.caption,
                     ),
+                    disconnecting: (userUuid, paymentPlan) => Text(
+                      'Disconnecting...',
+                      style: Theme.of(context).textTheme.caption,
+                    ),
                     checkingConnection: (_, plan) => Text(
                       'Checking connection...',
                       style: Theme.of(context).textTheme.caption,
@@ -107,6 +111,12 @@ class _GoogleFitConectButtonState extends State<GoogleFitConectButton> {
                         color: Colors.red,
                       ),
                     ),
+                    disconnecting: (userUuid, plan) => const SizedBox.square(
+                      dimension: 16,
+                      child: CircularProgressIndicator(
+                        color: Colors.red,
+                      ),
+                    ),
                     makingConnection: (userUuid, plan) => const SizedBox.square(
                       dimension: 16,
                       child: CircularProgressIndicator(
@@ -115,6 +125,7 @@ class _GoogleFitConectButtonState extends State<GoogleFitConectButton> {
                     ),
                     orElse: () => ElevatedButton(
                       onPressed: state.when(
+                        disconnecting: (userUuid, paymentPlan) => null,
                         error: (error, userUuid, plan) => null,
                         initial: (_, plan) => null,
                         checkingConnection: (_, plan) => null,
@@ -144,6 +155,7 @@ class _GoogleFitConectButtonState extends State<GoogleFitConectButton> {
                         error: (error, userUuid, plan) => const SizedBox(),
                         initial: (_, plan) => const Text(''),
                         checkingConnection: (_, plan) => const Text('...'),
+                        disconnecting: (_, plan) => const Text('...'),
                         noConnection: (_, plan) => const Text('Connect'),
                         tokenInvalidated: (_, __, plan) =>
                             const Text('Connect Again'),

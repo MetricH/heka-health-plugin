@@ -33,8 +33,8 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
-  static const _apiKey = '<put your API key here>';
-  final _userUuid = '<put your user uuid here>';
+  static const _apiKey = '<your api key here>';
+  final _userUuid = '<your user uuid here>';
 
   @override
   Widget build(BuildContext context) {

@@ -23,6 +23,10 @@ class GoogleFitConnectState with _$GoogleFitConnectState {
     required String userUuid,
     required String? paymentPlan,
   }) = _MakingConnection;
+  const factory GoogleFitConnectState.disconnecting({
+    required String userUuid,
+    required String? paymentPlan,
+  }) = _Disconnecting;
   const factory GoogleFitConnectState.connected(
     Connection connection, {
     required String userUuid,
