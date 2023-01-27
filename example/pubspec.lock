@@ -87,7 +87,7 @@ packages:
     source: sdk
     version: "0.0.0"
   flutter_appauth:
-    dependency: transitive
+    dependency: "direct main"
     description:
       name: flutter_appauth
       sha256: cbb075ec8fa11d3241cff5e4c20db8aa0732cc0d0bbb3f59b2172d23782dfc0b

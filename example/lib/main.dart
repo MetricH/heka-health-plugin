@@ -6,6 +6,7 @@ import 'package:heka_health/heka_health.dart';
 import 'package:heka_health_example/strava.dart';
 
 import 'authorization_page.dart';
+import 'package:flutter_appauth/flutter_appauth.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -57,13 +58,28 @@ class _HomePageState extends State<HomePage> {
             ),
             ElevatedButton(
                 onPressed: () async {
-                  final result = await FlutterWebAuth.authenticate(
-                      url:
-                          "https://www.strava.com/oauth/authorize?client_id=101208&response_type=code&redirect_uri=com.heka.health://callback&approval_prompt=force&scope=read",
-                      callbackUrlScheme: "com.heka.health");
-
-                  final code = Uri.parse(result).queryParameters['code'];
-                  print(code);
+                  try {
+                    final result = await FlutterAppAuth().authorize(
+                      AuthorizationRequest(
+                        '101208',
+                        'com.heka.health://callback',
+                        additionalParameters: <String, String>{
+                          'approval_prompt': 'force',
+                        },
+                        
+                        serviceConfiguration:
+                            const AuthorizationServiceConfiguration(
+                          authorizationEndpoint:
+                              'https://www.strava.com/oauth/authorize',
+                          tokenEndpoint: 'https://www.strava.com/oauth/token',
+                        ),
+                        scopes: <String>['read'],
+                      ),
+                    );
+                    
+                  } on Exception catch (e, s) {
+                    debugPrint('login error: $e - stack: $s');
+                  }
                 },
                 child: const Text('Sign In'))
           ],

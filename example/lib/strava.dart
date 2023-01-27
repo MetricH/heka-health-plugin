@@ -7,7 +7,7 @@
 // final tokenEndpoint = Uri.parse('https://www.strava.com/oauth/token');
 // final redirectUrl = Uri.parse('http://localhost:3000/callback');
 // const clientId = '101208';
-// const clientSecret = '02be9ce83847654ebd0beb337c2a5c4318c33000';
+ const clientSecret = '02be9ce83847654ebd0beb337c2a5c4318c33000';
 
 // AuthorizationCodeGrant get authorizationCodeGrant => AuthorizationCodeGrant(
 //       clientId,
