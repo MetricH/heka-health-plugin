@@ -1,4 +1,5 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
+import 'package:heka_health/models/connected_platform.dart';
 part 'connection.freezed.dart';
 part 'connection.g.dart';
 
@@ -17,6 +18,8 @@ class Connection with _$Connection {
     @JsonKey(name: 'logged_in') required bool loggedIn,
     // ignore: invalid_annotation_target
     @JsonKey(name: 'last_sync') String? lastSync,
+    @JsonKey(name: 'connected_platforms')
+        required List<ConnectedPlatform> connectedPlatforms,
   }) = _Connection;
 
   factory Connection.fromJson(Map<String, dynamic> json) =>

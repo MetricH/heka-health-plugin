@@ -15,6 +15,9 @@ _$_Connection _$$_ConnectionFromJson(Map<String, dynamic> json) =>
       app: json['app'] as int,
       loggedIn: json['logged_in'] as bool,
       lastSync: json['last_sync'] as String?,
+      connectedPlatforms: (json['connected_platforms'] as List<dynamic>)
+          .map((e) => ConnectedPlatform.fromJson(e as Map<String, dynamic>))
+          .toList(),
     );
 
 Map<String, dynamic> _$$_ConnectionToJson(_$_Connection instance) =>
@@ -26,4 +29,5 @@ Map<String, dynamic> _$$_ConnectionToJson(_$_Connection instance) =>
       'app': instance.app,
       'logged_in': instance.loggedIn,
       'last_sync': instance.lastSync,
+      'connected_platforms': instance.connectedPlatforms,
     };

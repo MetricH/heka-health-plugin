@@ -1,4 +1,3 @@
-
 // coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
 // ignore_for_file: type=lint
@@ -36,6 +35,9 @@ mixin _$Connection {
       throw _privateConstructorUsedError; // ignore: invalid_annotation_target
   @JsonKey(name: 'last_sync')
   String? get lastSync => throw _privateConstructorUsedError;
+  @JsonKey(name: 'connected_platforms')
+  List<ConnectedPlatform> get connectedPlatforms =>
+      throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -51,12 +53,18 @@ abstract class $ConnectionCopyWith<$Res> {
   @useResult
   $Res call(
       {int id,
-      @JsonKey(name: 'user_uuid') String userUuid,
+      @JsonKey(name: 'user_uuid')
+          String userUuid,
       String platform,
-      @JsonKey(name: 'google_fit_refresh_token') String? googleFitRefreshToken,
+      @JsonKey(name: 'google_fit_refresh_token')
+          String? googleFitRefreshToken,
       int app,
-      @JsonKey(name: 'logged_in') bool loggedIn,
-      @JsonKey(name: 'last_sync') String? lastSync});
+      @JsonKey(name: 'logged_in')
+          bool loggedIn,
+      @JsonKey(name: 'last_sync')
+          String? lastSync,
+      @JsonKey(name: 'connected_platforms')
+          List<ConnectedPlatform> connectedPlatforms});
 }
 
 /// @nodoc
@@ -79,6 +87,7 @@ class _$ConnectionCopyWithImpl<$Res, $Val extends Connection>
     Object? app = null,
     Object? loggedIn = null,
     Object? lastSync = freezed,
+    Object? connectedPlatforms = null,
   }) {
     return _then(_value.copyWith(
       id: null == id
@@ -109,6 +118,10 @@ class _$ConnectionCopyWithImpl<$Res, $Val extends Connection>
           ? _value.lastSync
           : lastSync // ignore: cast_nullable_to_non_nullable
               as String?,
+      connectedPlatforms: null == connectedPlatforms
+          ? _value.connectedPlatforms
+          : connectedPlatforms // ignore: cast_nullable_to_non_nullable
+              as List<ConnectedPlatform>,
     ) as $Val);
   }
 }
@@ -123,12 +136,18 @@ abstract class _$$_ConnectionCopyWith<$Res>
   @useResult
   $Res call(
       {int id,
-      @JsonKey(name: 'user_uuid') String userUuid,
+      @JsonKey(name: 'user_uuid')
+          String userUuid,
       String platform,
-      @JsonKey(name: 'google_fit_refresh_token') String? googleFitRefreshToken,
+      @JsonKey(name: 'google_fit_refresh_token')
+          String? googleFitRefreshToken,
       int app,
-      @JsonKey(name: 'logged_in') bool loggedIn,
-      @JsonKey(name: 'last_sync') String? lastSync});
+      @JsonKey(name: 'logged_in')
+          bool loggedIn,
+      @JsonKey(name: 'last_sync')
+          String? lastSync,
+      @JsonKey(name: 'connected_platforms')
+          List<ConnectedPlatform> connectedPlatforms});
 }
 
 /// @nodoc
@@ -149,6 +168,7 @@ class __$$_ConnectionCopyWithImpl<$Res>
     Object? app = null,
     Object? loggedIn = null,
     Object? lastSync = freezed,
+    Object? connectedPlatforms = null,
   }) {
     return _then(_$_Connection(
       id: null == id
@@ -179,6 +199,10 @@ class __$$_ConnectionCopyWithImpl<$Res>
           ? _value.lastSync
           : lastSync // ignore: cast_nullable_to_non_nullable
               as String?,
+      connectedPlatforms: null == connectedPlatforms
+          ? _value._connectedPlatforms
+          : connectedPlatforms // ignore: cast_nullable_to_non_nullable
+              as List<ConnectedPlatform>,
     ));
   }
 }
@@ -188,13 +212,20 @@ class __$$_ConnectionCopyWithImpl<$Res>
 class _$_Connection extends _Connection {
   const _$_Connection(
       {required this.id,
-      @JsonKey(name: 'user_uuid') required this.userUuid,
+      @JsonKey(name: 'user_uuid')
+          required this.userUuid,
       required this.platform,
-      @JsonKey(name: 'google_fit_refresh_token') this.googleFitRefreshToken,
+      @JsonKey(name: 'google_fit_refresh_token')
+          this.googleFitRefreshToken,
       required this.app,
-      @JsonKey(name: 'logged_in') required this.loggedIn,
-      @JsonKey(name: 'last_sync') this.lastSync})
-      : super._();
+      @JsonKey(name: 'logged_in')
+          required this.loggedIn,
+      @JsonKey(name: 'last_sync')
+          this.lastSync,
+      @JsonKey(name: 'connected_platforms')
+          required final List<ConnectedPlatform> connectedPlatforms})
+      : _connectedPlatforms = connectedPlatforms,
+        super._();
 
   factory _$_Connection.fromJson(Map<String, dynamic> json) =>
       _$$_ConnectionFromJson(json);
@@ -221,10 +252,19 @@ class _$_Connection extends _Connection {
   @override
   @JsonKey(name: 'last_sync')
   final String? lastSync;
+  final List<ConnectedPlatform> _connectedPlatforms;
+  @override
+  @JsonKey(name: 'connected_platforms')
+  List<ConnectedPlatform> get connectedPlatforms {
+    if (_connectedPlatforms is EqualUnmodifiableListView)
+      return _connectedPlatforms;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_connectedPlatforms);
+  }
 
   @override
   String toString() {
-    return 'Connection(id: $id, userUuid: $userUuid, platform: $platform, googleFitRefreshToken: $googleFitRefreshToken, app: $app, loggedIn: $loggedIn, lastSync: $lastSync)';
+    return 'Connection(id: $id, userUuid: $userUuid, platform: $platform, googleFitRefreshToken: $googleFitRefreshToken, app: $app, loggedIn: $loggedIn, lastSync: $lastSync, connectedPlatforms: $connectedPlatforms)';
   }
 
   @override
@@ -243,13 +283,23 @@ class _$_Connection extends _Connection {
             (identical(other.loggedIn, loggedIn) ||
                 other.loggedIn == loggedIn) &&
             (identical(other.lastSync, lastSync) ||
-                other.lastSync == lastSync));
+                other.lastSync == lastSync) &&
+            const DeepCollectionEquality()
+                .equals(other._connectedPlatforms, _connectedPlatforms));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(runtimeType, id, userUuid, platform,
-      googleFitRefreshToken, app, loggedIn, lastSync);
+  int get hashCode => Object.hash(
+      runtimeType,
+      id,
+      userUuid,
+      platform,
+      googleFitRefreshToken,
+      app,
+      loggedIn,
+      lastSync,
+      const DeepCollectionEquality().hash(_connectedPlatforms));
 
   @JsonKey(ignore: true)
   @override
@@ -267,17 +317,20 @@ class _$_Connection extends _Connection {
 
 abstract class _Connection extends Connection {
   const factory _Connection(
-      {required final int id,
-      @JsonKey(name: 'user_uuid')
-          required final String userUuid,
-      required final String platform,
-      @JsonKey(name: 'google_fit_refresh_token')
-          final String? googleFitRefreshToken,
-      required final int app,
-      @JsonKey(name: 'logged_in')
-          required final bool loggedIn,
-      @JsonKey(name: 'last_sync')
-          final String? lastSync}) = _$_Connection;
+          {required final int id,
+          @JsonKey(name: 'user_uuid')
+              required final String userUuid,
+          required final String platform,
+          @JsonKey(name: 'google_fit_refresh_token')
+              final String? googleFitRefreshToken,
+          required final int app,
+          @JsonKey(name: 'logged_in')
+              required final bool loggedIn,
+          @JsonKey(name: 'last_sync')
+              final String? lastSync,
+          @JsonKey(name: 'connected_platforms')
+              required final List<ConnectedPlatform> connectedPlatforms}) =
+      _$_Connection;
   const _Connection._() : super._();
 
   factory _Connection.fromJson(Map<String, dynamic> json) =
@@ -301,6 +354,9 @@ abstract class _Connection extends Connection {
   @override // ignore: invalid_annotation_target
   @JsonKey(name: 'last_sync')
   String? get lastSync;
+  @override
+  @JsonKey(name: 'connected_platforms')
+  List<ConnectedPlatform> get connectedPlatforms;
   @override
   @JsonKey(ignore: true)
   _$$_ConnectionCopyWith<_$_Connection> get copyWith =>
