@@ -67,7 +67,6 @@ class _IosHealthConnectButtonState extends State<IosHealthConnectButton> {
                   contentPadding: const EdgeInsets.symmetric(horizontal: 16),
                   leading: const Icon(
                     MdiIcons.apple,
-                    color: Colors.red,
                   ),
                   title: const Text(
                     'Apple HealthKit',
