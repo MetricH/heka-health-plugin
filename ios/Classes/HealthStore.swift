@@ -194,7 +194,7 @@ class HealthStore {
     
     func initDataTypeToUnit() {
         dataTypeToUnit[ACTIVE_ENERGY_BURNED] = HKUnit.kilocalorie()
-        dataTypeToUnit[AUDIOGRAM] = HKUnit.decibelHearingLevel()
+        // dataTypeToUnit[AUDIOGRAM] = HKUnit.decibelHearingLevel()
         dataTypeToUnit[BASAL_ENERGY_BURNED] = HKUnit.kilocalorie()
         dataTypeToUnit[BLOOD_GLUCOSE] = HKUnit.init(from: "mg/dL")
         dataTypeToUnit[BLOOD_OXYGEN] = HKUnit.percent()
@@ -249,7 +249,7 @@ class HealthStore {
         workoutActivityTypeMap["BASEBALL"] = .baseball
         workoutActivityTypeMap["BASKETBALL"] = .basketball
         workoutActivityTypeMap["CRICKET"] = .cricket
-        workoutActivityTypeMap["DISC_SPORTS"] = .discSports
+        // workoutActivityTypeMap["DISC_SPORTS"] = .discSports
         workoutActivityTypeMap["HANDBALL"] = .handball
         workoutActivityTypeMap["HOCKEY"] = .hockey
         workoutActivityTypeMap["LACROSSE"] = .lacrosse
@@ -279,7 +279,7 @@ class HealthStore {
         workoutActivityTypeMap["STAIR_CLIMBING"] = .stairClimbing
         workoutActivityTypeMap["STAIRS"] = .stairs
         workoutActivityTypeMap["STEP_TRAINING"] = .stepTraining
-        workoutActivityTypeMap["FITNESS_GAMING"] = .fitnessGaming
+        // workoutActivityTypeMap["FITNESS_GAMING"] = .fitnessGaming
         workoutActivityTypeMap["BARRE"] = .barre
         workoutActivityTypeMap["YOGA"] = .yoga
         workoutActivityTypeMap["MIND_AND_BODY"] = .mindAndBody
@@ -542,30 +542,31 @@ class HealthStore {
                 
                 
                 
-            case let (samplesAudiogram as [HKAudiogramSample]) as Any:
-                print("HKAudiogram Sample type data found: ")
-                let dictionaries = samplesAudiogram.map { sample -> NSDictionary in
-                    var frequencies = [Double]()
-                    var leftEarSensitivities = [Double]()
-                    var rightEarSensitivities = [Double]()
-                    for samplePoint in sample.sensitivityPoints {
-                        frequencies.append(samplePoint.frequency.doubleValue(for: HKUnit.hertz()))
-                        leftEarSensitivities.append(samplePoint.leftEarSensitivity!.doubleValue(for: HKUnit.decibelHearingLevel()))
-                        rightEarSensitivities.append(samplePoint.rightEarSensitivity!.doubleValue(for: HKUnit.decibelHearingLevel()))
-                    }
-                    return [
-                        "uuid": "\(sample.uuid)",
-                        "frequencies": frequencies,
-                        "leftEarSensitivities": leftEarSensitivities,
-                        "rightEarSensitivities": rightEarSensitivities,
-                        "date_from": Int(sample.startDate.timeIntervalSince1970 * 1000),
-                        "date_to": Int(sample.endDate.timeIntervalSince1970 * 1000),
-                        "source_id": sample.sourceRevision.source.bundleIdentifier,
-                        "source_name": sample.sourceRevision.source.name
-                    ]
-                }
+            // only on iOS 13 or newer
+            // case let (samplesAudiogram as [HKAudiogramSample]) as Any:
+            //     print("HKAudiogram Sample type data found: ")
+            //     let dictionaries = samplesAudiogram.map { sample -> NSDictionary in
+            //         var frequencies = [Double]()
+            //         var leftEarSensitivities = [Double]()
+            //         var rightEarSensitivities = [Double]()
+            //         for samplePoint in sample.sensitivityPoints {
+            //             frequencies.append(samplePoint.frequency.doubleValue(for: HKUnit.hertz()))
+            //             // leftEarSensitivities.append(samplePoint.leftEarSensitivity!.doubleValue(for: HKUnit.decibelHearingLevel()))
+            //             // rightEarSensitivities.append(samplePoint.rightEarSensitivity!.doubleValue(for: HKUnit.decibelHearingLevel()))
+            //         }
+            //         return [
+            //             "uuid": "\(sample.uuid)",
+            //             "frequencies": frequencies,
+            //             "leftEarSensitivities": leftEarSensitivities,
+            //             "rightEarSensitivities": rightEarSensitivities,
+            //             "date_from": Int(sample.startDate.timeIntervalSince1970 * 1000),
+            //             "date_to": Int(sample.endDate.timeIntervalSince1970 * 1000),
+            //             "source_id": sample.sourceRevision.source.bundleIdentifier,
+            //             "source_name": sample.sourceRevision.source.name
+            //         ]
+            //     }
                 
-                completion(dictionaries)
+            //     completion(dictionaries)
                 
                 
             default:
