@@ -6,7 +6,7 @@ import 'package:flutter_appauth/flutter_appauth.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:heka_health/heka_health_error.dart';
 
-import '../connection.dart';
+import '../models/connection.dart';
 import '../heka_health.dart';
 
 part 'google_fit_connect_state.dart';

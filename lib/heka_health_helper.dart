@@ -4,7 +4,7 @@ import 'package:flutter_appauth/flutter_appauth.dart';
 import 'package:heka_health/extensions.dart';
 import 'package:heka_health/heka_health_error.dart';
 
-import 'connection.dart';
+import 'models/connection.dart';
 import 'heka_health_platform_interface.dart';
 import 'google_credentials.dart';
 
