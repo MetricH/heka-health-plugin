@@ -58,11 +58,12 @@ class _IosHealthConnectButtonState extends State<IosHealthConnectButton> {
       builder: (context, state) {
         return Padding(
           padding: const EdgeInsets.all(8.0),
-          child: Stack(
-            children: [
-              Card(
-                elevation: 2,
-                child: ListTile(
+          child: Card(
+            elevation: 2,
+            child: Column(
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                ListTile(
                   contentPadding: const EdgeInsets.symmetric(horizontal: 16),
                   leading: const Icon(
                     MdiIcons.apple,
@@ -150,12 +151,9 @@ class _IosHealthConnectButtonState extends State<IosHealthConnectButton> {
                     ),
                   ),
                 ),
-              ),
-              if (state.paymentPlan == 'free')
-                Positioned(
-                  bottom: 8,
-                  right: 8,
-                  child: Row(
+                if (state.paymentPlan == 'free') ...[
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.end,
                     children: [
                       Text(
                         'Powered by ',
@@ -174,11 +172,14 @@ class _IosHealthConnectButtonState extends State<IosHealthConnectButton> {
                             fontWeight: FontWeight.bold,
                           ),
                         ),
-                      )
+                      ),
+                      SizedBox(width: 8),
                     ],
                   ),
-                )
-            ],
+                  SizedBox(height: 4),
+                ],
+              ],
+            ),
           ),
         );
       },
