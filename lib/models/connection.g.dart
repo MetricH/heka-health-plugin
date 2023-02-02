@@ -12,8 +12,6 @@ _$_Connection _$$_ConnectionFromJson(Map<String, dynamic> json) =>
       userUuid: json['user_uuid'] as String,
       googleFitRefreshToken: json['google_fit_refresh_token'] as String?,
       app: json['app'] as int,
-      loggedIn: json['logged_in'] as bool,
-      lastSync: json['last_sync'] as String?,
       connectedPlatforms: (json['connected_platforms'] as List<dynamic>)
           .map((e) => ConnectedPlatform.fromJson(e as Map<String, dynamic>))
           .toList(),
@@ -25,7 +23,5 @@ Map<String, dynamic> _$$_ConnectionToJson(_$_Connection instance) =>
       'user_uuid': instance.userUuid,
       'google_fit_refresh_token': instance.googleFitRefreshToken,
       'app': instance.app,
-      'logged_in': instance.loggedIn,
-      'last_sync': instance.lastSync,
       'connected_platforms': instance.connectedPlatforms,
     };

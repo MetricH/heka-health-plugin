@@ -4,6 +4,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:dio/dio.dart';
 import 'package:flutter_appauth/flutter_appauth.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
+import 'package:heka_health/models/connected_platform.dart';
 import 'package:heka_health/models/heka_health_error.dart';
 
 import '../models/connection.dart';
@@ -50,21 +51,23 @@ class GoogleFitConnectCubit extends Cubit<GoogleFitConnectState> {
         paymentPlan: state.paymentPlan,
       ));
     }, (connection) {
-      if (connection == null) {
+      if (connection == null || !connection.isPlatformConnected('google_fit')) {
         emit(GoogleFitConnectState.noConnection(
           userUuid: state.userUuid,
           paymentPlan: state.paymentPlan,
         ));
       } else {
+        ConnectedPlatform googleFitPlatform = connection.connectedPlatforms
+            .firstWhere((element) => element.platform == 'google_fit');
         emit(
-          connection.loggedIn
+          googleFitPlatform.loggedIn
               ? GoogleFitConnectState.connected(
-                  connection,
+                  googleFitPlatform,
                   userUuid: state.userUuid,
                   paymentPlan: state.paymentPlan,
                 )
               : GoogleFitConnectState.tokenInvalidated(
-                  connection,
+                  googleFitPlatform,
                   userUuid: state.userUuid,
                   paymentPlan: state.paymentPlan,
                 ),
@@ -109,8 +112,10 @@ class GoogleFitConnectCubit extends Cubit<GoogleFitConnectState> {
               paymentPlan: state.paymentPlan,
             ));
           }, (connection) {
+            ConnectedPlatform googleFitPlatform = connection.connectedPlatforms
+                .firstWhere((element) => element.platform == 'google_fit');
             emit(GoogleFitConnectState.connected(
-              connection,
+              googleFitPlatform,
               userUuid: state.userUuid,
               paymentPlan: state.paymentPlan,
             ));
@@ -129,8 +134,11 @@ class GoogleFitConnectCubit extends Cubit<GoogleFitConnectState> {
               paymentPlan: state.paymentPlan,
             ));
           }, (connection) {
+            ConnectedPlatform googleFitPlatform = connection.connectedPlatforms
+                .firstWhere((element) => element.platform == 'google_fit');
+
             emit(GoogleFitConnectState.connected(
-              connection,
+              googleFitPlatform,
               userUuid: state.userUuid,
               paymentPlan: state.paymentPlan,
             ));
@@ -156,8 +164,11 @@ class GoogleFitConnectCubit extends Cubit<GoogleFitConnectState> {
         paymentPlan: state.paymentPlan,
       ));
     }, (connection) {
+      ConnectedPlatform googleFitPlatform = connection.connectedPlatforms
+          .firstWhere((element) => element.platform == 'google_fit');
+
       emit(GoogleFitConnectState.tokenInvalidated(
-        connection,
+        googleFitPlatform,
         userUuid: state.userUuid,
         paymentPlan: state.paymentPlan,
       ));

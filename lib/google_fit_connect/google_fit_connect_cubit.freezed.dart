@@ -26,14 +26,14 @@ mixin _$GoogleFitConnectState {
     required TResult Function(String userUuid, String? paymentPlan)
         noConnection,
     required TResult Function(
-            Connection connection, String userUuid, String? paymentPlan)
+            ConnectedPlatform connection, String userUuid, String? paymentPlan)
         tokenInvalidated,
     required TResult Function(String userUuid, String? paymentPlan)
         makingConnection,
     required TResult Function(String userUuid, String? paymentPlan)
         disconnecting,
     required TResult Function(
-            Connection connection, String userUuid, String? paymentPlan)
+            ConnectedPlatform connection, String userUuid, String? paymentPlan)
         connected,
     required TResult Function(
             HekaHealthError error, String userUuid, String? paymentPlan)
@@ -46,12 +46,12 @@ mixin _$GoogleFitConnectState {
     TResult? Function(String userUuid, String? paymentPlan)? checkingConnection,
     TResult? Function(String userUuid, String? paymentPlan)? noConnection,
     TResult? Function(
-            Connection connection, String userUuid, String? paymentPlan)?
+            ConnectedPlatform connection, String userUuid, String? paymentPlan)?
         tokenInvalidated,
     TResult? Function(String userUuid, String? paymentPlan)? makingConnection,
     TResult? Function(String userUuid, String? paymentPlan)? disconnecting,
     TResult? Function(
-            Connection connection, String userUuid, String? paymentPlan)?
+            ConnectedPlatform connection, String userUuid, String? paymentPlan)?
         connected,
     TResult? Function(
             HekaHealthError error, String userUuid, String? paymentPlan)?
@@ -64,12 +64,12 @@ mixin _$GoogleFitConnectState {
     TResult Function(String userUuid, String? paymentPlan)? checkingConnection,
     TResult Function(String userUuid, String? paymentPlan)? noConnection,
     TResult Function(
-            Connection connection, String userUuid, String? paymentPlan)?
+            ConnectedPlatform connection, String userUuid, String? paymentPlan)?
         tokenInvalidated,
     TResult Function(String userUuid, String? paymentPlan)? makingConnection,
     TResult Function(String userUuid, String? paymentPlan)? disconnecting,
     TResult Function(
-            Connection connection, String userUuid, String? paymentPlan)?
+            ConnectedPlatform connection, String userUuid, String? paymentPlan)?
         connected,
     TResult Function(
             HekaHealthError error, String userUuid, String? paymentPlan)?
@@ -240,14 +240,14 @@ class _$_Initial implements _Initial {
     required TResult Function(String userUuid, String? paymentPlan)
         noConnection,
     required TResult Function(
-            Connection connection, String userUuid, String? paymentPlan)
+            ConnectedPlatform connection, String userUuid, String? paymentPlan)
         tokenInvalidated,
     required TResult Function(String userUuid, String? paymentPlan)
         makingConnection,
     required TResult Function(String userUuid, String? paymentPlan)
         disconnecting,
     required TResult Function(
-            Connection connection, String userUuid, String? paymentPlan)
+            ConnectedPlatform connection, String userUuid, String? paymentPlan)
         connected,
     required TResult Function(
             HekaHealthError error, String userUuid, String? paymentPlan)
@@ -263,12 +263,12 @@ class _$_Initial implements _Initial {
     TResult? Function(String userUuid, String? paymentPlan)? checkingConnection,
     TResult? Function(String userUuid, String? paymentPlan)? noConnection,
     TResult? Function(
-            Connection connection, String userUuid, String? paymentPlan)?
+            ConnectedPlatform connection, String userUuid, String? paymentPlan)?
         tokenInvalidated,
     TResult? Function(String userUuid, String? paymentPlan)? makingConnection,
     TResult? Function(String userUuid, String? paymentPlan)? disconnecting,
     TResult? Function(
-            Connection connection, String userUuid, String? paymentPlan)?
+            ConnectedPlatform connection, String userUuid, String? paymentPlan)?
         connected,
     TResult? Function(
             HekaHealthError error, String userUuid, String? paymentPlan)?
@@ -284,12 +284,12 @@ class _$_Initial implements _Initial {
     TResult Function(String userUuid, String? paymentPlan)? checkingConnection,
     TResult Function(String userUuid, String? paymentPlan)? noConnection,
     TResult Function(
-            Connection connection, String userUuid, String? paymentPlan)?
+            ConnectedPlatform connection, String userUuid, String? paymentPlan)?
         tokenInvalidated,
     TResult Function(String userUuid, String? paymentPlan)? makingConnection,
     TResult Function(String userUuid, String? paymentPlan)? disconnecting,
     TResult Function(
-            Connection connection, String userUuid, String? paymentPlan)?
+            ConnectedPlatform connection, String userUuid, String? paymentPlan)?
         connected,
     TResult Function(
             HekaHealthError error, String userUuid, String? paymentPlan)?
@@ -451,14 +451,14 @@ class _$_CheckingConnection implements _CheckingConnection {
     required TResult Function(String userUuid, String? paymentPlan)
         noConnection,
     required TResult Function(
-            Connection connection, String userUuid, String? paymentPlan)
+            ConnectedPlatform connection, String userUuid, String? paymentPlan)
         tokenInvalidated,
     required TResult Function(String userUuid, String? paymentPlan)
         makingConnection,
     required TResult Function(String userUuid, String? paymentPlan)
         disconnecting,
     required TResult Function(
-            Connection connection, String userUuid, String? paymentPlan)
+            ConnectedPlatform connection, String userUuid, String? paymentPlan)
         connected,
     required TResult Function(
             HekaHealthError error, String userUuid, String? paymentPlan)
@@ -474,12 +474,12 @@ class _$_CheckingConnection implements _CheckingConnection {
     TResult? Function(String userUuid, String? paymentPlan)? checkingConnection,
     TResult? Function(String userUuid, String? paymentPlan)? noConnection,
     TResult? Function(
-            Connection connection, String userUuid, String? paymentPlan)?
+            ConnectedPlatform connection, String userUuid, String? paymentPlan)?
         tokenInvalidated,
     TResult? Function(String userUuid, String? paymentPlan)? makingConnection,
     TResult? Function(String userUuid, String? paymentPlan)? disconnecting,
     TResult? Function(
-            Connection connection, String userUuid, String? paymentPlan)?
+            ConnectedPlatform connection, String userUuid, String? paymentPlan)?
         connected,
     TResult? Function(
             HekaHealthError error, String userUuid, String? paymentPlan)?
@@ -495,12 +495,12 @@ class _$_CheckingConnection implements _CheckingConnection {
     TResult Function(String userUuid, String? paymentPlan)? checkingConnection,
     TResult Function(String userUuid, String? paymentPlan)? noConnection,
     TResult Function(
-            Connection connection, String userUuid, String? paymentPlan)?
+            ConnectedPlatform connection, String userUuid, String? paymentPlan)?
         tokenInvalidated,
     TResult Function(String userUuid, String? paymentPlan)? makingConnection,
     TResult Function(String userUuid, String? paymentPlan)? disconnecting,
     TResult Function(
-            Connection connection, String userUuid, String? paymentPlan)?
+            ConnectedPlatform connection, String userUuid, String? paymentPlan)?
         connected,
     TResult Function(
             HekaHealthError error, String userUuid, String? paymentPlan)?
@@ -660,14 +660,14 @@ class _$_NoConnection implements _NoConnection {
     required TResult Function(String userUuid, String? paymentPlan)
         noConnection,
     required TResult Function(
-            Connection connection, String userUuid, String? paymentPlan)
+            ConnectedPlatform connection, String userUuid, String? paymentPlan)
         tokenInvalidated,
     required TResult Function(String userUuid, String? paymentPlan)
         makingConnection,
     required TResult Function(String userUuid, String? paymentPlan)
         disconnecting,
     required TResult Function(
-            Connection connection, String userUuid, String? paymentPlan)
+            ConnectedPlatform connection, String userUuid, String? paymentPlan)
         connected,
     required TResult Function(
             HekaHealthError error, String userUuid, String? paymentPlan)
@@ -683,12 +683,12 @@ class _$_NoConnection implements _NoConnection {
     TResult? Function(String userUuid, String? paymentPlan)? checkingConnection,
     TResult? Function(String userUuid, String? paymentPlan)? noConnection,
     TResult? Function(
-            Connection connection, String userUuid, String? paymentPlan)?
+            ConnectedPlatform connection, String userUuid, String? paymentPlan)?
         tokenInvalidated,
     TResult? Function(String userUuid, String? paymentPlan)? makingConnection,
     TResult? Function(String userUuid, String? paymentPlan)? disconnecting,
     TResult? Function(
-            Connection connection, String userUuid, String? paymentPlan)?
+            ConnectedPlatform connection, String userUuid, String? paymentPlan)?
         connected,
     TResult? Function(
             HekaHealthError error, String userUuid, String? paymentPlan)?
@@ -704,12 +704,12 @@ class _$_NoConnection implements _NoConnection {
     TResult Function(String userUuid, String? paymentPlan)? checkingConnection,
     TResult Function(String userUuid, String? paymentPlan)? noConnection,
     TResult Function(
-            Connection connection, String userUuid, String? paymentPlan)?
+            ConnectedPlatform connection, String userUuid, String? paymentPlan)?
         tokenInvalidated,
     TResult Function(String userUuid, String? paymentPlan)? makingConnection,
     TResult Function(String userUuid, String? paymentPlan)? disconnecting,
     TResult Function(
-            Connection connection, String userUuid, String? paymentPlan)?
+            ConnectedPlatform connection, String userUuid, String? paymentPlan)?
         connected,
     TResult Function(
             HekaHealthError error, String userUuid, String? paymentPlan)?
@@ -795,9 +795,10 @@ abstract class _$$_TokenInvalidatedCopyWith<$Res>
       __$$_TokenInvalidatedCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({Connection connection, String userUuid, String? paymentPlan});
+  $Res call(
+      {ConnectedPlatform connection, String userUuid, String? paymentPlan});
 
-  $ConnectionCopyWith<$Res> get connection;
+  $ConnectedPlatformCopyWith<$Res> get connection;
 }
 
 /// @nodoc
@@ -819,7 +820,7 @@ class __$$_TokenInvalidatedCopyWithImpl<$Res>
       null == connection
           ? _value.connection
           : connection // ignore: cast_nullable_to_non_nullable
-              as Connection,
+              as ConnectedPlatform,
       userUuid: null == userUuid
           ? _value.userUuid
           : userUuid // ignore: cast_nullable_to_non_nullable
@@ -833,8 +834,8 @@ class __$$_TokenInvalidatedCopyWithImpl<$Res>
 
   @override
   @pragma('vm:prefer-inline')
-  $ConnectionCopyWith<$Res> get connection {
-    return $ConnectionCopyWith<$Res>(_value.connection, (value) {
+  $ConnectedPlatformCopyWith<$Res> get connection {
+    return $ConnectedPlatformCopyWith<$Res>(_value.connection, (value) {
       return _then(_value.copyWith(connection: value));
     });
   }
@@ -847,7 +848,7 @@ class _$_TokenInvalidated implements _TokenInvalidated {
       {required this.userUuid, required this.paymentPlan});
 
   @override
-  final Connection connection;
+  final ConnectedPlatform connection;
   @override
   final String userUuid;
   @override
@@ -890,14 +891,14 @@ class _$_TokenInvalidated implements _TokenInvalidated {
     required TResult Function(String userUuid, String? paymentPlan)
         noConnection,
     required TResult Function(
-            Connection connection, String userUuid, String? paymentPlan)
+            ConnectedPlatform connection, String userUuid, String? paymentPlan)
         tokenInvalidated,
     required TResult Function(String userUuid, String? paymentPlan)
         makingConnection,
     required TResult Function(String userUuid, String? paymentPlan)
         disconnecting,
     required TResult Function(
-            Connection connection, String userUuid, String? paymentPlan)
+            ConnectedPlatform connection, String userUuid, String? paymentPlan)
         connected,
     required TResult Function(
             HekaHealthError error, String userUuid, String? paymentPlan)
@@ -913,12 +914,12 @@ class _$_TokenInvalidated implements _TokenInvalidated {
     TResult? Function(String userUuid, String? paymentPlan)? checkingConnection,
     TResult? Function(String userUuid, String? paymentPlan)? noConnection,
     TResult? Function(
-            Connection connection, String userUuid, String? paymentPlan)?
+            ConnectedPlatform connection, String userUuid, String? paymentPlan)?
         tokenInvalidated,
     TResult? Function(String userUuid, String? paymentPlan)? makingConnection,
     TResult? Function(String userUuid, String? paymentPlan)? disconnecting,
     TResult? Function(
-            Connection connection, String userUuid, String? paymentPlan)?
+            ConnectedPlatform connection, String userUuid, String? paymentPlan)?
         connected,
     TResult? Function(
             HekaHealthError error, String userUuid, String? paymentPlan)?
@@ -934,12 +935,12 @@ class _$_TokenInvalidated implements _TokenInvalidated {
     TResult Function(String userUuid, String? paymentPlan)? checkingConnection,
     TResult Function(String userUuid, String? paymentPlan)? noConnection,
     TResult Function(
-            Connection connection, String userUuid, String? paymentPlan)?
+            ConnectedPlatform connection, String userUuid, String? paymentPlan)?
         tokenInvalidated,
     TResult Function(String userUuid, String? paymentPlan)? makingConnection,
     TResult Function(String userUuid, String? paymentPlan)? disconnecting,
     TResult Function(
-            Connection connection, String userUuid, String? paymentPlan)?
+            ConnectedPlatform connection, String userUuid, String? paymentPlan)?
         connected,
     TResult Function(
             HekaHealthError error, String userUuid, String? paymentPlan)?
@@ -1003,11 +1004,11 @@ class _$_TokenInvalidated implements _TokenInvalidated {
 }
 
 abstract class _TokenInvalidated implements GoogleFitConnectState {
-  const factory _TokenInvalidated(final Connection connection,
+  const factory _TokenInvalidated(final ConnectedPlatform connection,
       {required final String userUuid,
       required final String? paymentPlan}) = _$_TokenInvalidated;
 
-  Connection get connection;
+  ConnectedPlatform get connection;
   @override
   String get userUuid;
   @override
@@ -1101,14 +1102,14 @@ class _$_MakingConnection implements _MakingConnection {
     required TResult Function(String userUuid, String? paymentPlan)
         noConnection,
     required TResult Function(
-            Connection connection, String userUuid, String? paymentPlan)
+            ConnectedPlatform connection, String userUuid, String? paymentPlan)
         tokenInvalidated,
     required TResult Function(String userUuid, String? paymentPlan)
         makingConnection,
     required TResult Function(String userUuid, String? paymentPlan)
         disconnecting,
     required TResult Function(
-            Connection connection, String userUuid, String? paymentPlan)
+            ConnectedPlatform connection, String userUuid, String? paymentPlan)
         connected,
     required TResult Function(
             HekaHealthError error, String userUuid, String? paymentPlan)
@@ -1124,12 +1125,12 @@ class _$_MakingConnection implements _MakingConnection {
     TResult? Function(String userUuid, String? paymentPlan)? checkingConnection,
     TResult? Function(String userUuid, String? paymentPlan)? noConnection,
     TResult? Function(
-            Connection connection, String userUuid, String? paymentPlan)?
+            ConnectedPlatform connection, String userUuid, String? paymentPlan)?
         tokenInvalidated,
     TResult? Function(String userUuid, String? paymentPlan)? makingConnection,
     TResult? Function(String userUuid, String? paymentPlan)? disconnecting,
     TResult? Function(
-            Connection connection, String userUuid, String? paymentPlan)?
+            ConnectedPlatform connection, String userUuid, String? paymentPlan)?
         connected,
     TResult? Function(
             HekaHealthError error, String userUuid, String? paymentPlan)?
@@ -1145,12 +1146,12 @@ class _$_MakingConnection implements _MakingConnection {
     TResult Function(String userUuid, String? paymentPlan)? checkingConnection,
     TResult Function(String userUuid, String? paymentPlan)? noConnection,
     TResult Function(
-            Connection connection, String userUuid, String? paymentPlan)?
+            ConnectedPlatform connection, String userUuid, String? paymentPlan)?
         tokenInvalidated,
     TResult Function(String userUuid, String? paymentPlan)? makingConnection,
     TResult Function(String userUuid, String? paymentPlan)? disconnecting,
     TResult Function(
-            Connection connection, String userUuid, String? paymentPlan)?
+            ConnectedPlatform connection, String userUuid, String? paymentPlan)?
         connected,
     TResult Function(
             HekaHealthError error, String userUuid, String? paymentPlan)?
@@ -1310,14 +1311,14 @@ class _$_Disconnecting implements _Disconnecting {
     required TResult Function(String userUuid, String? paymentPlan)
         noConnection,
     required TResult Function(
-            Connection connection, String userUuid, String? paymentPlan)
+            ConnectedPlatform connection, String userUuid, String? paymentPlan)
         tokenInvalidated,
     required TResult Function(String userUuid, String? paymentPlan)
         makingConnection,
     required TResult Function(String userUuid, String? paymentPlan)
         disconnecting,
     required TResult Function(
-            Connection connection, String userUuid, String? paymentPlan)
+            ConnectedPlatform connection, String userUuid, String? paymentPlan)
         connected,
     required TResult Function(
             HekaHealthError error, String userUuid, String? paymentPlan)
@@ -1333,12 +1334,12 @@ class _$_Disconnecting implements _Disconnecting {
     TResult? Function(String userUuid, String? paymentPlan)? checkingConnection,
     TResult? Function(String userUuid, String? paymentPlan)? noConnection,
     TResult? Function(
-            Connection connection, String userUuid, String? paymentPlan)?
+            ConnectedPlatform connection, String userUuid, String? paymentPlan)?
         tokenInvalidated,
     TResult? Function(String userUuid, String? paymentPlan)? makingConnection,
     TResult? Function(String userUuid, String? paymentPlan)? disconnecting,
     TResult? Function(
-            Connection connection, String userUuid, String? paymentPlan)?
+            ConnectedPlatform connection, String userUuid, String? paymentPlan)?
         connected,
     TResult? Function(
             HekaHealthError error, String userUuid, String? paymentPlan)?
@@ -1354,12 +1355,12 @@ class _$_Disconnecting implements _Disconnecting {
     TResult Function(String userUuid, String? paymentPlan)? checkingConnection,
     TResult Function(String userUuid, String? paymentPlan)? noConnection,
     TResult Function(
-            Connection connection, String userUuid, String? paymentPlan)?
+            ConnectedPlatform connection, String userUuid, String? paymentPlan)?
         tokenInvalidated,
     TResult Function(String userUuid, String? paymentPlan)? makingConnection,
     TResult Function(String userUuid, String? paymentPlan)? disconnecting,
     TResult Function(
-            Connection connection, String userUuid, String? paymentPlan)?
+            ConnectedPlatform connection, String userUuid, String? paymentPlan)?
         connected,
     TResult Function(
             HekaHealthError error, String userUuid, String? paymentPlan)?
@@ -1445,9 +1446,10 @@ abstract class _$$_ConnectedCopyWith<$Res>
       __$$_ConnectedCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({Connection connection, String userUuid, String? paymentPlan});
+  $Res call(
+      {ConnectedPlatform connection, String userUuid, String? paymentPlan});
 
-  $ConnectionCopyWith<$Res> get connection;
+  $ConnectedPlatformCopyWith<$Res> get connection;
 }
 
 /// @nodoc
@@ -1469,7 +1471,7 @@ class __$$_ConnectedCopyWithImpl<$Res>
       null == connection
           ? _value.connection
           : connection // ignore: cast_nullable_to_non_nullable
-              as Connection,
+              as ConnectedPlatform,
       userUuid: null == userUuid
           ? _value.userUuid
           : userUuid // ignore: cast_nullable_to_non_nullable
@@ -1483,8 +1485,8 @@ class __$$_ConnectedCopyWithImpl<$Res>
 
   @override
   @pragma('vm:prefer-inline')
-  $ConnectionCopyWith<$Res> get connection {
-    return $ConnectionCopyWith<$Res>(_value.connection, (value) {
+  $ConnectedPlatformCopyWith<$Res> get connection {
+    return $ConnectedPlatformCopyWith<$Res>(_value.connection, (value) {
       return _then(_value.copyWith(connection: value));
     });
   }
@@ -1497,7 +1499,7 @@ class _$_Connected implements _Connected {
       {required this.userUuid, required this.paymentPlan});
 
   @override
-  final Connection connection;
+  final ConnectedPlatform connection;
   @override
   final String userUuid;
   @override
@@ -1540,14 +1542,14 @@ class _$_Connected implements _Connected {
     required TResult Function(String userUuid, String? paymentPlan)
         noConnection,
     required TResult Function(
-            Connection connection, String userUuid, String? paymentPlan)
+            ConnectedPlatform connection, String userUuid, String? paymentPlan)
         tokenInvalidated,
     required TResult Function(String userUuid, String? paymentPlan)
         makingConnection,
     required TResult Function(String userUuid, String? paymentPlan)
         disconnecting,
     required TResult Function(
-            Connection connection, String userUuid, String? paymentPlan)
+            ConnectedPlatform connection, String userUuid, String? paymentPlan)
         connected,
     required TResult Function(
             HekaHealthError error, String userUuid, String? paymentPlan)
@@ -1563,12 +1565,12 @@ class _$_Connected implements _Connected {
     TResult? Function(String userUuid, String? paymentPlan)? checkingConnection,
     TResult? Function(String userUuid, String? paymentPlan)? noConnection,
     TResult? Function(
-            Connection connection, String userUuid, String? paymentPlan)?
+            ConnectedPlatform connection, String userUuid, String? paymentPlan)?
         tokenInvalidated,
     TResult? Function(String userUuid, String? paymentPlan)? makingConnection,
     TResult? Function(String userUuid, String? paymentPlan)? disconnecting,
     TResult? Function(
-            Connection connection, String userUuid, String? paymentPlan)?
+            ConnectedPlatform connection, String userUuid, String? paymentPlan)?
         connected,
     TResult? Function(
             HekaHealthError error, String userUuid, String? paymentPlan)?
@@ -1584,12 +1586,12 @@ class _$_Connected implements _Connected {
     TResult Function(String userUuid, String? paymentPlan)? checkingConnection,
     TResult Function(String userUuid, String? paymentPlan)? noConnection,
     TResult Function(
-            Connection connection, String userUuid, String? paymentPlan)?
+            ConnectedPlatform connection, String userUuid, String? paymentPlan)?
         tokenInvalidated,
     TResult Function(String userUuid, String? paymentPlan)? makingConnection,
     TResult Function(String userUuid, String? paymentPlan)? disconnecting,
     TResult Function(
-            Connection connection, String userUuid, String? paymentPlan)?
+            ConnectedPlatform connection, String userUuid, String? paymentPlan)?
         connected,
     TResult Function(
             HekaHealthError error, String userUuid, String? paymentPlan)?
@@ -1653,11 +1655,11 @@ class _$_Connected implements _Connected {
 }
 
 abstract class _Connected implements GoogleFitConnectState {
-  const factory _Connected(final Connection connection,
+  const factory _Connected(final ConnectedPlatform connection,
       {required final String userUuid,
       required final String? paymentPlan}) = _$_Connected;
 
-  Connection get connection;
+  ConnectedPlatform get connection;
   @override
   String get userUuid;
   @override
@@ -1767,14 +1769,14 @@ class _$_Error implements _Error {
     required TResult Function(String userUuid, String? paymentPlan)
         noConnection,
     required TResult Function(
-            Connection connection, String userUuid, String? paymentPlan)
+            ConnectedPlatform connection, String userUuid, String? paymentPlan)
         tokenInvalidated,
     required TResult Function(String userUuid, String? paymentPlan)
         makingConnection,
     required TResult Function(String userUuid, String? paymentPlan)
         disconnecting,
     required TResult Function(
-            Connection connection, String userUuid, String? paymentPlan)
+            ConnectedPlatform connection, String userUuid, String? paymentPlan)
         connected,
     required TResult Function(
             HekaHealthError error, String userUuid, String? paymentPlan)
@@ -1790,12 +1792,12 @@ class _$_Error implements _Error {
     TResult? Function(String userUuid, String? paymentPlan)? checkingConnection,
     TResult? Function(String userUuid, String? paymentPlan)? noConnection,
     TResult? Function(
-            Connection connection, String userUuid, String? paymentPlan)?
+            ConnectedPlatform connection, String userUuid, String? paymentPlan)?
         tokenInvalidated,
     TResult? Function(String userUuid, String? paymentPlan)? makingConnection,
     TResult? Function(String userUuid, String? paymentPlan)? disconnecting,
     TResult? Function(
-            Connection connection, String userUuid, String? paymentPlan)?
+            ConnectedPlatform connection, String userUuid, String? paymentPlan)?
         connected,
     TResult? Function(
             HekaHealthError error, String userUuid, String? paymentPlan)?
@@ -1811,12 +1813,12 @@ class _$_Error implements _Error {
     TResult Function(String userUuid, String? paymentPlan)? checkingConnection,
     TResult Function(String userUuid, String? paymentPlan)? noConnection,
     TResult Function(
-            Connection connection, String userUuid, String? paymentPlan)?
+            ConnectedPlatform connection, String userUuid, String? paymentPlan)?
         tokenInvalidated,
     TResult Function(String userUuid, String? paymentPlan)? makingConnection,
     TResult Function(String userUuid, String? paymentPlan)? disconnecting,
     TResult Function(
-            Connection connection, String userUuid, String? paymentPlan)?
+            ConnectedPlatform connection, String userUuid, String? paymentPlan)?
         connected,
     TResult Function(
             HekaHealthError error, String userUuid, String? paymentPlan)?

@@ -26,12 +26,13 @@ class HekaHealth {
           'key': _apiKey,
         },
       );
-      final clientId = response.data?['data']?['google_auth_client_id'] ?? '';
-
-      if (clientId.isEmpty) {
-        return left(const HekaHealthError.googleClientIdNotRegistered());
+      print(response.data);
+      for (var platform in response.data?['data']?['enabled_platforms'] ?? []) {
+        if (platform['platform_name'] == 'google_fit') {
+          return right(platform['platform_app_id'] as String);
+        }
       }
-      return right(clientId as String);
+      return left(const HekaHealthError.googleClientIdNotRegistered());
     } on DioError catch (e) {
       print('----error getting client Id-------');
       print(e);
@@ -127,6 +128,7 @@ class HekaHealth {
   }
 
   Future<Either<HekaHealthError, Connection>> reConnect({
+    // TODO: this is buggy
     required int connectionId,
     required String googleFitRefreshToken,
   }) async {

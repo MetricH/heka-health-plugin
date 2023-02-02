@@ -13,10 +13,6 @@ class Connection with _$Connection {
     // ignore: invalid_annotation_target
     @JsonKey(name: 'google_fit_refresh_token') String? googleFitRefreshToken,
     required int app,
-    // ignore: invalid_annotation_target
-    @JsonKey(name: 'logged_in') required bool loggedIn,
-    // ignore: invalid_annotation_target
-    @JsonKey(name: 'last_sync') String? lastSync,
     @JsonKey(name: 'connected_platforms')
         required List<ConnectedPlatform> connectedPlatforms,
   }) = _Connection;

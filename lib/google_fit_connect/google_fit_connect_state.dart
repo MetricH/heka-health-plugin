@@ -15,7 +15,7 @@ class GoogleFitConnectState with _$GoogleFitConnectState {
     required String? paymentPlan,
   }) = _NoConnection;
   const factory GoogleFitConnectState.tokenInvalidated(
-    Connection connection, {
+    ConnectedPlatform connection, {
     required String userUuid,
     required String? paymentPlan,
   }) = _TokenInvalidated;
@@ -28,7 +28,7 @@ class GoogleFitConnectState with _$GoogleFitConnectState {
     required String? paymentPlan,
   }) = _Disconnecting;
   const factory GoogleFitConnectState.connected(
-    Connection connection, {
+    ConnectedPlatform connection, {
     required String userUuid,
     required String? paymentPlan,
   }) = _Connected;

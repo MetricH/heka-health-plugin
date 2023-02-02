@@ -47,11 +47,12 @@ class _GoogleFitConectButtonState extends State<GoogleFitConectButton> {
       builder: (context, state) {
         return Padding(
           padding: const EdgeInsets.all(8.0),
-          child: Stack(
-            children: [
-              Card(
-                elevation: 2,
-                child: ListTile(
+          child: Card(
+            elevation: 2,
+            child: Column(
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                ListTile(
                   contentPadding: const EdgeInsets.symmetric(horizontal: 16),
                   leading: const Icon(
                     MdiIcons.googleFit,
@@ -132,14 +133,9 @@ class _GoogleFitConectButtonState extends State<GoogleFitConectButton> {
                         noConnection: (_, plan) => context
                             .read<GoogleFitConnectCubit>()
                             .createConnection,
-                        tokenInvalidated: (connection, __, plan) => () =>
-                            context
-                                .read<GoogleFitConnectCubit>()
-                                .connectAgain(connection.id),
+                        tokenInvalidated: (connection, __, plan) => null,
                         makingConnection: (_, plan) => null,
-                        connected: (connection, __, plan) => () => context
-                            .read<GoogleFitConnectCubit>()
-                            .disconnect(connection.id),
+                        connected: (connection, __, plan) => null,
                       ),
                       style: ElevatedButton.styleFrom(
                         elevation: 1,
@@ -165,23 +161,35 @@ class _GoogleFitConectButtonState extends State<GoogleFitConectButton> {
                     ),
                   ),
                 ),
-              ),
-              if (state.paymentPlan == 'free')
-                InkWell(
-                  onTap: () {
-                    launch('https://www.hekahealth.co/');
-                  },
-                  child: const Text(
-                    'Heka',
-                    style: TextStyle(
-                      color: Color(
-                        0xff2351C1,
+                if (state.paymentPlan == 'free') ...[
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.end,
+                    children: [
+                      Text(
+                        'Powered by ',
+                        style: Theme.of(context).textTheme.caption,
                       ),
-                      fontWeight: FontWeight.bold,
-                    ),
+                      InkWell(
+                        onTap: () {
+                          launch('https://www.hekahealth.co/');
+                        },
+                        child: const Text(
+                          'Heka',
+                          style: TextStyle(
+                            color: Color(
+                              0xff2351C1,
+                            ),
+                            fontWeight: FontWeight.bold,
+                          ),
+                        ),
+                      ),
+                      SizedBox(width: 8),
+                    ],
                   ),
-                )
-            ],
+                  SizedBox(height: 4),
+                ],
+              ],
+            ),
           ),
         );
       },

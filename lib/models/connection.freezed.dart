@@ -27,13 +27,7 @@ mixin _$Connection {
       throw _privateConstructorUsedError; // ignore: invalid_annotation_target
   @JsonKey(name: 'google_fit_refresh_token')
   String? get googleFitRefreshToken => throw _privateConstructorUsedError;
-  int get app =>
-      throw _privateConstructorUsedError; // ignore: invalid_annotation_target
-  @JsonKey(name: 'logged_in')
-  bool get loggedIn =>
-      throw _privateConstructorUsedError; // ignore: invalid_annotation_target
-  @JsonKey(name: 'last_sync')
-  String? get lastSync => throw _privateConstructorUsedError;
+  int get app => throw _privateConstructorUsedError;
   @JsonKey(name: 'connected_platforms')
   List<ConnectedPlatform> get connectedPlatforms =>
       throw _privateConstructorUsedError;
@@ -57,10 +51,6 @@ abstract class $ConnectionCopyWith<$Res> {
       @JsonKey(name: 'google_fit_refresh_token')
           String? googleFitRefreshToken,
       int app,
-      @JsonKey(name: 'logged_in')
-          bool loggedIn,
-      @JsonKey(name: 'last_sync')
-          String? lastSync,
       @JsonKey(name: 'connected_platforms')
           List<ConnectedPlatform> connectedPlatforms});
 }
@@ -82,8 +72,6 @@ class _$ConnectionCopyWithImpl<$Res, $Val extends Connection>
     Object? userUuid = null,
     Object? googleFitRefreshToken = freezed,
     Object? app = null,
-    Object? loggedIn = null,
-    Object? lastSync = freezed,
     Object? connectedPlatforms = null,
   }) {
     return _then(_value.copyWith(
@@ -103,14 +91,6 @@ class _$ConnectionCopyWithImpl<$Res, $Val extends Connection>
           ? _value.app
           : app // ignore: cast_nullable_to_non_nullable
               as int,
-      loggedIn: null == loggedIn
-          ? _value.loggedIn
-          : loggedIn // ignore: cast_nullable_to_non_nullable
-              as bool,
-      lastSync: freezed == lastSync
-          ? _value.lastSync
-          : lastSync // ignore: cast_nullable_to_non_nullable
-              as String?,
       connectedPlatforms: null == connectedPlatforms
           ? _value.connectedPlatforms
           : connectedPlatforms // ignore: cast_nullable_to_non_nullable
@@ -134,10 +114,6 @@ abstract class _$$_ConnectionCopyWith<$Res>
       @JsonKey(name: 'google_fit_refresh_token')
           String? googleFitRefreshToken,
       int app,
-      @JsonKey(name: 'logged_in')
-          bool loggedIn,
-      @JsonKey(name: 'last_sync')
-          String? lastSync,
       @JsonKey(name: 'connected_platforms')
           List<ConnectedPlatform> connectedPlatforms});
 }
@@ -157,8 +133,6 @@ class __$$_ConnectionCopyWithImpl<$Res>
     Object? userUuid = null,
     Object? googleFitRefreshToken = freezed,
     Object? app = null,
-    Object? loggedIn = null,
-    Object? lastSync = freezed,
     Object? connectedPlatforms = null,
   }) {
     return _then(_$_Connection(
@@ -178,14 +152,6 @@ class __$$_ConnectionCopyWithImpl<$Res>
           ? _value.app
           : app // ignore: cast_nullable_to_non_nullable
               as int,
-      loggedIn: null == loggedIn
-          ? _value.loggedIn
-          : loggedIn // ignore: cast_nullable_to_non_nullable
-              as bool,
-      lastSync: freezed == lastSync
-          ? _value.lastSync
-          : lastSync // ignore: cast_nullable_to_non_nullable
-              as String?,
       connectedPlatforms: null == connectedPlatforms
           ? _value._connectedPlatforms
           : connectedPlatforms // ignore: cast_nullable_to_non_nullable
@@ -204,10 +170,6 @@ class _$_Connection extends _Connection {
       @JsonKey(name: 'google_fit_refresh_token')
           this.googleFitRefreshToken,
       required this.app,
-      @JsonKey(name: 'logged_in')
-          required this.loggedIn,
-      @JsonKey(name: 'last_sync')
-          this.lastSync,
       @JsonKey(name: 'connected_platforms')
           required final List<ConnectedPlatform> connectedPlatforms})
       : _connectedPlatforms = connectedPlatforms,
@@ -228,14 +190,6 @@ class _$_Connection extends _Connection {
   final String? googleFitRefreshToken;
   @override
   final int app;
-// ignore: invalid_annotation_target
-  @override
-  @JsonKey(name: 'logged_in')
-  final bool loggedIn;
-// ignore: invalid_annotation_target
-  @override
-  @JsonKey(name: 'last_sync')
-  final String? lastSync;
   final List<ConnectedPlatform> _connectedPlatforms;
   @override
   @JsonKey(name: 'connected_platforms')
@@ -248,7 +202,7 @@ class _$_Connection extends _Connection {
 
   @override
   String toString() {
-    return 'Connection(id: $id, userUuid: $userUuid, googleFitRefreshToken: $googleFitRefreshToken, app: $app, loggedIn: $loggedIn, lastSync: $lastSync, connectedPlatforms: $connectedPlatforms)';
+    return 'Connection(id: $id, userUuid: $userUuid, googleFitRefreshToken: $googleFitRefreshToken, app: $app, connectedPlatforms: $connectedPlatforms)';
   }
 
   @override
@@ -262,10 +216,6 @@ class _$_Connection extends _Connection {
             (identical(other.googleFitRefreshToken, googleFitRefreshToken) ||
                 other.googleFitRefreshToken == googleFitRefreshToken) &&
             (identical(other.app, app) || other.app == app) &&
-            (identical(other.loggedIn, loggedIn) ||
-                other.loggedIn == loggedIn) &&
-            (identical(other.lastSync, lastSync) ||
-                other.lastSync == lastSync) &&
             const DeepCollectionEquality()
                 .equals(other._connectedPlatforms, _connectedPlatforms));
   }
@@ -278,8 +228,6 @@ class _$_Connection extends _Connection {
       userUuid,
       googleFitRefreshToken,
       app,
-      loggedIn,
-      lastSync,
       const DeepCollectionEquality().hash(_connectedPlatforms));
 
   @JsonKey(ignore: true)
@@ -304,10 +252,6 @@ abstract class _Connection extends Connection {
           @JsonKey(name: 'google_fit_refresh_token')
               final String? googleFitRefreshToken,
           required final int app,
-          @JsonKey(name: 'logged_in')
-              required final bool loggedIn,
-          @JsonKey(name: 'last_sync')
-              final String? lastSync,
           @JsonKey(name: 'connected_platforms')
               required final List<ConnectedPlatform> connectedPlatforms}) =
       _$_Connection;
@@ -326,12 +270,6 @@ abstract class _Connection extends Connection {
   String? get googleFitRefreshToken;
   @override
   int get app;
-  @override // ignore: invalid_annotation_target
-  @JsonKey(name: 'logged_in')
-  bool get loggedIn;
-  @override // ignore: invalid_annotation_target
-  @JsonKey(name: 'last_sync')
-  String? get lastSync;
   @override
   @JsonKey(name: 'connected_platforms')
   List<ConnectedPlatform> get connectedPlatforms;
