@@ -8,8 +8,8 @@ class ConnectedPlatform with _$ConnectedPlatform {
   const ConnectedPlatform._();
   const factory ConnectedPlatform({
     @JsonKey(name: 'platform_name') required String platform,
-    required bool loggedIn,
-    required String lastSync,
+    @JsonKey(name: 'logged_in') required bool loggedIn,
+    @JsonKey(name: 'last_sync') required String? lastSync,
   }) = _ConnectedPlatform;
 
   factory ConnectedPlatform.fromJson(Map<String, dynamic> json) =>

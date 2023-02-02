@@ -23,8 +23,7 @@ mixin _$Connection {
   int get id =>
       throw _privateConstructorUsedError; // ignore: invalid_annotation_target
   @JsonKey(name: 'user_uuid')
-  String get userUuid => throw _privateConstructorUsedError;
-  String get platform =>
+  String get userUuid =>
       throw _privateConstructorUsedError; // ignore: invalid_annotation_target
   @JsonKey(name: 'google_fit_refresh_token')
   String? get googleFitRefreshToken => throw _privateConstructorUsedError;
@@ -55,7 +54,6 @@ abstract class $ConnectionCopyWith<$Res> {
       {int id,
       @JsonKey(name: 'user_uuid')
           String userUuid,
-      String platform,
       @JsonKey(name: 'google_fit_refresh_token')
           String? googleFitRefreshToken,
       int app,
@@ -82,7 +80,6 @@ class _$ConnectionCopyWithImpl<$Res, $Val extends Connection>
   $Res call({
     Object? id = null,
     Object? userUuid = null,
-    Object? platform = null,
     Object? googleFitRefreshToken = freezed,
     Object? app = null,
     Object? loggedIn = null,
@@ -97,10 +94,6 @@ class _$ConnectionCopyWithImpl<$Res, $Val extends Connection>
       userUuid: null == userUuid
           ? _value.userUuid
           : userUuid // ignore: cast_nullable_to_non_nullable
-              as String,
-      platform: null == platform
-          ? _value.platform
-          : platform // ignore: cast_nullable_to_non_nullable
               as String,
       googleFitRefreshToken: freezed == googleFitRefreshToken
           ? _value.googleFitRefreshToken
@@ -138,7 +131,6 @@ abstract class _$$_ConnectionCopyWith<$Res>
       {int id,
       @JsonKey(name: 'user_uuid')
           String userUuid,
-      String platform,
       @JsonKey(name: 'google_fit_refresh_token')
           String? googleFitRefreshToken,
       int app,
@@ -163,7 +155,6 @@ class __$$_ConnectionCopyWithImpl<$Res>
   $Res call({
     Object? id = null,
     Object? userUuid = null,
-    Object? platform = null,
     Object? googleFitRefreshToken = freezed,
     Object? app = null,
     Object? loggedIn = null,
@@ -178,10 +169,6 @@ class __$$_ConnectionCopyWithImpl<$Res>
       userUuid: null == userUuid
           ? _value.userUuid
           : userUuid // ignore: cast_nullable_to_non_nullable
-              as String,
-      platform: null == platform
-          ? _value.platform
-          : platform // ignore: cast_nullable_to_non_nullable
               as String,
       googleFitRefreshToken: freezed == googleFitRefreshToken
           ? _value.googleFitRefreshToken
@@ -214,7 +201,6 @@ class _$_Connection extends _Connection {
       {required this.id,
       @JsonKey(name: 'user_uuid')
           required this.userUuid,
-      required this.platform,
       @JsonKey(name: 'google_fit_refresh_token')
           this.googleFitRefreshToken,
       required this.app,
@@ -236,8 +222,6 @@ class _$_Connection extends _Connection {
   @override
   @JsonKey(name: 'user_uuid')
   final String userUuid;
-  @override
-  final String platform;
 // ignore: invalid_annotation_target
   @override
   @JsonKey(name: 'google_fit_refresh_token')
@@ -264,7 +248,7 @@ class _$_Connection extends _Connection {
 
   @override
   String toString() {
-    return 'Connection(id: $id, userUuid: $userUuid, platform: $platform, googleFitRefreshToken: $googleFitRefreshToken, app: $app, loggedIn: $loggedIn, lastSync: $lastSync, connectedPlatforms: $connectedPlatforms)';
+    return 'Connection(id: $id, userUuid: $userUuid, googleFitRefreshToken: $googleFitRefreshToken, app: $app, loggedIn: $loggedIn, lastSync: $lastSync, connectedPlatforms: $connectedPlatforms)';
   }
 
   @override
@@ -275,8 +259,6 @@ class _$_Connection extends _Connection {
             (identical(other.id, id) || other.id == id) &&
             (identical(other.userUuid, userUuid) ||
                 other.userUuid == userUuid) &&
-            (identical(other.platform, platform) ||
-                other.platform == platform) &&
             (identical(other.googleFitRefreshToken, googleFitRefreshToken) ||
                 other.googleFitRefreshToken == googleFitRefreshToken) &&
             (identical(other.app, app) || other.app == app) &&
@@ -294,7 +276,6 @@ class _$_Connection extends _Connection {
       runtimeType,
       id,
       userUuid,
-      platform,
       googleFitRefreshToken,
       app,
       loggedIn,
@@ -320,7 +301,6 @@ abstract class _Connection extends Connection {
           {required final int id,
           @JsonKey(name: 'user_uuid')
               required final String userUuid,
-          required final String platform,
           @JsonKey(name: 'google_fit_refresh_token')
               final String? googleFitRefreshToken,
           required final int app,
@@ -341,8 +321,6 @@ abstract class _Connection extends Connection {
   @override // ignore: invalid_annotation_target
   @JsonKey(name: 'user_uuid')
   String get userUuid;
-  @override
-  String get platform;
   @override // ignore: invalid_annotation_target
   @JsonKey(name: 'google_fit_refresh_token')
   String? get googleFitRefreshToken;

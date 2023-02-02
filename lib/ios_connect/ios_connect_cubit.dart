@@ -43,7 +43,8 @@ class IosConnectCubit extends Cubit<IosConnectState> {
         ));
       },
       (connection) async {
-        if (connection == null) {
+        if (connection == null ||
+            connection.isPlatformConnected('apple_healthkit') == false) {
           emit(IosConnectState.noConnection(
             userUuid: state.userUuid,
             paymentPlan: state.paymentPlan,

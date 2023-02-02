@@ -10,7 +10,6 @@ class Connection with _$Connection {
     required int id,
     // ignore: invalid_annotation_target
     @JsonKey(name: 'user_uuid') required String userUuid,
-    required String platform,
     // ignore: invalid_annotation_target
     @JsonKey(name: 'google_fit_refresh_token') String? googleFitRefreshToken,
     required int app,
@@ -24,4 +23,11 @@ class Connection with _$Connection {
 
   factory Connection.fromJson(Map<String, dynamic> json) =>
       _$ConnectionFromJson(json);
+
+  bool isPlatformConnected(String platform) {
+    // TODO: add handling for logged in variable too
+    return (connectedPlatforms ?? [])
+        .where((element) => element.platform == platform)
+        .isNotEmpty;
+  }
 }
