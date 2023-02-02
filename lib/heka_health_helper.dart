@@ -2,11 +2,11 @@ import 'package:dartz/dartz.dart';
 import 'package:dio/dio.dart';
 import 'package:flutter_appauth/flutter_appauth.dart';
 import 'package:heka_health/extensions.dart';
-import 'package:heka_health/heka_health_error.dart';
+import 'package:heka_health/models/heka_health_error.dart';
 
 import 'models/connection.dart';
 import 'heka_health_platform_interface.dart';
-import 'google_credentials.dart';
+import 'models/google_credentials.dart';
 
 class HekaHealth {
   final String _apiKey;
@@ -105,15 +105,15 @@ class HekaHealth {
   }) async {
     try {
       final response = await _dio.post(
-        '/watch_connection',
+        '/connect_platform_for_user',
         queryParameters: {
           'key': _apiKey,
           'user_uuid': userUuid,
-          'platform': platform,
         },
         data: {
-          'google_fit_refresh_token': googleFitRefreshToken,
-          'google_fit_email': emailId,
+          'refresh_token': googleFitRefreshToken,
+          'email': emailId,
+          'platform': platform,
         }..removeWhere((key, value) => value == null),
       );
       return right(Connection.fromJson(response.data['data']));

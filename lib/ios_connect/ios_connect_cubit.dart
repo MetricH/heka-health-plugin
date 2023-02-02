@@ -1,6 +1,6 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:heka_health/heka_health_error.dart';
+import 'package:heka_health/models/heka_health_error.dart';
 
 import '../models/connection.dart';
 import '../heka_health.dart';
@@ -68,7 +68,7 @@ class IosConnectCubit extends Cubit<IosConnectState> {
     ));
     final failureOrSuccess = await _manager.makeConnection(
       userUuid: state.userUuid,
-      platform: 'ios',
+      platform: 'apple_healthkit',
     );
     failureOrSuccess.fold((error) {
       emit(IosConnectState.error(

@@ -4,7 +4,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:dio/dio.dart';
 import 'package:flutter_appauth/flutter_appauth.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:heka_health/heka_health_error.dart';
+import 'package:heka_health/models/heka_health_error.dart';
 
 import '../models/connection.dart';
 import '../heka_health.dart';
@@ -118,7 +118,7 @@ class GoogleFitConnectCubit extends Cubit<GoogleFitConnectState> {
         } else {
           final failureOrSuccess = await _manager.makeConnection(
             userUuid: state.userUuid,
-            platform: 'android',
+            platform: 'google_fit',
             emailId: credentials.email,
             googleFitRefreshToken: credentials.refreshToken,
           );
