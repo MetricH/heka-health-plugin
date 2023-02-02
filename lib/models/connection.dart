@@ -22,7 +22,7 @@ class Connection with _$Connection {
 
   bool isPlatformConnected(String platform) {
     // TODO: add handling for logged in variable too
-    return (connectedPlatforms ?? [])
+    return (connectedPlatforms)
         .where((element) => element.platform == platform)
         .isNotEmpty;
   }
