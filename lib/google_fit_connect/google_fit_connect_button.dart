@@ -74,33 +74,33 @@ class _GoogleFitConectButtonState extends State<GoogleFitConectButton> {
                     },
                     initial: (_, plan) => Text(
                       '',
-                      style: Theme.of(context).textTheme.caption,
+                      style: Theme.of(context).textTheme.bodySmall,
                     ),
                     disconnecting: (userUuid, paymentPlan) => Text(
                       'Disconnecting...',
-                      style: Theme.of(context).textTheme.caption,
+                      style: Theme.of(context).textTheme.bodySmall,
                     ),
                     checkingConnection: (_, plan) => Text(
                       'Checking connection...',
-                      style: Theme.of(context).textTheme.caption,
+                      style: Theme.of(context).textTheme.bodySmall,
                     ),
                     noConnection: (_, plan) => Text(
                       '',
-                      style: Theme.of(context).textTheme.caption,
+                      style: Theme.of(context).textTheme.bodySmall,
                     ),
                     tokenInvalidated: (_, __, plan) => Text(
                       'Disconnected from our systems',
-                      style: Theme.of(context).textTheme.caption,
+                      style: Theme.of(context).textTheme.bodySmall,
                     ),
                     makingConnection: (_, plan) => Text(
                       'Making connection...',
-                      style: Theme.of(context).textTheme.caption,
+                      style: Theme.of(context).textTheme.bodySmall,
                     ),
                     connected: (_, __, plan) => Text(
                       _.lastSync == null
                           ? 'Last synced 1 min ago'
                           : 'Last synced ${timeago.format(DateTime.parse(_.lastSync!))}',
-                      style: Theme.of(context).textTheme.caption,
+                      style: Theme.of(context).textTheme.bodySmall,
                     ),
                   ),
                   trailing: state.maybeWhen(
@@ -167,7 +167,7 @@ class _GoogleFitConectButtonState extends State<GoogleFitConectButton> {
                     children: [
                       Text(
                         'Powered by ',
-                        style: Theme.of(context).textTheme.caption,
+                        style: Theme.of(context).textTheme.bodySmall,
                       ),
                       InkWell(
                         onTap: () {
@@ -183,10 +183,10 @@ class _GoogleFitConectButtonState extends State<GoogleFitConectButton> {
                           ),
                         ),
                       ),
-                      SizedBox(width: 8),
+                      const SizedBox(width: 8),
                     ],
                   ),
-                  SizedBox(height: 4),
+                  const SizedBox(height: 4),
                 ],
               ],
             ),

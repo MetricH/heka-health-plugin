@@ -19,7 +19,7 @@ class Loader extends StatelessWidget {
           ),
           Text(
             text,
-            style: Theme.of(context).textTheme.caption,
+            style: Theme.of(context).textTheme.bodySmall,
           )
         ],
       ),

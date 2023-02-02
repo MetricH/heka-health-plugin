@@ -84,23 +84,23 @@ class _IosHealthConnectButtonState extends State<IosHealthConnectButton> {
                     },
                     initial: (_, plan) => Text(
                       '',
-                      style: Theme.of(context).textTheme.caption,
+                      style: Theme.of(context).textTheme.bodySmall,
                     ),
                     checkingConnection: (_, plan) => Text(
                       'Checking connection...',
-                      style: Theme.of(context).textTheme.caption,
+                      style: Theme.of(context).textTheme.bodySmall,
                     ),
                     noConnection: (_, plan) => Text(
                       '',
-                      style: Theme.of(context).textTheme.caption,
+                      style: Theme.of(context).textTheme.bodySmall,
                     ),
                     makingConnection: (_, plan) => Text(
                       'Making connection...',
-                      style: Theme.of(context).textTheme.caption,
+                      style: Theme.of(context).textTheme.bodySmall,
                     ),
                     syncingData: (_, __, plan) => Text(
                       '',
-                      style: Theme.of(context).textTheme.caption,
+                      style: Theme.of(context).textTheme.bodySmall,
                     ),
                   ),
                   trailing: state.maybeWhen(
@@ -156,7 +156,7 @@ class _IosHealthConnectButtonState extends State<IosHealthConnectButton> {
                     children: [
                       Text(
                         'Powered by ',
-                        style: Theme.of(context).textTheme.caption,
+                        style: Theme.of(context).textTheme.bodySmall,
                       ),
                       InkWell(
                         onTap: () {
@@ -172,10 +172,10 @@ class _IosHealthConnectButtonState extends State<IosHealthConnectButton> {
                           ),
                         ),
                       ),
-                      SizedBox(width: 8),
+                      const SizedBox(width: 8),
                     ],
                   ),
-                  SizedBox(height: 4),
+                  const SizedBox(height: 4),
                 ],
               ],
             ),
