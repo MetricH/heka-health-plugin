@@ -1,14 +1,10 @@
 import 'dart:io';
 
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:dio/dio.dart';
-import 'package:flutter_appauth/flutter_appauth.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
+import 'package:heka_health/heka_health_helper.dart';
 import 'package:heka_health/models/connected_platform.dart';
 import 'package:heka_health/models/heka_health_error.dart';
-
-import '../models/connection.dart';
-import '../heka_health.dart';
 
 part 'google_fit_connect_state.dart';
 part 'google_fit_connect_cubit.freezed.dart';

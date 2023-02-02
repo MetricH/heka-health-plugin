@@ -1,9 +1,9 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
+import 'package:heka_health/heka_health_helper.dart';
 import 'package:heka_health/models/heka_health_error.dart';
 
 import '../models/connection.dart';
-import '../heka_health.dart';
 part 'ios_connect_state.dart';
 part 'ios_connect_cubit.freezed.dart';
 
