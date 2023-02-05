@@ -1,3 +1,8 @@
+## 0.0.8
+
+- Major required architectural changes
+- Better error handling on iOS
+
 ## 0.0.7
 
 - Error handling for various cases
