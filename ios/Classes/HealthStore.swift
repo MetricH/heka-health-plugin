@@ -328,11 +328,17 @@ class HealthStore {
         guard let healthStore = self.healthStore else {
             return completion(false)
         }
-        
-        healthStore.requestAuthorization(toShare: [], read: Set(healthDataTypes)) {
-            (success, error) in completion(success)
+
+        healthStore.requestAuthorization(toShare: [], read: Set(healthDataTypes)) { bool, error in
+            if error != nil {
+                return completion(false)
+            } else if bool == true {
+                return completion(true)
+            } else {
+                return completion(false)
+            }
         }
-        
+
     }
 
      func checkHealthKitPermissions() -> Bool {
