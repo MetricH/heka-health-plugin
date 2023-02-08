@@ -21,7 +21,7 @@ Connection _$ConnectionFromJson(Map<String, dynamic> json) {
 /// @nodoc
 mixin _$Connection {
 // ignore: invalid_annotation_target
-  @JsonKey(name: 'uuid')
+  @JsonKey(name: 'user_uuid')
   String get userUuid => throw _privateConstructorUsedError;
   Map<String, ConnectedPlatform?> get connections =>
       throw _privateConstructorUsedError;
@@ -39,7 +39,7 @@ abstract class $ConnectionCopyWith<$Res> {
       _$ConnectionCopyWithImpl<$Res, Connection>;
   @useResult
   $Res call(
-      {@JsonKey(name: 'uuid') String userUuid,
+      {@JsonKey(name: 'user_uuid') String userUuid,
       Map<String, ConnectedPlatform?> connections});
 }
 
@@ -81,7 +81,7 @@ abstract class _$$_ConnectionCopyWith<$Res>
   @override
   @useResult
   $Res call(
-      {@JsonKey(name: 'uuid') String userUuid,
+      {@JsonKey(name: 'user_uuid') String userUuid,
       Map<String, ConnectedPlatform?> connections});
 }
 
@@ -116,7 +116,7 @@ class __$$_ConnectionCopyWithImpl<$Res>
 @JsonSerializable()
 class _$_Connection extends _Connection {
   const _$_Connection(
-      {@JsonKey(name: 'uuid') required this.userUuid,
+      {@JsonKey(name: 'user_uuid') required this.userUuid,
       required final Map<String, ConnectedPlatform?> connections})
       : _connections = connections,
         super._();
@@ -126,7 +126,7 @@ class _$_Connection extends _Connection {
 
 // ignore: invalid_annotation_target
   @override
-  @JsonKey(name: 'uuid')
+  @JsonKey(name: 'user_uuid')
   final String userUuid;
   final Map<String, ConnectedPlatform?> _connections;
   @override
@@ -173,7 +173,7 @@ class _$_Connection extends _Connection {
 
 abstract class _Connection extends Connection {
   const factory _Connection(
-          {@JsonKey(name: 'uuid') required final String userUuid,
+          {@JsonKey(name: 'user_uuid') required final String userUuid,
           required final Map<String, ConnectedPlatform?> connections}) =
       _$_Connection;
   const _Connection._() : super._();
@@ -182,7 +182,7 @@ abstract class _Connection extends Connection {
       _$_Connection.fromJson;
 
   @override // ignore: invalid_annotation_target
-  @JsonKey(name: 'uuid')
+  @JsonKey(name: 'user_uuid')
   String get userUuid;
   @override
   Map<String, ConnectedPlatform?> get connections;

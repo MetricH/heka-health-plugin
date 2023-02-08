@@ -89,7 +89,7 @@ class _GoogleFitConectButtonState extends State<GoogleFitConectButton> {
                       style: Theme.of(context).textTheme.bodySmall,
                     ),
                     tokenInvalidated: (_, __, plan) => Text(
-                      'Disconnected from our systems',
+                      'Logged out',
                       style: Theme.of(context).textTheme.bodySmall,
                     ),
                     makingConnection: (_, plan) => Text(
@@ -133,9 +133,14 @@ class _GoogleFitConectButtonState extends State<GoogleFitConectButton> {
                         noConnection: (_, plan) => context
                             .read<GoogleFitConnectCubit>()
                             .createConnection,
-                        tokenInvalidated: (connection, __, plan) => null,
+                        tokenInvalidated: (connection, __, plan) => () =>
+                            context
+                                .read<GoogleFitConnectCubit>()
+                                .createConnection(reconnect: true),
                         makingConnection: (_, plan) => null,
-                        connected: (connection, __, plan) => null,
+                        connected: (connection, uuid, plan) => () => context
+                            .read<GoogleFitConnectCubit>()
+                            .disconnect(uuid, connection),
                       ),
                       style: ElevatedButton.styleFrom(
                         elevation: 1,

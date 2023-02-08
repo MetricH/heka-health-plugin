@@ -8,7 +8,7 @@ part of 'connection.dart';
 
 _$_Connection _$$_ConnectionFromJson(Map<String, dynamic> json) =>
     _$_Connection(
-      userUuid: json['uuid'] as String,
+      userUuid: json['user_uuid'] as String,
       connections: (json['connections'] as Map<String, dynamic>).map(
         (k, e) => MapEntry(
             k,
@@ -20,6 +20,6 @@ _$_Connection _$$_ConnectionFromJson(Map<String, dynamic> json) =>
 
 Map<String, dynamic> _$$_ConnectionToJson(_$_Connection instance) =>
     <String, dynamic>{
-      'uuid': instance.userUuid,
+      'user_uuid': instance.userUuid,
       'connections': instance.connections,
     };

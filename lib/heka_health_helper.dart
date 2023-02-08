@@ -103,6 +103,7 @@ class HekaHealth {
     required String platform,
     String? googleFitRefreshToken,
     String? emailId,
+    bool reconnect = false,
   }) async {
     try {
       final response = await _dio.post(
@@ -110,6 +111,7 @@ class HekaHealth {
         queryParameters: {
           'key': _apiKey,
           'user_uuid': userUuid,
+          'reconnect': reconnect,
         },
         data: {
           'refresh_token': googleFitRefreshToken,
@@ -127,47 +129,23 @@ class HekaHealth {
     }
   }
 
-  Future<Either<HekaHealthError, Connection>> reConnect({
-    // TODO: this is buggy
-    required int connectionId,
-    required String googleFitRefreshToken,
-  }) async {
-    try {
-      final response = await _dio.patch(
-        '/watch_connection/$connectionId',
-        queryParameters: {
-          'key': _apiKey,
-        },
-        data: {
-          'google_fit_refresh_token': googleFitRefreshToken,
-          "logged_in": true,
-        },
-      );
-      return right(Connection.fromJson(response.data));
-    } on DioError catch (e) {
-      print(e);
-      if (e.isNoConnectionError) {
-        return left(const HekaHealthError.noConnection());
-      }
-      rethrow;
-    }
-  }
-
   Future<Either<HekaHealthError, Connection>> disconnect({
-    required int connectionId,
+    required String userUuid,
+    required String platform,
   }) async {
     try {
-      final response = await _dio.patch(
-        '/watch_connection/$connectionId',
+      final response = await _dio.post(
+        '/connect_platform_for_user',
         queryParameters: {
           'key': _apiKey,
+          'user_uuid': userUuid,
+          'disconnect': true,
         },
         data: {
-          'google_fit_refresh_token': null,
-          "logged_in": false,
+          'platform': platform,
         },
       );
-      return right(Connection.fromJson(response.data));
+      return right(Connection.fromJson(response.data['data']));
     } on DioError catch (e) {
       print(e);
       if (e.isNoConnectionError) {

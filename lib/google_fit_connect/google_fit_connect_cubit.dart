@@ -4,6 +4,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:heka_health/heka_health_helper.dart';
 import 'package:heka_health/models/connected_platform.dart';
+import 'package:heka_health/models/connection.dart';
 import 'package:heka_health/models/heka_health_error.dart';
 
 part 'google_fit_connect_state.dart';
@@ -97,60 +98,42 @@ class GoogleFitConnectCubit extends Cubit<GoogleFitConnectState> {
           paymentPlan: state.paymentPlan,
         ));
 
-        if (reconnect) {
-          final failureOrSuccess = await _manager.reConnect(
-              connectionId: connectionId!,
-              googleFitRefreshToken: credentials.refreshToken);
-          failureOrSuccess.fold((error) {
-            emit(GoogleFitConnectState.error(
-              error,
-              userUuid: state.userUuid,
-              paymentPlan: state.paymentPlan,
-            ));
-          }, (connection) {
-            ConnectedPlatform googleFitPlatform =
-                connection.connections['google_fit']!;
-            emit(GoogleFitConnectState.connected(
-              googleFitPlatform,
-              userUuid: state.userUuid,
-              paymentPlan: state.paymentPlan,
-            ));
-          });
-        } else {
-          final failureOrSuccess = await _manager.makeConnection(
-            userUuid: state.userUuid,
-            platform: 'google_fit',
-            emailId: credentials.email,
-            googleFitRefreshToken: credentials.refreshToken,
-          );
-          failureOrSuccess.fold((error) {
-            emit(GoogleFitConnectState.error(
-              error,
-              userUuid: state.userUuid,
-              paymentPlan: state.paymentPlan,
-            ));
-          }, (connection) {
-            ConnectedPlatform googleFitPlatform =
-                connection.connections['google_fit']!;
+        final failureOrSuccess = await _manager.makeConnection(
+          reconnect: reconnect,
+          googleFitRefreshToken: credentials.refreshToken,
+          userUuid: state.userUuid,
+          platform: 'google_fit',
+          emailId: credentials.email,
+        );
 
-            emit(GoogleFitConnectState.connected(
-              googleFitPlatform,
-              userUuid: state.userUuid,
-              paymentPlan: state.paymentPlan,
-            ));
-          });
-        }
+        failureOrSuccess.fold((error) {
+          emit(GoogleFitConnectState.error(
+            error,
+            userUuid: state.userUuid,
+            paymentPlan: state.paymentPlan,
+          ));
+        }, (connection) {
+          ConnectedPlatform googleFitPlatform =
+              connection.connections['google_fit']!;
+
+          emit(GoogleFitConnectState.connected(
+            googleFitPlatform,
+            userUuid: state.userUuid,
+            paymentPlan: state.paymentPlan,
+          ));
+        });
       }
     });
   }
 
-  Future<void> disconnect(int connectionId) async {
+  Future<void> disconnect(String uuid, ConnectedPlatform connection) async {
     emit(GoogleFitConnectState.disconnecting(
       userUuid: state.userUuid,
       paymentPlan: state.paymentPlan,
     ));
     final failureOrSuccess = await _manager.disconnect(
-      connectionId: connectionId,
+      userUuid: uuid,
+      platform: connection.platform,
     );
 
     failureOrSuccess.fold((error) {

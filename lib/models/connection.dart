@@ -8,7 +8,7 @@ class Connection with _$Connection {
   const Connection._();
   const factory Connection({
     // ignore: invalid_annotation_target
-    @JsonKey(name: 'uuid') required String userUuid,
+    @JsonKey(name: 'user_uuid') required String userUuid,
     required Map<String, ConnectedPlatform?> connections,
   }) = _Connection;
 
