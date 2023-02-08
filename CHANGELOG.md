@@ -1,3 +1,7 @@
+## 0.0.9
+
+- Disconnect and reconnect option for Google Fit
+
 ## 0.0.8
 
 - Major required architectural changes
