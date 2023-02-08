@@ -20,16 +20,10 @@ Connection _$ConnectionFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$Connection {
-  int get id =>
-      throw _privateConstructorUsedError; // ignore: invalid_annotation_target
-  @JsonKey(name: 'user_uuid')
-  String get userUuid =>
-      throw _privateConstructorUsedError; // ignore: invalid_annotation_target
-  @JsonKey(name: 'google_fit_refresh_token')
-  String? get googleFitRefreshToken => throw _privateConstructorUsedError;
-  int get app => throw _privateConstructorUsedError;
-  @JsonKey(name: 'connected_platforms')
-  List<ConnectedPlatform> get connectedPlatforms =>
+// ignore: invalid_annotation_target
+  @JsonKey(name: 'uuid')
+  String get userUuid => throw _privateConstructorUsedError;
+  Map<String, ConnectedPlatform?> get connections =>
       throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -45,14 +39,8 @@ abstract class $ConnectionCopyWith<$Res> {
       _$ConnectionCopyWithImpl<$Res, Connection>;
   @useResult
   $Res call(
-      {int id,
-      @JsonKey(name: 'user_uuid')
-          String userUuid,
-      @JsonKey(name: 'google_fit_refresh_token')
-          String? googleFitRefreshToken,
-      int app,
-      @JsonKey(name: 'connected_platforms')
-          List<ConnectedPlatform> connectedPlatforms});
+      {@JsonKey(name: 'uuid') String userUuid,
+      Map<String, ConnectedPlatform?> connections});
 }
 
 /// @nodoc
@@ -68,33 +56,18 @@ class _$ConnectionCopyWithImpl<$Res, $Val extends Connection>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? id = null,
     Object? userUuid = null,
-    Object? googleFitRefreshToken = freezed,
-    Object? app = null,
-    Object? connectedPlatforms = null,
+    Object? connections = null,
   }) {
     return _then(_value.copyWith(
-      id: null == id
-          ? _value.id
-          : id // ignore: cast_nullable_to_non_nullable
-              as int,
       userUuid: null == userUuid
           ? _value.userUuid
           : userUuid // ignore: cast_nullable_to_non_nullable
               as String,
-      googleFitRefreshToken: freezed == googleFitRefreshToken
-          ? _value.googleFitRefreshToken
-          : googleFitRefreshToken // ignore: cast_nullable_to_non_nullable
-              as String?,
-      app: null == app
-          ? _value.app
-          : app // ignore: cast_nullable_to_non_nullable
-              as int,
-      connectedPlatforms: null == connectedPlatforms
-          ? _value.connectedPlatforms
-          : connectedPlatforms // ignore: cast_nullable_to_non_nullable
-              as List<ConnectedPlatform>,
+      connections: null == connections
+          ? _value.connections
+          : connections // ignore: cast_nullable_to_non_nullable
+              as Map<String, ConnectedPlatform?>,
     ) as $Val);
   }
 }
@@ -108,14 +81,8 @@ abstract class _$$_ConnectionCopyWith<$Res>
   @override
   @useResult
   $Res call(
-      {int id,
-      @JsonKey(name: 'user_uuid')
-          String userUuid,
-      @JsonKey(name: 'google_fit_refresh_token')
-          String? googleFitRefreshToken,
-      int app,
-      @JsonKey(name: 'connected_platforms')
-          List<ConnectedPlatform> connectedPlatforms});
+      {@JsonKey(name: 'uuid') String userUuid,
+      Map<String, ConnectedPlatform?> connections});
 }
 
 /// @nodoc
@@ -129,33 +96,18 @@ class __$$_ConnectionCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? id = null,
     Object? userUuid = null,
-    Object? googleFitRefreshToken = freezed,
-    Object? app = null,
-    Object? connectedPlatforms = null,
+    Object? connections = null,
   }) {
     return _then(_$_Connection(
-      id: null == id
-          ? _value.id
-          : id // ignore: cast_nullable_to_non_nullable
-              as int,
       userUuid: null == userUuid
           ? _value.userUuid
           : userUuid // ignore: cast_nullable_to_non_nullable
               as String,
-      googleFitRefreshToken: freezed == googleFitRefreshToken
-          ? _value.googleFitRefreshToken
-          : googleFitRefreshToken // ignore: cast_nullable_to_non_nullable
-              as String?,
-      app: null == app
-          ? _value.app
-          : app // ignore: cast_nullable_to_non_nullable
-              as int,
-      connectedPlatforms: null == connectedPlatforms
-          ? _value._connectedPlatforms
-          : connectedPlatforms // ignore: cast_nullable_to_non_nullable
-              as List<ConnectedPlatform>,
+      connections: null == connections
+          ? _value._connections
+          : connections // ignore: cast_nullable_to_non_nullable
+              as Map<String, ConnectedPlatform?>,
     ));
   }
 }
@@ -164,45 +116,29 @@ class __$$_ConnectionCopyWithImpl<$Res>
 @JsonSerializable()
 class _$_Connection extends _Connection {
   const _$_Connection(
-      {required this.id,
-      @JsonKey(name: 'user_uuid')
-          required this.userUuid,
-      @JsonKey(name: 'google_fit_refresh_token')
-          this.googleFitRefreshToken,
-      required this.app,
-      @JsonKey(name: 'connected_platforms')
-          required final List<ConnectedPlatform> connectedPlatforms})
-      : _connectedPlatforms = connectedPlatforms,
+      {@JsonKey(name: 'uuid') required this.userUuid,
+      required final Map<String, ConnectedPlatform?> connections})
+      : _connections = connections,
         super._();
 
   factory _$_Connection.fromJson(Map<String, dynamic> json) =>
       _$$_ConnectionFromJson(json);
 
-  @override
-  final int id;
 // ignore: invalid_annotation_target
   @override
-  @JsonKey(name: 'user_uuid')
+  @JsonKey(name: 'uuid')
   final String userUuid;
-// ignore: invalid_annotation_target
+  final Map<String, ConnectedPlatform?> _connections;
   @override
-  @JsonKey(name: 'google_fit_refresh_token')
-  final String? googleFitRefreshToken;
-  @override
-  final int app;
-  final List<ConnectedPlatform> _connectedPlatforms;
-  @override
-  @JsonKey(name: 'connected_platforms')
-  List<ConnectedPlatform> get connectedPlatforms {
-    if (_connectedPlatforms is EqualUnmodifiableListView)
-      return _connectedPlatforms;
+  Map<String, ConnectedPlatform?> get connections {
+    if (_connections is EqualUnmodifiableMapView) return _connections;
     // ignore: implicit_dynamic_type
-    return EqualUnmodifiableListView(_connectedPlatforms);
+    return EqualUnmodifiableMapView(_connections);
   }
 
   @override
   String toString() {
-    return 'Connection(id: $id, userUuid: $userUuid, googleFitRefreshToken: $googleFitRefreshToken, app: $app, connectedPlatforms: $connectedPlatforms)';
+    return 'Connection(userUuid: $userUuid, connections: $connections)';
   }
 
   @override
@@ -210,25 +146,16 @@ class _$_Connection extends _Connection {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_Connection &&
-            (identical(other.id, id) || other.id == id) &&
             (identical(other.userUuid, userUuid) ||
                 other.userUuid == userUuid) &&
-            (identical(other.googleFitRefreshToken, googleFitRefreshToken) ||
-                other.googleFitRefreshToken == googleFitRefreshToken) &&
-            (identical(other.app, app) || other.app == app) &&
             const DeepCollectionEquality()
-                .equals(other._connectedPlatforms, _connectedPlatforms));
+                .equals(other._connections, _connections));
   }
 
   @JsonKey(ignore: true)
   @override
   int get hashCode => Object.hash(
-      runtimeType,
-      id,
-      userUuid,
-      googleFitRefreshToken,
-      app,
-      const DeepCollectionEquality().hash(_connectedPlatforms));
+      runtimeType, userUuid, const DeepCollectionEquality().hash(_connections));
 
   @JsonKey(ignore: true)
   @override
@@ -246,33 +173,19 @@ class _$_Connection extends _Connection {
 
 abstract class _Connection extends Connection {
   const factory _Connection(
-          {required final int id,
-          @JsonKey(name: 'user_uuid')
-              required final String userUuid,
-          @JsonKey(name: 'google_fit_refresh_token')
-              final String? googleFitRefreshToken,
-          required final int app,
-          @JsonKey(name: 'connected_platforms')
-              required final List<ConnectedPlatform> connectedPlatforms}) =
+          {@JsonKey(name: 'uuid') required final String userUuid,
+          required final Map<String, ConnectedPlatform?> connections}) =
       _$_Connection;
   const _Connection._() : super._();
 
   factory _Connection.fromJson(Map<String, dynamic> json) =
       _$_Connection.fromJson;
 
-  @override
-  int get id;
   @override // ignore: invalid_annotation_target
-  @JsonKey(name: 'user_uuid')
+  @JsonKey(name: 'uuid')
   String get userUuid;
-  @override // ignore: invalid_annotation_target
-  @JsonKey(name: 'google_fit_refresh_token')
-  String? get googleFitRefreshToken;
   @override
-  int get app;
-  @override
-  @JsonKey(name: 'connected_platforms')
-  List<ConnectedPlatform> get connectedPlatforms;
+  Map<String, ConnectedPlatform?> get connections;
   @override
   @JsonKey(ignore: true)
   _$$_ConnectionCopyWith<_$_Connection> get copyWith =>

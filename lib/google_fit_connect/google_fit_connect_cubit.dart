@@ -53,8 +53,8 @@ class GoogleFitConnectCubit extends Cubit<GoogleFitConnectState> {
           paymentPlan: state.paymentPlan,
         ));
       } else {
-        ConnectedPlatform googleFitPlatform = connection.connectedPlatforms
-            .firstWhere((element) => element.platform == 'google_fit');
+        ConnectedPlatform googleFitPlatform =
+            connection.connections['google_fit']!;
         emit(
           googleFitPlatform.loggedIn
               ? GoogleFitConnectState.connected(
@@ -108,8 +108,8 @@ class GoogleFitConnectCubit extends Cubit<GoogleFitConnectState> {
               paymentPlan: state.paymentPlan,
             ));
           }, (connection) {
-            ConnectedPlatform googleFitPlatform = connection.connectedPlatforms
-                .firstWhere((element) => element.platform == 'google_fit');
+            ConnectedPlatform googleFitPlatform =
+                connection.connections['google_fit']!;
             emit(GoogleFitConnectState.connected(
               googleFitPlatform,
               userUuid: state.userUuid,
@@ -130,8 +130,8 @@ class GoogleFitConnectCubit extends Cubit<GoogleFitConnectState> {
               paymentPlan: state.paymentPlan,
             ));
           }, (connection) {
-            ConnectedPlatform googleFitPlatform = connection.connectedPlatforms
-                .firstWhere((element) => element.platform == 'google_fit');
+            ConnectedPlatform googleFitPlatform =
+                connection.connections['google_fit']!;
 
             emit(GoogleFitConnectState.connected(
               googleFitPlatform,
@@ -160,8 +160,8 @@ class GoogleFitConnectCubit extends Cubit<GoogleFitConnectState> {
         paymentPlan: state.paymentPlan,
       ));
     }, (connection) {
-      ConnectedPlatform googleFitPlatform = connection.connectedPlatforms
-          .firstWhere((element) => element.platform == 'google_fit');
+      ConnectedPlatform googleFitPlatform =
+          connection.connections['google_fit']!;
 
       emit(GoogleFitConnectState.tokenInvalidated(
         googleFitPlatform,

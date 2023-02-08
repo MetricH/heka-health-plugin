@@ -7,14 +7,9 @@ part 'connection.g.dart';
 class Connection with _$Connection {
   const Connection._();
   const factory Connection({
-    required int id,
     // ignore: invalid_annotation_target
-    @JsonKey(name: 'user_uuid') required String userUuid,
-    // ignore: invalid_annotation_target
-    @JsonKey(name: 'google_fit_refresh_token') String? googleFitRefreshToken,
-    required int app,
-    @JsonKey(name: 'connected_platforms')
-        required List<ConnectedPlatform> connectedPlatforms,
+    @JsonKey(name: 'uuid') required String userUuid,
+    required Map<String, ConnectedPlatform?> connections,
   }) = _Connection;
 
   factory Connection.fromJson(Map<String, dynamic> json) =>
@@ -22,8 +17,6 @@ class Connection with _$Connection {
 
   bool isPlatformConnected(String platform) {
     // TODO: add handling for logged in variable too
-    return (connectedPlatforms)
-        .where((element) => element.platform == platform)
-        .isNotEmpty;
+    return connections[platform] != null;
   }
 }
