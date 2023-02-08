@@ -4,7 +4,6 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:heka_health/heka_health_helper.dart';
 import 'package:heka_health/models/connected_platform.dart';
-import 'package:heka_health/models/connection.dart';
 import 'package:heka_health/models/heka_health_error.dart';
 
 part 'google_fit_connect_state.dart';
