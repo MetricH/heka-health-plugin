@@ -120,7 +120,8 @@ class _IosHealthConnectButtonState extends State<IosHealthConnectButton> {
                         noConnection: (_, plan) =>
                             context.read<IosConnectCubit>().createConnection,
                         makingConnection: (_, plan) => null,
-                        syncingData: (_, __, plan) => null,
+                        syncingData: (_, __, plan) =>
+                            context.read<IosConnectCubit>().disconnect,
                       ),
                       style: ElevatedButton.styleFrom(
                         elevation: 1,
@@ -138,7 +139,7 @@ class _IosHealthConnectButtonState extends State<IosHealthConnectButton> {
                         checkingConnection: (_, plan) => const Text('...'),
                         noConnection: (_, plan) => const Text('Connect'),
                         makingConnection: (_, plan) => const Text('...'),
-                        syncingData: (_, __, plan) => const Text('Connected'),
+                        syncingData: (_, __, plan) => const Text('Disconnect'),
                       ),
                     ),
                   ),

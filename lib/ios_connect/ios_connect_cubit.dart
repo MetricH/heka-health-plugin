@@ -27,6 +27,10 @@ class IosConnectCubit extends Cubit<IosConnectState> {
     });
   }
 
+  Future<void> disconnect() async {
+    // TODO: implement this method
+  }
+
   Future<void> checkConnection() async {
     emit(IosConnectState.checkingConnection(
       userUuid: state.userUuid,
