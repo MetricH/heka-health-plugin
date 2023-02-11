@@ -65,6 +65,15 @@ class IosConnectCubit extends Cubit<IosConnectState> {
       userUuid: state.userUuid,
       paymentPlan: state.paymentPlan,
     ));
+    bool granted = await requestHealthKitPermissions();
+    if (!granted) {
+      emit(IosConnectState.error(
+        const HekaHealthError.appleHealthkitPermissionsDenied(),
+        userUuid: state.userUuid,
+        paymentPlan: state.paymentPlan,
+      ));
+      return;
+    }
     final failureOrSuccess = await _manager.makeConnection(
       userUuid: state.userUuid,
       platform: 'apple_healthkit',

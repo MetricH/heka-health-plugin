@@ -21,18 +21,21 @@ mixin _$HekaHealthError {
   TResult when<TResult extends Object?>({
     required TResult Function(String message) noConnection,
     required TResult Function(String message) googleClientIdNotRegistered,
+    required TResult Function(String message) appleHealthkitPermissionsDenied,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(String message)? noConnection,
     TResult? Function(String message)? googleClientIdNotRegistered,
+    TResult? Function(String message)? appleHealthkitPermissionsDenied,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(String message)? noConnection,
     TResult Function(String message)? googleClientIdNotRegistered,
+    TResult Function(String message)? appleHealthkitPermissionsDenied,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -41,6 +44,8 @@ mixin _$HekaHealthError {
     required TResult Function(_NoConnection value) noConnection,
     required TResult Function(_GoogleClientIdNotRegistered value)
         googleClientIdNotRegistered,
+    required TResult Function(_AppleHealthkitPermissionsDenied value)
+        appleHealthkitPermissionsDenied,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -48,6 +53,8 @@ mixin _$HekaHealthError {
     TResult? Function(_NoConnection value)? noConnection,
     TResult? Function(_GoogleClientIdNotRegistered value)?
         googleClientIdNotRegistered,
+    TResult? Function(_AppleHealthkitPermissionsDenied value)?
+        appleHealthkitPermissionsDenied,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -55,6 +62,8 @@ mixin _$HekaHealthError {
     TResult Function(_NoConnection value)? noConnection,
     TResult Function(_GoogleClientIdNotRegistered value)?
         googleClientIdNotRegistered,
+    TResult Function(_AppleHealthkitPermissionsDenied value)?
+        appleHealthkitPermissionsDenied,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -167,6 +176,7 @@ class _$_NoConnection extends _NoConnection {
   TResult when<TResult extends Object?>({
     required TResult Function(String message) noConnection,
     required TResult Function(String message) googleClientIdNotRegistered,
+    required TResult Function(String message) appleHealthkitPermissionsDenied,
   }) {
     return noConnection(message);
   }
@@ -176,6 +186,7 @@ class _$_NoConnection extends _NoConnection {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(String message)? noConnection,
     TResult? Function(String message)? googleClientIdNotRegistered,
+    TResult? Function(String message)? appleHealthkitPermissionsDenied,
   }) {
     return noConnection?.call(message);
   }
@@ -185,6 +196,7 @@ class _$_NoConnection extends _NoConnection {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(String message)? noConnection,
     TResult Function(String message)? googleClientIdNotRegistered,
+    TResult Function(String message)? appleHealthkitPermissionsDenied,
     required TResult orElse(),
   }) {
     if (noConnection != null) {
@@ -199,6 +211,8 @@ class _$_NoConnection extends _NoConnection {
     required TResult Function(_NoConnection value) noConnection,
     required TResult Function(_GoogleClientIdNotRegistered value)
         googleClientIdNotRegistered,
+    required TResult Function(_AppleHealthkitPermissionsDenied value)
+        appleHealthkitPermissionsDenied,
   }) {
     return noConnection(this);
   }
@@ -209,6 +223,8 @@ class _$_NoConnection extends _NoConnection {
     TResult? Function(_NoConnection value)? noConnection,
     TResult? Function(_GoogleClientIdNotRegistered value)?
         googleClientIdNotRegistered,
+    TResult? Function(_AppleHealthkitPermissionsDenied value)?
+        appleHealthkitPermissionsDenied,
   }) {
     return noConnection?.call(this);
   }
@@ -219,6 +235,8 @@ class _$_NoConnection extends _NoConnection {
     TResult Function(_NoConnection value)? noConnection,
     TResult Function(_GoogleClientIdNotRegistered value)?
         googleClientIdNotRegistered,
+    TResult Function(_AppleHealthkitPermissionsDenied value)?
+        appleHealthkitPermissionsDenied,
     required TResult orElse(),
   }) {
     if (noConnection != null) {
@@ -314,6 +332,7 @@ class _$_GoogleClientIdNotRegistered extends _GoogleClientIdNotRegistered {
   TResult when<TResult extends Object?>({
     required TResult Function(String message) noConnection,
     required TResult Function(String message) googleClientIdNotRegistered,
+    required TResult Function(String message) appleHealthkitPermissionsDenied,
   }) {
     return googleClientIdNotRegistered(message);
   }
@@ -323,6 +342,7 @@ class _$_GoogleClientIdNotRegistered extends _GoogleClientIdNotRegistered {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(String message)? noConnection,
     TResult? Function(String message)? googleClientIdNotRegistered,
+    TResult? Function(String message)? appleHealthkitPermissionsDenied,
   }) {
     return googleClientIdNotRegistered?.call(message);
   }
@@ -332,6 +352,7 @@ class _$_GoogleClientIdNotRegistered extends _GoogleClientIdNotRegistered {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(String message)? noConnection,
     TResult Function(String message)? googleClientIdNotRegistered,
+    TResult Function(String message)? appleHealthkitPermissionsDenied,
     required TResult orElse(),
   }) {
     if (googleClientIdNotRegistered != null) {
@@ -346,6 +367,8 @@ class _$_GoogleClientIdNotRegistered extends _GoogleClientIdNotRegistered {
     required TResult Function(_NoConnection value) noConnection,
     required TResult Function(_GoogleClientIdNotRegistered value)
         googleClientIdNotRegistered,
+    required TResult Function(_AppleHealthkitPermissionsDenied value)
+        appleHealthkitPermissionsDenied,
   }) {
     return googleClientIdNotRegistered(this);
   }
@@ -356,6 +379,8 @@ class _$_GoogleClientIdNotRegistered extends _GoogleClientIdNotRegistered {
     TResult? Function(_NoConnection value)? noConnection,
     TResult? Function(_GoogleClientIdNotRegistered value)?
         googleClientIdNotRegistered,
+    TResult? Function(_AppleHealthkitPermissionsDenied value)?
+        appleHealthkitPermissionsDenied,
   }) {
     return googleClientIdNotRegistered?.call(this);
   }
@@ -366,6 +391,8 @@ class _$_GoogleClientIdNotRegistered extends _GoogleClientIdNotRegistered {
     TResult Function(_NoConnection value)? noConnection,
     TResult Function(_GoogleClientIdNotRegistered value)?
         googleClientIdNotRegistered,
+    TResult Function(_AppleHealthkitPermissionsDenied value)?
+        appleHealthkitPermissionsDenied,
     required TResult orElse(),
   }) {
     if (googleClientIdNotRegistered != null) {
@@ -385,5 +412,166 @@ abstract class _GoogleClientIdNotRegistered extends HekaHealthError {
   @override
   @JsonKey(ignore: true)
   _$$_GoogleClientIdNotRegisteredCopyWith<_$_GoogleClientIdNotRegistered>
+      get copyWith => throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$_AppleHealthkitPermissionsDeniedCopyWith<$Res>
+    implements $HekaHealthErrorCopyWith<$Res> {
+  factory _$$_AppleHealthkitPermissionsDeniedCopyWith(
+          _$_AppleHealthkitPermissionsDenied value,
+          $Res Function(_$_AppleHealthkitPermissionsDenied) then) =
+      __$$_AppleHealthkitPermissionsDeniedCopyWithImpl<$Res>;
+  @override
+  @useResult
+  $Res call({String message});
+}
+
+/// @nodoc
+class __$$_AppleHealthkitPermissionsDeniedCopyWithImpl<$Res>
+    extends _$HekaHealthErrorCopyWithImpl<$Res,
+        _$_AppleHealthkitPermissionsDenied>
+    implements _$$_AppleHealthkitPermissionsDeniedCopyWith<$Res> {
+  __$$_AppleHealthkitPermissionsDeniedCopyWithImpl(
+      _$_AppleHealthkitPermissionsDenied _value,
+      $Res Function(_$_AppleHealthkitPermissionsDenied) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? message = null,
+  }) {
+    return _then(_$_AppleHealthkitPermissionsDenied(
+      message: null == message
+          ? _value.message
+          : message // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$_AppleHealthkitPermissionsDenied
+    extends _AppleHealthkitPermissionsDenied {
+  const _$_AppleHealthkitPermissionsDenied(
+      {this.message = 'Apple Healthkit permissions denied!'})
+      : super._();
+
+  @override
+  @JsonKey()
+  final String message;
+
+  @override
+  String toString() {
+    return 'HekaHealthError.appleHealthkitPermissionsDenied(message: $message)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$_AppleHealthkitPermissionsDenied &&
+            (identical(other.message, message) || other.message == message));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, message);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$_AppleHealthkitPermissionsDeniedCopyWith<
+          _$_AppleHealthkitPermissionsDenied>
+      get copyWith => __$$_AppleHealthkitPermissionsDeniedCopyWithImpl<
+          _$_AppleHealthkitPermissionsDenied>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(String message) noConnection,
+    required TResult Function(String message) googleClientIdNotRegistered,
+    required TResult Function(String message) appleHealthkitPermissionsDenied,
+  }) {
+    return appleHealthkitPermissionsDenied(message);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(String message)? noConnection,
+    TResult? Function(String message)? googleClientIdNotRegistered,
+    TResult? Function(String message)? appleHealthkitPermissionsDenied,
+  }) {
+    return appleHealthkitPermissionsDenied?.call(message);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(String message)? noConnection,
+    TResult Function(String message)? googleClientIdNotRegistered,
+    TResult Function(String message)? appleHealthkitPermissionsDenied,
+    required TResult orElse(),
+  }) {
+    if (appleHealthkitPermissionsDenied != null) {
+      return appleHealthkitPermissionsDenied(message);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_NoConnection value) noConnection,
+    required TResult Function(_GoogleClientIdNotRegistered value)
+        googleClientIdNotRegistered,
+    required TResult Function(_AppleHealthkitPermissionsDenied value)
+        appleHealthkitPermissionsDenied,
+  }) {
+    return appleHealthkitPermissionsDenied(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_NoConnection value)? noConnection,
+    TResult? Function(_GoogleClientIdNotRegistered value)?
+        googleClientIdNotRegistered,
+    TResult? Function(_AppleHealthkitPermissionsDenied value)?
+        appleHealthkitPermissionsDenied,
+  }) {
+    return appleHealthkitPermissionsDenied?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_NoConnection value)? noConnection,
+    TResult Function(_GoogleClientIdNotRegistered value)?
+        googleClientIdNotRegistered,
+    TResult Function(_AppleHealthkitPermissionsDenied value)?
+        appleHealthkitPermissionsDenied,
+    required TResult orElse(),
+  }) {
+    if (appleHealthkitPermissionsDenied != null) {
+      return appleHealthkitPermissionsDenied(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _AppleHealthkitPermissionsDenied extends HekaHealthError {
+  const factory _AppleHealthkitPermissionsDenied({final String message}) =
+      _$_AppleHealthkitPermissionsDenied;
+  const _AppleHealthkitPermissionsDenied._() : super._();
+
+  @override
+  String get message;
+  @override
+  @JsonKey(ignore: true)
+  _$$_AppleHealthkitPermissionsDeniedCopyWith<
+          _$_AppleHealthkitPermissionsDenied>
       get copyWith => throw _privateConstructorUsedError;
 }
