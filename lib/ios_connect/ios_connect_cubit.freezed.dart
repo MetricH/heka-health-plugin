@@ -29,7 +29,7 @@ mixin _$IosConnectState {
         makingConnection,
     required TResult Function(
             Connection connection, String userUuid, String? paymentPlan)
-        syncingData,
+        connected,
     required TResult Function(
             HekaHealthError error, String userUuid, String? paymentPlan)
         error,
@@ -43,7 +43,7 @@ mixin _$IosConnectState {
     TResult? Function(String userUuid, String? paymentPlan)? makingConnection,
     TResult? Function(
             Connection connection, String userUuid, String? paymentPlan)?
-        syncingData,
+        connected,
     TResult? Function(
             HekaHealthError error, String userUuid, String? paymentPlan)?
         error,
@@ -57,7 +57,7 @@ mixin _$IosConnectState {
     TResult Function(String userUuid, String? paymentPlan)? makingConnection,
     TResult Function(
             Connection connection, String userUuid, String? paymentPlan)?
-        syncingData,
+        connected,
     TResult Function(
             HekaHealthError error, String userUuid, String? paymentPlan)?
         error,
@@ -70,7 +70,7 @@ mixin _$IosConnectState {
     required TResult Function(_NoConnection value) noConnection,
     required TResult Function(_CheckingConnection value) checkingConnection,
     required TResult Function(_MakingConnection value) makingConnection,
-    required TResult Function(_SyncingData value) syncingData,
+    required TResult Function(_Connected value) connected,
     required TResult Function(_Error value) error,
   }) =>
       throw _privateConstructorUsedError;
@@ -80,7 +80,7 @@ mixin _$IosConnectState {
     TResult? Function(_NoConnection value)? noConnection,
     TResult? Function(_CheckingConnection value)? checkingConnection,
     TResult? Function(_MakingConnection value)? makingConnection,
-    TResult? Function(_SyncingData value)? syncingData,
+    TResult? Function(_Connected value)? connected,
     TResult? Function(_Error value)? error,
   }) =>
       throw _privateConstructorUsedError;
@@ -90,7 +90,7 @@ mixin _$IosConnectState {
     TResult Function(_NoConnection value)? noConnection,
     TResult Function(_CheckingConnection value)? checkingConnection,
     TResult Function(_MakingConnection value)? makingConnection,
-    TResult Function(_SyncingData value)? syncingData,
+    TResult Function(_Connected value)? connected,
     TResult Function(_Error value)? error,
     required TResult orElse(),
   }) =>
@@ -223,7 +223,7 @@ class _$_Initial implements _Initial {
         makingConnection,
     required TResult Function(
             Connection connection, String userUuid, String? paymentPlan)
-        syncingData,
+        connected,
     required TResult Function(
             HekaHealthError error, String userUuid, String? paymentPlan)
         error,
@@ -240,7 +240,7 @@ class _$_Initial implements _Initial {
     TResult? Function(String userUuid, String? paymentPlan)? makingConnection,
     TResult? Function(
             Connection connection, String userUuid, String? paymentPlan)?
-        syncingData,
+        connected,
     TResult? Function(
             HekaHealthError error, String userUuid, String? paymentPlan)?
         error,
@@ -257,7 +257,7 @@ class _$_Initial implements _Initial {
     TResult Function(String userUuid, String? paymentPlan)? makingConnection,
     TResult Function(
             Connection connection, String userUuid, String? paymentPlan)?
-        syncingData,
+        connected,
     TResult Function(
             HekaHealthError error, String userUuid, String? paymentPlan)?
         error,
@@ -276,7 +276,7 @@ class _$_Initial implements _Initial {
     required TResult Function(_NoConnection value) noConnection,
     required TResult Function(_CheckingConnection value) checkingConnection,
     required TResult Function(_MakingConnection value) makingConnection,
-    required TResult Function(_SyncingData value) syncingData,
+    required TResult Function(_Connected value) connected,
     required TResult Function(_Error value) error,
   }) {
     return initial(this);
@@ -289,7 +289,7 @@ class _$_Initial implements _Initial {
     TResult? Function(_NoConnection value)? noConnection,
     TResult? Function(_CheckingConnection value)? checkingConnection,
     TResult? Function(_MakingConnection value)? makingConnection,
-    TResult? Function(_SyncingData value)? syncingData,
+    TResult? Function(_Connected value)? connected,
     TResult? Function(_Error value)? error,
   }) {
     return initial?.call(this);
@@ -302,7 +302,7 @@ class _$_Initial implements _Initial {
     TResult Function(_NoConnection value)? noConnection,
     TResult Function(_CheckingConnection value)? checkingConnection,
     TResult Function(_MakingConnection value)? makingConnection,
-    TResult Function(_SyncingData value)? syncingData,
+    TResult Function(_Connected value)? connected,
     TResult Function(_Error value)? error,
     required TResult orElse(),
   }) {
@@ -413,7 +413,7 @@ class _$_NoConnection implements _NoConnection {
         makingConnection,
     required TResult Function(
             Connection connection, String userUuid, String? paymentPlan)
-        syncingData,
+        connected,
     required TResult Function(
             HekaHealthError error, String userUuid, String? paymentPlan)
         error,
@@ -430,7 +430,7 @@ class _$_NoConnection implements _NoConnection {
     TResult? Function(String userUuid, String? paymentPlan)? makingConnection,
     TResult? Function(
             Connection connection, String userUuid, String? paymentPlan)?
-        syncingData,
+        connected,
     TResult? Function(
             HekaHealthError error, String userUuid, String? paymentPlan)?
         error,
@@ -447,7 +447,7 @@ class _$_NoConnection implements _NoConnection {
     TResult Function(String userUuid, String? paymentPlan)? makingConnection,
     TResult Function(
             Connection connection, String userUuid, String? paymentPlan)?
-        syncingData,
+        connected,
     TResult Function(
             HekaHealthError error, String userUuid, String? paymentPlan)?
         error,
@@ -466,7 +466,7 @@ class _$_NoConnection implements _NoConnection {
     required TResult Function(_NoConnection value) noConnection,
     required TResult Function(_CheckingConnection value) checkingConnection,
     required TResult Function(_MakingConnection value) makingConnection,
-    required TResult Function(_SyncingData value) syncingData,
+    required TResult Function(_Connected value) connected,
     required TResult Function(_Error value) error,
   }) {
     return noConnection(this);
@@ -479,7 +479,7 @@ class _$_NoConnection implements _NoConnection {
     TResult? Function(_NoConnection value)? noConnection,
     TResult? Function(_CheckingConnection value)? checkingConnection,
     TResult? Function(_MakingConnection value)? makingConnection,
-    TResult? Function(_SyncingData value)? syncingData,
+    TResult? Function(_Connected value)? connected,
     TResult? Function(_Error value)? error,
   }) {
     return noConnection?.call(this);
@@ -492,7 +492,7 @@ class _$_NoConnection implements _NoConnection {
     TResult Function(_NoConnection value)? noConnection,
     TResult Function(_CheckingConnection value)? checkingConnection,
     TResult Function(_MakingConnection value)? makingConnection,
-    TResult Function(_SyncingData value)? syncingData,
+    TResult Function(_Connected value)? connected,
     TResult Function(_Error value)? error,
     required TResult orElse(),
   }) {
@@ -605,7 +605,7 @@ class _$_CheckingConnection implements _CheckingConnection {
         makingConnection,
     required TResult Function(
             Connection connection, String userUuid, String? paymentPlan)
-        syncingData,
+        connected,
     required TResult Function(
             HekaHealthError error, String userUuid, String? paymentPlan)
         error,
@@ -622,7 +622,7 @@ class _$_CheckingConnection implements _CheckingConnection {
     TResult? Function(String userUuid, String? paymentPlan)? makingConnection,
     TResult? Function(
             Connection connection, String userUuid, String? paymentPlan)?
-        syncingData,
+        connected,
     TResult? Function(
             HekaHealthError error, String userUuid, String? paymentPlan)?
         error,
@@ -639,7 +639,7 @@ class _$_CheckingConnection implements _CheckingConnection {
     TResult Function(String userUuid, String? paymentPlan)? makingConnection,
     TResult Function(
             Connection connection, String userUuid, String? paymentPlan)?
-        syncingData,
+        connected,
     TResult Function(
             HekaHealthError error, String userUuid, String? paymentPlan)?
         error,
@@ -658,7 +658,7 @@ class _$_CheckingConnection implements _CheckingConnection {
     required TResult Function(_NoConnection value) noConnection,
     required TResult Function(_CheckingConnection value) checkingConnection,
     required TResult Function(_MakingConnection value) makingConnection,
-    required TResult Function(_SyncingData value) syncingData,
+    required TResult Function(_Connected value) connected,
     required TResult Function(_Error value) error,
   }) {
     return checkingConnection(this);
@@ -671,7 +671,7 @@ class _$_CheckingConnection implements _CheckingConnection {
     TResult? Function(_NoConnection value)? noConnection,
     TResult? Function(_CheckingConnection value)? checkingConnection,
     TResult? Function(_MakingConnection value)? makingConnection,
-    TResult? Function(_SyncingData value)? syncingData,
+    TResult? Function(_Connected value)? connected,
     TResult? Function(_Error value)? error,
   }) {
     return checkingConnection?.call(this);
@@ -684,7 +684,7 @@ class _$_CheckingConnection implements _CheckingConnection {
     TResult Function(_NoConnection value)? noConnection,
     TResult Function(_CheckingConnection value)? checkingConnection,
     TResult Function(_MakingConnection value)? makingConnection,
-    TResult Function(_SyncingData value)? syncingData,
+    TResult Function(_Connected value)? connected,
     TResult Function(_Error value)? error,
     required TResult orElse(),
   }) {
@@ -796,7 +796,7 @@ class _$_MakingConnection implements _MakingConnection {
         makingConnection,
     required TResult Function(
             Connection connection, String userUuid, String? paymentPlan)
-        syncingData,
+        connected,
     required TResult Function(
             HekaHealthError error, String userUuid, String? paymentPlan)
         error,
@@ -813,7 +813,7 @@ class _$_MakingConnection implements _MakingConnection {
     TResult? Function(String userUuid, String? paymentPlan)? makingConnection,
     TResult? Function(
             Connection connection, String userUuid, String? paymentPlan)?
-        syncingData,
+        connected,
     TResult? Function(
             HekaHealthError error, String userUuid, String? paymentPlan)?
         error,
@@ -830,7 +830,7 @@ class _$_MakingConnection implements _MakingConnection {
     TResult Function(String userUuid, String? paymentPlan)? makingConnection,
     TResult Function(
             Connection connection, String userUuid, String? paymentPlan)?
-        syncingData,
+        connected,
     TResult Function(
             HekaHealthError error, String userUuid, String? paymentPlan)?
         error,
@@ -849,7 +849,7 @@ class _$_MakingConnection implements _MakingConnection {
     required TResult Function(_NoConnection value) noConnection,
     required TResult Function(_CheckingConnection value) checkingConnection,
     required TResult Function(_MakingConnection value) makingConnection,
-    required TResult Function(_SyncingData value) syncingData,
+    required TResult Function(_Connected value) connected,
     required TResult Function(_Error value) error,
   }) {
     return makingConnection(this);
@@ -862,7 +862,7 @@ class _$_MakingConnection implements _MakingConnection {
     TResult? Function(_NoConnection value)? noConnection,
     TResult? Function(_CheckingConnection value)? checkingConnection,
     TResult? Function(_MakingConnection value)? makingConnection,
-    TResult? Function(_SyncingData value)? syncingData,
+    TResult? Function(_Connected value)? connected,
     TResult? Function(_Error value)? error,
   }) {
     return makingConnection?.call(this);
@@ -875,7 +875,7 @@ class _$_MakingConnection implements _MakingConnection {
     TResult Function(_NoConnection value)? noConnection,
     TResult Function(_CheckingConnection value)? checkingConnection,
     TResult Function(_MakingConnection value)? makingConnection,
-    TResult Function(_SyncingData value)? syncingData,
+    TResult Function(_Connected value)? connected,
     TResult Function(_Error value)? error,
     required TResult orElse(),
   }) {
@@ -902,11 +902,11 @@ abstract class _MakingConnection implements IosConnectState {
 }
 
 /// @nodoc
-abstract class _$$_SyncingDataCopyWith<$Res>
+abstract class _$$_ConnectedCopyWith<$Res>
     implements $IosConnectStateCopyWith<$Res> {
-  factory _$$_SyncingDataCopyWith(
-          _$_SyncingData value, $Res Function(_$_SyncingData) then) =
-      __$$_SyncingDataCopyWithImpl<$Res>;
+  factory _$$_ConnectedCopyWith(
+          _$_Connected value, $Res Function(_$_Connected) then) =
+      __$$_ConnectedCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call({Connection connection, String userUuid, String? paymentPlan});
@@ -915,11 +915,11 @@ abstract class _$$_SyncingDataCopyWith<$Res>
 }
 
 /// @nodoc
-class __$$_SyncingDataCopyWithImpl<$Res>
-    extends _$IosConnectStateCopyWithImpl<$Res, _$_SyncingData>
-    implements _$$_SyncingDataCopyWith<$Res> {
-  __$$_SyncingDataCopyWithImpl(
-      _$_SyncingData _value, $Res Function(_$_SyncingData) _then)
+class __$$_ConnectedCopyWithImpl<$Res>
+    extends _$IosConnectStateCopyWithImpl<$Res, _$_Connected>
+    implements _$$_ConnectedCopyWith<$Res> {
+  __$$_ConnectedCopyWithImpl(
+      _$_Connected _value, $Res Function(_$_Connected) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -929,7 +929,7 @@ class __$$_SyncingDataCopyWithImpl<$Res>
     Object? userUuid = null,
     Object? paymentPlan = freezed,
   }) {
-    return _then(_$_SyncingData(
+    return _then(_$_Connected(
       null == connection
           ? _value.connection
           : connection // ignore: cast_nullable_to_non_nullable
@@ -956,8 +956,8 @@ class __$$_SyncingDataCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_SyncingData implements _SyncingData {
-  const _$_SyncingData(this.connection,
+class _$_Connected implements _Connected {
+  const _$_Connected(this.connection,
       {required this.userUuid, required this.paymentPlan});
 
   @override
@@ -969,14 +969,14 @@ class _$_SyncingData implements _SyncingData {
 
   @override
   String toString() {
-    return 'IosConnectState.syncingData(connection: $connection, userUuid: $userUuid, paymentPlan: $paymentPlan)';
+    return 'IosConnectState.connected(connection: $connection, userUuid: $userUuid, paymentPlan: $paymentPlan)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_SyncingData &&
+            other is _$_Connected &&
             (identical(other.connection, connection) ||
                 other.connection == connection) &&
             (identical(other.userUuid, userUuid) ||
@@ -992,8 +992,8 @@ class _$_SyncingData implements _SyncingData {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_SyncingDataCopyWith<_$_SyncingData> get copyWith =>
-      __$$_SyncingDataCopyWithImpl<_$_SyncingData>(this, _$identity);
+  _$$_ConnectedCopyWith<_$_Connected> get copyWith =>
+      __$$_ConnectedCopyWithImpl<_$_Connected>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -1007,12 +1007,12 @@ class _$_SyncingData implements _SyncingData {
         makingConnection,
     required TResult Function(
             Connection connection, String userUuid, String? paymentPlan)
-        syncingData,
+        connected,
     required TResult Function(
             HekaHealthError error, String userUuid, String? paymentPlan)
         error,
   }) {
-    return syncingData(connection, userUuid, paymentPlan);
+    return connected(connection, userUuid, paymentPlan);
   }
 
   @override
@@ -1024,12 +1024,12 @@ class _$_SyncingData implements _SyncingData {
     TResult? Function(String userUuid, String? paymentPlan)? makingConnection,
     TResult? Function(
             Connection connection, String userUuid, String? paymentPlan)?
-        syncingData,
+        connected,
     TResult? Function(
             HekaHealthError error, String userUuid, String? paymentPlan)?
         error,
   }) {
-    return syncingData?.call(connection, userUuid, paymentPlan);
+    return connected?.call(connection, userUuid, paymentPlan);
   }
 
   @override
@@ -1041,14 +1041,14 @@ class _$_SyncingData implements _SyncingData {
     TResult Function(String userUuid, String? paymentPlan)? makingConnection,
     TResult Function(
             Connection connection, String userUuid, String? paymentPlan)?
-        syncingData,
+        connected,
     TResult Function(
             HekaHealthError error, String userUuid, String? paymentPlan)?
         error,
     required TResult orElse(),
   }) {
-    if (syncingData != null) {
-      return syncingData(connection, userUuid, paymentPlan);
+    if (connected != null) {
+      return connected(connection, userUuid, paymentPlan);
     }
     return orElse();
   }
@@ -1060,10 +1060,10 @@ class _$_SyncingData implements _SyncingData {
     required TResult Function(_NoConnection value) noConnection,
     required TResult Function(_CheckingConnection value) checkingConnection,
     required TResult Function(_MakingConnection value) makingConnection,
-    required TResult Function(_SyncingData value) syncingData,
+    required TResult Function(_Connected value) connected,
     required TResult Function(_Error value) error,
   }) {
-    return syncingData(this);
+    return connected(this);
   }
 
   @override
@@ -1073,10 +1073,10 @@ class _$_SyncingData implements _SyncingData {
     TResult? Function(_NoConnection value)? noConnection,
     TResult? Function(_CheckingConnection value)? checkingConnection,
     TResult? Function(_MakingConnection value)? makingConnection,
-    TResult? Function(_SyncingData value)? syncingData,
+    TResult? Function(_Connected value)? connected,
     TResult? Function(_Error value)? error,
   }) {
-    return syncingData?.call(this);
+    return connected?.call(this);
   }
 
   @override
@@ -1086,21 +1086,21 @@ class _$_SyncingData implements _SyncingData {
     TResult Function(_NoConnection value)? noConnection,
     TResult Function(_CheckingConnection value)? checkingConnection,
     TResult Function(_MakingConnection value)? makingConnection,
-    TResult Function(_SyncingData value)? syncingData,
+    TResult Function(_Connected value)? connected,
     TResult Function(_Error value)? error,
     required TResult orElse(),
   }) {
-    if (syncingData != null) {
-      return syncingData(this);
+    if (connected != null) {
+      return connected(this);
     }
     return orElse();
   }
 }
 
-abstract class _SyncingData implements IosConnectState {
-  const factory _SyncingData(final Connection connection,
+abstract class _Connected implements IosConnectState {
+  const factory _Connected(final Connection connection,
       {required final String userUuid,
-      required final String? paymentPlan}) = _$_SyncingData;
+      required final String? paymentPlan}) = _$_Connected;
 
   Connection get connection;
   @override
@@ -1109,7 +1109,7 @@ abstract class _SyncingData implements IosConnectState {
   String? get paymentPlan;
   @override
   @JsonKey(ignore: true)
-  _$$_SyncingDataCopyWith<_$_SyncingData> get copyWith =>
+  _$$_ConnectedCopyWith<_$_Connected> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
@@ -1215,7 +1215,7 @@ class _$_Error implements _Error {
         makingConnection,
     required TResult Function(
             Connection connection, String userUuid, String? paymentPlan)
-        syncingData,
+        connected,
     required TResult Function(
             HekaHealthError error, String userUuid, String? paymentPlan)
         error,
@@ -1232,7 +1232,7 @@ class _$_Error implements _Error {
     TResult? Function(String userUuid, String? paymentPlan)? makingConnection,
     TResult? Function(
             Connection connection, String userUuid, String? paymentPlan)?
-        syncingData,
+        connected,
     TResult? Function(
             HekaHealthError error, String userUuid, String? paymentPlan)?
         error,
@@ -1249,7 +1249,7 @@ class _$_Error implements _Error {
     TResult Function(String userUuid, String? paymentPlan)? makingConnection,
     TResult Function(
             Connection connection, String userUuid, String? paymentPlan)?
-        syncingData,
+        connected,
     TResult Function(
             HekaHealthError error, String userUuid, String? paymentPlan)?
         error,
@@ -1268,7 +1268,7 @@ class _$_Error implements _Error {
     required TResult Function(_NoConnection value) noConnection,
     required TResult Function(_CheckingConnection value) checkingConnection,
     required TResult Function(_MakingConnection value) makingConnection,
-    required TResult Function(_SyncingData value) syncingData,
+    required TResult Function(_Connected value) connected,
     required TResult Function(_Error value) error,
   }) {
     return error(this);
@@ -1281,7 +1281,7 @@ class _$_Error implements _Error {
     TResult? Function(_NoConnection value)? noConnection,
     TResult? Function(_CheckingConnection value)? checkingConnection,
     TResult? Function(_MakingConnection value)? makingConnection,
-    TResult? Function(_SyncingData value)? syncingData,
+    TResult? Function(_Connected value)? connected,
     TResult? Function(_Error value)? error,
   }) {
     return error?.call(this);
@@ -1294,7 +1294,7 @@ class _$_Error implements _Error {
     TResult Function(_NoConnection value)? noConnection,
     TResult Function(_CheckingConnection value)? checkingConnection,
     TResult Function(_MakingConnection value)? makingConnection,
-    TResult Function(_SyncingData value)? syncingData,
+    TResult Function(_Connected value)? connected,
     TResult Function(_Error value)? error,
     required TResult orElse(),
   }) {

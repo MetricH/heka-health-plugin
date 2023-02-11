@@ -54,7 +54,7 @@ class IosConnectCubit extends Cubit<IosConnectState> {
           ));
         } else {
           await syncData(state.userUuid);
-          emit(IosConnectState.syncingData(
+          emit(IosConnectState.connected(
             connection,
             userUuid: state.userUuid,
             paymentPlan: state.paymentPlan,
@@ -90,7 +90,7 @@ class IosConnectCubit extends Cubit<IosConnectState> {
       ));
     }, (connection) async {
       await syncData(state.userUuid);
-      emit(IosConnectState.syncingData(
+      emit(IosConnectState.connected(
         connection,
         userUuid: state.userUuid,
         paymentPlan: state.paymentPlan,

@@ -92,7 +92,7 @@ class _IosHealthConnectButtonState extends State<IosHealthConnectButton> {
                       'Making connection...',
                       style: Theme.of(context).textTheme.bodySmall,
                     ),
-                    syncingData: (_, __, plan) => Text(
+                    connected: (_, __, plan) => Text(
                       '',
                       style: Theme.of(context).textTheme.bodySmall,
                     ),
@@ -120,7 +120,7 @@ class _IosHealthConnectButtonState extends State<IosHealthConnectButton> {
                         noConnection: (_, plan) =>
                             context.read<IosConnectCubit>().createConnection,
                         makingConnection: (_, plan) => null,
-                        syncingData: (_, __, plan) =>
+                        connected: (_, __, plan) =>
                             context.read<IosConnectCubit>().disconnect,
                       ),
                       style: ElevatedButton.styleFrom(
@@ -139,7 +139,7 @@ class _IosHealthConnectButtonState extends State<IosHealthConnectButton> {
                         checkingConnection: (_, plan) => const Text('...'),
                         noConnection: (_, plan) => const Text('Connect'),
                         makingConnection: (_, plan) => const Text('...'),
-                        syncingData: (_, __, plan) => const Text('Disconnect'),
+                        connected: (_, __, plan) => const Text('Disconnect'),
                       ),
                     ),
                   ),
