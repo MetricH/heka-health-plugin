@@ -2,6 +2,7 @@ import 'package:device_info_plus/device_info_plus.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:heka_health/heka_health_helper.dart';
+import 'package:heka_health/models/connected_platform.dart';
 import 'package:heka_health/models/heka_health_error.dart';
 
 import '../models/connection.dart';
@@ -28,8 +29,33 @@ class IosConnectCubit extends Cubit<IosConnectState> {
     });
   }
 
-  Future<void> disconnect() async {
-    // TODO: implement this method
+  Future<void> disconnect(String uuid, ConnectedPlatform connection) async {
+    emit(IosConnectState.disconnecting(
+      userUuid: state.userUuid,
+      paymentPlan: state.paymentPlan,
+    ));
+
+    DeviceInfoPlugin deviceInfo = DeviceInfoPlugin();
+    String uuid = (await deviceInfo.iosInfo).identifierForVendor!;
+    final failureOrSuccess = await _manager.disconnect(
+      userUuid: uuid,
+      platform: connection.platform,
+      deviceId: uuid,
+    );
+
+    failureOrSuccess.fold((error) {
+      emit(IosConnectState.error(
+        error,
+        userUuid: state.userUuid,
+        paymentPlan: state.paymentPlan,
+      ));
+    }, (connection) async {
+      await _manager.disconnectHealthKit();
+      emit(IosConnectState.noConnection(
+        userUuid: state.userUuid,
+        paymentPlan: state.paymentPlan,
+      ));
+    });
   }
 
   Future<void> checkConnection() async {
@@ -69,7 +95,7 @@ class IosConnectCubit extends Cubit<IosConnectState> {
             return;
           }
           emit(IosConnectState.connected(
-            connection,
+            connection.connections['apple_healthkit']!,
             userUuid: state.userUuid,
             paymentPlan: state.paymentPlan,
           ));
@@ -109,7 +135,7 @@ class IosConnectCubit extends Cubit<IosConnectState> {
     }, (connection) async {
       await syncData(state.userUuid);
       emit(IosConnectState.connected(
-        connection,
+        connection.connections['apple_healthkit']!,
         userUuid: state.userUuid,
         paymentPlan: state.paymentPlan,
       ));

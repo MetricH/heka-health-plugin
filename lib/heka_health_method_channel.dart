@@ -37,4 +37,11 @@ class MethodChannelHekaHealth extends HekaHealthPlatform {
             false;
     return result;
   }
+
+  @override
+  Future<bool> disconnect() async {
+    final result =
+        (await methodChannel.invokeMethod<bool>('disconnect')) ?? false;
+    return result;
+  }
 }

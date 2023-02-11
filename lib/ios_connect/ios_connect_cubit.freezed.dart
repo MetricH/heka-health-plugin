@@ -28,8 +28,10 @@ mixin _$IosConnectState {
     required TResult Function(String userUuid, String? paymentPlan)
         makingConnection,
     required TResult Function(
-            Connection connection, String userUuid, String? paymentPlan)
+            ConnectedPlatform connection, String userUuid, String? paymentPlan)
         connected,
+    required TResult Function(String userUuid, String? paymentPlan)
+        disconnecting,
     required TResult Function(
             HekaHealthError error, String userUuid, String? paymentPlan)
         error,
@@ -42,8 +44,9 @@ mixin _$IosConnectState {
     TResult? Function(String userUuid, String? paymentPlan)? checkingConnection,
     TResult? Function(String userUuid, String? paymentPlan)? makingConnection,
     TResult? Function(
-            Connection connection, String userUuid, String? paymentPlan)?
+            ConnectedPlatform connection, String userUuid, String? paymentPlan)?
         connected,
+    TResult? Function(String userUuid, String? paymentPlan)? disconnecting,
     TResult? Function(
             HekaHealthError error, String userUuid, String? paymentPlan)?
         error,
@@ -56,8 +59,9 @@ mixin _$IosConnectState {
     TResult Function(String userUuid, String? paymentPlan)? checkingConnection,
     TResult Function(String userUuid, String? paymentPlan)? makingConnection,
     TResult Function(
-            Connection connection, String userUuid, String? paymentPlan)?
+            ConnectedPlatform connection, String userUuid, String? paymentPlan)?
         connected,
+    TResult Function(String userUuid, String? paymentPlan)? disconnecting,
     TResult Function(
             HekaHealthError error, String userUuid, String? paymentPlan)?
         error,
@@ -71,6 +75,7 @@ mixin _$IosConnectState {
     required TResult Function(_CheckingConnection value) checkingConnection,
     required TResult Function(_MakingConnection value) makingConnection,
     required TResult Function(_Connected value) connected,
+    required TResult Function(_Disconnecting value) disconnecting,
     required TResult Function(_Error value) error,
   }) =>
       throw _privateConstructorUsedError;
@@ -81,6 +86,7 @@ mixin _$IosConnectState {
     TResult? Function(_CheckingConnection value)? checkingConnection,
     TResult? Function(_MakingConnection value)? makingConnection,
     TResult? Function(_Connected value)? connected,
+    TResult? Function(_Disconnecting value)? disconnecting,
     TResult? Function(_Error value)? error,
   }) =>
       throw _privateConstructorUsedError;
@@ -91,6 +97,7 @@ mixin _$IosConnectState {
     TResult Function(_CheckingConnection value)? checkingConnection,
     TResult Function(_MakingConnection value)? makingConnection,
     TResult Function(_Connected value)? connected,
+    TResult Function(_Disconnecting value)? disconnecting,
     TResult Function(_Error value)? error,
     required TResult orElse(),
   }) =>
@@ -222,8 +229,10 @@ class _$_Initial implements _Initial {
     required TResult Function(String userUuid, String? paymentPlan)
         makingConnection,
     required TResult Function(
-            Connection connection, String userUuid, String? paymentPlan)
+            ConnectedPlatform connection, String userUuid, String? paymentPlan)
         connected,
+    required TResult Function(String userUuid, String? paymentPlan)
+        disconnecting,
     required TResult Function(
             HekaHealthError error, String userUuid, String? paymentPlan)
         error,
@@ -239,8 +248,9 @@ class _$_Initial implements _Initial {
     TResult? Function(String userUuid, String? paymentPlan)? checkingConnection,
     TResult? Function(String userUuid, String? paymentPlan)? makingConnection,
     TResult? Function(
-            Connection connection, String userUuid, String? paymentPlan)?
+            ConnectedPlatform connection, String userUuid, String? paymentPlan)?
         connected,
+    TResult? Function(String userUuid, String? paymentPlan)? disconnecting,
     TResult? Function(
             HekaHealthError error, String userUuid, String? paymentPlan)?
         error,
@@ -256,8 +266,9 @@ class _$_Initial implements _Initial {
     TResult Function(String userUuid, String? paymentPlan)? checkingConnection,
     TResult Function(String userUuid, String? paymentPlan)? makingConnection,
     TResult Function(
-            Connection connection, String userUuid, String? paymentPlan)?
+            ConnectedPlatform connection, String userUuid, String? paymentPlan)?
         connected,
+    TResult Function(String userUuid, String? paymentPlan)? disconnecting,
     TResult Function(
             HekaHealthError error, String userUuid, String? paymentPlan)?
         error,
@@ -277,6 +288,7 @@ class _$_Initial implements _Initial {
     required TResult Function(_CheckingConnection value) checkingConnection,
     required TResult Function(_MakingConnection value) makingConnection,
     required TResult Function(_Connected value) connected,
+    required TResult Function(_Disconnecting value) disconnecting,
     required TResult Function(_Error value) error,
   }) {
     return initial(this);
@@ -290,6 +302,7 @@ class _$_Initial implements _Initial {
     TResult? Function(_CheckingConnection value)? checkingConnection,
     TResult? Function(_MakingConnection value)? makingConnection,
     TResult? Function(_Connected value)? connected,
+    TResult? Function(_Disconnecting value)? disconnecting,
     TResult? Function(_Error value)? error,
   }) {
     return initial?.call(this);
@@ -303,6 +316,7 @@ class _$_Initial implements _Initial {
     TResult Function(_CheckingConnection value)? checkingConnection,
     TResult Function(_MakingConnection value)? makingConnection,
     TResult Function(_Connected value)? connected,
+    TResult Function(_Disconnecting value)? disconnecting,
     TResult Function(_Error value)? error,
     required TResult orElse(),
   }) {
@@ -412,8 +426,10 @@ class _$_NoConnection implements _NoConnection {
     required TResult Function(String userUuid, String? paymentPlan)
         makingConnection,
     required TResult Function(
-            Connection connection, String userUuid, String? paymentPlan)
+            ConnectedPlatform connection, String userUuid, String? paymentPlan)
         connected,
+    required TResult Function(String userUuid, String? paymentPlan)
+        disconnecting,
     required TResult Function(
             HekaHealthError error, String userUuid, String? paymentPlan)
         error,
@@ -429,8 +445,9 @@ class _$_NoConnection implements _NoConnection {
     TResult? Function(String userUuid, String? paymentPlan)? checkingConnection,
     TResult? Function(String userUuid, String? paymentPlan)? makingConnection,
     TResult? Function(
-            Connection connection, String userUuid, String? paymentPlan)?
+            ConnectedPlatform connection, String userUuid, String? paymentPlan)?
         connected,
+    TResult? Function(String userUuid, String? paymentPlan)? disconnecting,
     TResult? Function(
             HekaHealthError error, String userUuid, String? paymentPlan)?
         error,
@@ -446,8 +463,9 @@ class _$_NoConnection implements _NoConnection {
     TResult Function(String userUuid, String? paymentPlan)? checkingConnection,
     TResult Function(String userUuid, String? paymentPlan)? makingConnection,
     TResult Function(
-            Connection connection, String userUuid, String? paymentPlan)?
+            ConnectedPlatform connection, String userUuid, String? paymentPlan)?
         connected,
+    TResult Function(String userUuid, String? paymentPlan)? disconnecting,
     TResult Function(
             HekaHealthError error, String userUuid, String? paymentPlan)?
         error,
@@ -467,6 +485,7 @@ class _$_NoConnection implements _NoConnection {
     required TResult Function(_CheckingConnection value) checkingConnection,
     required TResult Function(_MakingConnection value) makingConnection,
     required TResult Function(_Connected value) connected,
+    required TResult Function(_Disconnecting value) disconnecting,
     required TResult Function(_Error value) error,
   }) {
     return noConnection(this);
@@ -480,6 +499,7 @@ class _$_NoConnection implements _NoConnection {
     TResult? Function(_CheckingConnection value)? checkingConnection,
     TResult? Function(_MakingConnection value)? makingConnection,
     TResult? Function(_Connected value)? connected,
+    TResult? Function(_Disconnecting value)? disconnecting,
     TResult? Function(_Error value)? error,
   }) {
     return noConnection?.call(this);
@@ -493,6 +513,7 @@ class _$_NoConnection implements _NoConnection {
     TResult Function(_CheckingConnection value)? checkingConnection,
     TResult Function(_MakingConnection value)? makingConnection,
     TResult Function(_Connected value)? connected,
+    TResult Function(_Disconnecting value)? disconnecting,
     TResult Function(_Error value)? error,
     required TResult orElse(),
   }) {
@@ -604,8 +625,10 @@ class _$_CheckingConnection implements _CheckingConnection {
     required TResult Function(String userUuid, String? paymentPlan)
         makingConnection,
     required TResult Function(
-            Connection connection, String userUuid, String? paymentPlan)
+            ConnectedPlatform connection, String userUuid, String? paymentPlan)
         connected,
+    required TResult Function(String userUuid, String? paymentPlan)
+        disconnecting,
     required TResult Function(
             HekaHealthError error, String userUuid, String? paymentPlan)
         error,
@@ -621,8 +644,9 @@ class _$_CheckingConnection implements _CheckingConnection {
     TResult? Function(String userUuid, String? paymentPlan)? checkingConnection,
     TResult? Function(String userUuid, String? paymentPlan)? makingConnection,
     TResult? Function(
-            Connection connection, String userUuid, String? paymentPlan)?
+            ConnectedPlatform connection, String userUuid, String? paymentPlan)?
         connected,
+    TResult? Function(String userUuid, String? paymentPlan)? disconnecting,
     TResult? Function(
             HekaHealthError error, String userUuid, String? paymentPlan)?
         error,
@@ -638,8 +662,9 @@ class _$_CheckingConnection implements _CheckingConnection {
     TResult Function(String userUuid, String? paymentPlan)? checkingConnection,
     TResult Function(String userUuid, String? paymentPlan)? makingConnection,
     TResult Function(
-            Connection connection, String userUuid, String? paymentPlan)?
+            ConnectedPlatform connection, String userUuid, String? paymentPlan)?
         connected,
+    TResult Function(String userUuid, String? paymentPlan)? disconnecting,
     TResult Function(
             HekaHealthError error, String userUuid, String? paymentPlan)?
         error,
@@ -659,6 +684,7 @@ class _$_CheckingConnection implements _CheckingConnection {
     required TResult Function(_CheckingConnection value) checkingConnection,
     required TResult Function(_MakingConnection value) makingConnection,
     required TResult Function(_Connected value) connected,
+    required TResult Function(_Disconnecting value) disconnecting,
     required TResult Function(_Error value) error,
   }) {
     return checkingConnection(this);
@@ -672,6 +698,7 @@ class _$_CheckingConnection implements _CheckingConnection {
     TResult? Function(_CheckingConnection value)? checkingConnection,
     TResult? Function(_MakingConnection value)? makingConnection,
     TResult? Function(_Connected value)? connected,
+    TResult? Function(_Disconnecting value)? disconnecting,
     TResult? Function(_Error value)? error,
   }) {
     return checkingConnection?.call(this);
@@ -685,6 +712,7 @@ class _$_CheckingConnection implements _CheckingConnection {
     TResult Function(_CheckingConnection value)? checkingConnection,
     TResult Function(_MakingConnection value)? makingConnection,
     TResult Function(_Connected value)? connected,
+    TResult Function(_Disconnecting value)? disconnecting,
     TResult Function(_Error value)? error,
     required TResult orElse(),
   }) {
@@ -795,8 +823,10 @@ class _$_MakingConnection implements _MakingConnection {
     required TResult Function(String userUuid, String? paymentPlan)
         makingConnection,
     required TResult Function(
-            Connection connection, String userUuid, String? paymentPlan)
+            ConnectedPlatform connection, String userUuid, String? paymentPlan)
         connected,
+    required TResult Function(String userUuid, String? paymentPlan)
+        disconnecting,
     required TResult Function(
             HekaHealthError error, String userUuid, String? paymentPlan)
         error,
@@ -812,8 +842,9 @@ class _$_MakingConnection implements _MakingConnection {
     TResult? Function(String userUuid, String? paymentPlan)? checkingConnection,
     TResult? Function(String userUuid, String? paymentPlan)? makingConnection,
     TResult? Function(
-            Connection connection, String userUuid, String? paymentPlan)?
+            ConnectedPlatform connection, String userUuid, String? paymentPlan)?
         connected,
+    TResult? Function(String userUuid, String? paymentPlan)? disconnecting,
     TResult? Function(
             HekaHealthError error, String userUuid, String? paymentPlan)?
         error,
@@ -829,8 +860,9 @@ class _$_MakingConnection implements _MakingConnection {
     TResult Function(String userUuid, String? paymentPlan)? checkingConnection,
     TResult Function(String userUuid, String? paymentPlan)? makingConnection,
     TResult Function(
-            Connection connection, String userUuid, String? paymentPlan)?
+            ConnectedPlatform connection, String userUuid, String? paymentPlan)?
         connected,
+    TResult Function(String userUuid, String? paymentPlan)? disconnecting,
     TResult Function(
             HekaHealthError error, String userUuid, String? paymentPlan)?
         error,
@@ -850,6 +882,7 @@ class _$_MakingConnection implements _MakingConnection {
     required TResult Function(_CheckingConnection value) checkingConnection,
     required TResult Function(_MakingConnection value) makingConnection,
     required TResult Function(_Connected value) connected,
+    required TResult Function(_Disconnecting value) disconnecting,
     required TResult Function(_Error value) error,
   }) {
     return makingConnection(this);
@@ -863,6 +896,7 @@ class _$_MakingConnection implements _MakingConnection {
     TResult? Function(_CheckingConnection value)? checkingConnection,
     TResult? Function(_MakingConnection value)? makingConnection,
     TResult? Function(_Connected value)? connected,
+    TResult? Function(_Disconnecting value)? disconnecting,
     TResult? Function(_Error value)? error,
   }) {
     return makingConnection?.call(this);
@@ -876,6 +910,7 @@ class _$_MakingConnection implements _MakingConnection {
     TResult Function(_CheckingConnection value)? checkingConnection,
     TResult Function(_MakingConnection value)? makingConnection,
     TResult Function(_Connected value)? connected,
+    TResult Function(_Disconnecting value)? disconnecting,
     TResult Function(_Error value)? error,
     required TResult orElse(),
   }) {
@@ -909,9 +944,10 @@ abstract class _$$_ConnectedCopyWith<$Res>
       __$$_ConnectedCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({Connection connection, String userUuid, String? paymentPlan});
+  $Res call(
+      {ConnectedPlatform connection, String userUuid, String? paymentPlan});
 
-  $ConnectionCopyWith<$Res> get connection;
+  $ConnectedPlatformCopyWith<$Res> get connection;
 }
 
 /// @nodoc
@@ -933,7 +969,7 @@ class __$$_ConnectedCopyWithImpl<$Res>
       null == connection
           ? _value.connection
           : connection // ignore: cast_nullable_to_non_nullable
-              as Connection,
+              as ConnectedPlatform,
       userUuid: null == userUuid
           ? _value.userUuid
           : userUuid // ignore: cast_nullable_to_non_nullable
@@ -947,8 +983,8 @@ class __$$_ConnectedCopyWithImpl<$Res>
 
   @override
   @pragma('vm:prefer-inline')
-  $ConnectionCopyWith<$Res> get connection {
-    return $ConnectionCopyWith<$Res>(_value.connection, (value) {
+  $ConnectedPlatformCopyWith<$Res> get connection {
+    return $ConnectedPlatformCopyWith<$Res>(_value.connection, (value) {
       return _then(_value.copyWith(connection: value));
     });
   }
@@ -961,7 +997,7 @@ class _$_Connected implements _Connected {
       {required this.userUuid, required this.paymentPlan});
 
   @override
-  final Connection connection;
+  final ConnectedPlatform connection;
   @override
   final String userUuid;
   @override
@@ -1006,8 +1042,10 @@ class _$_Connected implements _Connected {
     required TResult Function(String userUuid, String? paymentPlan)
         makingConnection,
     required TResult Function(
-            Connection connection, String userUuid, String? paymentPlan)
+            ConnectedPlatform connection, String userUuid, String? paymentPlan)
         connected,
+    required TResult Function(String userUuid, String? paymentPlan)
+        disconnecting,
     required TResult Function(
             HekaHealthError error, String userUuid, String? paymentPlan)
         error,
@@ -1023,8 +1061,9 @@ class _$_Connected implements _Connected {
     TResult? Function(String userUuid, String? paymentPlan)? checkingConnection,
     TResult? Function(String userUuid, String? paymentPlan)? makingConnection,
     TResult? Function(
-            Connection connection, String userUuid, String? paymentPlan)?
+            ConnectedPlatform connection, String userUuid, String? paymentPlan)?
         connected,
+    TResult? Function(String userUuid, String? paymentPlan)? disconnecting,
     TResult? Function(
             HekaHealthError error, String userUuid, String? paymentPlan)?
         error,
@@ -1040,8 +1079,9 @@ class _$_Connected implements _Connected {
     TResult Function(String userUuid, String? paymentPlan)? checkingConnection,
     TResult Function(String userUuid, String? paymentPlan)? makingConnection,
     TResult Function(
-            Connection connection, String userUuid, String? paymentPlan)?
+            ConnectedPlatform connection, String userUuid, String? paymentPlan)?
         connected,
+    TResult Function(String userUuid, String? paymentPlan)? disconnecting,
     TResult Function(
             HekaHealthError error, String userUuid, String? paymentPlan)?
         error,
@@ -1061,6 +1101,7 @@ class _$_Connected implements _Connected {
     required TResult Function(_CheckingConnection value) checkingConnection,
     required TResult Function(_MakingConnection value) makingConnection,
     required TResult Function(_Connected value) connected,
+    required TResult Function(_Disconnecting value) disconnecting,
     required TResult Function(_Error value) error,
   }) {
     return connected(this);
@@ -1074,6 +1115,7 @@ class _$_Connected implements _Connected {
     TResult? Function(_CheckingConnection value)? checkingConnection,
     TResult? Function(_MakingConnection value)? makingConnection,
     TResult? Function(_Connected value)? connected,
+    TResult? Function(_Disconnecting value)? disconnecting,
     TResult? Function(_Error value)? error,
   }) {
     return connected?.call(this);
@@ -1087,6 +1129,7 @@ class _$_Connected implements _Connected {
     TResult Function(_CheckingConnection value)? checkingConnection,
     TResult Function(_MakingConnection value)? makingConnection,
     TResult Function(_Connected value)? connected,
+    TResult Function(_Disconnecting value)? disconnecting,
     TResult Function(_Error value)? error,
     required TResult orElse(),
   }) {
@@ -1098,11 +1141,11 @@ class _$_Connected implements _Connected {
 }
 
 abstract class _Connected implements IosConnectState {
-  const factory _Connected(final Connection connection,
+  const factory _Connected(final ConnectedPlatform connection,
       {required final String userUuid,
       required final String? paymentPlan}) = _$_Connected;
 
-  Connection get connection;
+  ConnectedPlatform get connection;
   @override
   String get userUuid;
   @override
@@ -1110,6 +1153,203 @@ abstract class _Connected implements IosConnectState {
   @override
   @JsonKey(ignore: true)
   _$$_ConnectedCopyWith<_$_Connected> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$_DisconnectingCopyWith<$Res>
+    implements $IosConnectStateCopyWith<$Res> {
+  factory _$$_DisconnectingCopyWith(
+          _$_Disconnecting value, $Res Function(_$_Disconnecting) then) =
+      __$$_DisconnectingCopyWithImpl<$Res>;
+  @override
+  @useResult
+  $Res call({String userUuid, String? paymentPlan});
+}
+
+/// @nodoc
+class __$$_DisconnectingCopyWithImpl<$Res>
+    extends _$IosConnectStateCopyWithImpl<$Res, _$_Disconnecting>
+    implements _$$_DisconnectingCopyWith<$Res> {
+  __$$_DisconnectingCopyWithImpl(
+      _$_Disconnecting _value, $Res Function(_$_Disconnecting) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? userUuid = null,
+    Object? paymentPlan = freezed,
+  }) {
+    return _then(_$_Disconnecting(
+      userUuid: null == userUuid
+          ? _value.userUuid
+          : userUuid // ignore: cast_nullable_to_non_nullable
+              as String,
+      paymentPlan: freezed == paymentPlan
+          ? _value.paymentPlan
+          : paymentPlan // ignore: cast_nullable_to_non_nullable
+              as String?,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$_Disconnecting implements _Disconnecting {
+  const _$_Disconnecting({required this.userUuid, required this.paymentPlan});
+
+  @override
+  final String userUuid;
+  @override
+  final String? paymentPlan;
+
+  @override
+  String toString() {
+    return 'IosConnectState.disconnecting(userUuid: $userUuid, paymentPlan: $paymentPlan)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$_Disconnecting &&
+            (identical(other.userUuid, userUuid) ||
+                other.userUuid == userUuid) &&
+            (identical(other.paymentPlan, paymentPlan) ||
+                other.paymentPlan == paymentPlan));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, userUuid, paymentPlan);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$_DisconnectingCopyWith<_$_Disconnecting> get copyWith =>
+      __$$_DisconnectingCopyWithImpl<_$_Disconnecting>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(String userUuid, String? paymentPlan) initial,
+    required TResult Function(String userUuid, String? paymentPlan)
+        noConnection,
+    required TResult Function(String userUuid, String? paymentPlan)
+        checkingConnection,
+    required TResult Function(String userUuid, String? paymentPlan)
+        makingConnection,
+    required TResult Function(
+            ConnectedPlatform connection, String userUuid, String? paymentPlan)
+        connected,
+    required TResult Function(String userUuid, String? paymentPlan)
+        disconnecting,
+    required TResult Function(
+            HekaHealthError error, String userUuid, String? paymentPlan)
+        error,
+  }) {
+    return disconnecting(userUuid, paymentPlan);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(String userUuid, String? paymentPlan)? initial,
+    TResult? Function(String userUuid, String? paymentPlan)? noConnection,
+    TResult? Function(String userUuid, String? paymentPlan)? checkingConnection,
+    TResult? Function(String userUuid, String? paymentPlan)? makingConnection,
+    TResult? Function(
+            ConnectedPlatform connection, String userUuid, String? paymentPlan)?
+        connected,
+    TResult? Function(String userUuid, String? paymentPlan)? disconnecting,
+    TResult? Function(
+            HekaHealthError error, String userUuid, String? paymentPlan)?
+        error,
+  }) {
+    return disconnecting?.call(userUuid, paymentPlan);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(String userUuid, String? paymentPlan)? initial,
+    TResult Function(String userUuid, String? paymentPlan)? noConnection,
+    TResult Function(String userUuid, String? paymentPlan)? checkingConnection,
+    TResult Function(String userUuid, String? paymentPlan)? makingConnection,
+    TResult Function(
+            ConnectedPlatform connection, String userUuid, String? paymentPlan)?
+        connected,
+    TResult Function(String userUuid, String? paymentPlan)? disconnecting,
+    TResult Function(
+            HekaHealthError error, String userUuid, String? paymentPlan)?
+        error,
+    required TResult orElse(),
+  }) {
+    if (disconnecting != null) {
+      return disconnecting(userUuid, paymentPlan);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Initial value) initial,
+    required TResult Function(_NoConnection value) noConnection,
+    required TResult Function(_CheckingConnection value) checkingConnection,
+    required TResult Function(_MakingConnection value) makingConnection,
+    required TResult Function(_Connected value) connected,
+    required TResult Function(_Disconnecting value) disconnecting,
+    required TResult Function(_Error value) error,
+  }) {
+    return disconnecting(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_Initial value)? initial,
+    TResult? Function(_NoConnection value)? noConnection,
+    TResult? Function(_CheckingConnection value)? checkingConnection,
+    TResult? Function(_MakingConnection value)? makingConnection,
+    TResult? Function(_Connected value)? connected,
+    TResult? Function(_Disconnecting value)? disconnecting,
+    TResult? Function(_Error value)? error,
+  }) {
+    return disconnecting?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Initial value)? initial,
+    TResult Function(_NoConnection value)? noConnection,
+    TResult Function(_CheckingConnection value)? checkingConnection,
+    TResult Function(_MakingConnection value)? makingConnection,
+    TResult Function(_Connected value)? connected,
+    TResult Function(_Disconnecting value)? disconnecting,
+    TResult Function(_Error value)? error,
+    required TResult orElse(),
+  }) {
+    if (disconnecting != null) {
+      return disconnecting(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _Disconnecting implements IosConnectState {
+  const factory _Disconnecting(
+      {required final String userUuid,
+      required final String? paymentPlan}) = _$_Disconnecting;
+
+  @override
+  String get userUuid;
+  @override
+  String? get paymentPlan;
+  @override
+  @JsonKey(ignore: true)
+  _$$_DisconnectingCopyWith<_$_Disconnecting> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
@@ -1214,8 +1454,10 @@ class _$_Error implements _Error {
     required TResult Function(String userUuid, String? paymentPlan)
         makingConnection,
     required TResult Function(
-            Connection connection, String userUuid, String? paymentPlan)
+            ConnectedPlatform connection, String userUuid, String? paymentPlan)
         connected,
+    required TResult Function(String userUuid, String? paymentPlan)
+        disconnecting,
     required TResult Function(
             HekaHealthError error, String userUuid, String? paymentPlan)
         error,
@@ -1231,8 +1473,9 @@ class _$_Error implements _Error {
     TResult? Function(String userUuid, String? paymentPlan)? checkingConnection,
     TResult? Function(String userUuid, String? paymentPlan)? makingConnection,
     TResult? Function(
-            Connection connection, String userUuid, String? paymentPlan)?
+            ConnectedPlatform connection, String userUuid, String? paymentPlan)?
         connected,
+    TResult? Function(String userUuid, String? paymentPlan)? disconnecting,
     TResult? Function(
             HekaHealthError error, String userUuid, String? paymentPlan)?
         error,
@@ -1248,8 +1491,9 @@ class _$_Error implements _Error {
     TResult Function(String userUuid, String? paymentPlan)? checkingConnection,
     TResult Function(String userUuid, String? paymentPlan)? makingConnection,
     TResult Function(
-            Connection connection, String userUuid, String? paymentPlan)?
+            ConnectedPlatform connection, String userUuid, String? paymentPlan)?
         connected,
+    TResult Function(String userUuid, String? paymentPlan)? disconnecting,
     TResult Function(
             HekaHealthError error, String userUuid, String? paymentPlan)?
         error,
@@ -1269,6 +1513,7 @@ class _$_Error implements _Error {
     required TResult Function(_CheckingConnection value) checkingConnection,
     required TResult Function(_MakingConnection value) makingConnection,
     required TResult Function(_Connected value) connected,
+    required TResult Function(_Disconnecting value) disconnecting,
     required TResult Function(_Error value) error,
   }) {
     return error(this);
@@ -1282,6 +1527,7 @@ class _$_Error implements _Error {
     TResult? Function(_CheckingConnection value)? checkingConnection,
     TResult? Function(_MakingConnection value)? makingConnection,
     TResult? Function(_Connected value)? connected,
+    TResult? Function(_Disconnecting value)? disconnecting,
     TResult? Function(_Error value)? error,
   }) {
     return error?.call(this);
@@ -1295,6 +1541,7 @@ class _$_Error implements _Error {
     TResult Function(_CheckingConnection value)? checkingConnection,
     TResult Function(_MakingConnection value)? makingConnection,
     TResult Function(_Connected value)? connected,
+    TResult Function(_Disconnecting value)? disconnecting,
     TResult Function(_Error value)? error,
     required TResult orElse(),
   }) {

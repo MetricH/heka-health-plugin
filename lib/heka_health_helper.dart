@@ -134,6 +134,7 @@ class HekaHealth {
   Future<Either<HekaHealthError, Connection>> disconnect({
     required String userUuid,
     required String platform,
+    String? deviceId,
   }) async {
     try {
       final response = await _dio.post(
@@ -145,6 +146,7 @@ class HekaHealth {
         },
         data: {
           'platform': platform,
+          'device_id': deviceId,
         },
       );
       return right(Connection.fromJson(response.data['data']));
@@ -194,6 +196,9 @@ class HekaHealth {
       return null;
     }
   }
+
+  Future<bool> disconnectHealthKit() async =>
+      HekaHealthPlatform.instance.disconnect();
 
   Future<int> syncIosHealthData({
     required String userUuid,

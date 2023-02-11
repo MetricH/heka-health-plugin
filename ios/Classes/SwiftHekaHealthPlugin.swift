@@ -9,27 +9,35 @@ public class SwiftHekaHealthPlugin: NSObject, FlutterPlugin {
   }
 
   public func handle(_ call: FlutterMethodCall, result: @escaping FlutterResult) {
-    if (call.method.elementsEqual("syncIosHealthData")){
-            syncIosHealthData(call: call, result: result)
-        }
-    if (call.method.elementsEqual("requestAuthorization")){
-            requestAuthorization(call: call, result: result)
-        }
-     if (call.method.elementsEqual("checkHealthKitPermissions")){
-            checkHealthKitPermissions(call: call, result: result)
-        }
+    if call.method.elementsEqual("syncIosHealthData") {
+      syncIosHealthData(call: call, result: result)
+    }
+    if call.method.elementsEqual("requestAuthorization") {
+      requestAuthorization(call: call, result: result)
+    }
+    if call.method.elementsEqual("checkHealthKitPermissions") {
+      checkHealthKitPermissions(call: call, result: result)
+    }
+    if call.method.elementsEqual("disconnect") {
+      stopSyncing(call: call, result: result)
+    }
+  }
+
+  func stopSyncing(call: FlutterMethodCall, result: @escaping FlutterResult) {
+    healthStore.stopObserverQuery()
+    return true
   }
 
   func requestAuthorization(call: FlutterMethodCall, result: @escaping FlutterResult) {
-         let healthStore = HealthStore()
-       healthStore.requestAuthorization {
-        success in 
-        if success {
-          result(true)
-        } else {
-          result(false)
-        }
-       }
+    let healthStore = HealthStore()
+    healthStore.requestAuthorization {
+      success in
+      if success {
+        result(true)
+      } else {
+        result(false)
+      }
+    }
   }
 
   func checkHealthKitPermissions(call: FlutterMethodCall, result: @escaping FlutterResult) {
@@ -38,19 +46,19 @@ public class SwiftHekaHealthPlugin: NSObject, FlutterPlugin {
   }
 
   func syncIosHealthData(call: FlutterMethodCall, result: @escaping FlutterResult) {
-      let healthStore = HealthStore()
-       healthStore.requestAuthorization {
-           success in
-           if success {
-             // Setup observer query
-               guard let args = call.arguments as? [String: String] else {return}
-               let apiKey = args["apiKey"]!
-               let userUuid = args["userUuid"]!
-               
-               healthStore.setupStepsObserverQuery(apiKey: apiKey, userUuid: userUuid)
-              
-           } 
-           result(0)
-       }
+    let healthStore = HealthStore()
+    healthStore.requestAuthorization {
+      success in
+      if success {
+        // Setup observer query
+        guard let args = call.arguments as? [String: String] else { return }
+        let apiKey = args["apiKey"]!
+        let userUuid = args["userUuid"]!
+
+        healthStore.setupStepsObserverQuery(apiKey: apiKey, userUuid: userUuid)
+
+      }
+      result(0)
     }
+  }
 }

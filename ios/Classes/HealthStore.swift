@@ -321,9 +321,15 @@ class HealthStore {
         workoutActivityTypeMap["WRESTLING"] = .wrestling
         workoutActivityTypeMap["OTHER"] = .other
     }
+
+    func stopObserverQuery() {
+        if let query = obsQuery {
+            healthStore?.stop(query)
+        }
+        obsQuery = nil
+    }
     
     func requestAuthorization(completion: @escaping (Bool) -> Void) {
-        let stepType = HKQuantityType.quantityType(forIdentifier: HKQuantityTypeIdentifier.stepCount)!
         
         guard let healthStore = self.healthStore else {
             return completion(false)

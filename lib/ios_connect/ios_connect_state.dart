@@ -12,8 +12,12 @@ class IosConnectState with _$IosConnectState {
   const factory IosConnectState.makingConnection(
       {required String userUuid,
       required String? paymentPlan}) = _MakingConnection;
-  const factory IosConnectState.connected(Connection connection,
+  const factory IosConnectState.connected(ConnectedPlatform connection,
       {required String userUuid, required String? paymentPlan}) = _Connected;
+  const factory IosConnectState.disconnecting({
+    required String userUuid,
+    required String? paymentPlan,
+  }) = _Disconnecting;
   const factory IosConnectState.error(HekaHealthError error,
       {required String userUuid, required String? paymentPlan}) = _Error;
 }

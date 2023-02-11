@@ -76,6 +76,10 @@ class _IosHealthConnectButtonState extends State<IosHealthConnectButton> {
                         style: const TextStyle(color: Colors.red),
                       );
                     },
+                    disconnecting: (userUuid, paymentPlan) => Text(
+                      'Disconnecting...',
+                      style: Theme.of(context).textTheme.bodySmall,
+                    ),
                     initial: (_, plan) => Text(
                       '',
                       style: Theme.of(context).textTheme.bodySmall,
@@ -114,14 +118,16 @@ class _IosHealthConnectButtonState extends State<IosHealthConnectButton> {
                     ),
                     orElse: () => ElevatedButton(
                       onPressed: state.when(
+                        disconnecting: (userUuid, paymentPlan) => null,
                         error: (error, userUuid, plan) => null,
                         initial: (_, plan) => null,
                         checkingConnection: (_, plan) => null,
                         noConnection: (_, plan) =>
                             context.read<IosConnectCubit>().createConnection,
                         makingConnection: (_, plan) => null,
-                        connected: (_, __, plan) =>
-                            context.read<IosConnectCubit>().disconnect,
+                        connected: (connection, uuid, plan) => () => context
+                            .read<IosConnectCubit>()
+                            .disconnect(uuid, connection),
                       ),
                       style: ElevatedButton.styleFrom(
                         elevation: 1,
@@ -137,6 +143,7 @@ class _IosHealthConnectButtonState extends State<IosHealthConnectButton> {
                         error: (error, userUuid, plan) => const SizedBox(),
                         initial: (_, plan) => const Text(''),
                         checkingConnection: (_, plan) => const Text('...'),
+                        disconnecting: (_, plan) => const Text('...'),
                         noConnection: (_, plan) => const Text('Connect'),
                         makingConnection: (_, plan) => const Text('...'),
                         connected: (_, __, plan) => const Text('Disconnect'),
