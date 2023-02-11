@@ -27,8 +27,7 @@ class IosConnectCubit extends Cubit<IosConnectState> {
     });
   }
 
-  Future<void> checkConnection(
-      Future<dynamic> Function(String, String) onConnect) async {
+  Future<void> checkConnection() async {
     emit(IosConnectState.checkingConnection(
       userUuid: state.userUuid,
       paymentPlan: state.paymentPlan,
@@ -50,7 +49,7 @@ class IosConnectCubit extends Cubit<IosConnectState> {
             paymentPlan: state.paymentPlan,
           ));
         } else {
-          await onConnect(_manager.apiKey, state.userUuid);
+          await syncData(state.userUuid);
           emit(IosConnectState.syncingData(
             connection,
             userUuid: state.userUuid,
@@ -61,8 +60,7 @@ class IosConnectCubit extends Cubit<IosConnectState> {
     );
   }
 
-  Future<void> createConnection(
-      Future<dynamic> Function(String, String) onConnect) async {
+  Future<void> createConnection() async {
     emit(IosConnectState.makingConnection(
       userUuid: state.userUuid,
       paymentPlan: state.paymentPlan,
@@ -78,7 +76,7 @@ class IosConnectCubit extends Cubit<IosConnectState> {
         paymentPlan: state.paymentPlan,
       ));
     }, (connection) async {
-      await onConnect(_manager.apiKey, state.userUuid);
+      await syncData(state.userUuid);
       emit(IosConnectState.syncingData(
         connection,
         userUuid: state.userUuid,

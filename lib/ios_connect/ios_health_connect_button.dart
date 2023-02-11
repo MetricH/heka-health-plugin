@@ -43,14 +43,8 @@ class _IosHealthConnectButtonState extends State<IosHealthConnectButton> {
     //     .read<IosConnectCubit>()
     //     .checkHealthKitPermissions()
     //     .then((value) => print("Hello: $value"));
-    context.read<IosConnectCubit>().checkConnection(_syncData);
+    context.read<IosConnectCubit>().checkConnection();
   }
-
-  Future<void> _syncData(
-    String apiKey,
-    String userUuid,
-  ) =>
-      context.read<IosConnectCubit>().syncData(userUuid);
 
   @override
   Widget build(BuildContext context) {
@@ -123,9 +117,8 @@ class _IosHealthConnectButtonState extends State<IosHealthConnectButton> {
                         error: (error, userUuid, plan) => null,
                         initial: (_, plan) => null,
                         checkingConnection: (_, plan) => null,
-                        noConnection: (_, plan) => () => context
-                            .read<IosConnectCubit>()
-                            .createConnection(_syncData),
+                        noConnection: (_, plan) =>
+                            context.read<IosConnectCubit>().createConnection,
                         makingConnection: (_, plan) => null,
                         syncingData: (_, __, plan) => null,
                       ),
