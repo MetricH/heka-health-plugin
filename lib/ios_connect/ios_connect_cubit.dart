@@ -1,3 +1,4 @@
+import 'package:device_info_plus/device_info_plus.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:heka_health/heka_health_helper.dart';
@@ -78,9 +79,11 @@ class IosConnectCubit extends Cubit<IosConnectState> {
       ));
       return;
     }
+    DeviceInfoPlugin deviceInfo = DeviceInfoPlugin();
     final failureOrSuccess = await _manager.makeConnection(
       userUuid: state.userUuid,
       platform: 'apple_healthkit',
+      deviceId: (await deviceInfo.iosInfo).identifierForVendor,
     );
     failureOrSuccess.fold((error) {
       emit(IosConnectState.error(
