@@ -54,7 +54,6 @@ class IosConnectCubit extends Cubit<IosConnectState> {
             paymentPlan: state.paymentPlan,
           ));
         } else {
-          await syncData(state.userUuid);
           emit(IosConnectState.connected(
             connection,
             userUuid: state.userUuid,
