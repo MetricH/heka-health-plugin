@@ -1,3 +1,8 @@
+## 0.0.10
+
+- Disconnect option for Apple Healthkit
+- Device based handling in Apple Healthkit
+
 ## 0.0.9
 
 - Disconnect and reconnect option for Google Fit

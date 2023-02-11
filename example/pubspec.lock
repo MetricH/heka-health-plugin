@@ -174,7 +174,7 @@ packages:
       path: ".."
       relative: true
     source: path
-    version: "0.0.9"
+    version: "0.0.10"
   http_parser:
     dependency: transitive
     description:
