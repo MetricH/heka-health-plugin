@@ -11,6 +11,9 @@ _$_ConnectedPlatform _$$_ConnectedPlatformFromJson(Map<String, dynamic> json) =>
       platform: json['platform_name'] as String,
       loggedIn: json['logged_in'] as bool,
       lastSync: json['last_sync'] as String?,
+      connectedDevicesUUIDs: (json['connected_device_uuids'] as List<dynamic>?)
+          ?.map((e) => e as String)
+          .toList(),
     );
 
 Map<String, dynamic> _$$_ConnectedPlatformToJson(
@@ -19,4 +22,5 @@ Map<String, dynamic> _$$_ConnectedPlatformToJson(
       'platform_name': instance.platform,
       'logged_in': instance.loggedIn,
       'last_sync': instance.lastSync,
+      'connected_device_uuids': instance.connectedDevicesUUIDs,
     };

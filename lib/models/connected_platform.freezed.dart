@@ -26,6 +26,8 @@ mixin _$ConnectedPlatform {
   bool get loggedIn => throw _privateConstructorUsedError;
   @JsonKey(name: 'last_sync')
   String? get lastSync => throw _privateConstructorUsedError;
+  @JsonKey(name: 'connected_device_uuids')
+  List<String>? get connectedDevicesUUIDs => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -40,9 +42,14 @@ abstract class $ConnectedPlatformCopyWith<$Res> {
       _$ConnectedPlatformCopyWithImpl<$Res, ConnectedPlatform>;
   @useResult
   $Res call(
-      {@JsonKey(name: 'platform_name') String platform,
-      @JsonKey(name: 'logged_in') bool loggedIn,
-      @JsonKey(name: 'last_sync') String? lastSync});
+      {@JsonKey(name: 'platform_name')
+          String platform,
+      @JsonKey(name: 'logged_in')
+          bool loggedIn,
+      @JsonKey(name: 'last_sync')
+          String? lastSync,
+      @JsonKey(name: 'connected_device_uuids')
+          List<String>? connectedDevicesUUIDs});
 }
 
 /// @nodoc
@@ -61,6 +68,7 @@ class _$ConnectedPlatformCopyWithImpl<$Res, $Val extends ConnectedPlatform>
     Object? platform = null,
     Object? loggedIn = null,
     Object? lastSync = freezed,
+    Object? connectedDevicesUUIDs = freezed,
   }) {
     return _then(_value.copyWith(
       platform: null == platform
@@ -75,6 +83,10 @@ class _$ConnectedPlatformCopyWithImpl<$Res, $Val extends ConnectedPlatform>
           ? _value.lastSync
           : lastSync // ignore: cast_nullable_to_non_nullable
               as String?,
+      connectedDevicesUUIDs: freezed == connectedDevicesUUIDs
+          ? _value.connectedDevicesUUIDs
+          : connectedDevicesUUIDs // ignore: cast_nullable_to_non_nullable
+              as List<String>?,
     ) as $Val);
   }
 }
@@ -88,9 +100,14 @@ abstract class _$$_ConnectedPlatformCopyWith<$Res>
   @override
   @useResult
   $Res call(
-      {@JsonKey(name: 'platform_name') String platform,
-      @JsonKey(name: 'logged_in') bool loggedIn,
-      @JsonKey(name: 'last_sync') String? lastSync});
+      {@JsonKey(name: 'platform_name')
+          String platform,
+      @JsonKey(name: 'logged_in')
+          bool loggedIn,
+      @JsonKey(name: 'last_sync')
+          String? lastSync,
+      @JsonKey(name: 'connected_device_uuids')
+          List<String>? connectedDevicesUUIDs});
 }
 
 /// @nodoc
@@ -107,6 +124,7 @@ class __$$_ConnectedPlatformCopyWithImpl<$Res>
     Object? platform = null,
     Object? loggedIn = null,
     Object? lastSync = freezed,
+    Object? connectedDevicesUUIDs = freezed,
   }) {
     return _then(_$_ConnectedPlatform(
       platform: null == platform
@@ -121,6 +139,10 @@ class __$$_ConnectedPlatformCopyWithImpl<$Res>
           ? _value.lastSync
           : lastSync // ignore: cast_nullable_to_non_nullable
               as String?,
+      connectedDevicesUUIDs: freezed == connectedDevicesUUIDs
+          ? _value._connectedDevicesUUIDs
+          : connectedDevicesUUIDs // ignore: cast_nullable_to_non_nullable
+              as List<String>?,
     ));
   }
 }
@@ -129,10 +151,16 @@ class __$$_ConnectedPlatformCopyWithImpl<$Res>
 @JsonSerializable()
 class _$_ConnectedPlatform extends _ConnectedPlatform {
   const _$_ConnectedPlatform(
-      {@JsonKey(name: 'platform_name') required this.platform,
-      @JsonKey(name: 'logged_in') required this.loggedIn,
-      @JsonKey(name: 'last_sync') required this.lastSync})
-      : super._();
+      {@JsonKey(name: 'platform_name')
+          required this.platform,
+      @JsonKey(name: 'logged_in')
+          required this.loggedIn,
+      @JsonKey(name: 'last_sync')
+          required this.lastSync,
+      @JsonKey(name: 'connected_device_uuids')
+          required final List<String>? connectedDevicesUUIDs})
+      : _connectedDevicesUUIDs = connectedDevicesUUIDs,
+        super._();
 
   factory _$_ConnectedPlatform.fromJson(Map<String, dynamic> json) =>
       _$$_ConnectedPlatformFromJson(json);
@@ -146,10 +174,21 @@ class _$_ConnectedPlatform extends _ConnectedPlatform {
   @override
   @JsonKey(name: 'last_sync')
   final String? lastSync;
+  final List<String>? _connectedDevicesUUIDs;
+  @override
+  @JsonKey(name: 'connected_device_uuids')
+  List<String>? get connectedDevicesUUIDs {
+    final value = _connectedDevicesUUIDs;
+    if (value == null) return null;
+    if (_connectedDevicesUUIDs is EqualUnmodifiableListView)
+      return _connectedDevicesUUIDs;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(value);
+  }
 
   @override
   String toString() {
-    return 'ConnectedPlatform(platform: $platform, loggedIn: $loggedIn, lastSync: $lastSync)';
+    return 'ConnectedPlatform(platform: $platform, loggedIn: $loggedIn, lastSync: $lastSync, connectedDevicesUUIDs: $connectedDevicesUUIDs)';
   }
 
   @override
@@ -162,12 +201,15 @@ class _$_ConnectedPlatform extends _ConnectedPlatform {
             (identical(other.loggedIn, loggedIn) ||
                 other.loggedIn == loggedIn) &&
             (identical(other.lastSync, lastSync) ||
-                other.lastSync == lastSync));
+                other.lastSync == lastSync) &&
+            const DeepCollectionEquality()
+                .equals(other._connectedDevicesUUIDs, _connectedDevicesUUIDs));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(runtimeType, platform, loggedIn, lastSync);
+  int get hashCode => Object.hash(runtimeType, platform, loggedIn, lastSync,
+      const DeepCollectionEquality().hash(_connectedDevicesUUIDs));
 
   @JsonKey(ignore: true)
   @override
@@ -186,9 +228,14 @@ class _$_ConnectedPlatform extends _ConnectedPlatform {
 
 abstract class _ConnectedPlatform extends ConnectedPlatform {
   const factory _ConnectedPlatform(
-          {@JsonKey(name: 'platform_name') required final String platform,
-          @JsonKey(name: 'logged_in') required final bool loggedIn,
-          @JsonKey(name: 'last_sync') required final String? lastSync}) =
+          {@JsonKey(name: 'platform_name')
+              required final String platform,
+          @JsonKey(name: 'logged_in')
+              required final bool loggedIn,
+          @JsonKey(name: 'last_sync')
+              required final String? lastSync,
+          @JsonKey(name: 'connected_device_uuids')
+              required final List<String>? connectedDevicesUUIDs}) =
       _$_ConnectedPlatform;
   const _ConnectedPlatform._() : super._();
 
@@ -204,6 +251,9 @@ abstract class _ConnectedPlatform extends ConnectedPlatform {
   @override
   @JsonKey(name: 'last_sync')
   String? get lastSync;
+  @override
+  @JsonKey(name: 'connected_device_uuids')
+  List<String>? get connectedDevicesUUIDs;
   @override
   @JsonKey(ignore: true)
   _$$_ConnectedPlatformCopyWith<_$_ConnectedPlatform> get copyWith =>

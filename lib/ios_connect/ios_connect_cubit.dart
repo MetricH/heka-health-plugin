@@ -54,6 +54,20 @@ class IosConnectCubit extends Cubit<IosConnectState> {
             paymentPlan: state.paymentPlan,
           ));
         } else {
+          DeviceInfoPlugin deviceInfo = DeviceInfoPlugin();
+          String uuid = (await deviceInfo.iosInfo).identifierForVendor!;
+          // Apple Healthkit is connected but not from this particular device
+          // We show as unconnected on this device and let the user connect again
+          if (!(connection
+                      .connections['apple_healthkit']!.connectedDevicesUUIDs ??
+                  [])
+              .contains(uuid)) {
+            emit(IosConnectState.noConnection(
+              userUuid: state.userUuid,
+              paymentPlan: state.paymentPlan,
+            ));
+            return;
+          }
           emit(IosConnectState.connected(
             connection,
             userUuid: state.userUuid,
