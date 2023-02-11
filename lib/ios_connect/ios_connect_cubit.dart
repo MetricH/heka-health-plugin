@@ -83,6 +83,8 @@ class IosConnectCubit extends Cubit<IosConnectState> {
       userUuid: state.userUuid,
       paymentPlan: state.paymentPlan,
     ));
+    // TODO: this will always be true according to
+    // https://stackoverflow.com/questions/51231371/requesting-authorization-in-healthkit-why-the-result-is-always-successful
     bool granted = await requestHealthKitPermissions();
     if (!granted) {
       emit(IosConnectState.error(
