@@ -15,7 +15,7 @@ class HekaHealth {
   HekaHealth(this._apiKey);
 
   Future<Either<HekaHealthError, String>> getPlatformClientId(
-    String platform,
+    String platformName,
   ) async {
     try {
       final response = await _dio.get(
@@ -25,7 +25,7 @@ class HekaHealth {
         },
       );
       for (var platform in response.data?['data']?['enabled_platforms'] ?? []) {
-        if (platform['platform_name'] == platform) {
+        if (platform['platform_name'] == platformName) {
           return right(platform['platform_app_id'] as String);
         }
       }
