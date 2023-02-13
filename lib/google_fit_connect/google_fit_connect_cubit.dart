@@ -2,6 +2,7 @@ import 'dart:io';
 
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
+import 'package:heka_health/constants/platform_name.dart';
 import 'package:heka_health/models/connected_platform.dart';
 import 'package:heka_health/models/heka_health_error.dart';
 import 'package:heka_health/repository/google_fit.dart';
@@ -49,14 +50,15 @@ class GoogleFitConnectCubit extends Cubit<GoogleFitConnectState> {
         paymentPlan: state.paymentPlan,
       ));
     }, (connection) {
-      if (connection == null || !connection.isPlatformConnected('google_fit')) {
+      if (connection == null ||
+          !connection.isPlatformConnected(PlatformName.googleFit)) {
         emit(GoogleFitConnectState.noConnection(
           userUuid: state.userUuid,
           paymentPlan: state.paymentPlan,
         ));
       } else {
         ConnectedPlatform googleFitPlatform =
-            connection.connections['google_fit']!;
+            connection.connections[PlatformName.googleFit]!;
         emit(
           googleFitPlatform.loggedIn
               ? GoogleFitConnectState.connected(
@@ -80,7 +82,8 @@ class GoogleFitConnectCubit extends Cubit<GoogleFitConnectState> {
 
   Future<void> createConnection(
       {bool reconnect = false, int? connectionId}) async {
-    final failureOrSuccess = await _manager.getPlatformClientId('google_fit');
+    final failureOrSuccess =
+        await _manager.getPlatformClientId(PlatformName.googleFit);
     failureOrSuccess.fold((error) {
       emit(GoogleFitConnectState.error(
         error,
@@ -103,7 +106,7 @@ class GoogleFitConnectCubit extends Cubit<GoogleFitConnectState> {
           reconnect: reconnect,
           googleFitRefreshToken: credentials.refreshToken,
           userUuid: state.userUuid,
-          platform: 'google_fit',
+          platform: PlatformName.googleFit,
           emailId: credentials.email,
         );
 
@@ -115,7 +118,7 @@ class GoogleFitConnectCubit extends Cubit<GoogleFitConnectState> {
           ));
         }, (connection) {
           ConnectedPlatform googleFitPlatform =
-              connection.connections['google_fit']!;
+              connection.connections[PlatformName.googleFit]!;
 
           emit(GoogleFitConnectState.connected(
             googleFitPlatform,
@@ -145,7 +148,7 @@ class GoogleFitConnectCubit extends Cubit<GoogleFitConnectState> {
       ));
     }, (connection) {
       ConnectedPlatform googleFitPlatform =
-          connection.connections['google_fit']!;
+          connection.connections[PlatformName.googleFit]!;
 
       emit(GoogleFitConnectState.tokenInvalidated(
         googleFitPlatform,

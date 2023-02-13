@@ -1,6 +1,7 @@
 import 'package:device_info_plus/device_info_plus.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
+import 'package:heka_health/constants/platform_name.dart';
 import 'package:heka_health/models/connected_platform.dart';
 import 'package:heka_health/models/heka_health_error.dart';
 import 'package:heka_health/repository/heka_repository.dart';
@@ -74,7 +75,7 @@ class IosConnectCubit extends Cubit<IosConnectState> {
       },
       (connection) async {
         if (connection == null ||
-            connection.isPlatformConnected('apple_healthkit') == false) {
+            connection.isPlatformConnected(PlatformName.appleHealth) == false) {
           emit(IosConnectState.noConnection(
             userUuid: state.userUuid,
             paymentPlan: state.paymentPlan,
@@ -84,8 +85,8 @@ class IosConnectCubit extends Cubit<IosConnectState> {
           String uuid = (await deviceInfo.iosInfo).identifierForVendor!;
           // Apple Healthkit is connected but not from this particular device
           // We show as unconnected on this device and let the user connect again
-          if (!(connection
-                      .connections['apple_healthkit']!.connectedDevicesUUIDs ??
+          if (!(connection.connections[PlatformName.appleHealth]!
+                      .connectedDevicesUUIDs ??
                   [])
               .contains(uuid)) {
             emit(IosConnectState.noConnection(
@@ -95,7 +96,7 @@ class IosConnectCubit extends Cubit<IosConnectState> {
             return;
           }
           emit(IosConnectState.connected(
-            connection.connections['apple_healthkit']!,
+            connection.connections[PlatformName.appleHealth]!,
             userUuid: state.userUuid,
             paymentPlan: state.paymentPlan,
           ));
@@ -123,7 +124,7 @@ class IosConnectCubit extends Cubit<IosConnectState> {
     DeviceInfoPlugin deviceInfo = DeviceInfoPlugin();
     final failureOrSuccess = await _manager.makeConnection(
       userUuid: state.userUuid,
-      platform: 'apple_healthkit',
+      platform: PlatformName.appleHealth,
       deviceId: (await deviceInfo.iosInfo).identifierForVendor,
     );
     failureOrSuccess.fold((error) {
@@ -135,7 +136,7 @@ class IosConnectCubit extends Cubit<IosConnectState> {
     }, (connection) async {
       await syncData(state.userUuid);
       emit(IosConnectState.connected(
-        connection.connections['apple_healthkit']!,
+        connection.connections[PlatformName.appleHealth]!,
         userUuid: state.userUuid,
         paymentPlan: state.paymentPlan,
       ));
