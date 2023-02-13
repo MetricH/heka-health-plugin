@@ -108,7 +108,7 @@ class IosConnectCubit extends Cubit<HekaPlatformState> {
     ));
     // TODO: this will always be true according to
     // https://stackoverflow.com/questions/51231371/requesting-authorization-in-healthkit-why-the-result-is-always-successful
-    bool granted = await requestHealthKitPermissions();
+    bool granted = await _manager.requestHealthKitPermissions();
     if (!granted) {
       emit(HekaPlatformState.error(
         const HekaHealthError.appleHealthkitPermissionsDenied(),
@@ -130,7 +130,7 @@ class IosConnectCubit extends Cubit<HekaPlatformState> {
         paymentPlan: state.paymentPlan,
       ));
     }, (connection) async {
-      await syncData(state.userUuid);
+      await _manager.syncIosHealthData(userUuid: state.userUuid);
       emit(HekaPlatformState.connected(
         connection.connections[PlatformName.appleHealth]!,
         userUuid: state.userUuid,
@@ -138,13 +138,4 @@ class IosConnectCubit extends Cubit<HekaPlatformState> {
       ));
     });
   }
-
-  Future<void> syncData(String userUuid) async =>
-      _manager.syncIosHealthData(userUuid: userUuid);
-
-  Future<bool> requestHealthKitPermissions() =>
-      _manager.requestHealthKitPermissions();
-
-  Future<bool?> checkHealthKitPermissions() =>
-      _manager.checkHealthKitPermissions();
 }
