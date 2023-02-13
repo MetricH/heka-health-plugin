@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:heka_health/repository/heka_repository.dart';
 import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
 import 'package:url_launcher/url_launcher.dart';
 
-import '../heka_health_helper.dart';
 import 'ios_connect_cubit.dart';
 
 class IosHealthConnectWidget extends StatelessWidget {

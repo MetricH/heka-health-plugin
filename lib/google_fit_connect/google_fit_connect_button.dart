@@ -1,6 +1,6 @@
-import 'package:heka_health/heka_health_helper.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:heka_health/repository/heka_repository.dart';
 import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
 import 'package:timeago/timeago.dart' as timeago;
 import 'package:url_launcher/url_launcher.dart';

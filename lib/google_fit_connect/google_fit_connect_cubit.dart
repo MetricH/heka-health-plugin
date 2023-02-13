@@ -2,9 +2,10 @@ import 'dart:io';
 
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:heka_health/heka_health_helper.dart';
 import 'package:heka_health/models/connected_platform.dart';
 import 'package:heka_health/models/heka_health_error.dart';
+import 'package:heka_health/repository/google_fit.dart';
+import 'package:heka_health/repository/heka_repository.dart';
 
 part 'google_fit_connect_state.dart';
 part 'google_fit_connect_cubit.freezed.dart';
@@ -12,6 +13,7 @@ part 'google_fit_connect_cubit.freezed.dart';
 class GoogleFitConnectCubit extends Cubit<GoogleFitConnectState> {
   final HekaHealth _manager;
   final String _userUuid;
+  final GoogleFit _googleFit = GoogleFit();
 
   static const _googleIssuer = 'https://accounts.google.com';
 
@@ -86,7 +88,7 @@ class GoogleFitConnectCubit extends Cubit<GoogleFitConnectState> {
         paymentPlan: state.paymentPlan,
       ));
     }, (clientId) async {
-      final credentials = await _manager.signInWithGoogle(
+      final credentials = await _googleFit.signInWithGoogle(
         clientId: clientId,
         redirectUrl: redirectUrl(clientId),
         issuer: _googleIssuer,

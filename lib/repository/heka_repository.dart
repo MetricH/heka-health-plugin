@@ -1,12 +1,9 @@
 import 'package:dartz/dartz.dart';
 import 'package:dio/dio.dart';
-import 'package:flutter_appauth/flutter_appauth.dart';
 import 'package:heka_health/extensions.dart';
+import 'package:heka_health/heka_health_platform_interface.dart';
+import 'package:heka_health/models/connection.dart';
 import 'package:heka_health/models/heka_health_error.dart';
-
-import 'models/connection.dart';
-import 'heka_health_platform_interface.dart';
-import 'models/google_credentials.dart';
 
 class HekaHealth {
   final String _apiKey;
@@ -14,7 +11,6 @@ class HekaHealth {
 
   static const _baseUrl = 'https://apidev.hekahealth.co/watch_sdk';
   final Dio _dio = Dio(BaseOptions(baseUrl: _baseUrl));
-  final _auth = const FlutterAppAuth();
 
   HekaHealth(this._apiKey);
 
@@ -159,44 +155,6 @@ class HekaHealth {
     }
   }
 
-  Future<GoogleCredentials?> signInWithGoogle({
-    required String clientId,
-    required String redirectUrl,
-    required String issuer,
-  }) async {
-    try {
-      final authTokenResponse = await _auth.authorizeAndExchangeCode(
-        AuthorizationTokenRequest(
-          clientId,
-          redirectUrl,
-          issuer: issuer,
-          scopes: [
-            'email',
-            'https://www.googleapis.com/auth/fitness.activity.read',
-            'https://www.googleapis.com/auth/fitness.blood_glucose.read',
-            'https://www.googleapis.com/auth/fitness.blood_pressure.read',
-            'https://www.googleapis.com/auth/fitness.body.read',
-            'https://www.googleapis.com/auth/fitness.body_temperature.read',
-            'https://www.googleapis.com/auth/fitness.heart_rate.read',
-            'https://www.googleapis.com/auth/fitness.location.read',
-            'https://www.googleapis.com/auth/fitness.nutrition.read',
-            'https://www.googleapis.com/auth/fitness.oxygen_saturation.read',
-            'https://www.googleapis.com/auth/fitness.reproductive_health.read',
-            'https://www.googleapis.com/auth/fitness.sleep.read',
-          ],
-        ),
-      );
-      if (authTokenResponse != null) {
-        return GoogleCredentials(
-            refreshToken: authTokenResponse.refreshToken!,
-            email: await authTokenResponse.email);
-      }
-      return null;
-    } catch (e) {
-      return null;
-    }
-  }
-
   Future<bool> disconnectHealthKit() async =>
       HekaHealthPlatform.instance.disconnect();
 
@@ -213,17 +171,4 @@ class HekaHealth {
 
   Future<bool?> checkHealthKitPermissions() =>
       HekaHealthPlatform.instance.checkHealthKitPermissions();
-}
-
-extension UserProfileX on AuthorizationTokenResponse {
-  Future<String?> get email async {
-    try {
-      final requestUri = Uri.https('www.googleapis.com', 'oauth2/v1/userinfo',
-          {'access_token': accessToken});
-      final response = await Dio().getUri(requestUri);
-      return response.data['email'];
-    } on DioError {
-      return null;
-    }
-  }
 }
