@@ -1,17 +1,13 @@
 import 'dart:io';
 
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:heka_health/constants/platform_name.dart';
+import 'package:heka_health/heka_connect/heka_platform_state.dart';
 import 'package:heka_health/models/connected_platform.dart';
-import 'package:heka_health/models/heka_health_error.dart';
 import 'package:heka_health/repository/google_fit.dart';
 import 'package:heka_health/repository/heka_repository.dart';
 
-part 'google_fit_connect_state.dart';
-part 'google_fit_connect_cubit.freezed.dart';
-
-class GoogleFitConnectCubit extends Cubit<GoogleFitConnectState> {
+class GoogleFitConnectCubit extends Cubit<HekaPlatformState> {
   final HekaHealth _manager;
   final String _userUuid;
   final GoogleFit _googleFit = GoogleFit();
@@ -22,7 +18,7 @@ class GoogleFitConnectCubit extends Cubit<GoogleFitConnectState> {
     this._manager,
     this._userUuid,
   ) : super(
-          GoogleFitConnectState.initial(
+          HekaPlatformState.initial(
             userUuid: _userUuid,
             paymentPlan: null,
           ),
@@ -37,14 +33,14 @@ class GoogleFitConnectCubit extends Cubit<GoogleFitConnectState> {
   }
 
   Future<void> checkConnection() async {
-    emit(GoogleFitConnectState.checkingConnection(
+    emit(HekaPlatformState.checkingConnection(
       userUuid: state.userUuid,
       paymentPlan: state.paymentPlan,
     ));
 
     final failureOrSuccess = await _manager.fetchConnection(state.userUuid);
     failureOrSuccess.fold((error) {
-      emit(GoogleFitConnectState.error(
+      emit(HekaPlatformState.error(
         error,
         userUuid: state.userUuid,
         paymentPlan: state.paymentPlan,
@@ -52,7 +48,7 @@ class GoogleFitConnectCubit extends Cubit<GoogleFitConnectState> {
     }, (connection) {
       if (connection == null ||
           !connection.isPlatformConnected(PlatformName.googleFit)) {
-        emit(GoogleFitConnectState.noConnection(
+        emit(HekaPlatformState.noConnection(
           userUuid: state.userUuid,
           paymentPlan: state.paymentPlan,
         ));
@@ -61,12 +57,12 @@ class GoogleFitConnectCubit extends Cubit<GoogleFitConnectState> {
             connection.connections[PlatformName.googleFit]!;
         emit(
           googleFitPlatform.loggedIn
-              ? GoogleFitConnectState.connected(
+              ? HekaPlatformState.connected(
                   googleFitPlatform,
                   userUuid: state.userUuid,
                   paymentPlan: state.paymentPlan,
                 )
-              : GoogleFitConnectState.tokenInvalidated(
+              : HekaPlatformState.tokenInvalidated(
                   googleFitPlatform,
                   userUuid: state.userUuid,
                   paymentPlan: state.paymentPlan,
@@ -85,7 +81,7 @@ class GoogleFitConnectCubit extends Cubit<GoogleFitConnectState> {
     final failureOrSuccess =
         await _manager.getPlatformClientId(PlatformName.googleFit);
     failureOrSuccess.fold((error) {
-      emit(GoogleFitConnectState.error(
+      emit(HekaPlatformState.error(
         error,
         userUuid: state.userUuid,
         paymentPlan: state.paymentPlan,
@@ -97,7 +93,7 @@ class GoogleFitConnectCubit extends Cubit<GoogleFitConnectState> {
         issuer: _googleIssuer,
       );
       if (credentials != null) {
-        emit(GoogleFitConnectState.makingConnection(
+        emit(HekaPlatformState.makingConnection(
           userUuid: state.userUuid,
           paymentPlan: state.paymentPlan,
         ));
@@ -111,7 +107,7 @@ class GoogleFitConnectCubit extends Cubit<GoogleFitConnectState> {
         );
 
         failureOrSuccess.fold((error) {
-          emit(GoogleFitConnectState.error(
+          emit(HekaPlatformState.error(
             error,
             userUuid: state.userUuid,
             paymentPlan: state.paymentPlan,
@@ -120,7 +116,7 @@ class GoogleFitConnectCubit extends Cubit<GoogleFitConnectState> {
           ConnectedPlatform googleFitPlatform =
               connection.connections[PlatformName.googleFit]!;
 
-          emit(GoogleFitConnectState.connected(
+          emit(HekaPlatformState.connected(
             googleFitPlatform,
             userUuid: state.userUuid,
             paymentPlan: state.paymentPlan,
@@ -131,7 +127,7 @@ class GoogleFitConnectCubit extends Cubit<GoogleFitConnectState> {
   }
 
   Future<void> disconnect(String uuid, ConnectedPlatform connection) async {
-    emit(GoogleFitConnectState.disconnecting(
+    emit(HekaPlatformState.disconnecting(
       userUuid: state.userUuid,
       paymentPlan: state.paymentPlan,
     ));
@@ -141,7 +137,7 @@ class GoogleFitConnectCubit extends Cubit<GoogleFitConnectState> {
     );
 
     failureOrSuccess.fold((error) {
-      emit(GoogleFitConnectState.error(
+      emit(HekaPlatformState.error(
         error,
         userUuid: state.userUuid,
         paymentPlan: state.paymentPlan,
@@ -150,7 +146,7 @@ class GoogleFitConnectCubit extends Cubit<GoogleFitConnectState> {
       ConnectedPlatform googleFitPlatform =
           connection.connections[PlatformName.googleFit]!;
 
-      emit(GoogleFitConnectState.tokenInvalidated(
+      emit(HekaPlatformState.tokenInvalidated(
         googleFitPlatform,
         userUuid: state.userUuid,
         paymentPlan: state.paymentPlan,

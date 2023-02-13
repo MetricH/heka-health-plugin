@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:heka_health/heka_connect/heka_platform_state.dart';
 import 'package:heka_health/repository/heka_repository.dart';
 import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
 import 'package:url_launcher/url_launcher.dart';
@@ -48,7 +49,7 @@ class _IosHealthConnectButtonState extends State<IosHealthConnectButton> {
 
   @override
   Widget build(BuildContext context) {
-    return BlocBuilder<IosConnectCubit, IosConnectState>(
+    return BlocBuilder<IosConnectCubit, HekaPlatformState>(
       builder: (context, state) {
         return Padding(
           padding: const EdgeInsets.all(8.0),
@@ -100,6 +101,10 @@ class _IosHealthConnectButtonState extends State<IosHealthConnectButton> {
                       '',
                       style: Theme.of(context).textTheme.bodySmall,
                     ),
+                    tokenInvalidated: (_, __, ___) => Text(
+                      '',
+                      style: Theme.of(context).textTheme.bodySmall,
+                    ),
                   ),
                   trailing: state.maybeWhen(
                     error: (error, userUuid, plan) => const SizedBox(),
@@ -119,6 +124,7 @@ class _IosHealthConnectButtonState extends State<IosHealthConnectButton> {
                     orElse: () => ElevatedButton(
                       onPressed: state.when(
                         disconnecting: (userUuid, paymentPlan) => null,
+                        tokenInvalidated: (_, __, ___) => null,
                         error: (error, userUuid, plan) => null,
                         initial: (_, plan) => null,
                         checkingConnection: (_, plan) => null,
@@ -141,6 +147,7 @@ class _IosHealthConnectButtonState extends State<IosHealthConnectButton> {
                       ),
                       child: state.when(
                         error: (error, userUuid, plan) => const SizedBox(),
+                        tokenInvalidated: (_, __, ___) => const SizedBox(),
                         initial: (_, plan) => const Text(''),
                         checkingConnection: (_, plan) => const Text('...'),
                         disconnecting: (_, plan) => const Text('...'),

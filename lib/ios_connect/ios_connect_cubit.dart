@@ -1,23 +1,19 @@
 import 'package:device_info_plus/device_info_plus.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:heka_health/constants/platform_name.dart';
+import 'package:heka_health/heka_connect/heka_platform_state.dart';
 import 'package:heka_health/models/connected_platform.dart';
 import 'package:heka_health/models/heka_health_error.dart';
 import 'package:heka_health/repository/heka_repository.dart';
 
-import '../models/connection.dart';
-part 'ios_connect_state.dart';
-part 'ios_connect_cubit.freezed.dart';
-
-class IosConnectCubit extends Cubit<IosConnectState> {
+class IosConnectCubit extends Cubit<HekaPlatformState> {
   final String _userUuid;
   final HekaHealth _manager;
 
   IosConnectCubit(
     this._userUuid,
     this._manager,
-  ) : super(IosConnectState.initial(
+  ) : super(HekaPlatformState.initial(
           userUuid: _userUuid,
           paymentPlan: null,
         )) {
@@ -31,7 +27,7 @@ class IosConnectCubit extends Cubit<IosConnectState> {
   }
 
   Future<void> disconnect(String uuid, ConnectedPlatform connection) async {
-    emit(IosConnectState.disconnecting(
+    emit(HekaPlatformState.disconnecting(
       userUuid: state.userUuid,
       paymentPlan: state.paymentPlan,
     ));
@@ -45,14 +41,14 @@ class IosConnectCubit extends Cubit<IosConnectState> {
     );
 
     failureOrSuccess.fold((error) {
-      emit(IosConnectState.error(
+      emit(HekaPlatformState.error(
         error,
         userUuid: state.userUuid,
         paymentPlan: state.paymentPlan,
       ));
     }, (connection) async {
       await _manager.disconnectHealthKit();
-      emit(IosConnectState.noConnection(
+      emit(HekaPlatformState.noConnection(
         userUuid: state.userUuid,
         paymentPlan: state.paymentPlan,
       ));
@@ -60,14 +56,14 @@ class IosConnectCubit extends Cubit<IosConnectState> {
   }
 
   Future<void> checkConnection() async {
-    emit(IosConnectState.checkingConnection(
+    emit(HekaPlatformState.checkingConnection(
       userUuid: state.userUuid,
       paymentPlan: state.paymentPlan,
     ));
     final failureOrSuccess = await _manager.fetchConnection(state.userUuid);
     failureOrSuccess.fold(
       (error) {
-        emit(IosConnectState.error(
+        emit(HekaPlatformState.error(
           error,
           userUuid: state.userUuid,
           paymentPlan: state.paymentPlan,
@@ -76,7 +72,7 @@ class IosConnectCubit extends Cubit<IosConnectState> {
       (connection) async {
         if (connection == null ||
             connection.isPlatformConnected(PlatformName.appleHealth) == false) {
-          emit(IosConnectState.noConnection(
+          emit(HekaPlatformState.noConnection(
             userUuid: state.userUuid,
             paymentPlan: state.paymentPlan,
           ));
@@ -89,13 +85,13 @@ class IosConnectCubit extends Cubit<IosConnectState> {
                       .connectedDevicesUUIDs ??
                   [])
               .contains(uuid)) {
-            emit(IosConnectState.noConnection(
+            emit(HekaPlatformState.noConnection(
               userUuid: state.userUuid,
               paymentPlan: state.paymentPlan,
             ));
             return;
           }
-          emit(IosConnectState.connected(
+          emit(HekaPlatformState.connected(
             connection.connections[PlatformName.appleHealth]!,
             userUuid: state.userUuid,
             paymentPlan: state.paymentPlan,
@@ -106,7 +102,7 @@ class IosConnectCubit extends Cubit<IosConnectState> {
   }
 
   Future<void> createConnection() async {
-    emit(IosConnectState.makingConnection(
+    emit(HekaPlatformState.makingConnection(
       userUuid: state.userUuid,
       paymentPlan: state.paymentPlan,
     ));
@@ -114,7 +110,7 @@ class IosConnectCubit extends Cubit<IosConnectState> {
     // https://stackoverflow.com/questions/51231371/requesting-authorization-in-healthkit-why-the-result-is-always-successful
     bool granted = await requestHealthKitPermissions();
     if (!granted) {
-      emit(IosConnectState.error(
+      emit(HekaPlatformState.error(
         const HekaHealthError.appleHealthkitPermissionsDenied(),
         userUuid: state.userUuid,
         paymentPlan: state.paymentPlan,
@@ -128,14 +124,14 @@ class IosConnectCubit extends Cubit<IosConnectState> {
       deviceId: (await deviceInfo.iosInfo).identifierForVendor,
     );
     failureOrSuccess.fold((error) {
-      emit(IosConnectState.error(
+      emit(HekaPlatformState.error(
         error,
         userUuid: state.userUuid,
         paymentPlan: state.paymentPlan,
       ));
     }, (connection) async {
       await syncData(state.userUuid);
-      emit(IosConnectState.connected(
+      emit(HekaPlatformState.connected(
         connection.connections[PlatformName.appleHealth]!,
         userUuid: state.userUuid,
         paymentPlan: state.paymentPlan,

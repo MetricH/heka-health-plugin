@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:heka_health/heka_connect/heka_platform_state.dart';
 import 'package:heka_health/repository/heka_repository.dart';
 import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
 import 'package:timeago/timeago.dart' as timeago;
@@ -43,7 +44,7 @@ class _GoogleFitConectButtonState extends State<GoogleFitConectButton> {
 
   @override
   Widget build(BuildContext context) {
-    return BlocBuilder<GoogleFitConnectCubit, GoogleFitConnectState>(
+    return BlocBuilder<GoogleFitConnectCubit, HekaPlatformState>(
       builder: (context, state) {
         return Padding(
           padding: const EdgeInsets.all(8.0),
