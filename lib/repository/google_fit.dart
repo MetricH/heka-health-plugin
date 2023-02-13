@@ -1,11 +1,11 @@
 import 'package:dio/dio.dart';
 import 'package:flutter_appauth/flutter_appauth.dart';
-import 'package:heka_health/models/google_credentials.dart';
+import 'package:heka_health/models/oauth2_creds.dart';
 
 class GoogleFit {
   final _auth = const FlutterAppAuth();
 
-  Future<GoogleCredentials?> signIn({
+  Future<OAuth2Creds?> signIn({
     required String clientId,
     required String redirectUrl,
     required String issuer,
@@ -33,7 +33,7 @@ class GoogleFit {
         ),
       );
       if (authTokenResponse != null) {
-        return GoogleCredentials(
+        return OAuth2Creds(
             refreshToken: authTokenResponse.refreshToken!,
             email: await authTokenResponse.email);
       }

@@ -3,7 +3,7 @@
 // ignore_for_file: type=lint
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
-part of 'google_credentials.dart';
+part of 'oauth2_creds.dart';
 
 // **************************************************************************
 // FreezedGenerator
@@ -15,28 +15,28 @@ final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
 /// @nodoc
-mixin _$GoogleCredentials {
+mixin _$OAuth2Creds {
   String get refreshToken => throw _privateConstructorUsedError;
   String? get email => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
-  $GoogleCredentialsCopyWith<GoogleCredentials> get copyWith =>
+  $OAuth2CredsCopyWith<OAuth2Creds> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class $GoogleCredentialsCopyWith<$Res> {
-  factory $GoogleCredentialsCopyWith(
-          GoogleCredentials value, $Res Function(GoogleCredentials) then) =
-      _$GoogleCredentialsCopyWithImpl<$Res, GoogleCredentials>;
+abstract class $OAuth2CredsCopyWith<$Res> {
+  factory $OAuth2CredsCopyWith(
+          OAuth2Creds value, $Res Function(OAuth2Creds) then) =
+      _$OAuth2CredsCopyWithImpl<$Res, OAuth2Creds>;
   @useResult
   $Res call({String refreshToken, String? email});
 }
 
 /// @nodoc
-class _$GoogleCredentialsCopyWithImpl<$Res, $Val extends GoogleCredentials>
-    implements $GoogleCredentialsCopyWith<$Res> {
-  _$GoogleCredentialsCopyWithImpl(this._value, this._then);
+class _$OAuth2CredsCopyWithImpl<$Res, $Val extends OAuth2Creds>
+    implements $OAuth2CredsCopyWith<$Res> {
+  _$OAuth2CredsCopyWithImpl(this._value, this._then);
 
   // ignore: unused_field
   final $Val _value;
@@ -63,22 +63,22 @@ class _$GoogleCredentialsCopyWithImpl<$Res, $Val extends GoogleCredentials>
 }
 
 /// @nodoc
-abstract class _$$_GoogleCredentialsCopyWith<$Res>
-    implements $GoogleCredentialsCopyWith<$Res> {
-  factory _$$_GoogleCredentialsCopyWith(_$_GoogleCredentials value,
-          $Res Function(_$_GoogleCredentials) then) =
-      __$$_GoogleCredentialsCopyWithImpl<$Res>;
+abstract class _$$_OAuth2CredsCopyWith<$Res>
+    implements $OAuth2CredsCopyWith<$Res> {
+  factory _$$_OAuth2CredsCopyWith(
+          _$_OAuth2Creds value, $Res Function(_$_OAuth2Creds) then) =
+      __$$_OAuth2CredsCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call({String refreshToken, String? email});
 }
 
 /// @nodoc
-class __$$_GoogleCredentialsCopyWithImpl<$Res>
-    extends _$GoogleCredentialsCopyWithImpl<$Res, _$_GoogleCredentials>
-    implements _$$_GoogleCredentialsCopyWith<$Res> {
-  __$$_GoogleCredentialsCopyWithImpl(
-      _$_GoogleCredentials _value, $Res Function(_$_GoogleCredentials) _then)
+class __$$_OAuth2CredsCopyWithImpl<$Res>
+    extends _$OAuth2CredsCopyWithImpl<$Res, _$_OAuth2Creds>
+    implements _$$_OAuth2CredsCopyWith<$Res> {
+  __$$_OAuth2CredsCopyWithImpl(
+      _$_OAuth2Creds _value, $Res Function(_$_OAuth2Creds) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -87,7 +87,7 @@ class __$$_GoogleCredentialsCopyWithImpl<$Res>
     Object? refreshToken = null,
     Object? email = freezed,
   }) {
-    return _then(_$_GoogleCredentials(
+    return _then(_$_OAuth2Creds(
       refreshToken: null == refreshToken
           ? _value.refreshToken
           : refreshToken // ignore: cast_nullable_to_non_nullable
@@ -102,8 +102,8 @@ class __$$_GoogleCredentialsCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_GoogleCredentials extends _GoogleCredentials {
-  const _$_GoogleCredentials({required this.refreshToken, required this.email})
+class _$_OAuth2Creds extends _OAuth2Creds {
+  const _$_OAuth2Creds({required this.refreshToken, required this.email})
       : super._();
 
   @override
@@ -113,14 +113,14 @@ class _$_GoogleCredentials extends _GoogleCredentials {
 
   @override
   String toString() {
-    return 'GoogleCredentials(refreshToken: $refreshToken, email: $email)';
+    return 'OAuth2Creds(refreshToken: $refreshToken, email: $email)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_GoogleCredentials &&
+            other is _$_OAuth2Creds &&
             (identical(other.refreshToken, refreshToken) ||
                 other.refreshToken == refreshToken) &&
             (identical(other.email, email) || other.email == email));
@@ -132,16 +132,15 @@ class _$_GoogleCredentials extends _GoogleCredentials {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_GoogleCredentialsCopyWith<_$_GoogleCredentials> get copyWith =>
-      __$$_GoogleCredentialsCopyWithImpl<_$_GoogleCredentials>(
-          this, _$identity);
+  _$$_OAuth2CredsCopyWith<_$_OAuth2Creds> get copyWith =>
+      __$$_OAuth2CredsCopyWithImpl<_$_OAuth2Creds>(this, _$identity);
 }
 
-abstract class _GoogleCredentials extends GoogleCredentials {
-  const factory _GoogleCredentials(
+abstract class _OAuth2Creds extends OAuth2Creds {
+  const factory _OAuth2Creds(
       {required final String refreshToken,
-      required final String? email}) = _$_GoogleCredentials;
-  const _GoogleCredentials._() : super._();
+      required final String? email}) = _$_OAuth2Creds;
+  const _OAuth2Creds._() : super._();
 
   @override
   String get refreshToken;
@@ -149,6 +148,6 @@ abstract class _GoogleCredentials extends GoogleCredentials {
   String? get email;
   @override
   @JsonKey(ignore: true)
-  _$$_GoogleCredentialsCopyWith<_$_GoogleCredentials> get copyWith =>
+  _$$_OAuth2CredsCopyWith<_$_OAuth2Creds> get copyWith =>
       throw _privateConstructorUsedError;
 }
