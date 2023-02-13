@@ -1,21 +1,24 @@
+import 'dart:io';
+
 import 'package:dio/dio.dart';
 import 'package:flutter_appauth/flutter_appauth.dart';
 import 'package:heka_health/models/oauth2_creds.dart';
+import 'package:heka_health/repository/data_provider.dart';
 
-class GoogleFit {
+class GoogleFit extends DataProvider {
   final _auth = const FlutterAppAuth();
+  static const _googleIssuer = 'https://accounts.google.com';
 
+  @override
   Future<OAuth2Creds?> signIn({
     required String clientId,
-    required String redirectUrl,
-    required String issuer,
   }) async {
     try {
       final authTokenResponse = await _auth.authorizeAndExchangeCode(
         AuthorizationTokenRequest(
           clientId,
-          redirectUrl,
-          issuer: issuer,
+          redirectUrl(clientId),
+          issuer: _googleIssuer,
           scopes: [
             'email',
             'https://www.googleapis.com/auth/fitness.activity.read',
@@ -42,6 +45,15 @@ class GoogleFit {
       return null;
     }
   }
+
+  @override
+  Future<void> postConnect() async {}
+
+  @override
+  Future<void> postDisconnect() async {}
+
+  @override
+  Future<void> preConnect() async {}
 }
 
 extension UserProfileX on AuthorizationTokenResponse {
@@ -55,4 +67,12 @@ extension UserProfileX on AuthorizationTokenResponse {
       return null;
     }
   }
+}
+
+String redirectUrl(String clientId) {
+  if (Platform.isAndroid) {
+    final parts = clientId.split('.');
+    return 'com.googleusercontent.apps.${parts.first}:/oauthredirect';
+  }
+  return '';
 }

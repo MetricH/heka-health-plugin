@@ -12,8 +12,6 @@ class GoogleFitConnectCubit extends Cubit<HekaPlatformState> {
   final String _userUuid;
   final GoogleFit _googleFit = GoogleFit();
 
-  static const _googleIssuer = 'https://accounts.google.com';
-
   GoogleFitConnectCubit(
     this._manager,
     this._userUuid,
@@ -89,8 +87,6 @@ class GoogleFitConnectCubit extends Cubit<HekaPlatformState> {
     }, (clientId) async {
       final credentials = await _googleFit.signIn(
         clientId: clientId,
-        redirectUrl: redirectUrl(clientId),
-        issuer: _googleIssuer,
       );
       if (credentials != null) {
         emit(HekaPlatformState.makingConnection(
@@ -153,12 +149,4 @@ class GoogleFitConnectCubit extends Cubit<HekaPlatformState> {
       ));
     });
   }
-}
-
-String redirectUrl(String clientId) {
-  if (Platform.isAndroid) {
-    final parts = clientId.split('.');
-    return 'com.googleusercontent.apps.${parts.first}:/oauthredirect';
-  }
-  return '';
 }
