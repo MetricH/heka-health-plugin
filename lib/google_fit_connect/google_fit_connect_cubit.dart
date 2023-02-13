@@ -88,7 +88,7 @@ class GoogleFitConnectCubit extends Cubit<GoogleFitConnectState> {
         paymentPlan: state.paymentPlan,
       ));
     }, (clientId) async {
-      final credentials = await _googleFit.signInWithGoogle(
+      final credentials = await _googleFit.signIn(
         clientId: clientId,
         redirectUrl: redirectUrl(clientId),
         issuer: _googleIssuer,

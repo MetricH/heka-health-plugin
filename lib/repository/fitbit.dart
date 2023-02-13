@@ -3,7 +3,7 @@ import 'package:flutter_appauth/flutter_appauth.dart';
 class Fitbit {
   final _auth = const FlutterAppAuth();
 
-  Future<void> signInWithFitbit({
+  Future<void> signIn({
     required String clientId,
     required String redirectUrl,
   }) async {

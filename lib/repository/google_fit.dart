@@ -5,7 +5,7 @@ import 'package:heka_health/models/google_credentials.dart';
 class GoogleFit {
   final _auth = const FlutterAppAuth();
 
-  Future<GoogleCredentials?> signInWithGoogle({
+  Future<GoogleCredentials?> signIn({
     required String clientId,
     required String redirectUrl,
     required String issuer,
