@@ -80,7 +80,7 @@ class GoogleFitConnectCubit extends Cubit<GoogleFitConnectState> {
 
   Future<void> createConnection(
       {bool reconnect = false, int? connectionId}) async {
-    final failureOrSuccess = await _manager.getGoogleClientId();
+    final failureOrSuccess = await _manager.getPlatformClientId('google_fit');
     failureOrSuccess.fold((error) {
       emit(GoogleFitConnectState.error(
         error,
