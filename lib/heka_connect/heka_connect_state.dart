@@ -7,7 +7,9 @@ part 'heka_connect_state.freezed.dart';
 class HekaConnectState with _$HekaConnectState {
   const factory HekaConnectState({
     required bool isLoading,
+    required String userUuid,
     required Map<String, HekaPlatformState> platformStates,
     required String? paymentPlan,
+    required bool loadingFailed,
   }) = _HekaConnectState;
 }

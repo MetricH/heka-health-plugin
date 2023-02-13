@@ -17,9 +17,11 @@ final _privateConstructorUsedError = UnsupportedError(
 /// @nodoc
 mixin _$HekaConnectState {
   bool get isLoading => throw _privateConstructorUsedError;
+  String get userUuid => throw _privateConstructorUsedError;
   Map<String, HekaPlatformState> get platformStates =>
       throw _privateConstructorUsedError;
   String? get paymentPlan => throw _privateConstructorUsedError;
+  bool get loadingFailed => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $HekaConnectStateCopyWith<HekaConnectState> get copyWith =>
@@ -34,8 +36,10 @@ abstract class $HekaConnectStateCopyWith<$Res> {
   @useResult
   $Res call(
       {bool isLoading,
+      String userUuid,
       Map<String, HekaPlatformState> platformStates,
-      String? paymentPlan});
+      String? paymentPlan,
+      bool loadingFailed});
 }
 
 /// @nodoc
@@ -52,14 +56,20 @@ class _$HekaConnectStateCopyWithImpl<$Res, $Val extends HekaConnectState>
   @override
   $Res call({
     Object? isLoading = null,
+    Object? userUuid = null,
     Object? platformStates = null,
     Object? paymentPlan = freezed,
+    Object? loadingFailed = null,
   }) {
     return _then(_value.copyWith(
       isLoading: null == isLoading
           ? _value.isLoading
           : isLoading // ignore: cast_nullable_to_non_nullable
               as bool,
+      userUuid: null == userUuid
+          ? _value.userUuid
+          : userUuid // ignore: cast_nullable_to_non_nullable
+              as String,
       platformStates: null == platformStates
           ? _value.platformStates
           : platformStates // ignore: cast_nullable_to_non_nullable
@@ -68,6 +78,10 @@ class _$HekaConnectStateCopyWithImpl<$Res, $Val extends HekaConnectState>
           ? _value.paymentPlan
           : paymentPlan // ignore: cast_nullable_to_non_nullable
               as String?,
+      loadingFailed: null == loadingFailed
+          ? _value.loadingFailed
+          : loadingFailed // ignore: cast_nullable_to_non_nullable
+              as bool,
     ) as $Val);
   }
 }
@@ -82,8 +96,10 @@ abstract class _$$_HekaConnectStateCopyWith<$Res>
   @useResult
   $Res call(
       {bool isLoading,
+      String userUuid,
       Map<String, HekaPlatformState> platformStates,
-      String? paymentPlan});
+      String? paymentPlan,
+      bool loadingFailed});
 }
 
 /// @nodoc
@@ -98,14 +114,20 @@ class __$$_HekaConnectStateCopyWithImpl<$Res>
   @override
   $Res call({
     Object? isLoading = null,
+    Object? userUuid = null,
     Object? platformStates = null,
     Object? paymentPlan = freezed,
+    Object? loadingFailed = null,
   }) {
     return _then(_$_HekaConnectState(
       isLoading: null == isLoading
           ? _value.isLoading
           : isLoading // ignore: cast_nullable_to_non_nullable
               as bool,
+      userUuid: null == userUuid
+          ? _value.userUuid
+          : userUuid // ignore: cast_nullable_to_non_nullable
+              as String,
       platformStates: null == platformStates
           ? _value._platformStates
           : platformStates // ignore: cast_nullable_to_non_nullable
@@ -114,6 +136,10 @@ class __$$_HekaConnectStateCopyWithImpl<$Res>
           ? _value.paymentPlan
           : paymentPlan // ignore: cast_nullable_to_non_nullable
               as String?,
+      loadingFailed: null == loadingFailed
+          ? _value.loadingFailed
+          : loadingFailed // ignore: cast_nullable_to_non_nullable
+              as bool,
     ));
   }
 }
@@ -123,12 +149,16 @@ class __$$_HekaConnectStateCopyWithImpl<$Res>
 class _$_HekaConnectState implements _HekaConnectState {
   const _$_HekaConnectState(
       {required this.isLoading,
+      required this.userUuid,
       required final Map<String, HekaPlatformState> platformStates,
-      required this.paymentPlan})
+      required this.paymentPlan,
+      required this.loadingFailed})
       : _platformStates = platformStates;
 
   @override
   final bool isLoading;
+  @override
+  final String userUuid;
   final Map<String, HekaPlatformState> _platformStates;
   @override
   Map<String, HekaPlatformState> get platformStates {
@@ -139,10 +169,12 @@ class _$_HekaConnectState implements _HekaConnectState {
 
   @override
   final String? paymentPlan;
+  @override
+  final bool loadingFailed;
 
   @override
   String toString() {
-    return 'HekaConnectState(isLoading: $isLoading, platformStates: $platformStates, paymentPlan: $paymentPlan)';
+    return 'HekaConnectState(isLoading: $isLoading, userUuid: $userUuid, platformStates: $platformStates, paymentPlan: $paymentPlan, loadingFailed: $loadingFailed)';
   }
 
   @override
@@ -152,15 +184,24 @@ class _$_HekaConnectState implements _HekaConnectState {
             other is _$_HekaConnectState &&
             (identical(other.isLoading, isLoading) ||
                 other.isLoading == isLoading) &&
+            (identical(other.userUuid, userUuid) ||
+                other.userUuid == userUuid) &&
             const DeepCollectionEquality()
                 .equals(other._platformStates, _platformStates) &&
             (identical(other.paymentPlan, paymentPlan) ||
-                other.paymentPlan == paymentPlan));
+                other.paymentPlan == paymentPlan) &&
+            (identical(other.loadingFailed, loadingFailed) ||
+                other.loadingFailed == loadingFailed));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, isLoading,
-      const DeepCollectionEquality().hash(_platformStates), paymentPlan);
+  int get hashCode => Object.hash(
+      runtimeType,
+      isLoading,
+      userUuid,
+      const DeepCollectionEquality().hash(_platformStates),
+      paymentPlan,
+      loadingFailed);
 
   @JsonKey(ignore: true)
   @override
@@ -172,15 +213,21 @@ class _$_HekaConnectState implements _HekaConnectState {
 abstract class _HekaConnectState implements HekaConnectState {
   const factory _HekaConnectState(
       {required final bool isLoading,
+      required final String userUuid,
       required final Map<String, HekaPlatformState> platformStates,
-      required final String? paymentPlan}) = _$_HekaConnectState;
+      required final String? paymentPlan,
+      required final bool loadingFailed}) = _$_HekaConnectState;
 
   @override
   bool get isLoading;
   @override
+  String get userUuid;
+  @override
   Map<String, HekaPlatformState> get platformStates;
   @override
   String? get paymentPlan;
+  @override
+  bool get loadingFailed;
   @override
   @JsonKey(ignore: true)
   _$$_HekaConnectStateCopyWith<_$_HekaConnectState> get copyWith =>
