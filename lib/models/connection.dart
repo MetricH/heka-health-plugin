@@ -16,6 +16,6 @@ class Connection with _$Connection {
       _$ConnectionFromJson(json);
 
   bool isPlatformConnected(String platform) {
-    return connections[platform] != null && connections[platform]!.loggedIn;
+    return connections[platform] != null;
   }
 }
