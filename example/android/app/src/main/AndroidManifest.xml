@@ -34,8 +34,8 @@
                 <action android:name="android.intent.action.VIEW" />
                 <category android:name="android.intent.category.DEFAULT" />
                 <category android:name="android.intent.category.BROWSABLE" />
-                <data android:scheme="https"
-                  android:host="com.googleusercontent.apps.414785237708-abirasrhk7fb10fpoijkh33g5ek50pbi"
+                <data
+                  android:scheme="com.googleusercontent.apps.414785237708-abirasrhk7fb10fpoijkh33g5ek50pbi"
                 />
             </intent-filter>
             <intent-filter>
