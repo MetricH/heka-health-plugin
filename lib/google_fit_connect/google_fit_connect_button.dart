@@ -7,7 +7,6 @@ import 'package:heka_health/repository/heka_repository.dart';
 import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
 import 'package:timeago/timeago.dart' as timeago;
 import 'package:url_launcher/url_launcher.dart';
-import 'google_fit_connect_cubit.dart';
 
 class GoogleFitConnectWidget extends StatelessWidget {
   final HekaHealth hekaHealth;
