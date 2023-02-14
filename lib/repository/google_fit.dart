@@ -2,17 +2,23 @@ import 'dart:io';
 
 import 'package:dio/dio.dart';
 import 'package:flutter_appauth/flutter_appauth.dart';
+import 'package:heka_health/constants/platform_name.dart';
 import 'package:heka_health/models/oauth2_creds.dart';
 import 'package:heka_health/repository/data_provider.dart';
+import 'package:heka_health/repository/heka_repository.dart';
 
 class GoogleFit extends DataProvider {
   final _auth = const FlutterAppAuth();
   static const _googleIssuer = 'https://accounts.google.com';
 
   @override
-  Future<OAuth2Creds?> signIn({
-    required String clientId,
-  }) async {
+  Future<OAuth2Creds?> signIn(HekaHealth manager) async {
+    final failureOrSuccess =
+        await manager.getPlatformClientId(PlatformName.googleFit);
+    if (failureOrSuccess.isLeft()) {
+      return null;
+    }
+    final clientId = failureOrSuccess.fold((l) => throw Exception(), (r) => r);
     try {
       final authTokenResponse = await _auth.authorizeAndExchangeCode(
         AuthorizationTokenRequest(
@@ -47,13 +53,13 @@ class GoogleFit extends DataProvider {
   }
 
   @override
-  Future<void> postConnect() async {}
+  Future<void> postConnect(HekaHealth manager, String userUuid) async {}
 
   @override
-  Future<void> postDisconnect() async {}
+  Future<void> postDisconnect(HekaHealth manager, String userUuid) async {}
 
   @override
-  Future<void> preConnect() async {}
+  Future<void> preConnect(HekaHealth manager, String userUuid) async {}
 }
 
 extension UserProfileX on AuthorizationTokenResponse {

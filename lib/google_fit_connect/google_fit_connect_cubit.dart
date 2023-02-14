@@ -5,13 +5,21 @@ import 'package:heka_health/heka_connect/heka_platform_state.dart';
 import 'package:heka_health/models/connected_platform.dart';
 import 'package:heka_health/models/heka_health_error.dart';
 import 'package:heka_health/models/oauth2_creds.dart';
+import 'package:heka_health/repository/apple_healthkit.dart';
+import 'package:heka_health/repository/data_provider.dart';
+import 'package:heka_health/repository/fitbit.dart';
 import 'package:heka_health/repository/google_fit.dart';
 import 'package:heka_health/repository/heka_repository.dart';
 
 class GoogleFitConnectCubit extends Cubit<HekaPlatformState> {
   final HekaHealth _manager;
   final String platform;
-  final GoogleFit _googleFit = GoogleFit();
+
+  final Map<String, DataProvider> _dataProviders = {
+    PlatformName.googleFit: GoogleFit(),
+    PlatformName.appleHealth: AppleHealthkit(),
+    PlatformName.fitbit: Fitbit(),
+  };
 
   GoogleFitConnectCubit(
     this._manager,
@@ -104,46 +112,26 @@ class GoogleFitConnectCubit extends Cubit<HekaPlatformState> {
       paymentPlan: state.paymentPlan,
     ));
 
-    OAuth2Creds? credentials;
-    if (platform == PlatformName.googleFit) {
-      final failureOrSuccess =
-          await _manager.getPlatformClientId(PlatformName.googleFit);
-      if (failureOrSuccess.isLeft()) {
-        emit(HekaPlatformState.error(
-          failureOrSuccess.fold((l) => l, (r) => throw Exception()),
-          userUuid: state.userUuid,
-          paymentPlan: state.paymentPlan,
-        ));
-        return;
-      }
-      final clientId =
-          failureOrSuccess.fold((l) => throw Exception(), (r) => r);
-      credentials = await _googleFit.signIn(
-        clientId: clientId,
-      );
-      if (credentials == null) {
-        emit(HekaPlatformState.error(
-          // TODO: this should be a different error
-          const HekaHealthError.noConnection(),
-          userUuid: state.userUuid,
-          paymentPlan: state.paymentPlan,
-        ));
-        return;
-      }
-    } else if (platform == PlatformName.appleHealth) {
-      // TODO: this will always be true according to
-      // https://stackoverflow.com/questions/51231371/requesting-authorization-in-healthkit-why-the-result-is-always-successful
-      bool granted = await _manager.requestHealthKitPermissions();
-      if (!granted) {
-        emit(HekaPlatformState.error(
-          const HekaHealthError.appleHealthkitPermissionsDenied(),
-          userUuid: state.userUuid,
-          paymentPlan: state.paymentPlan,
-        ));
-        return;
-      }
-      // Build a dummy OAuth2.0 creds object
-      credentials = const OAuth2Creds(refreshToken: '', email: null);
+    DataProvider provider = _dataProviders[platform]!;
+    try {
+      provider.preConnect(_manager, state.userUuid);
+    } catch (e) {
+      emit(HekaPlatformState.error(
+        const HekaHealthError.appleHealthkitPermissionsDenied(),
+        userUuid: state.userUuid,
+        paymentPlan: state.paymentPlan,
+      ));
+      return;
+    }
+
+    final OAuth2Creds? credentials = await provider.signIn(_manager);
+    if (credentials == null) {
+      emit(HekaPlatformState.error(
+        const HekaHealthError.noConnection(),
+        userUuid: state.userUuid,
+        paymentPlan: state.paymentPlan,
+      ));
+      return;
     }
 
     String? deviceId;
@@ -153,7 +141,7 @@ class GoogleFitConnectCubit extends Cubit<HekaPlatformState> {
     }
     final failureOrSuccess = await _manager.makeConnection(
       reconnect: reconnect,
-      googleFitRefreshToken: credentials!.refreshToken,
+      googleFitRefreshToken: credentials.refreshToken,
       userUuid: state.userUuid,
       platform: platform,
       emailId: credentials.email,
@@ -167,13 +155,9 @@ class GoogleFitConnectCubit extends Cubit<HekaPlatformState> {
         paymentPlan: state.paymentPlan,
       ));
     }, (connection) async {
-      if (platform == PlatformName.appleHealth) {
-        await _manager.syncIosHealthData(userUuid: state.userUuid);
-      }
-      ConnectedPlatform googleFitPlatform = connection.connections[platform]!;
-
+      provider.postConnect(_manager, state.userUuid);
       emit(HekaPlatformState.connected(
-        googleFitPlatform,
+        connection.connections[platform]!,
         userUuid: state.userUuid,
         paymentPlan: state.paymentPlan,
       ));
