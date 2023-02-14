@@ -17,7 +17,7 @@ class Fitbit extends DataProvider {
           _redirectUrl,
           serviceConfiguration: const AuthorizationServiceConfiguration(
             authorizationEndpoint: "https://www.fitbit.com/oauth2/authorize",
-            tokenEndpoint: "https://www.fitbit.com/oauth2/token",
+            tokenEndpoint: "https://api.fitbit.com/oauth2/token",
           ),
           scopes: [
             "activity",
