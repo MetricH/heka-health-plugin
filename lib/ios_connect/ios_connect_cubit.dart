@@ -38,7 +38,7 @@ class IosConnectCubit extends Cubit<IosConnectState> {
     DeviceInfoPlugin deviceInfo = DeviceInfoPlugin();
     String uuid = (await deviceInfo.iosInfo).identifierForVendor!;
     final failureOrSuccess = await _manager.disconnect(
-      userUuid: uuid,
+      userUuid: state.userUuid,
       platform: connection.platform,
       deviceId: uuid,
     );
