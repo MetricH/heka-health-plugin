@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:heka_health/constants/platform_name.dart';
 import 'package:heka_health/heka_connect/heka_platform_state.dart';
 import 'package:heka_health/repository/heka_repository.dart';
 import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
@@ -22,6 +23,7 @@ class GoogleFitConnectWidget extends StatelessWidget {
       create: (context) => GoogleFitConnectCubit(
         hekaHealth,
         userUuid,
+        PlatformName.googleFit,
       ),
       child: const GoogleFitConectButton(),
     );

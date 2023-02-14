@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:heka_health/constants/platform_name.dart';
+import 'package:heka_health/google_fit_connect/google_fit_connect_cubit.dart';
 import 'package:heka_health/heka_connect/heka_platform_state.dart';
 import 'package:heka_health/repository/heka_repository.dart';
 import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
 import 'package:url_launcher/url_launcher.dart';
-
-import 'ios_connect_cubit.dart';
 
 class IosHealthConnectWidget extends StatelessWidget {
   final HekaHealth hekaHealth;
@@ -19,9 +19,10 @@ class IosHealthConnectWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
-      create: (context) => IosConnectCubit(
-        userUuid,
+      create: (context) => GoogleFitConnectCubit(
         hekaHealth,
+        userUuid,
+        PlatformName.appleHealth,
       ),
       child: const IosHealthConnectButton(),
     );
@@ -39,17 +40,12 @@ class _IosHealthConnectButtonState extends State<IosHealthConnectButton> {
   @override
   void initState() {
     super.initState();
-    // context.read<IosConnectCubit>().requestHealthKitPermissions();
-    // context
-    //     .read<IosConnectCubit>()
-    //     .checkHealthKitPermissions()
-    //     .then((value) => print("Hello: $value"));
-    context.read<IosConnectCubit>().checkConnection();
+    context.read<GoogleFitConnectCubit>().checkConnection();
   }
 
   @override
   Widget build(BuildContext context) {
-    return BlocBuilder<IosConnectCubit, HekaPlatformState>(
+    return BlocBuilder<GoogleFitConnectCubit, HekaPlatformState>(
       builder: (context, state) {
         return Padding(
           padding: const EdgeInsets.all(8.0),
@@ -128,11 +124,12 @@ class _IosHealthConnectButtonState extends State<IosHealthConnectButton> {
                         error: (error, userUuid, plan) => null,
                         initial: (_, plan) => null,
                         checkingConnection: (_, plan) => null,
-                        noConnection: (_, plan) =>
-                            context.read<IosConnectCubit>().createConnection,
+                        noConnection: (_, plan) => context
+                            .read<GoogleFitConnectCubit>()
+                            .createConnection,
                         makingConnection: (_, plan) => null,
                         connected: (connection, uuid, plan) => () => context
-                            .read<IosConnectCubit>()
+                            .read<GoogleFitConnectCubit>()
                             .disconnect(uuid, connection),
                       ),
                       style: ElevatedButton.styleFrom(
