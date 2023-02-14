@@ -30,16 +30,8 @@ class GoogleFitConnectCubit extends Cubit<HekaPlatformState> {
   ) : super(
           HekaPlatformState.initial(
             userUuid: userUuid,
-            paymentPlan: null,
           ),
         ) {
-    _manager.getPlan().then((value) {
-      value.fold((l) {
-        emit(state.copyWith(paymentPlan: 'free'));
-      }, (r) {
-        emit(state.copyWith(paymentPlan: r));
-      });
-    });
     if (platform == PlatformName.appleHealth) {
       (DeviceInfoPlugin().iosInfo).then((value) {
         _deviceId = value.identifierForVendor;
@@ -50,7 +42,6 @@ class GoogleFitConnectCubit extends Cubit<HekaPlatformState> {
   Future<void> checkConnection() async {
     emit(HekaPlatformState.checkingConnection(
       userUuid: state.userUuid,
-      paymentPlan: state.paymentPlan,
     ));
 
     final failureOrSuccess = await _manager.fetchConnection(state.userUuid);
@@ -58,13 +49,11 @@ class GoogleFitConnectCubit extends Cubit<HekaPlatformState> {
       emit(HekaPlatformState.error(
         error,
         userUuid: state.userUuid,
-        paymentPlan: state.paymentPlan,
       ));
     }, (connection) async {
       if (connection == null || !connection.connectionExists(platform)) {
         emit(HekaPlatformState.noConnection(
           userUuid: state.userUuid,
-          paymentPlan: state.paymentPlan,
         ));
         return;
       }
@@ -73,7 +62,6 @@ class GoogleFitConnectCubit extends Cubit<HekaPlatformState> {
         emit(HekaPlatformState.connected(
           connection.connections[platform]!,
           userUuid: state.userUuid,
-          paymentPlan: state.paymentPlan,
         ));
       } else {
         emitTokenInvalidated(connection, platform);
@@ -92,7 +80,6 @@ class GoogleFitConnectCubit extends Cubit<HekaPlatformState> {
       required String platformName}) async {
     emit(HekaPlatformState.makingConnection(
       userUuid: state.userUuid,
-      paymentPlan: state.paymentPlan,
     ));
 
     DataProvider provider = _dataProviders[platformName]!;
@@ -102,7 +89,6 @@ class GoogleFitConnectCubit extends Cubit<HekaPlatformState> {
       emit(HekaPlatformState.error(
         const HekaHealthError.appleHealthkitPermissionsDenied(),
         userUuid: state.userUuid,
-        paymentPlan: state.paymentPlan,
       ));
       return;
     }
@@ -112,7 +98,6 @@ class GoogleFitConnectCubit extends Cubit<HekaPlatformState> {
       emit(HekaPlatformState.error(
         const HekaHealthError.noConnection(),
         userUuid: state.userUuid,
-        paymentPlan: state.paymentPlan,
       ));
       return;
     }
@@ -130,14 +115,12 @@ class GoogleFitConnectCubit extends Cubit<HekaPlatformState> {
       emit(HekaPlatformState.error(
         error,
         userUuid: state.userUuid,
-        paymentPlan: state.paymentPlan,
       ));
     }, (connection) async {
       provider.postConnect(_manager, state.userUuid);
       emit(HekaPlatformState.connected(
         connection.connections[platformName]!,
         userUuid: state.userUuid,
-        paymentPlan: state.paymentPlan,
       ));
     });
   }
@@ -146,7 +129,6 @@ class GoogleFitConnectCubit extends Cubit<HekaPlatformState> {
       String uuid, ConnectedPlatform connectedPlatform) async {
     emit(HekaPlatformState.disconnecting(
       userUuid: state.userUuid,
-      paymentPlan: state.paymentPlan,
     ));
 
     final failureOrSuccess = await _manager.disconnect(
@@ -159,7 +141,6 @@ class GoogleFitConnectCubit extends Cubit<HekaPlatformState> {
       emit(HekaPlatformState.error(
         error,
         userUuid: state.userUuid,
-        paymentPlan: state.paymentPlan,
       ));
     }, (connection) async {
       await _dataProviders[connectedPlatform.platform]!
@@ -172,14 +153,12 @@ class GoogleFitConnectCubit extends Cubit<HekaPlatformState> {
     if (platformName == PlatformName.appleHealth) {
       emit(HekaPlatformState.noConnection(
         userUuid: state.userUuid,
-        paymentPlan: state.paymentPlan,
       ));
       return;
     }
     emit(HekaPlatformState.tokenInvalidated(
       connection.connections[platform]!,
       userUuid: state.userUuid,
-      paymentPlan: state.paymentPlan,
     ));
   }
 }

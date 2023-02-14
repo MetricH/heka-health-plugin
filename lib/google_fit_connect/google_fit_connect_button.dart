@@ -71,37 +71,37 @@ class _GoogleFitConectButtonState extends State<GoogleFitConectButton> {
                     ),
                   ),
                   subtitle: state.when(
-                    error: (error, userUuid, plan) {
+                    error: (error, userUuid) {
                       return Text(
                         error.message,
                         style: const TextStyle(color: Colors.red),
                       );
                     },
-                    initial: (_, plan) => Text(
+                    initial: (_) => Text(
                       '',
                       style: Theme.of(context).textTheme.bodySmall,
                     ),
-                    disconnecting: (userUuid, paymentPlan) => Text(
+                    disconnecting: (userUuid) => Text(
                       'Disconnecting...',
                       style: Theme.of(context).textTheme.bodySmall,
                     ),
-                    checkingConnection: (_, plan) => Text(
+                    checkingConnection: (_) => Text(
                       'Checking connection...',
                       style: Theme.of(context).textTheme.bodySmall,
                     ),
-                    noConnection: (_, plan) => Text(
+                    noConnection: (_) => Text(
                       '',
                       style: Theme.of(context).textTheme.bodySmall,
                     ),
-                    tokenInvalidated: (_, __, plan) => Text(
+                    tokenInvalidated: (_, __) => Text(
                       'Logged out',
                       style: Theme.of(context).textTheme.bodySmall,
                     ),
-                    makingConnection: (_, plan) => Text(
+                    makingConnection: (_) => Text(
                       'Making connection...',
                       style: Theme.of(context).textTheme.bodySmall,
                     ),
-                    connected: (_, __, plan) => Text(
+                    connected: (_, __) => Text(
                       _.lastSync == null
                           ? ''
                           : 'Last synced ${timeago.format(DateTime.parse(_.lastSync!))}',
@@ -109,21 +109,20 @@ class _GoogleFitConectButtonState extends State<GoogleFitConectButton> {
                     ),
                   ),
                   trailing: state.maybeWhen(
-                    error: (error, userUuid, plan) => const SizedBox(),
-                    checkingConnection: (userUuid, plan) =>
-                        const SizedBox.square(
+                    error: (error, userUuid) => const SizedBox(),
+                    checkingConnection: (userUuid) => const SizedBox.square(
                       dimension: 16,
                       child: CircularProgressIndicator(
                         color: Colors.red,
                       ),
                     ),
-                    disconnecting: (userUuid, plan) => const SizedBox.square(
+                    disconnecting: (userUuid) => const SizedBox.square(
                       dimension: 16,
                       child: CircularProgressIndicator(
                         color: Colors.red,
                       ),
                     ),
-                    makingConnection: (userUuid, plan) => const SizedBox.square(
+                    makingConnection: (userUuid) => const SizedBox.square(
                       dimension: 16,
                       child: CircularProgressIndicator(
                         color: Colors.red,
@@ -131,22 +130,21 @@ class _GoogleFitConectButtonState extends State<GoogleFitConectButton> {
                     ),
                     orElse: () => ElevatedButton(
                       onPressed: state.when(
-                        disconnecting: (userUuid, paymentPlan) => null,
-                        error: (error, userUuid, plan) => null,
-                        initial: (_, plan) => null,
-                        checkingConnection: (_, plan) => null,
-                        noConnection: (_, plan) => () => context
+                        disconnecting: (userUuid) => null,
+                        error: (error, userUuid) => null,
+                        initial: (_) => null,
+                        checkingConnection: (_) => null,
+                        noConnection: (_) => () => context
                             .read<GoogleFitConnectCubit>()
                             .createConnection(
                                 platformName: widget.platformName),
-                        tokenInvalidated: (connection, __, plan) => () =>
-                            context
-                                .read<GoogleFitConnectCubit>()
-                                .createConnection(
-                                    reconnect: true,
-                                    platformName: widget.platformName),
-                        makingConnection: (_, plan) => null,
-                        connected: (connection, uuid, plan) => () => context
+                        tokenInvalidated: (connection, __) => () => context
+                            .read<GoogleFitConnectCubit>()
+                            .createConnection(
+                                reconnect: true,
+                                platformName: widget.platformName),
+                        makingConnection: (_) => null,
+                        connected: (connection, uuid) => () => context
                             .read<GoogleFitConnectCubit>()
                             .disconnect(uuid, connection),
                       ),
@@ -161,20 +159,21 @@ class _GoogleFitConectButtonState extends State<GoogleFitConectButton> {
                         ),
                       ),
                       child: state.when(
-                        error: (error, userUuid, plan) => const SizedBox(),
-                        initial: (_, plan) => const Text(''),
-                        checkingConnection: (_, plan) => const Text('...'),
-                        disconnecting: (_, plan) => const Text('...'),
-                        noConnection: (_, plan) => const Text('Connect'),
-                        tokenInvalidated: (_, __, plan) =>
+                        error: (error, userUuid) => const SizedBox(),
+                        initial: (_) => const Text(''),
+                        checkingConnection: (_) => const Text('...'),
+                        disconnecting: (_) => const Text('...'),
+                        noConnection: (_) => const Text('Connect'),
+                        tokenInvalidated: (_, __) =>
                             const Text('Connect Again'),
-                        makingConnection: (_, plan) => const Text('...'),
-                        connected: (_, __, plan) => const Text('Disconnect'),
+                        makingConnection: (_) => const Text('...'),
+                        connected: (_, __) => const Text('Disconnect'),
                       ),
                     ),
                   ),
                 ),
-                if (state.paymentPlan == 'free') ...[
+                // TODO: this needs to be updated when we use the new state
+                if (false) ...[
                   Row(
                     mainAxisAlignment: MainAxisAlignment.end,
                     children: [
