@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:device_info_plus/device_info_plus.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:heka_health/constants/platform_name.dart';
@@ -51,11 +53,22 @@ class HekaConnectCubit extends Cubit<HekaConnectState> {
     final failureOrSuccess = await _manager.fetchConnection(state.userUuid);
     failureOrSuccess.fold((error) {
       emit(state.copyWith(isLoading: false, loadingFailed: true));
-    }, (connection) {
+    }, (connection) async {
       Map<String, HekaPlatformState> platformStates = {};
+      // TODO: find a better way to do this
+      String? deviceId = await getDeviceId(PlatformName.appleHealth);
       connection!.connections.forEach((key, value) {
-        platformStates[key] = platformStateFromConnection(connection, key);
+        platformStates[key] =
+            platformStateFromConnection(connection, key, deviceId);
       });
+      // remove google fit if on ios and vice versa
+      if (Platform.isAndroid &&
+          platformStates.containsKey(PlatformName.appleHealth)) {
+        platformStates.remove(PlatformName.appleHealth);
+      } else if (Platform.isIOS &&
+          platformStates.containsKey(PlatformName.googleFit)) {
+        platformStates.remove(PlatformName.googleFit);
+      }
       emit(state.copyWith(
         isLoading: false,
         platformStates: platformStates,
@@ -203,22 +216,26 @@ class HekaConnectCubit extends Cubit<HekaConnectState> {
 }
 
 HekaPlatformState platformStateFromConnection(
-    Connection connection, String platformName) {
+    Connection connection, String platformName, String? deviceId) {
   if (!connection.connectionExists(platformName)) {
     return HekaPlatformState.noConnection(
       userUuid: connection.userUuid,
     );
   } else {
-    ConnectedPlatform connectedPlatform = connection.connections[platformName]!;
-
-    return connectedPlatform.loggedIn
-        ? HekaPlatformState.connected(
-            connectedPlatform,
-            userUuid: connection.userUuid,
-          )
-        : HekaPlatformState.tokenInvalidated(
-            connectedPlatform,
-            userUuid: connection.userUuid,
-          );
+    if (connection.isConnected(platformName, deviceId)) {
+      return HekaPlatformState.connected(
+        connection.connections[platformName]!,
+        userUuid: connection.userUuid,
+      );
+    } else if (platformName == PlatformName.appleHealth) {
+      return HekaPlatformState.noConnection(
+        userUuid: connection.userUuid,
+      );
+    } else {
+      return HekaPlatformState.tokenInvalidated(
+        connection.connections[platformName]!,
+        userUuid: connection.userUuid,
+      );
+    }
   }
 }
