@@ -441,7 +441,9 @@ class HealthStore {
         
         return when(fulfilled: promises).map { value in
             for (index, type) in healthDataTypes.enumerated() {
-                results[type.lowercased()] = value[index]
+                if (!value[index].isEmpty) {
+                    results[type.lowercased()] = value[index]
+                }
             }
             return results
         }
