@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:heka_health/constants/platform_name.dart';
 import 'package:heka_health/heka_connect/heka_platform_state.dart';
 import 'package:heka_health/repository/heka_repository.dart';
 import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
@@ -11,10 +10,12 @@ import 'google_fit_connect_cubit.dart';
 class GoogleFitConnectWidget extends StatelessWidget {
   final HekaHealth hekaHealth;
   final String userUuid;
+  final String platformName;
   const GoogleFitConnectWidget({
     super.key,
     required this.hekaHealth,
     required this.userUuid,
+    required this.platformName,
   });
 
   @override
@@ -23,15 +24,16 @@ class GoogleFitConnectWidget extends StatelessWidget {
       create: (context) => GoogleFitConnectCubit(
         hekaHealth,
         userUuid,
-        PlatformName.googleFit,
+        platformName,
       ),
-      child: const GoogleFitConectButton(),
+      child: GoogleFitConectButton(platformName: platformName),
     );
   }
 }
 
 class GoogleFitConectButton extends StatefulWidget {
-  const GoogleFitConectButton({super.key});
+  const GoogleFitConectButton({super.key, required this.platformName});
+  final String platformName;
 
   @override
   State<GoogleFitConectButton> createState() => _GoogleFitConectButtonState();
@@ -61,8 +63,8 @@ class _GoogleFitConectButtonState extends State<GoogleFitConectButton> {
                     MdiIcons.googleFit,
                     color: Colors.red,
                   ),
-                  title: const Text(
-                    'Google Fit',
+                  title: Text(
+                    widget.platformName,
                     style: TextStyle(
                       fontWeight: FontWeight.bold,
                       fontSize: 16,
@@ -101,7 +103,7 @@ class _GoogleFitConectButtonState extends State<GoogleFitConectButton> {
                     ),
                     connected: (_, __, plan) => Text(
                       _.lastSync == null
-                          ? 'Last synced 1 min ago'
+                          ? ''
                           : 'Last synced ${timeago.format(DateTime.parse(_.lastSync!))}',
                       style: Theme.of(context).textTheme.bodySmall,
                     ),
@@ -136,13 +138,13 @@ class _GoogleFitConectButtonState extends State<GoogleFitConectButton> {
                         noConnection: (_, plan) => () => context
                             .read<GoogleFitConnectCubit>()
                             .createConnection(
-                                platformName: PlatformName.googleFit),
+                                platformName: widget.platformName),
                         tokenInvalidated: (connection, __, plan) => () =>
                             context
                                 .read<GoogleFitConnectCubit>()
                                 .createConnection(
                                     reconnect: true,
-                                    platformName: PlatformName.googleFit),
+                                    platformName: widget.platformName),
                         makingConnection: (_, plan) => null,
                         connected: (connection, uuid, plan) => () => context
                             .read<GoogleFitConnectCubit>()

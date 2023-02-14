@@ -162,7 +162,7 @@ class GoogleFitConnectCubit extends Cubit<HekaPlatformState> {
         paymentPlan: state.paymentPlan,
       ));
     }, (connection) async {
-      await _dataProviders[connectedPlatform]!
+      await _dataProviders[connectedPlatform.platform]!
           .postDisconnect(_manager, state.userUuid);
       emitTokenInvalidated(connection, connectedPlatform.platform);
     });
