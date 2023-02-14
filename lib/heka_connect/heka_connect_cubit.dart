@@ -44,7 +44,7 @@ class HekaConnectCubit extends Cubit<HekaConnectState> {
 
 HekaPlatformState platformStateFromConnection(
     Connection connection, String platformName) {
-  if (!connection.isPlatformConnected(platformName)) {
+  if (!connection.connectionExists(platformName)) {
     return HekaPlatformState.noConnection(
       userUuid: connection.userUuid,
       paymentPlan: null,

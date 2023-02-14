@@ -3,6 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:heka_health/constants/platform_name.dart';
 import 'package:heka_health/heka_connect/heka_platform_state.dart';
 import 'package:heka_health/models/connected_platform.dart';
+import 'package:heka_health/models/connection.dart';
 import 'package:heka_health/models/heka_health_error.dart';
 import 'package:heka_health/models/oauth2_creds.dart';
 import 'package:heka_health/repository/apple_healthkit.dart';
@@ -14,6 +15,7 @@ import 'package:heka_health/repository/heka_repository.dart';
 class GoogleFitConnectCubit extends Cubit<HekaPlatformState> {
   final HekaHealth _manager;
   final String platform;
+  String? _deviceId;
 
   final Map<String, DataProvider> _dataProviders = {
     PlatformName.googleFit: GoogleFit(),
@@ -38,6 +40,11 @@ class GoogleFitConnectCubit extends Cubit<HekaPlatformState> {
         emit(state.copyWith(paymentPlan: r));
       });
     });
+    if (platform == PlatformName.appleHealth) {
+      (DeviceInfoPlugin().iosInfo).then((value) {
+        _deviceId = value.identifierForVendor;
+      });
+    }
   }
 
   Future<void> checkConnection() async {
@@ -54,49 +61,22 @@ class GoogleFitConnectCubit extends Cubit<HekaPlatformState> {
         paymentPlan: state.paymentPlan,
       ));
     }, (connection) async {
-      if (connection == null || !connection.isPlatformConnected(platform)) {
+      if (connection == null || !connection.connectionExists(platform)) {
         emit(HekaPlatformState.noConnection(
           userUuid: state.userUuid,
           paymentPlan: state.paymentPlan,
         ));
+        return;
+      }
+
+      if (connection.isConnected(platform, _deviceId)) {
+        emit(HekaPlatformState.connected(
+          connection.connections[platform]!,
+          userUuid: state.userUuid,
+          paymentPlan: state.paymentPlan,
+        ));
       } else {
-        if (platform == PlatformName.appleHealth) {
-          DeviceInfoPlugin deviceInfo = DeviceInfoPlugin();
-          String uuid = (await deviceInfo.iosInfo).identifierForVendor!;
-          // Apple Healthkit is connected but not from this particular device
-          // We show as unconnected on this device and let the user connect again
-          if (!(connection.connections[PlatformName.appleHealth]!
-                      .connectedDevicesUUIDs ??
-                  [])
-              .contains(uuid)) {
-            emit(HekaPlatformState.noConnection(
-              userUuid: state.userUuid,
-              paymentPlan: state.paymentPlan,
-            ));
-            return;
-          }
-          emit(HekaPlatformState.connected(
-            connection.connections[PlatformName.appleHealth]!,
-            userUuid: state.userUuid,
-            paymentPlan: state.paymentPlan,
-          ));
-        } else {
-          ConnectedPlatform googleFitPlatform =
-              connection.connections[PlatformName.googleFit]!;
-          emit(
-            googleFitPlatform.loggedIn
-                ? HekaPlatformState.connected(
-                    googleFitPlatform,
-                    userUuid: state.userUuid,
-                    paymentPlan: state.paymentPlan,
-                  )
-                : HekaPlatformState.tokenInvalidated(
-                    googleFitPlatform,
-                    userUuid: state.userUuid,
-                    paymentPlan: state.paymentPlan,
-                  ),
-          );
-        }
+        emitTokenInvalidated(connection);
       }
     });
   }
@@ -134,18 +114,13 @@ class GoogleFitConnectCubit extends Cubit<HekaPlatformState> {
       return;
     }
 
-    String? deviceId;
-    if (platform == PlatformName.appleHealth) {
-      DeviceInfoPlugin deviceInfo = DeviceInfoPlugin();
-      deviceId = (await deviceInfo.iosInfo).identifierForVendor!;
-    }
     final failureOrSuccess = await _manager.makeConnection(
       reconnect: reconnect,
       googleFitRefreshToken: credentials.refreshToken,
       userUuid: state.userUuid,
       platform: platform,
       emailId: credentials.email,
-      deviceId: deviceId,
+      deviceId: _deviceId,
     );
 
     failureOrSuccess.fold((error) {
@@ -169,15 +144,11 @@ class GoogleFitConnectCubit extends Cubit<HekaPlatformState> {
       userUuid: state.userUuid,
       paymentPlan: state.paymentPlan,
     ));
-    String? deviceId;
-    if (platform == PlatformName.appleHealth) {
-      DeviceInfoPlugin deviceInfo = DeviceInfoPlugin();
-      deviceId = (await deviceInfo.iosInfo).identifierForVendor!;
-    }
+
     final failureOrSuccess = await _manager.disconnect(
       userUuid: uuid,
       platform: connection.platform,
-      deviceId: deviceId,
+      deviceId: _deviceId,
     );
 
     failureOrSuccess.fold((error) {
@@ -187,22 +158,23 @@ class GoogleFitConnectCubit extends Cubit<HekaPlatformState> {
         paymentPlan: state.paymentPlan,
       ));
     }, (connection) async {
-      if (platform == PlatformName.appleHealth) {
-        await _manager.disconnectHealthKit();
-        emit(HekaPlatformState.noConnection(
-          userUuid: state.userUuid,
-          paymentPlan: state.paymentPlan,
-        ));
-      } else {
-        ConnectedPlatform googleFitPlatform =
-            connection.connections[PlatformName.googleFit]!;
-
-        emit(HekaPlatformState.tokenInvalidated(
-          googleFitPlatform,
-          userUuid: state.userUuid,
-          paymentPlan: state.paymentPlan,
-        ));
-      }
+      await _dataProviders[platform]!.postDisconnect(_manager, state.userUuid);
+      emitTokenInvalidated(connection);
     });
+  }
+
+  emitTokenInvalidated(Connection connection) {
+    if (platform == PlatformName.appleHealth) {
+      emit(HekaPlatformState.noConnection(
+        userUuid: state.userUuid,
+        paymentPlan: state.paymentPlan,
+      ));
+      return;
+    }
+    emit(HekaPlatformState.tokenInvalidated(
+      connection.connections[platform]!,
+      userUuid: state.userUuid,
+      paymentPlan: state.paymentPlan,
+    ));
   }
 }
