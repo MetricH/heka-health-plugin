@@ -3,16 +3,16 @@ import 'dart:io';
 import 'package:device_info_plus/device_info_plus.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:heka_health/constants/platform_name.dart';
-import 'package:heka_health/heka_connect/heka_connect_state.dart';
-import 'package:heka_health/heka_connect/heka_platform_state.dart';
+import 'package:heka_health/heka_connect/application/heka_connect_state.dart';
+import 'package:heka_health/heka_connect/application/heka_platform_state.dart';
 import 'package:heka_health/models/connected_platform.dart';
 import 'package:heka_health/models/connection.dart';
 import 'package:heka_health/models/heka_health_error.dart';
 import 'package:heka_health/models/oauth2_creds.dart';
-import 'package:heka_health/repository/apple_healthkit.dart';
-import 'package:heka_health/repository/data_provider.dart';
-import 'package:heka_health/repository/fitbit.dart';
-import 'package:heka_health/repository/google_fit.dart';
+import 'package:heka_health/providers/apple_healthkit.dart';
+import 'package:heka_health/providers/data_provider.dart';
+import 'package:heka_health/providers/fitbit.dart';
+import 'package:heka_health/providers/google_fit.dart';
 import 'package:heka_health/repository/heka_repository.dart';
 
 class HekaConnectCubit extends Cubit<HekaConnectState> {

@@ -4,7 +4,7 @@ import 'package:dio/dio.dart';
 import 'package:flutter_appauth/flutter_appauth.dart';
 import 'package:heka_health/constants/platform_name.dart';
 import 'package:heka_health/models/oauth2_creds.dart';
-import 'package:heka_health/repository/data_provider.dart';
+import 'package:heka_health/providers/data_provider.dart';
 import 'package:heka_health/repository/heka_repository.dart';
 
 class GoogleFit extends DataProvider {

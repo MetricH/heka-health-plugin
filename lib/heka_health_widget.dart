@@ -1,7 +1,6 @@
-import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:heka_health/repository/heka_repository.dart';
-import 'google_fit_connect/google_fit_connect_button.dart';
+import 'heka_connect/presentation/heka_connect_widget.dart';
 
 class HekaHealthWidget extends StatelessWidget {
   final String apiKey;
@@ -15,14 +14,9 @@ class HekaHealthWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Platform.isAndroid
-        ? GoogleFitConnectWidget(
-            hekaHealth: HekaHealth(apiKey),
-            userUuid: userUuid,
-          )
-        : GoogleFitConnectWidget(
-            hekaHealth: HekaHealth(apiKey),
-            userUuid: userUuid,
-          );
+    return HekaConnectWidget(
+      hekaHealth: HekaHealth(apiKey),
+      userUuid: userUuid,
+    );
   }
 }

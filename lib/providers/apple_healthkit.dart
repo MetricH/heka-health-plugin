@@ -1,5 +1,5 @@
 import 'package:heka_health/models/oauth2_creds.dart';
-import 'package:heka_health/repository/data_provider.dart';
+import 'package:heka_health/providers/data_provider.dart';
 import 'package:heka_health/repository/heka_repository.dart';
 
 class AppleHealthkit extends DataProvider {
