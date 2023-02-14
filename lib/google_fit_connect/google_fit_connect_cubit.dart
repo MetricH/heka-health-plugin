@@ -76,23 +76,26 @@ class GoogleFitConnectCubit extends Cubit<HekaPlatformState> {
           paymentPlan: state.paymentPlan,
         ));
       } else {
-        emitTokenInvalidated(connection);
+        emitTokenInvalidated(connection, platform);
       }
     });
   }
 
-  Future<void> connectAgain(int id) async {
-    createConnection(reconnect: true, connectionId: id);
+  Future<void> connectAgain(String platformName, int id) async {
+    createConnection(
+        reconnect: true, connectionId: id, platformName: platformName);
   }
 
   Future<void> createConnection(
-      {bool reconnect = false, int? connectionId}) async {
+      {bool reconnect = false,
+      int? connectionId,
+      required String platformName}) async {
     emit(HekaPlatformState.makingConnection(
       userUuid: state.userUuid,
       paymentPlan: state.paymentPlan,
     ));
 
-    DataProvider provider = _dataProviders[platform]!;
+    DataProvider provider = _dataProviders[platformName]!;
     try {
       provider.preConnect(_manager, state.userUuid);
     } catch (e) {
@@ -118,7 +121,7 @@ class GoogleFitConnectCubit extends Cubit<HekaPlatformState> {
       reconnect: reconnect,
       googleFitRefreshToken: credentials.refreshToken,
       userUuid: state.userUuid,
-      platform: platform,
+      platform: platformName,
       emailId: credentials.email,
       deviceId: _deviceId,
     );
@@ -132,14 +135,15 @@ class GoogleFitConnectCubit extends Cubit<HekaPlatformState> {
     }, (connection) async {
       provider.postConnect(_manager, state.userUuid);
       emit(HekaPlatformState.connected(
-        connection.connections[platform]!,
+        connection.connections[platformName]!,
         userUuid: state.userUuid,
         paymentPlan: state.paymentPlan,
       ));
     });
   }
 
-  Future<void> disconnect(String uuid, ConnectedPlatform connection) async {
+  Future<void> disconnect(
+      String uuid, ConnectedPlatform connectedPlatform) async {
     emit(HekaPlatformState.disconnecting(
       userUuid: state.userUuid,
       paymentPlan: state.paymentPlan,
@@ -147,7 +151,7 @@ class GoogleFitConnectCubit extends Cubit<HekaPlatformState> {
 
     final failureOrSuccess = await _manager.disconnect(
       userUuid: uuid,
-      platform: connection.platform,
+      platform: connectedPlatform.platform,
       deviceId: _deviceId,
     );
 
@@ -158,13 +162,14 @@ class GoogleFitConnectCubit extends Cubit<HekaPlatformState> {
         paymentPlan: state.paymentPlan,
       ));
     }, (connection) async {
-      await _dataProviders[platform]!.postDisconnect(_manager, state.userUuid);
-      emitTokenInvalidated(connection);
+      await _dataProviders[connectedPlatform]!
+          .postDisconnect(_manager, state.userUuid);
+      emitTokenInvalidated(connection, connectedPlatform.platform);
     });
   }
 
-  emitTokenInvalidated(Connection connection) {
-    if (platform == PlatformName.appleHealth) {
+  emitTokenInvalidated(Connection connection, String platformName) {
+    if (platformName == PlatformName.appleHealth) {
       emit(HekaPlatformState.noConnection(
         userUuid: state.userUuid,
         paymentPlan: state.paymentPlan,

@@ -124,9 +124,10 @@ class _IosHealthConnectButtonState extends State<IosHealthConnectButton> {
                         error: (error, userUuid, plan) => null,
                         initial: (_, plan) => null,
                         checkingConnection: (_, plan) => null,
-                        noConnection: (_, plan) => context
+                        noConnection: (_, plan) => () => context
                             .read<GoogleFitConnectCubit>()
-                            .createConnection,
+                            .createConnection(
+                                platformName: PlatformName.appleHealth),
                         makingConnection: (_, plan) => null,
                         connected: (connection, uuid, plan) => () => context
                             .read<GoogleFitConnectCubit>()

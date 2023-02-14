@@ -133,13 +133,16 @@ class _GoogleFitConectButtonState extends State<GoogleFitConectButton> {
                         error: (error, userUuid, plan) => null,
                         initial: (_, plan) => null,
                         checkingConnection: (_, plan) => null,
-                        noConnection: (_, plan) => context
+                        noConnection: (_, plan) => () => context
                             .read<GoogleFitConnectCubit>()
-                            .createConnection,
+                            .createConnection(
+                                platformName: PlatformName.googleFit),
                         tokenInvalidated: (connection, __, plan) => () =>
                             context
                                 .read<GoogleFitConnectCubit>()
-                                .createConnection(reconnect: true),
+                                .createConnection(
+                                    reconnect: true,
+                                    platformName: PlatformName.googleFit),
                         makingConnection: (_, plan) => null,
                         connected: (connection, uuid, plan) => () => context
                             .read<GoogleFitConnectCubit>()
