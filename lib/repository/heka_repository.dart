@@ -1,7 +1,8 @@
 import 'package:dartz/dartz.dart';
 import 'package:dio/dio.dart';
-import 'package:heka_health/extensions.dart';
-import 'package:heka_health/heka_health_platform_interface.dart';
+import 'package:heka_health/models/enabled_platform.dart';
+import 'package:heka_health/repository/extensions.dart';
+import 'package:heka_health/repository/heka_health_platform_interface.dart';
 import 'package:heka_health/models/connection.dart';
 import 'package:heka_health/models/heka_health_error.dart';
 
@@ -14,7 +15,7 @@ class HekaHealth {
 
   HekaHealth(this._apiKey);
 
-  Future<Either<HekaHealthError, String>> getPlatformClientId(
+  Future<Either<HekaHealthError, EnabledPlatform>> getPlatformClientId(
     String platformName,
   ) async {
     try {
@@ -26,7 +27,7 @@ class HekaHealth {
       );
       for (var platform in response.data?['data']?['enabled_platforms'] ?? []) {
         if (platform['platform_name'] == platformName) {
-          return right(platform['platform_app_id'] as String);
+          return right(EnabledPlatform.fromJson(platform));
         }
       }
       return left(const HekaHealthError.googleClientIdNotRegistered());

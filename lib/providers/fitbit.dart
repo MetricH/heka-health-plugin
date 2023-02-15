@@ -16,14 +16,14 @@ class Fitbit extends DataProvider {
       if (failureOrSuccess.isLeft()) {
         return null;
       }
-      final clientId =
+      final platformData =
           failureOrSuccess.fold((l) => throw Exception(), (r) => r);
 
       final authTokenResponse = await _auth.authorizeAndExchangeCode(
         AuthorizationTokenRequest(
-          clientId,
+          platformData.platformAppId!,
           _redirectUrl,
-          clientSecret: "73418a7586f3eacaa0e6c6158d3a81c7",
+          clientSecret: platformData.platformAppSecret,
           serviceConfiguration: const AuthorizationServiceConfiguration(
             authorizationEndpoint: "https://www.fitbit.com/oauth2/authorize",
             tokenEndpoint: "https://api.fitbit.com/oauth2/token",

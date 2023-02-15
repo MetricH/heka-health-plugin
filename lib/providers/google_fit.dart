@@ -18,12 +18,13 @@ class GoogleFit extends DataProvider {
     if (failureOrSuccess.isLeft()) {
       return null;
     }
-    final clientId = failureOrSuccess.fold((l) => throw Exception(), (r) => r);
+    final platformData =
+        failureOrSuccess.fold((l) => throw Exception(), (r) => r);
     try {
       final authTokenResponse = await _auth.authorizeAndExchangeCode(
         AuthorizationTokenRequest(
-          clientId,
-          redirectUrl(clientId),
+          platformData.platformAppId!,
+          redirectUrl(platformData.platformAppId!),
           issuer: _googleIssuer,
           scopes: [
             'email',
