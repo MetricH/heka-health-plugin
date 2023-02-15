@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:heka_health/constants/platform_name.dart';
 import 'package:heka_health/heka_connect/application/heka_connect_cubit.dart';
 import 'package:heka_health/heka_connect/application/heka_connect_state.dart';
 import 'package:heka_health/heka_connect/application/heka_platform_state.dart';
@@ -115,14 +116,17 @@ class PlatformConnectCard extends StatefulWidget {
 class _PlatformConnectCardState extends State<PlatformConnectCard> {
   @override
   Widget build(BuildContext context) {
+    PlatformDetails platformDetails = platforms[widget.platformName]!;
     return ListTile(
       contentPadding: const EdgeInsets.symmetric(horizontal: 16),
-      leading: const Icon(
-        MdiIcons.googleFit,
-        color: Colors.red,
+      leading: Image.asset(
+        platformDetails.imageUri,
+        height: 32,
+        width: 32,
+        package: 'heka_health',
       ),
       title: Text(
-        widget.platformName,
+        platformDetails.name,
         style: const TextStyle(
           fontWeight: FontWeight.bold,
           fontSize: 16,
