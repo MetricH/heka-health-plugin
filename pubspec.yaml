@@ -17,7 +17,6 @@ dependencies:
   flutter_bloc: ^8.1.1
   freezed_annotation: ^2.2.0
   json_annotation: ^4.8.0
-  material_design_icons_flutter: ^6.0.7096
   plugin_platform_interface: ^2.0.2
   timeago: ^3.3.0
   url_launcher: ^6.1.8
