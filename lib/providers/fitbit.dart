@@ -47,7 +47,7 @@ class Fitbit extends DataProvider {
       if (authTokenResponse != null) {
         return OAuth2Creds(
           refreshToken: authTokenResponse.refreshToken!,
-          email: null,
+          email: authTokenResponse.tokenAdditionalParameters!["user_id"],
         );
       }
       return null;
