@@ -170,7 +170,4 @@ class HekaHealth {
 
   Future<bool> requestHealthKitPermissions() =>
       HekaHealthPlatform.instance.requestHealthKitPermissions();
-
-  Future<bool?> checkHealthKitPermissions() =>
-      HekaHealthPlatform.instance.checkHealthKitPermissions();
 }

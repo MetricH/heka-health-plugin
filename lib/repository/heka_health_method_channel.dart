@@ -31,14 +31,6 @@ class MethodChannelHekaHealth extends HekaHealthPlatform {
   }
 
   @override
-  Future<bool?> checkHealthKitPermissions() async {
-    final result =
-        (await methodChannel.invokeMethod<bool>('checkHealthKitPermissions')) ??
-            false;
-    return result;
-  }
-
-  @override
   Future<bool> disconnect() async {
     final result =
         (await methodChannel.invokeMethod<bool>('disconnect')) ?? false;
