@@ -1,3 +1,8 @@
+## 0.0.11
+
+- Fitbit integration
+- UI Improvements
+
 ## 0.0.10
 
 - Disconnect option for Apple Healthkit
