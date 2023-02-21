@@ -1,7 +1,11 @@
 import Flutter
 import UIKit
+import heka
 
 public class SwiftHekaHealthPlugin: NSObject, FlutterPlugin {
+
+  let hekaManager = HekaManager()
+
   public static func register(with registrar: FlutterPluginRegistrar) {
     let channel = FlutterMethodChannel(name: "heka_health", binaryMessenger: registrar.messenger())
     let instance = SwiftHekaHealthPlugin()
@@ -15,25 +19,20 @@ public class SwiftHekaHealthPlugin: NSObject, FlutterPlugin {
     if call.method.elementsEqual("requestAuthorization") {
       requestAuthorization(call: call, result: result)
     }
-    if call.method.elementsEqual("checkHealthKitPermissions") {
-      checkHealthKitPermissions(call: call, result: result)
-    }
     if call.method.elementsEqual("disconnect") {
       stopSyncing(call: call, result: result)
     }
   }
 
   func stopSyncing(call: FlutterMethodCall, result: @escaping FlutterResult) {
-    let healthStore = HealthStore()
-    healthStore.stopObserverQuery()
+    // TODO implement this using POD
     result(true)
   }
 
   func requestAuthorization(call: FlutterMethodCall, result: @escaping FlutterResult) {
-    let healthStore = HealthStore()
-    healthStore.requestAuthorization {
-      success in
-      if success {
+    hekaManager.requestAuthorization {
+      sucess in
+      if sucess {
         result(true)
       } else {
         result(false)
@@ -41,25 +40,17 @@ public class SwiftHekaHealthPlugin: NSObject, FlutterPlugin {
     }
   }
 
-  func checkHealthKitPermissions(call: FlutterMethodCall, result: @escaping FlutterResult) {
-    let healthStore = HealthStore()
-    result(healthStore.checkHealthKitPermissions())
-  }
-
   func syncIosHealthData(call: FlutterMethodCall, result: @escaping FlutterResult) {
-    let healthStore = HealthStore()
-    healthStore.requestAuthorization {
-      success in
-      if success {
-        // Setup observer query
-        guard let args = call.arguments as? [String: String] else { return }
-        let apiKey = args["apiKey"]!
-        let userUuid = args["userUuid"]!
-
-        healthStore.setupStepsObserverQuery(apiKey: apiKey, userUuid: userUuid)
-
+    guard let args = call.arguments as? [String: String] else { return }
+    let apiKey = args["apiKey"]!
+    let userUuid = args["userUuid"]!
+    hekaManager.syncIosHealthData(apiKey: apiKey, userUuid: userUuid) {
+      sucess in
+      if sucess {
+        result(true)
+      } else {
+        result(false)
       }
-      result(0)
     }
   }
 }

@@ -160,7 +160,7 @@ class HekaHealth {
   Future<bool> disconnectHealthKit() async =>
       HekaHealthPlatform.instance.disconnect();
 
-  Future<int> syncIosHealthData({
+  Future<bool> syncIosHealthData({
     required String userUuid,
   }) async =>
       HekaHealthPlatform.instance.syncIosHealthData(
