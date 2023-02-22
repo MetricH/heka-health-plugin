@@ -40,7 +40,8 @@ class Fitbit extends DataProvider {
             "respiratory_rate",
             "sleep",
             "temperature",
-            "weight"
+            "weight",
+            "settings",
           ],
         ),
       );
