@@ -25,7 +25,7 @@ public class SwiftHekaHealthPlugin: NSObject, FlutterPlugin {
   }
 
   func stopSyncing(call: FlutterMethodCall, result: @escaping FlutterResult) {
-    // TODO implement this using POD
+    hekaManager.stopSyncing()
     result(true)
   }
 
