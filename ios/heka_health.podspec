@@ -16,7 +16,7 @@ A new Flutter plugin project.
   s.source_files = 'Classes/**/*'
   s.dependency 'Flutter'
   s.dependency 'PromiseKit'
-  s.dependency 'heka', '~> 0.0.3'
+  s.dependency 'heka', '~> 0.0.4'
 
   s.platform = :ios, '13.0'
 
