@@ -4,6 +4,7 @@ class PlatformName {
   static const String googleFit = 'google_fit';
   static const String appleHealth = 'apple_healthkit';
   static const String fitbit = 'fitbit';
+  static const String strava = 'strava';
 }
 
 class PlatformDetails {
@@ -36,6 +37,12 @@ Map<String, PlatformDetails> platforms = {
   'fitbit': PlatformDetails(
     'Fitbit',
     HekaImages.fitbit,
+    true,
+    true,
+  ),
+  'strava': PlatformDetails(
+    'Strava',
+    HekaImages.strava,
     true,
     true,
   ),
