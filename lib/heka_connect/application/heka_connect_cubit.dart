@@ -13,6 +13,7 @@ import 'package:heka_health/providers/apple_healthkit.dart';
 import 'package:heka_health/providers/data_provider.dart';
 import 'package:heka_health/providers/fitbit.dart';
 import 'package:heka_health/providers/google_fit.dart';
+import 'package:heka_health/providers/strava.dart';
 import 'package:heka_health/repository/heka_repository.dart';
 
 class HekaConnectCubit extends Cubit<HekaConnectState> {
@@ -22,6 +23,7 @@ class HekaConnectCubit extends Cubit<HekaConnectState> {
     PlatformName.googleFit: GoogleFit(),
     PlatformName.appleHealth: AppleHealthkit(),
     PlatformName.fitbit: Fitbit(),
+    PlatformName.strava: Strava(),
   };
 
   Future<String?> getDeviceId(String platformName) async {

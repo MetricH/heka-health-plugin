@@ -1,3 +1,4 @@
+import 'package:dio/dio.dart';
 import 'package:flutter_appauth/flutter_appauth.dart';
 import 'package:heka_health/constants/platform_name.dart';
 import 'package:heka_health/models/oauth2_creds.dart';
@@ -19,25 +20,35 @@ class Strava extends DataProvider {
       final platformData =
           failureOrSuccess.fold((l) => throw Exception(), (r) => r);
 
-      final authTokenResponse = await _auth.authorizeAndExchangeCode(
-        AuthorizationTokenRequest(
+      final authTokenResponse = await _auth.authorize(
+        AuthorizationRequest(
           platformData.platformAppId!,
           _redirectUrl,
-          clientSecret: platformData.platformAppSecret,
           serviceConfiguration: const AuthorizationServiceConfiguration(
             authorizationEndpoint: "https://www.strava.com/oauth/authorize",
             tokenEndpoint: "https://www.strava.com/oauth/token",
           ),
           scopes: [
             "activity:read",
-            "activity:read_all",
           ],
         ),
       );
-      if (authTokenResponse != null) {
+
+      var authorizationCode = authTokenResponse!.authorizationCode!;
+      final response = await Dio().post(
+        "https://www.strava.com/oauth/token",
+        data: {
+          'client_id': platformData.platformAppId!,
+          'client_secret': platformData.platformAppSecret!,
+          'grant_type': 'authorization_code',
+          'code': authorizationCode,
+        },
+      );
+
+      if (response.statusCode == 200) {
         return OAuth2Creds(
-          refreshToken: authTokenResponse.refreshToken!,
-          email: null,
+          refreshToken: response.data['refresh_token'],
+          email: "${response.data['athlete']['id']}",
         );
       }
       return null;
