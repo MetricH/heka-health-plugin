@@ -8,15 +8,15 @@ The Heka smartwatch integration makes it easy to integrate various watches and r
 
 ## Setup
 
-### Dashboard
+### Generating the key
 
 1. Create an account on our web app at [HekaHealth Dashboard](https://appdev.hekahealth.co).
 
 2. Register your application.
 
 3. If you are also planning to use the HekaHealth for Android Platform, then it is mandatory to provide the Google Client ID field, which you can add either during the app creation or while editing the app.
-   In order to get the Google Client ID, follow this guide at [Get an OAuth 2.0 Client ID | Google Fit](https://developers.google.com/fit/android/get-api-key)
-   It will look something like: YOUR_CLIENT_ID.apps.googleusercontent.com
+    To get the Google Client ID, follow this guide at [Get an OAuth 2.0 Client ID | Google Fit](https://developers.google.com/fit/android/get-api-key)
+   It will of the format ``YOUR_CLIENT_ID.apps.googleusercontent.com``
 
 4. Creating an app will provide you with an HekaHealth API Key. This you will require when integrating the HekaHealth SDK on the app side.
 
@@ -24,7 +24,7 @@ That’s all you need to do on the admin side.
 
 ### iOS
 
-Step 1: Append the Info.plist with the following 2 entries
+1) Append the Info.plist with the following 2 entries
 
 ```xml
 <key>NSHealthShareUsageDescription</key>
@@ -33,11 +33,11 @@ Step 1: Append the Info.plist with the following 2 entries
 <string>We will sync your data with the Apple Health app to give you better insights</string>
 ```
 
-Step 2: Open your Flutter project in Xcode by right clicking on the "ios" folder and selecting "Open in Xcode". Next, enable "HealthKit" by adding a capability inside the "Signing & Capabilities" tab of the Runner target's settings.
+2)  Open your Flutter project in Xcode by right clicking on the ``ios`` folder and selecting ``Open in Xcode``. Next, enable ``HealthKit`` by adding a capability inside the `Signing & Capabilities` tab of the Runner target's settings.
 
 ### Android
 
-For android we need to do the appAuthRedirectScheme setup for Google OAuth to work properly. Just add the following entries in the android/app/build.gradle file.
+For android we need to do the `appAuthRedirectScheme` setup for `Google OAuth` to work properly. Just add the following entries in the `android/app/build.gradle` file.
 
 ```
 defaultConfig {
@@ -68,4 +68,12 @@ return HekaHealthWidget(
 
 ## Getting the data
 
-The collected data is unified in single format and sent to the webhook url configured while registering the app on our dashboard.
+The collected data is unified in a single format and sent to the webhook URL configured while registering the app on our dashboard.
+
+
+## FAQs
+
+**Q.** If the user denies Apple Healthkit permission, it doesn't show any error and connects. Shouldn't it prevent connecting and show an error message about permission not granted?
+
+**Ans.** Unfortunately, Apple Healthkit provides no way to detect if a user has granted permission or not due to privacy reasons. The queries that get data from Healthkit don't return an error and rather return an empty list if permissions are not granted.
+We think the best way to handle this is to ask users to make sure permissions are granted from the health app if data is not getting synced.
