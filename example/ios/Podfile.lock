@@ -12,12 +12,12 @@ PODS:
   - flutter_appauth (0.0.1):
     - AppAuth (= 1.6.0)
     - Flutter
-  - heka (0.0.3):
+  - heka (0.0.6):
     - Alamofire (~> 5.6.1)
     - PromiseKit (~> 6.8.0)
   - heka_health (0.0.1):
     - Flutter
-    - heka (~> 0.0.3)
+    - heka (~> 0.0.6)
     - PromiseKit
   - PromiseKit (6.8.5):
     - PromiseKit/CorePromise (= 6.8.5)
@@ -63,8 +63,8 @@ SPEC CHECKSUMS:
   device_info_plus: e5c5da33f982a436e103237c0c85f9031142abed
   Flutter: f04841e97a9d0b0a8025694d0796dd46242b2854
   flutter_appauth: 525652bda90e43ca5eb7ed748ecc106b79d1f5a1
-  heka: 00a040c4d27a860e41dc885973ef1e66abe275c3
-  heka_health: 4a7d0093bebb22779b170615b93170eddc7dca3d
+  heka: a083db2f1b042d023c24423711cf8829e25daa1b
+  heka_health: 09dae3e827bfb1f639a53465e15c1910ce92801c
   PromiseKit: 9616b0afef31eae56ab9ce044c8ec2b8612a15cd
   url_launcher_ios: ae1517e5e344f5544fb090b079e11f399dfbe4d2
 
