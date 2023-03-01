@@ -50,7 +50,7 @@ func application(_ application: UIApplication,
     didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
     // ....
     HekaManager().installObservers()
-    return true
+    return super.application(application, didFinishLaunchingWithOptions: launchOptions)
 }
 ```
 
