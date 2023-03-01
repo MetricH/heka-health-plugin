@@ -1,3 +1,8 @@
+## 0.0.12
+
+- Strava integration
+- iOS bug fixes
+
 ## 0.0.11
 
 - Fitbit integration
