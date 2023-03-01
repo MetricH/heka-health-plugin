@@ -24,28 +24,33 @@ That’s all you need to do on the admin side.
 
 ### iOS
 
-1) Append the Info.plist with the following 2 entries
+1) Append the `Info.plist` with the following 2 entries:
 
-```xml
+```swift
 <key>NSHealthShareUsageDescription</key>
 <string>We will sync your data with the Apple Health app to give you better insights</string>
 <key>NSHealthUpdateUsageDescription</key>
 <string>We will sync your data with the Apple Health app to give you better insights</string>
 ```
+2) Enabling HealthKit requires the following two steps in `Xcode`:
 
-2)  Open your Flutter project in Xcode by right clicking on the ``ios`` folder and selecting ``Open in Xcode``. Next, enable ``HealthKit`` by adding a capability inside the `Signing & Capabilities` tab of the Runner target's settings.
+    * Go to the `Signing & Capabilities` tab of the Runner target's settings and add the `HealthKit` capability.
+    * Enable the background delivery option for `HealthKit`.
 
-### Android
 
-For android we need to do the `appAuthRedirectScheme` setup for `Google OAuth` to work properly. Just add the following entries in the `android/app/build.gradle` file.
 
-```
-defaultConfig {
-    applicationId “com.hekahealth.example”
-…
-    manifestPlaceholders += [
-        ‘appAuthRedirectScheme’: ‘com.googleusercontent.apps.<ANDROID-CLIENT-ID>’
-    ]
+3) To make sure that health data is being synced even while on background, initialize the sync observers in `application:didFinishLaunchingWithOptions` method of `AppDelegate.swift`:
+
+```swift
+import heka     // Make sure you import Heka
+
+// ...
+
+func application(_ application: UIApplication,
+    didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
+    // ....
+    HekaManager().installObservers()
+    return true
 }
 ```
 
