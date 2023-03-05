@@ -1,6 +1,6 @@
 import Flutter
+import HekaCore
 import UIKit
-import heka
 
 public class SwiftHekaHealthPlugin: NSObject, FlutterPlugin {
 

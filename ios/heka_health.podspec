@@ -16,9 +16,9 @@ A new Flutter plugin project.
   s.source_files = 'Classes/**/*'
   s.dependency 'Flutter'
   s.dependency 'PromiseKit'
-  s.dependency 'heka', '~> 0.0.7'
+  s.dependency 'HekaCore'
 
-  s.platform = :ios, '13.0'
+  s.platform = :ios, '11.0'
 
   # Flutter.framework does not contain a i386 slice.
   s.pod_target_xcconfig = { 'DEFINES_MODULE' => 'YES', 'EXCLUDED_ARCHS[sdk=iphonesimulator*]' => 'i386' }

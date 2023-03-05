@@ -84,8 +84,7 @@ Note: This is only supported on iOS.
 3) To make sure that health data is being synced even while on background, initialize the sync observers in `application:didFinishLaunchingWithOptions` method of `AppDelegate.swift`:
 
 ```swift
-import heka     // Make sure you import Heka
-
+import HekaCore     // Make sure you import HekaCore
 // ...
 
 func application(_ application: UIApplication,
