@@ -1,3 +1,7 @@
+## 0.0.13
+
+- Lower iOS deployment target to 11.0
+
 ## 0.0.12
 
 - Strava integration
