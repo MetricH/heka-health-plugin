@@ -17,7 +17,7 @@ class AppleHealthkit extends DataProvider {
 
   @override
   Future<void> postDisconnect(HekaHealth manager, String userUuid) async {
-    // TODO: Stop the obeserver query here
+    await manager.disconnectHealthKit();
   }
 
   @override
