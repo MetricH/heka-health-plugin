@@ -164,10 +164,12 @@ class HekaHealth {
 
   Future<bool> syncIosHealthData({
     required String userUuid,
+    required DateTime? lastSyncTime,
   }) async =>
       HekaHealthPlatform.instance.syncIosHealthData(
         _apiKey,
         userUuid,
+        lastSyncTime,
       );
 
   Future<bool> requestHealthKitPermissions() =>

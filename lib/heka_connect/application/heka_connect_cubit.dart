@@ -146,7 +146,8 @@ class HekaConnectCubit extends Cubit<HekaConnectState> {
         },
       ));
     }, (connection) async {
-      provider.postConnect(_manager, state.userUuid);
+      provider.postConnect(_manager, state.userUuid,
+          connection.connections[platformName]!.lastSync);
       emit(state.copyWith(
         platformStates: {
           ...state.platformStates,

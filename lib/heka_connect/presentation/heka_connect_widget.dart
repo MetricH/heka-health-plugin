@@ -165,7 +165,7 @@ class _PlatformConnectCardState extends State<PlatformConnectCard> {
         connected: (_, __) => Text(
           _.lastSync == null
               ? ''
-              : 'Last synced ${timeago.format(DateTime.parse(_.lastSync!))}',
+              : 'Last synced ${timeago.format(_.lastSync!)}',
           style: Theme.of(context).textTheme.bodySmall,
         ),
       ),

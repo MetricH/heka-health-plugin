@@ -10,7 +10,8 @@ abstract class DataProvider {
   Future<OAuth2Creds?> signIn(HekaHealth manager);
 
   // Called after the connection is created on server
-  Future<void> postConnect(HekaHealth manager, String userUuid);
+  Future<void> postConnect(
+      HekaHealth manager, String userUuid, DateTime? lastSyncDate);
 
   // Called after the connection is deleted on server
   Future<void> postDisconnect(HekaHealth manager, String userUuid);

@@ -9,7 +9,7 @@ class ConnectedPlatform with _$ConnectedPlatform {
   const factory ConnectedPlatform({
     @JsonKey(name: 'platform_name') required String platform,
     @JsonKey(name: 'logged_in') required bool loggedIn,
-    @JsonKey(name: 'last_sync') required String? lastSync,
+    @JsonKey(name: 'last_sync') required DateTime? lastSync,
     @JsonKey(name: 'connected_device_uuids')
         required List<String>? connectedDevicesUUIDs,
   }) = _ConnectedPlatform;

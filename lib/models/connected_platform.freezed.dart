@@ -25,7 +25,7 @@ mixin _$ConnectedPlatform {
   @JsonKey(name: 'logged_in')
   bool get loggedIn => throw _privateConstructorUsedError;
   @JsonKey(name: 'last_sync')
-  String? get lastSync => throw _privateConstructorUsedError;
+  DateTime? get lastSync => throw _privateConstructorUsedError;
   @JsonKey(name: 'connected_device_uuids')
   List<String>? get connectedDevicesUUIDs => throw _privateConstructorUsedError;
 
@@ -47,7 +47,7 @@ abstract class $ConnectedPlatformCopyWith<$Res> {
       @JsonKey(name: 'logged_in')
           bool loggedIn,
       @JsonKey(name: 'last_sync')
-          String? lastSync,
+          DateTime? lastSync,
       @JsonKey(name: 'connected_device_uuids')
           List<String>? connectedDevicesUUIDs});
 }
@@ -82,7 +82,7 @@ class _$ConnectedPlatformCopyWithImpl<$Res, $Val extends ConnectedPlatform>
       lastSync: freezed == lastSync
           ? _value.lastSync
           : lastSync // ignore: cast_nullable_to_non_nullable
-              as String?,
+              as DateTime?,
       connectedDevicesUUIDs: freezed == connectedDevicesUUIDs
           ? _value.connectedDevicesUUIDs
           : connectedDevicesUUIDs // ignore: cast_nullable_to_non_nullable
@@ -105,7 +105,7 @@ abstract class _$$_ConnectedPlatformCopyWith<$Res>
       @JsonKey(name: 'logged_in')
           bool loggedIn,
       @JsonKey(name: 'last_sync')
-          String? lastSync,
+          DateTime? lastSync,
       @JsonKey(name: 'connected_device_uuids')
           List<String>? connectedDevicesUUIDs});
 }
@@ -138,7 +138,7 @@ class __$$_ConnectedPlatformCopyWithImpl<$Res>
       lastSync: freezed == lastSync
           ? _value.lastSync
           : lastSync // ignore: cast_nullable_to_non_nullable
-              as String?,
+              as DateTime?,
       connectedDevicesUUIDs: freezed == connectedDevicesUUIDs
           ? _value._connectedDevicesUUIDs
           : connectedDevicesUUIDs // ignore: cast_nullable_to_non_nullable
@@ -173,7 +173,7 @@ class _$_ConnectedPlatform extends _ConnectedPlatform {
   final bool loggedIn;
   @override
   @JsonKey(name: 'last_sync')
-  final String? lastSync;
+  final DateTime? lastSync;
   final List<String>? _connectedDevicesUUIDs;
   @override
   @JsonKey(name: 'connected_device_uuids')
@@ -233,7 +233,7 @@ abstract class _ConnectedPlatform extends ConnectedPlatform {
           @JsonKey(name: 'logged_in')
               required final bool loggedIn,
           @JsonKey(name: 'last_sync')
-              required final String? lastSync,
+              required final DateTime? lastSync,
           @JsonKey(name: 'connected_device_uuids')
               required final List<String>? connectedDevicesUUIDs}) =
       _$_ConnectedPlatform;
@@ -250,7 +250,7 @@ abstract class _ConnectedPlatform extends ConnectedPlatform {
   bool get loggedIn;
   @override
   @JsonKey(name: 'last_sync')
-  String? get lastSync;
+  DateTime? get lastSync;
   @override
   @JsonKey(name: 'connected_device_uuids')
   List<String>? get connectedDevicesUUIDs;

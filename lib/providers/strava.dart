@@ -58,7 +58,8 @@ class Strava extends DataProvider {
   }
 
   @override
-  Future<void> postConnect(HekaHealth manager, String userUuid) async {}
+  Future<void> postConnect(
+      HekaHealth manager, String userUuid, DateTime? lastSyncDate) async {}
 
   @override
   Future<void> postDisconnect(HekaHealth manager, String userUuid) async {}

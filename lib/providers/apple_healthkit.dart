@@ -11,8 +11,10 @@ class AppleHealthkit extends DataProvider {
   }
 
   @override
-  Future<void> postConnect(HekaHealth manager, String userUuid) async {
-    await manager.syncIosHealthData(userUuid: userUuid);
+  Future<void> postConnect(
+      HekaHealth manager, String userUuid, DateTime? lastSyncDate) async {
+    await manager.syncIosHealthData(
+        userUuid: userUuid, lastSyncTime: lastSyncDate);
   }
 
   @override

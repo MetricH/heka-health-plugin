@@ -10,12 +10,14 @@ class MethodChannelHekaHealth extends HekaHealthPlatform {
   final methodChannel = const MethodChannel('heka_health');
 
   @override
-  Future<bool> syncIosHealthData(String apiKey, String userUuid) async {
+  Future<bool> syncIosHealthData(
+      String apiKey, String userUuid, DateTime? lastSyncDate) async {
     final result = await methodChannel.invokeMethod<bool>(
           'syncIosHealthData',
           {
             'apiKey': apiKey,
             'userUuid': userUuid,
+            'lastSyncDate': lastSyncDate?.toIso8601String(),
           },
         ) ??
         false;
