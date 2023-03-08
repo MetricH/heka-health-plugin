@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:dartz/dartz.dart';
 import 'package:dio/dio.dart';
 import 'package:heka_health/models/enabled_platform.dart';
@@ -32,9 +34,9 @@ class HekaHealth {
       }
       return left(const HekaHealthError.googleClientIdNotRegistered());
     } on DioError catch (e) {
-      print('----error getting client Id-------');
-      print(e);
-      print(e.response?.data);
+      log('----error getting client Id-------');
+      log(e.toString());
+      log((e.response?.data ?? "").toString());
       if (e.isNoConnectionError) {
         return left(const HekaHealthError.noConnection());
       }
@@ -57,9 +59,9 @@ class HekaHealth {
       }
       return right(paymentPlan as String);
     } on DioError catch (e) {
-      print('----error getting payment plan-------');
-      print(e);
-      print(e.response?.data);
+      log('----error getting payment plan-------');
+      log(e.toString());
+      log((e.response?.data ?? "").toString());
       if (e.isNoConnectionError) {
         return left(const HekaHealthError.noConnection());
       }
@@ -80,12 +82,12 @@ class HekaHealth {
           'user_uuid': userUuid,
         },
       );
-      print(response.data);
+      log(response.data.toString());
       return right(Connection.fromJson(response.data['data']));
     } on DioError catch (e) {
-      print('----error check connection-------');
-      print(e);
-      print(e.response?.data);
+      log('----error check connection-------');
+      log(e.toString());
+      log((e.response?.data ?? "").toString());
       if (e.isNoConnectionError) {
         return left(const HekaHealthError.noConnection());
       }
@@ -121,7 +123,7 @@ class HekaHealth {
       );
       return right(Connection.fromJson(response.data['data']));
     } on DioError catch (e) {
-      print(e);
+      log(e.toString());
       if (e.isNoConnectionError) {
         return left(const HekaHealthError.noConnection());
       }
@@ -149,7 +151,7 @@ class HekaHealth {
       );
       return right(Connection.fromJson(response.data['data']));
     } on DioError catch (e) {
-      print(e);
+      log(e.toString());
       if (e.isNoConnectionError) {
         return left(const HekaHealthError.noConnection());
       }
