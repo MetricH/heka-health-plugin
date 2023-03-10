@@ -31,13 +31,18 @@
           android:exported="true"
           tools:node="replace">
             <intent-filter>
+              <action android:name="android.intent.action.VIEW" />
+              <category android:name="android.intent.category.DEFAULT" />
+              <category android:name="android.intent.category.BROWSABLE" />
+              <data
+                android:scheme="com.googleusercontent.apps.414785237708-abirasrhk7fb10fpoijkh33g5ek50pbi"
+              />
+            </intent-filter>
+            <intent-filter>
                 <action android:name="android.intent.action.VIEW" />
                 <category android:name="android.intent.category.DEFAULT" />
                 <category android:name="android.intent.category.BROWSABLE" />
                 <data android:scheme="hekahealth" android:host="fitbit" />
-                <data
-                  android:scheme="com.googleusercontent.apps.414785237708-abirasrhk7fb10fpoijkh33g5ek50pbi"
-                />
                 <data android:scheme="hekahealth" android:host="strava"/>
             </intent-filter>
 
