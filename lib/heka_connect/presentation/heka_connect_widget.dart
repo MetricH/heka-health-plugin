@@ -24,19 +24,19 @@ class HekaConnectWidget extends StatelessWidget {
         userUuid,
         hekaHealth,
       ),
-      child: const GoogleFitConectButton(),
+      child: const _HekaConnectWidget(),
     );
   }
 }
 
-class GoogleFitConectButton extends StatefulWidget {
-  const GoogleFitConectButton({super.key});
+class _HekaConnectWidget extends StatefulWidget {
+  const _HekaConnectWidget();
 
   @override
-  State<GoogleFitConectButton> createState() => _GoogleFitConectButtonState();
+  State<_HekaConnectWidget> createState() => _HekaConnectWidgetState();
 }
 
-class _GoogleFitConectButtonState extends State<GoogleFitConectButton> {
+class _HekaConnectWidgetState extends State<_HekaConnectWidget> {
   @override
   void initState() {
     super.initState();
