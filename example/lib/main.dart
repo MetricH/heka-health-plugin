@@ -42,11 +42,9 @@ class _HomePageState extends State<HomePage> {
       appBar: AppBar(
         title: const Text('HekaHealth Demo'),
       ),
-      body: Center(
-        child: HekaHealthWidget(
-          apiKey: _apiKey,
-          userUuid: _userUuid,
-        ),
+      body: HekaHealthWidget(
+        apiKey: _apiKey,
+        userUuid: _userUuid,
       ),
     );
   }
