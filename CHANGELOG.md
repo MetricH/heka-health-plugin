@@ -1,3 +1,10 @@
+## 0.0.14
+
+- Center the connection widget
+- Fix last sync related issues on iOS
+- Bug fixes around iOS syncing
+- Public function to check whether connection exists or not
+
 ## 0.0.13
 
 - Lower iOS deployment target to 11.0
