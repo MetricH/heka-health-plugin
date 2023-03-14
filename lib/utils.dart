@@ -8,7 +8,7 @@ class HekaManager {
   static Future<bool> isUserConnected(
       {required String key,
       required String uuid,
-      required String platforName}) async {
+      required String platformName}) async {
     var repo = HekaHealth(key);
     var failureOrSuccess = await repo.fetchConnection(uuid);
     return failureOrSuccess.fold((error) => false, (connection) async {
@@ -16,10 +16,10 @@ class HekaManager {
         return false;
       }
       String? deviceId;
-      if (platforName == PlatformName.appleHealth) {
+      if (platformName == PlatformName.appleHealth) {
         deviceId = (await DeviceInfoPlugin().iosInfo).identifierForVendor;
       }
-      return connection.isConnected(platforName, deviceId);
+      return connection.isConnected(platformName, deviceId);
     });
   }
 }
