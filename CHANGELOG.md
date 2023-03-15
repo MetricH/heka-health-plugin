@@ -1,3 +1,8 @@
+## 0.0.16
+
+- Robust file handling for iOS data
+- iOS fixes
+
 ## 0.0.15
 
 - Fix self signed certificate issue resulting in APIs failing
