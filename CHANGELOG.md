@@ -1,3 +1,7 @@
+## 0.0.15
+
+- Fix self signed certificate issue resulting in APIs failing
+
 ## 0.0.14
 
 - Center the connection widget
