@@ -33,8 +33,22 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
-  static const _apiKey = '<YOUR_API_KEY>';
-  final _userUuid = '<YOUR_USER_UUID>';
+  static const _apiKey = '7368bad8-aadd-4624-a58c-7e8af2b3cfb7';
+  final _userUuid = '7895pulkit@tet.com';
+
+  @override
+  void initState() {
+    super.initState();
+    HekaManager.isUserConnected(
+            key: _apiKey, uuid: _userUuid, platformName: "google_fit")
+        .then((value) {
+      if (value) {
+        print("User is connected");
+      } else {
+        print("User is not connected");
+      }
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
