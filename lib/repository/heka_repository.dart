@@ -12,7 +12,8 @@ class HekaHealth {
   final String _apiKey;
   String get apiKey => _apiKey;
 
-  static const _baseUrl = 'https://apidev.hekahealth.co/watch_sdk';
+  static const _baseUrl =
+      'https://heka-backend.delightfulmeadow-20fa0dd3.australiaeast.azurecontainerapps.io/watch_sdk';
   final Dio _dio = Dio(BaseOptions(baseUrl: _baseUrl));
 
   HekaHealth(this._apiKey);
