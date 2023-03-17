@@ -1,3 +1,7 @@
+## 0.0.17
+
+- Fix error message when client id not registered for Google Fit
+
 ## 0.0.16
 
 - Robust file handling for iOS data
