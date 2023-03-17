@@ -5,6 +5,7 @@ import 'package:flutter_appauth/flutter_appauth.dart';
 import 'package:heka_health/constants/platform_name.dart';
 import 'package:heka_health/models/oauth2_creds.dart';
 import 'package:heka_health/providers/data_provider.dart';
+import 'package:heka_health/providers/exceptions.dart';
 import 'package:heka_health/repository/heka_repository.dart';
 
 class GoogleFit extends DataProvider {
@@ -20,6 +21,9 @@ class GoogleFit extends DataProvider {
     }
     final platformData =
         failureOrSuccess.fold((l) => throw Exception(), (r) => r);
+    if (platformData.platformAppId == null) {
+      throw AppIdNotFoundException("Google Fit App Id not found");
+    }
     try {
       final authTokenResponse = await _auth.authorizeAndExchangeCode(
         AuthorizationTokenRequest(
