@@ -33,12 +33,14 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
-  static const _apiKey = '7368bad8-aadd-4624-a58c-7e8af2b3cfb7';
-  final _userUuid = '7895pulkit@tet.com';
+  static const _apiKey = '<your-api-key-goes-here>';
+  final _userUuid = '<your-user-uuid-goes-here>';
 
   @override
   void initState() {
     super.initState();
+    // Demonstrating how to check if a user is connected to a platform
+    // For Apple Healthkit, platformName is "apple_healthkit"
     HekaManager.isUserConnected(
             key: _apiKey, uuid: _userUuid, platformName: "google_fit")
         .then((value) {
