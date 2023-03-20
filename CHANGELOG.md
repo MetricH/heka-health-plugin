@@ -1,3 +1,7 @@
+## 0.0.18
+
+- Fix bug in setting up Apple Healthkit sync
+
 ## 0.0.17
 
 - Fix error message when client id not registered for Google Fit
