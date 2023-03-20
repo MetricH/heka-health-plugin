@@ -41,9 +41,9 @@ public class SwiftHekaHealthPlugin: NSObject, FlutterPlugin {
   }
 
   func syncIosHealthData(call: FlutterMethodCall, result: @escaping FlutterResult) {
-    guard let args = call.arguments as? [String: String] else { return }
-    let apiKey = args["apiKey"]!
-    let userUuid = args["userUuid"]!
+    guard let args = call.arguments as? [String: Any?] else { return }
+    guard let apiKey = args["apiKey"]! as? String else { return }
+    guard let userUuid = args["userUuid"]! as? String else { return }
     hekaManager.syncIosHealthData(apiKey: apiKey, userUuid: userUuid) {
       sucess in
       if sucess {
