@@ -25,8 +25,14 @@ public class SwiftHekaHealthPlugin: NSObject, FlutterPlugin {
   }
 
   func stopSyncing(call: FlutterMethodCall, result: @escaping FlutterResult) {
-    hekaManager.stopSyncing()
-    result(true)
+    hekaManager.stopSyncing {
+      sucess in
+      if sucess {
+        result(true)
+      } else {
+        result(false)
+      }
+    }
   }
 
   func requestAuthorization(call: FlutterMethodCall, result: @escaping FlutterResult) {
