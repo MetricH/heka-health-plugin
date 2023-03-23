@@ -1,3 +1,7 @@
+## 0.0.19
+
+- Trigger iOS sync on connect
+
 ## 0.0.18
 
 - Fix bug in setting up Apple Healthkit sync
