@@ -46,7 +46,7 @@ class HekaConnectCubit extends Cubit<HekaConnectState> {
         )) {
     _manager.loadApp().then((value) {
       value.fold((l) {
-        emit(state.copyWith(paymentPlan: 'free'));
+        emit(state.copyWith(paymentPlan: 'free', loadingFailed: true));
       }, (r) {
         _userApp = r;
         emit(state.copyWith(
