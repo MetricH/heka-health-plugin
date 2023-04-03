@@ -3,7 +3,9 @@ import 'dart:io';
 import 'package:dio/dio.dart';
 import 'package:flutter_appauth/flutter_appauth.dart';
 import 'package:heka_health/constants/platform_name.dart';
+import 'package:heka_health/models/enabled_platform.dart';
 import 'package:heka_health/models/oauth2_creds.dart';
+import 'package:heka_health/models/user_app.dart';
 import 'package:heka_health/providers/data_provider.dart';
 import 'package:heka_health/providers/exceptions.dart';
 import 'package:heka_health/repository/heka_repository.dart';
@@ -13,17 +15,22 @@ class GoogleFit extends DataProvider {
   static const _googleIssuer = 'https://accounts.google.com';
 
   @override
-  Future<OAuth2Creds?> signIn(HekaHealth manager) async {
-    final failureOrSuccess =
-        await manager.getPlatformClientId(PlatformName.googleFit);
-    if (failureOrSuccess.isLeft()) {
-      return null;
+  Future<OAuth2Creds?> signIn(HekaHealth manager, UserApp? userApp) async {
+    EnabledPlatform platformData;
+    if (userApp != null) {
+      platformData = userApp.getEnabledPlatform(PlatformName.googleFit);
+    } else {
+      final failureOrSuccess =
+          await manager.getPlatformClientId(PlatformName.googleFit);
+      if (failureOrSuccess.isLeft()) {
+        return null;
+      }
+      platformData = failureOrSuccess.fold((l) => throw Exception(), (r) => r);
+      if (platformData.platformAppId == null) {
+        throw AppIdNotFoundException("Google Fit App Id not found");
+      }
     }
-    final platformData =
-        failureOrSuccess.fold((l) => throw Exception(), (r) => r);
-    if (platformData.platformAppId == null) {
-      throw AppIdNotFoundException("Google Fit App Id not found");
-    }
+
     try {
       final authTokenResponse = await _auth.authorizeAndExchangeCode(
         AuthorizationTokenRequest(

@@ -21,5 +21,6 @@ _$_Connection _$$_ConnectionFromJson(Map<String, dynamic> json) =>
 Map<String, dynamic> _$$_ConnectionToJson(_$_Connection instance) =>
     <String, dynamic>{
       'user_uuid': instance.userUuid,
-      'connections': instance.connections,
+      'connections':
+          instance.connections.map((k, e) => MapEntry(k, e?.toJson())),
     };

@@ -9,6 +9,7 @@ import 'package:heka_health/models/connected_platform.dart';
 import 'package:heka_health/models/connection.dart';
 import 'package:heka_health/models/heka_health_error.dart';
 import 'package:heka_health/models/oauth2_creds.dart';
+import 'package:heka_health/models/user_app.dart';
 import 'package:heka_health/providers/apple_healthkit.dart';
 import 'package:heka_health/providers/data_provider.dart';
 import 'package:heka_health/providers/exceptions.dart';
@@ -19,6 +20,7 @@ import 'package:heka_health/repository/heka_repository.dart';
 
 class HekaConnectCubit extends Cubit<HekaConnectState> {
   final HekaHealth _manager;
+  UserApp? _userApp;
 
   final Map<String, DataProvider> _dataProviders = {
     PlatformName.googleFit: GoogleFit(),
@@ -42,11 +44,13 @@ class HekaConnectCubit extends Cubit<HekaConnectState> {
           userUuid: userUuid,
           loadingFailed: false,
         )) {
-    _manager.getPlan().then((value) {
+    _manager.loadApp().then((value) {
       value.fold((l) {
         emit(state.copyWith(paymentPlan: 'free'));
       }, (r) {
-        emit(state.copyWith(paymentPlan: r));
+        _userApp = r;
+        emit(state.copyWith(
+            paymentPlan: r.paymentPlan == 'free' ? 'free' : 'paid'));
       });
     });
   }
@@ -115,7 +119,7 @@ class HekaConnectCubit extends Cubit<HekaConnectState> {
 
     OAuth2Creds? credentials;
     try {
-      credentials = await provider.signIn(_manager);
+      credentials = await provider.signIn(_manager, _userApp);
     } catch (e) {
       if (e is AppIdNotFoundException) {
         emit(state.copyWith(

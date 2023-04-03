@@ -1,7 +1,9 @@
 import 'package:dio/dio.dart';
 import 'package:flutter_appauth/flutter_appauth.dart';
 import 'package:heka_health/constants/platform_name.dart';
+import 'package:heka_health/models/enabled_platform.dart';
 import 'package:heka_health/models/oauth2_creds.dart';
+import 'package:heka_health/models/user_app.dart';
 import 'package:heka_health/providers/data_provider.dart';
 import 'package:heka_health/repository/heka_repository.dart';
 
@@ -10,15 +12,22 @@ class Strava extends DataProvider {
   final String _redirectUrl = "hekahealth://strava";
 
   @override
-  Future<OAuth2Creds?> signIn(HekaHealth manager) async {
+  Future<OAuth2Creds?> signIn(HekaHealth manager, UserApp? userApp) async {
     try {
-      final failureOrSuccess =
-          await manager.getPlatformClientId(PlatformName.strava);
-      if (failureOrSuccess.isLeft()) {
-        return null;
+      EnabledPlatform platformData;
+
+      if (userApp != null) {
+        platformData = userApp.getEnabledPlatform(PlatformName.strava);
+      } else {
+        // Get the platform data from the server (client id, client secret)
+        final failureOrSuccess =
+            await manager.getPlatformClientId(PlatformName.strava);
+        if (failureOrSuccess.isLeft()) {
+          return null;
+        }
+        platformData =
+            failureOrSuccess.fold((l) => throw Exception(), (r) => r);
       }
-      final platformData =
-          failureOrSuccess.fold((l) => throw Exception(), (r) => r);
 
       final authTokenResponse = await _auth.authorize(
         AuthorizationRequest(

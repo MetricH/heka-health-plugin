@@ -1,4 +1,5 @@
 import 'package:heka_health/models/oauth2_creds.dart';
+import 'package:heka_health/models/user_app.dart';
 import 'package:heka_health/repository/heka_repository.dart';
 
 abstract class DataProvider {
@@ -7,7 +8,7 @@ abstract class DataProvider {
   Future<void> preConnect(HekaHealth manager, String userUuid);
 
   // Handles redirecting to relevant OAuth2 sign in page and returns the creds
-  Future<OAuth2Creds?> signIn(HekaHealth manager);
+  Future<OAuth2Creds?> signIn(HekaHealth manager, UserApp? userApp);
 
   // Called after the connection is created on server
   Future<void> postConnect(

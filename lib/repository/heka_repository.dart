@@ -3,6 +3,7 @@ import 'dart:developer';
 import 'package:dartz/dartz.dart';
 import 'package:dio/dio.dart';
 import 'package:heka_health/models/enabled_platform.dart';
+import 'package:heka_health/models/user_app.dart';
 import 'package:heka_health/repository/extensions.dart';
 import 'package:heka_health/repository/heka_health_platform_interface.dart';
 import 'package:heka_health/models/connection.dart';
@@ -45,7 +46,7 @@ class HekaHealth {
     }
   }
 
-  Future<Either<HekaHealthError, String>> getPlan() async {
+  Future<Either<HekaHealthError, UserApp>> loadApp() async {
     try {
       final response = await _dio.get(
         '/user_app_from_key',
@@ -53,21 +54,13 @@ class HekaHealth {
           'key': _apiKey,
         },
       );
-      final paymentPlan = response.data?['data']?['payment_plan'] ?? '';
-
-      if (paymentPlan.isEmpty) {
-        return right('free');
-      }
-      return right(paymentPlan as String);
+      return right(UserApp.fromJson(response.data?['data']));
     } on DioError catch (e) {
-      log('----error getting payment plan-------');
+      log('----error loading user app-------');
       log(e.toString());
       log((e.response?.data ?? "").toString());
       if (e.isNoConnectionError) {
         return left(const HekaHealthError.noConnection());
-      }
-      if (e.response?.statusCode == 403) {
-        return right('free');
       }
       rethrow;
     }
