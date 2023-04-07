@@ -220,8 +220,9 @@ class _PlatformConnectCardState extends State<PlatformConnectCard> {
           style: ElevatedButton.styleFrom(
             elevation: 1,
             backgroundColor: Colors.red,
-            padding: const EdgeInsets.symmetric(
-              horizontal: 24,
+            padding: EdgeInsets.symmetric(
+              horizontal:
+                  widget.platformName == PlatformName.googleFit ? 12 : 24,
             ),
             shape: RoundedRectangleBorder(
               borderRadius: BorderRadius.circular(24),
@@ -232,8 +233,13 @@ class _PlatformConnectCardState extends State<PlatformConnectCard> {
             initial: (_) => const Text(''),
             checkingConnection: (_) => const Text('...'),
             disconnecting: (_) => const Text('...'),
-            noConnection: (_) => const Text('Connect'),
-            tokenInvalidated: (_, __) => const Text('Connect Again'),
+            noConnection: (_) => widget.platformName == PlatformName.googleFit
+                ? const Text('Connect to Google Fit')
+                : const Text('Connect'),
+            tokenInvalidated: (_, __) =>
+                widget.platformName == PlatformName.googleFit
+                    ? const Text('Connect to Google Fit')
+                    : const Text('Reconnect'),
             makingConnection: (_) => const Text('...'),
             connected: (_, __) => const Text('Disconnect'),
           ),
