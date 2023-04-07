@@ -26,6 +26,8 @@ mixin _$EnabledPlatform {
   String? get platformAppId => throw _privateConstructorUsedError;
   @JsonKey(name: 'platform_app_secret')
   String? get platformAppSecret => throw _privateConstructorUsedError;
+  @JsonKey(name: 'enabled_scopes')
+  List<String>? get enabledScopes => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -42,7 +44,8 @@ abstract class $EnabledPlatformCopyWith<$Res> {
   $Res call(
       {@JsonKey(name: 'platform_name') String platformName,
       @JsonKey(name: 'platform_app_id') String? platformAppId,
-      @JsonKey(name: 'platform_app_secret') String? platformAppSecret});
+      @JsonKey(name: 'platform_app_secret') String? platformAppSecret,
+      @JsonKey(name: 'enabled_scopes') List<String>? enabledScopes});
 }
 
 /// @nodoc
@@ -61,6 +64,7 @@ class _$EnabledPlatformCopyWithImpl<$Res, $Val extends EnabledPlatform>
     Object? platformName = null,
     Object? platformAppId = freezed,
     Object? platformAppSecret = freezed,
+    Object? enabledScopes = freezed,
   }) {
     return _then(_value.copyWith(
       platformName: null == platformName
@@ -75,6 +79,10 @@ class _$EnabledPlatformCopyWithImpl<$Res, $Val extends EnabledPlatform>
           ? _value.platformAppSecret
           : platformAppSecret // ignore: cast_nullable_to_non_nullable
               as String?,
+      enabledScopes: freezed == enabledScopes
+          ? _value.enabledScopes
+          : enabledScopes // ignore: cast_nullable_to_non_nullable
+              as List<String>?,
     ) as $Val);
   }
 }
@@ -90,7 +98,8 @@ abstract class _$$_EnabledPlatformCopyWith<$Res>
   $Res call(
       {@JsonKey(name: 'platform_name') String platformName,
       @JsonKey(name: 'platform_app_id') String? platformAppId,
-      @JsonKey(name: 'platform_app_secret') String? platformAppSecret});
+      @JsonKey(name: 'platform_app_secret') String? platformAppSecret,
+      @JsonKey(name: 'enabled_scopes') List<String>? enabledScopes});
 }
 
 /// @nodoc
@@ -107,6 +116,7 @@ class __$$_EnabledPlatformCopyWithImpl<$Res>
     Object? platformName = null,
     Object? platformAppId = freezed,
     Object? platformAppSecret = freezed,
+    Object? enabledScopes = freezed,
   }) {
     return _then(_$_EnabledPlatform(
       platformName: null == platformName
@@ -121,6 +131,10 @@ class __$$_EnabledPlatformCopyWithImpl<$Res>
           ? _value.platformAppSecret
           : platformAppSecret // ignore: cast_nullable_to_non_nullable
               as String?,
+      enabledScopes: freezed == enabledScopes
+          ? _value._enabledScopes
+          : enabledScopes // ignore: cast_nullable_to_non_nullable
+              as List<String>?,
     ));
   }
 }
@@ -129,9 +143,15 @@ class __$$_EnabledPlatformCopyWithImpl<$Res>
 @JsonSerializable()
 class _$_EnabledPlatform implements _EnabledPlatform {
   const _$_EnabledPlatform(
-      {@JsonKey(name: 'platform_name') required this.platformName,
-      @JsonKey(name: 'platform_app_id') required this.platformAppId,
-      @JsonKey(name: 'platform_app_secret') required this.platformAppSecret});
+      {@JsonKey(name: 'platform_name')
+          required this.platformName,
+      @JsonKey(name: 'platform_app_id')
+          required this.platformAppId,
+      @JsonKey(name: 'platform_app_secret')
+          required this.platformAppSecret,
+      @JsonKey(name: 'enabled_scopes')
+          required final List<String>? enabledScopes})
+      : _enabledScopes = enabledScopes;
 
   factory _$_EnabledPlatform.fromJson(Map<String, dynamic> json) =>
       _$$_EnabledPlatformFromJson(json);
@@ -145,10 +165,20 @@ class _$_EnabledPlatform implements _EnabledPlatform {
   @override
   @JsonKey(name: 'platform_app_secret')
   final String? platformAppSecret;
+  final List<String>? _enabledScopes;
+  @override
+  @JsonKey(name: 'enabled_scopes')
+  List<String>? get enabledScopes {
+    final value = _enabledScopes;
+    if (value == null) return null;
+    if (_enabledScopes is EqualUnmodifiableListView) return _enabledScopes;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(value);
+  }
 
   @override
   String toString() {
-    return 'EnabledPlatform(platformName: $platformName, platformAppId: $platformAppId, platformAppSecret: $platformAppSecret)';
+    return 'EnabledPlatform(platformName: $platformName, platformAppId: $platformAppId, platformAppSecret: $platformAppSecret, enabledScopes: $enabledScopes)';
   }
 
   @override
@@ -161,13 +191,15 @@ class _$_EnabledPlatform implements _EnabledPlatform {
             (identical(other.platformAppId, platformAppId) ||
                 other.platformAppId == platformAppId) &&
             (identical(other.platformAppSecret, platformAppSecret) ||
-                other.platformAppSecret == platformAppSecret));
+                other.platformAppSecret == platformAppSecret) &&
+            const DeepCollectionEquality()
+                .equals(other._enabledScopes, _enabledScopes));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode =>
-      Object.hash(runtimeType, platformName, platformAppId, platformAppSecret);
+  int get hashCode => Object.hash(runtimeType, platformName, platformAppId,
+      platformAppSecret, const DeepCollectionEquality().hash(_enabledScopes));
 
   @JsonKey(ignore: true)
   @override
@@ -190,7 +222,9 @@ abstract class _EnabledPlatform implements EnabledPlatform {
       @JsonKey(name: 'platform_app_id')
           required final String? platformAppId,
       @JsonKey(name: 'platform_app_secret')
-          required final String? platformAppSecret}) = _$_EnabledPlatform;
+          required final String? platformAppSecret,
+      @JsonKey(name: 'enabled_scopes')
+          required final List<String>? enabledScopes}) = _$_EnabledPlatform;
 
   factory _EnabledPlatform.fromJson(Map<String, dynamic> json) =
       _$_EnabledPlatform.fromJson;
@@ -204,6 +238,9 @@ abstract class _EnabledPlatform implements EnabledPlatform {
   @override
   @JsonKey(name: 'platform_app_secret')
   String? get platformAppSecret;
+  @override
+  @JsonKey(name: 'enabled_scopes')
+  List<String>? get enabledScopes;
   @override
   @JsonKey(ignore: true)
   _$$_EnabledPlatformCopyWith<_$_EnabledPlatform> get copyWith =>

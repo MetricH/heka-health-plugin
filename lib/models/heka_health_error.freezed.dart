@@ -142,8 +142,7 @@ class __$$_NoConnectionCopyWithImpl<$Res>
 /// @nodoc
 
 class _$_NoConnection extends _NoConnection {
-  const _$_NoConnection({this.message = 'Please check your internet!'})
-      : super._();
+  const _$_NoConnection({this.message = 'Something went wrong!'}) : super._();
 
   @override
   @JsonKey()

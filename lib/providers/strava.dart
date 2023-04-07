@@ -41,7 +41,7 @@ class Strava extends DataProvider {
             authorizationEndpoint: "https://www.strava.com/oauth/authorize",
             tokenEndpoint: "https://www.strava.com/oauth/token",
           ),
-          scopes: defaultScopes,
+          scopes: platformData.enabledScopes ?? defaultScopes,
         ),
       );
 

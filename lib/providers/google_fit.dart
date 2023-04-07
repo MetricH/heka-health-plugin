@@ -52,7 +52,7 @@ class GoogleFit extends DataProvider {
           platformData.platformAppId!,
           redirectUrl(platformData.platformAppId!),
           issuer: _googleIssuer,
-          scopes: defaultScopes,
+          scopes: platformData.enabledScopes ?? defaultScopes,
         ),
       );
       if (authTokenResponse != null) {

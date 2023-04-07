@@ -53,7 +53,7 @@ class Fitbit extends DataProvider {
             authorizationEndpoint: "https://www.fitbit.com/oauth2/authorize",
             tokenEndpoint: "https://api.fitbit.com/oauth2/token",
           ),
-          scopes: defaultScopes,
+          scopes: platformData.enabledScopes ?? defaultScopes,
         ),
       );
       if (authTokenResponse != null) {

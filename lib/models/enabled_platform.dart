@@ -9,6 +9,7 @@ class EnabledPlatform with _$EnabledPlatform {
     @JsonKey(name: 'platform_name') required String platformName,
     @JsonKey(name: 'platform_app_id') required String? platformAppId,
     @JsonKey(name: 'platform_app_secret') required String? platformAppSecret,
+    @JsonKey(name: 'enabled_scopes') required List<String>? enabledScopes,
   }) = _EnabledPlatform;
 
   factory EnabledPlatform.fromJson(Map<String, dynamic> json) =>
