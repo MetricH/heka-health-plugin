@@ -1,3 +1,7 @@
+## 0.0.20
+
+- Make OAuth 2.0 scopes customizable from server
+
 ## 0.0.19
 
 - Trigger iOS sync on connect
