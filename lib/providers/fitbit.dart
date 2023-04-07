@@ -10,6 +10,22 @@ class Fitbit extends DataProvider {
   final _auth = const FlutterAppAuth();
   final String _redirectUrl = "hekahealth://fitbit";
 
+  final defaultScopes = [
+    "activity",
+    "cardio_fitness",
+    "electrocardiogram",
+    "heartrate",
+    "location",
+    "nutrition",
+    "profile",
+    "oxygen_saturation",
+    "respiratory_rate",
+    "sleep",
+    "temperature",
+    "weight",
+    "settings",
+  ];
+
   @override
   Future<OAuth2Creds?> signIn(HekaHealth manager, UserApp? userApp) async {
     try {
@@ -37,21 +53,7 @@ class Fitbit extends DataProvider {
             authorizationEndpoint: "https://www.fitbit.com/oauth2/authorize",
             tokenEndpoint: "https://api.fitbit.com/oauth2/token",
           ),
-          scopes: [
-            "activity",
-            "cardio_fitness",
-            "electrocardiogram",
-            "heartrate",
-            "location",
-            "nutrition",
-            "profile",
-            "oxygen_saturation",
-            "respiratory_rate",
-            "sleep",
-            "temperature",
-            "weight",
-            "settings",
-          ],
+          scopes: defaultScopes,
         ),
       );
       if (authTokenResponse != null) {

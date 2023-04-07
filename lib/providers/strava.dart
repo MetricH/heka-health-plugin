@@ -11,6 +11,10 @@ class Strava extends DataProvider {
   final _auth = const FlutterAppAuth();
   final String _redirectUrl = "hekahealth://strava";
 
+  final defaultScopes = [
+    "activity:read",
+  ];
+
   @override
   Future<OAuth2Creds?> signIn(HekaHealth manager, UserApp? userApp) async {
     try {
@@ -37,9 +41,7 @@ class Strava extends DataProvider {
             authorizationEndpoint: "https://www.strava.com/oauth/authorize",
             tokenEndpoint: "https://www.strava.com/oauth/token",
           ),
-          scopes: [
-            "activity:read",
-          ],
+          scopes: defaultScopes,
         ),
       );
 
