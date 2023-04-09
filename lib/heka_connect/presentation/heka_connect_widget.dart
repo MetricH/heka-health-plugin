@@ -234,11 +234,17 @@ class _PlatformConnectCardState extends State<PlatformConnectCard> {
             checkingConnection: (_) => const Text('...'),
             disconnecting: (_) => const Text('...'),
             noConnection: (_) => widget.platformName == PlatformName.googleFit
-                ? const Text('Connect to Google Fit')
+                ? const Text(
+                    'Connect to Google Fit',
+                    style: TextStyle(fontSize: 12),
+                  )
                 : const Text('Connect'),
             tokenInvalidated: (_, __) =>
                 widget.platformName == PlatformName.googleFit
-                    ? const Text('Connect to Google Fit')
+                    ? const Text(
+                        'Connect to Google Fit',
+                        style: TextStyle(fontSize: 12),
+                      )
                     : const Text('Reconnect'),
             makingConnection: (_) => const Text('...'),
             connected: (_, __) => const Text('Disconnect'),
