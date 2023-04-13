@@ -1,3 +1,8 @@
+## 0.0.21
+
+- UI fixes
+
+
 ## 0.0.20
 
 - Make OAuth 2.0 scopes customizable from server
