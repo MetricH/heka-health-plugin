@@ -53,13 +53,7 @@ class _HekaConnectWidgetState extends State<_HekaConnectWidget> {
             child: Card(
               elevation: 2,
               child: state.loadingFailed
-                  ? const Padding(
-                      padding: EdgeInsets.all(8.0),
-                      child: Text(
-                        'Something went wrong. Failed to load the app and connections\nCheck your internet connection and try again',
-                        style: TextStyle(color: Colors.red),
-                      ),
-                    )
+                  ? const SomethingWentWrong()
                   : state.isLoading
                       // TODO: replace with shimmer effect
                       ? const CircularProgressIndicator()
@@ -250,6 +244,39 @@ class _PlatformConnectCardState extends State<PlatformConnectCard> {
             connected: (_, __) => const Text('Disconnect'),
           ),
         ),
+      ),
+    );
+  }
+}
+
+class SomethingWentWrong extends StatelessWidget {
+  const SomethingWentWrong({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Padding(
+      padding: const EdgeInsets.all(8.0),
+      child: Row(
+        children: [
+          const Icon(
+            Icons.error,
+            color: Colors.grey,
+            size: 32,
+          ),
+          const SizedBox(width: 12),
+          Column(
+            mainAxisSize: MainAxisSize.min,
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: const [
+              Text('Oops! something went wrong',
+                  style: TextStyle(fontSize: 16, color: Colors.red)),
+              Text(
+                'Failed to load the app and connections\nCheck your internet connection and try again',
+                style: TextStyle(color: Colors.grey, fontSize: 12),
+              ),
+            ],
+          ),
+        ],
       ),
     );
   }
