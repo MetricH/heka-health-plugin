@@ -1,7 +1,10 @@
+## 0.0.22
+
+- Fix crash on iPad.
+
 ## 0.0.21
 
 - UI fixes
-
 
 ## 0.0.20
 
@@ -70,24 +73,24 @@
 
 ## 0.0.6
 
--   Minor code unification
--   Update README.md
+- Minor code unification
+- Update README.md
 
 ## 0.0.5
 
--   HekaHealthWidget UI improvements for ios
+- HekaHealthWidget UI improvements for ios
 
 ## 0.0.4
 
--   HekaHealthWidget UI improvements
--   Added support for more HeathDataPoints syncing for apple kit
+- HekaHealthWidget UI improvements
+- Added support for more HeathDataPoints syncing for apple kit
 
 ## 0.0.3
 
--   Update with changes in API
--   Improved example
+- Update with changes in API
+- Improved example
 
 ## 0.0.2
 
--   HekaHealth Widget to easily plugin in iOS Health-kit and Google Fit capabilities to your flutter app.
--   License update
+- HekaHealth Widget to easily plugin in iOS Health-kit and Google Fit capabilities to your flutter app.
+- License update
