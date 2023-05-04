@@ -119,12 +119,12 @@ class HekaHealth {
     final uri = Uri.https(_baseUrl, '/watch_sdk/connect_platform_for_user', {
       'key': _apiKey,
       'user_uuid': userUuid,
-      'disconnect': 'true',
     });
     final client = HttpClient();
     final data = {
       'platform': platform,
       'device_id': deviceId,
+      'disconnect': true,
     }..removeWhere((key, value) => value == null);
 
     try {
