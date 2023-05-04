@@ -1,10 +1,10 @@
+import 'dart:convert';
 import 'dart:developer';
+import 'dart:io';
 
 import 'package:dartz/dartz.dart';
-import 'package:dio/dio.dart';
 import 'package:heka_health/models/enabled_platform.dart';
 import 'package:heka_health/models/user_app.dart';
-import 'package:heka_health/repository/extensions.dart';
 import 'package:heka_health/repository/heka_health_platform_interface.dart';
 import 'package:heka_health/models/connection.dart';
 import 'package:heka_health/models/heka_health_error.dart';
@@ -14,81 +14,84 @@ class HekaHealth {
   String get apiKey => _apiKey;
 
   static const _baseUrl =
-      'https://heka-backend.delightfulmeadow-20fa0dd3.australiaeast.azurecontainerapps.io/watch_sdk';
-  final Dio _dio = Dio(BaseOptions(baseUrl: _baseUrl));
+      'heka-backend.delightfulmeadow-20fa0dd3.australiaeast.azurecontainerapps.io';
 
   HekaHealth(this._apiKey);
 
   Future<Either<HekaHealthError, EnabledPlatform>> getPlatformClientId(
     String platformName,
   ) async {
+    var client = HttpClient();
     try {
-      final response = await _dio.get(
-        '/user_app_from_key',
-        queryParameters: {
-          'key': _apiKey,
-        },
-      );
-      for (var platform in response.data?['data']?['enabled_platforms'] ?? []) {
+      HttpClientRequest request = await client.getUrl(Uri.parse(
+          'https://heka-backend.delightfulmeadow-20fa0dd3.australiaeast.azurecontainerapps.io/watch_sdk/user_app_from_key?key=$_apiKey'));
+      HttpClientResponse response = await request.close();
+      final data = json.decode(await response.transform(utf8.decoder).join());
+      for (var platform in data['data']?['enabled_platforms'] ?? []) {
         if (platform['platform_name'] == platformName) {
           return right(EnabledPlatform.fromJson(platform));
         }
       }
       return left(const HekaHealthError.googleClientIdNotRegistered());
-    } on DioError catch (e) {
+    } on Exception catch (e) {
       log('----error getting client Id-------');
       log(e.toString());
-      log((e.response?.data ?? "").toString());
-      if (e.isNoConnectionError) {
-        return left(const HekaHealthError.noConnection());
-      }
       rethrow;
+    } finally {
+      client.close();
     }
   }
 
   Future<Either<HekaHealthError, UserApp>> loadApp() async {
+    final uri =
+        Uri.https(_baseUrl, '/watch_sdk/user_app_from_key', {'key': _apiKey});
+
+    final client = HttpClient();
+
     try {
-      final response = await _dio.get(
-        '/user_app_from_key',
-        queryParameters: {
-          'key': _apiKey,
-        },
-      );
-      return right(UserApp.fromJson(response.data?['data']));
-    } on DioError catch (e) {
+      final request = await client.getUrl(uri);
+
+      final response = await request.close();
+      final responseData = await response.transform(utf8.decoder).join();
+      final decodedData = jsonDecode(responseData);
+
+      return right(UserApp.fromJson(decodedData['data']));
+    } on Exception catch (e) {
       log('----error loading user app-------');
       log(e.toString());
-      log((e.response?.data ?? "").toString());
-      if (e.isNoConnectionError) {
-        return left(const HekaHealthError.noConnection());
-      }
       rethrow;
+    } finally {
+      client.close();
     }
   }
 
   Future<Either<HekaHealthError, Connection?>> fetchConnection(
-      String userUuid) async {
+    String userUuid,
+  ) async {
+    final uri = Uri.https(_baseUrl, '/watch_sdk/check_watch_connection', {
+      'key': _apiKey,
+      'user_uuid': userUuid,
+    });
+
+    final client = HttpClient();
+
     try {
-      final response = await _dio.get(
-        '/check_watch_connection',
-        queryParameters: {
-          'key': _apiKey,
-          'user_uuid': userUuid,
-        },
-      );
-      log(response.data.toString());
-      return right(Connection.fromJson(response.data['data']));
-    } on DioError catch (e) {
-      log('----error check connection-------');
-      log(e.toString());
-      log((e.response?.data ?? "").toString());
-      if (e.isNoConnectionError) {
+      final request = await client.getUrl(uri);
+      final response = await request.close();
+      if (response.statusCode == 404) {
         return left(const HekaHealthError.noConnection());
       }
-      if (e.response?.statusCode == 404) {
-        return right(null);
-      }
+
+      final responseData = await response.transform(utf8.decoder).join();
+      final decodedData = jsonDecode(responseData);
+      return right(Connection.fromJson(decodedData['data']));
+    } on SocketException catch (_) {
+      return left(const HekaHealthError.noConnection());
+    } on Exception catch (e) {
+      log(e.toString());
       rethrow;
+    } finally {
+      client.close();
     }
   }
 
@@ -100,28 +103,37 @@ class HekaHealth {
     bool reconnect = false,
     String? deviceId,
   }) async {
+    final client = HttpClient();
+    final uri = Uri.https(_baseUrl, '/watch_sdk/connect_platform_for_user', {
+      'key': _apiKey,
+      'user_uuid': userUuid,
+      'reconnect': reconnect.toString(),
+    });
+
+    final body = jsonEncode({
+      'refresh_token': googleFitRefreshToken,
+      'email': emailId,
+      'platform': platform,
+      'device_id': deviceId,
+    }..removeWhere((_, value) => value == null));
+
     try {
-      final response = await _dio.post(
-        '/connect_platform_for_user',
-        queryParameters: {
-          'key': _apiKey,
-          'user_uuid': userUuid,
-          'reconnect': reconnect,
-        },
-        data: {
-          'refresh_token': googleFitRefreshToken,
-          'email': emailId,
-          'platform': platform,
-          'device_id': deviceId,
-        }..removeWhere((key, value) => value == null),
-      );
-      return right(Connection.fromJson(response.data['data']));
-    } on DioError catch (e) {
+      final request = await client.postUrl(uri);
+      request.headers.contentType = ContentType.json;
+      request.write(body);
+
+      final response = await request.close();
+      final responseData = await response.transform(utf8.decoder).join();
+      final decodedData = jsonDecode(responseData);
+
+      return right(Connection.fromJson(decodedData['data']));
+    } on SocketException catch (_) {
+      return left(const HekaHealthError.noConnection());
+    } on Exception catch (e) {
       log(e.toString());
-      if (e.isNoConnectionError) {
-        return left(const HekaHealthError.noConnection());
-      }
       rethrow;
+    } finally {
+      client.close();
     }
   }
 
@@ -130,26 +142,37 @@ class HekaHealth {
     required String platform,
     String? deviceId,
   }) async {
+    final uri = Uri.https(_baseUrl, '/watch_sdk/connect_platform_for_user', {
+      'key': _apiKey,
+      'user_uuid': userUuid,
+      'disconnect': 'true',
+    });
+    final client = HttpClient();
+    final data = {
+      'platform': platform,
+      'device_id': deviceId,
+    }..removeWhere((key, value) => value == null);
+
     try {
-      final response = await _dio.post(
-        '/connect_platform_for_user',
-        queryParameters: {
-          'key': _apiKey,
-          'user_uuid': userUuid,
-          'disconnect': true,
-        },
-        data: {
-          'platform': platform,
-          'device_id': deviceId,
-        },
-      );
-      return right(Connection.fromJson(response.data['data']));
-    } on DioError catch (e) {
+      HttpClientRequest request = await client.postUrl(uri);
+      request.headers.contentType = ContentType.json;
+      request.write(jsonEncode(data));
+      final response = await request.close();
+      if (response.statusCode == 200) {
+        final responseData = await response.transform(utf8.decoder).join();
+        final decodedData = jsonDecode(responseData);
+
+        return right(Connection.fromJson(decodedData['data']));
+      }
+      return left(const HekaHealthError.noConnection());
+    } on Exception catch (e) {
       log(e.toString());
-      if (e.isNoConnectionError) {
+      if (e is SocketException) {
         return left(const HekaHealthError.noConnection());
       }
       rethrow;
+    } finally {
+      client.close();
     }
   }
 
