@@ -1,4 +1,6 @@
-import 'package:dio/dio.dart';
+import 'dart:convert';
+import 'dart:io';
+
 import 'package:flutter_appauth/flutter_appauth.dart';
 import 'package:heka_health/constants/platform_name.dart';
 import 'package:heka_health/models/enabled_platform.dart';
@@ -34,23 +36,33 @@ class Strava extends DataProvider {
       );
 
       var authorizationCode = authTokenResponse!.authorizationCode!;
-      final response = await Dio().post(
-        "https://www.strava.com/oauth/token",
-        data: {
-          'client_id': platformData.platformAppId!,
-          'client_secret': platformData.platformAppSecret!,
-          'grant_type': 'authorization_code',
-          'code': authorizationCode,
-        },
-      );
 
-      if (response.statusCode == 200) {
-        return OAuth2Creds(
-          refreshToken: response.data['refresh_token'],
-          email: "${response.data['athlete']['id']}",
-        );
+      final uri = Uri.https('www.strava.com', 'oauth/token', {
+        'client_id': platformData.platformAppId!,
+        'client_secret': platformData.platformAppSecret!,
+        'grant_type': 'authorization_code',
+        'code': authorizationCode,
+      });
+      final client = HttpClient();
+
+      try {
+        final request = await client.postUrl(uri);
+        final response = await request.close();
+
+        if (response.statusCode == 200) {
+          final responseData = await response.transform(utf8.decoder).join();
+          final decodedData = jsonDecode(responseData);
+          return OAuth2Creds(
+            refreshToken: decodedData['refresh_token'],
+            email: "${decodedData['athlete']['id']}",
+          );
+        }
+        return null;
+      } on Exception {
+        return null;
+      } finally {
+        client.close();
       }
-      return null;
     } catch (e) {
       return null;
     }

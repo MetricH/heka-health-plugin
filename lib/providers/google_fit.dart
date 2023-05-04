@@ -1,13 +1,12 @@
+import 'dart:convert';
 import 'dart:io';
 
-import 'package:dio/dio.dart';
 import 'package:flutter_appauth/flutter_appauth.dart';
 import 'package:heka_health/constants/platform_name.dart';
 import 'package:heka_health/models/enabled_platform.dart';
 import 'package:heka_health/models/oauth2_creds.dart';
 import 'package:heka_health/models/user_app.dart';
 import 'package:heka_health/providers/data_provider.dart';
-import 'package:heka_health/providers/exceptions.dart';
 import 'package:heka_health/repository/heka_repository.dart';
 
 class GoogleFit extends DataProvider {
@@ -67,13 +66,22 @@ class GoogleFit extends DataProvider {
 
 extension UserProfileX on AuthorizationTokenResponse {
   Future<String?> get email async {
+    final uri = Uri.https('www.googleapis.com', 'oauth2/v1/userinfo', {
+      'access_token': accessToken,
+    });
+
+    final client = HttpClient();
     try {
-      final requestUri = Uri.https('www.googleapis.com', 'oauth2/v1/userinfo',
-          {'access_token': accessToken});
-      final response = await Dio().getUri(requestUri);
-      return response.data['email'];
-    } on DioError {
+      final request = await client.getUrl(uri);
+      final response = await request.close();
+      final responseData = await response.transform(utf8.decoder).join();
+      final decodedData = jsonDecode(responseData);
+
+      return decodedData['email'];
+    } on Exception {
       return null;
+    } finally {
+      client.close();
     }
   }
 }
