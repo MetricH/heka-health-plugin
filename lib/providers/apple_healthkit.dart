@@ -7,7 +7,7 @@ class AppleHealthkit extends DataProvider {
   @override
   Future<OAuth2Creds?> signIn(
     HekaHealth manager,
-    UserApp? userApp,
+    UserApp userApp,
   ) async {
     return const OAuth2Creds(refreshToken: '', email: '');
   }

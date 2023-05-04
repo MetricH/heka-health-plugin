@@ -18,30 +18,6 @@ class HekaHealth {
 
   HekaHealth(this._apiKey);
 
-  Future<Either<HekaHealthError, EnabledPlatform>> getPlatformClientId(
-    String platformName,
-  ) async {
-    var client = HttpClient();
-    try {
-      HttpClientRequest request = await client.getUrl(Uri.parse(
-          'https://heka-backend.delightfulmeadow-20fa0dd3.australiaeast.azurecontainerapps.io/watch_sdk/user_app_from_key?key=$_apiKey'));
-      HttpClientResponse response = await request.close();
-      final data = json.decode(await response.transform(utf8.decoder).join());
-      for (var platform in data['data']?['enabled_platforms'] ?? []) {
-        if (platform['platform_name'] == platformName) {
-          return right(EnabledPlatform.fromJson(platform));
-        }
-      }
-      return left(const HekaHealthError.googleClientIdNotRegistered());
-    } on Exception catch (e) {
-      log('----error getting client Id-------');
-      log(e.toString());
-      rethrow;
-    } finally {
-      client.close();
-    }
-  }
-
   Future<Either<HekaHealthError, UserApp>> loadApp() async {
     final uri =
         Uri.https(_baseUrl, '/watch_sdk/user_app_from_key', {'key': _apiKey});

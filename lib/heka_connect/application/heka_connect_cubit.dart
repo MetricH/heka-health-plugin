@@ -119,7 +119,7 @@ class HekaConnectCubit extends Cubit<HekaConnectState> {
 
     OAuth2Creds? credentials;
     try {
-      credentials = await provider.signIn(_manager, _userApp);
+      credentials = await provider.signIn(_manager, _userApp!);
     } catch (e) {
       if (e is AppIdNotFoundException) {
         emit(state.copyWith(

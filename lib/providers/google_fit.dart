@@ -30,21 +30,9 @@ class GoogleFit extends DataProvider {
   ];
 
   @override
-  Future<OAuth2Creds?> signIn(HekaHealth manager, UserApp? userApp) async {
-    EnabledPlatform platformData;
-    if (userApp != null) {
-      platformData = userApp.getEnabledPlatform(PlatformName.googleFit);
-    } else {
-      final failureOrSuccess =
-          await manager.getPlatformClientId(PlatformName.googleFit);
-      if (failureOrSuccess.isLeft()) {
-        return null;
-      }
-      platformData = failureOrSuccess.fold((l) => throw Exception(), (r) => r);
-      if (platformData.platformAppId == null) {
-        throw AppIdNotFoundException("Google Fit App Id not found");
-      }
-    }
+  Future<OAuth2Creds?> signIn(HekaHealth manager, UserApp userApp) async {
+    EnabledPlatform platformData =
+        userApp.getEnabledPlatform(PlatformName.googleFit);
 
     try {
       final authTokenResponse = await _auth.authorizeAndExchangeCode(

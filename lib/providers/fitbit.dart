@@ -27,22 +27,10 @@ class Fitbit extends DataProvider {
   ];
 
   @override
-  Future<OAuth2Creds?> signIn(HekaHealth manager, UserApp? userApp) async {
+  Future<OAuth2Creds?> signIn(HekaHealth manager, UserApp userApp) async {
     try {
-      EnabledPlatform platformData;
-
-      if (userApp != null) {
-        platformData = userApp.getEnabledPlatform(PlatformName.fitbit);
-      } else {
-        // Get the platform data from the server (client id, client secret)
-        final failureOrSuccess =
-            await manager.getPlatformClientId(PlatformName.fitbit);
-        if (failureOrSuccess.isLeft()) {
-          return null;
-        }
-        platformData =
-            failureOrSuccess.fold((l) => throw Exception(), (r) => r);
-      }
+      EnabledPlatform platformData =
+          userApp.getEnabledPlatform(PlatformName.fitbit);
 
       final authTokenResponse = await _auth.authorizeAndExchangeCode(
         AuthorizationTokenRequest(
