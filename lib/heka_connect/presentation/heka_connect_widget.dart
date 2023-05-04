@@ -205,8 +205,7 @@ class _PlatformConnectCardState extends State<PlatformConnectCard> {
                 .createConnection(platformName: widget.platformName),
             tokenInvalidated: (connection, __) => () => context
                 .read<HekaConnectCubit>()
-                .createConnection(
-                    reconnect: true, platformName: widget.platformName),
+                .createConnection(platformName: widget.platformName),
             makingConnection: (_) => null,
             connected: (connection, uuid) => () =>
                 context.read<HekaConnectCubit>().disconnect(uuid, connection),

@@ -83,15 +83,8 @@ class HekaConnectCubit extends Cubit<HekaConnectState> {
     });
   }
 
-  Future<void> connectAgain(String platformName, int id) async {
-    createConnection(
-        reconnect: true, connectionId: id, platformName: platformName);
-  }
-
   Future<void> createConnection(
-      {bool reconnect = false,
-      int? connectionId,
-      required String platformName}) async {
+      {int? connectionId, required String platformName}) async {
     emit(state.copyWith(
       platformStates: {
         ...state.platformStates,
@@ -150,7 +143,6 @@ class HekaConnectCubit extends Cubit<HekaConnectState> {
       return;
     }
     final failureOrSuccess = await _manager.makeConnection(
-      reconnect: reconnect,
       googleFitRefreshToken: credentials.refreshToken,
       userUuid: state.userUuid,
       platform: platformName,

@@ -76,14 +76,12 @@ class HekaHealth {
     required String platform,
     String? googleFitRefreshToken,
     String? emailId,
-    bool reconnect = false,
     String? deviceId,
   }) async {
     final client = HttpClient();
     final uri = Uri.https(_baseUrl, '/watch_sdk/connect_platform_for_user', {
       'key': _apiKey,
       'user_uuid': userUuid,
-      'reconnect': reconnect.toString(),
     });
 
     final body = jsonEncode({
