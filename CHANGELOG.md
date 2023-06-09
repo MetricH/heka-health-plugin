@@ -1,3 +1,7 @@
+## 0.1.0
+
+- Reworked Apple Healthkit integration.
+
 ## 0.0.22
 
 - Fix crash on iPad.
