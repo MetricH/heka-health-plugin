@@ -14,8 +14,8 @@ PODS:
     - Flutter
   - heka_health (0.0.1):
     - Flutter
-    - HekaCore (~> 0.0.10)
-  - HekaCore (0.0.10):
+    - HekaCore (~> 0.1.0)
+  - HekaCore (0.1.0):
     - Alamofire (~> 5.6.1)
     - Logging (~> 1.4.0)
     - PromiseKit (~> 6.8.0)
@@ -65,8 +65,8 @@ SPEC CHECKSUMS:
   device_info_plus: e5c5da33f982a436e103237c0c85f9031142abed
   Flutter: f04841e97a9d0b0a8025694d0796dd46242b2854
   flutter_appauth: 525652bda90e43ca5eb7ed748ecc106b79d1f5a1
-  heka_health: c3640afdccc7aa98644cbbfb72ee5bc976c674b5
-  HekaCore: 692407c1a7cd0d91b4549fa13ca65d3f40c6cd50
+  heka_health: e36d55c5810da0ff83046cf8157320e1457cfe5a
+  HekaCore: 29ec3dec860a3fd38651299a2285a070494ef9fd
   Logging: beeb016c9c80cf77042d62e83495816847ef108b
   PromiseKit: 9616b0afef31eae56ab9ce044c8ec2b8612a15cd
   url_launcher_ios: ae1517e5e344f5544fb090b079e11f399dfbe4d2
