@@ -22,6 +22,9 @@ public class SwiftHekaHealthPlugin: NSObject, FlutterPlugin {
     if call.method.elementsEqual("disconnect") {
       stopSyncing(call: call, result: result)
     }
+    if call.method.elementsEqual("getAggregatedValueForDataType") {
+      getAggregatedValueForDataType(call: call, result: result)
+    }
   }
 
   func stopSyncing(call: FlutterMethodCall, result: @escaping FlutterResult) {
@@ -34,6 +37,24 @@ public class SwiftHekaHealthPlugin: NSObject, FlutterPlugin {
       }
     }
   }
+    
+    func getAggregatedValueForDataType(call: FlutterMethodCall, result: @escaping FlutterResult) {
+        guard let args = call.arguments as? [String: Any?] else { return }
+        guard let dataType = args["dataType"]! as? String else { return }
+        guard let startDateIso = args["startDate"]! as? String else { return }
+        guard let endDateIso = args["endDate"]! as? String else { return }
+        
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSS"
+        dateFormatter.locale = Locale(identifier: "en_US_POSIX")
+        
+        let startDate = dateFormatter.date(from: startDateIso)
+        let endDate =  dateFormatter.date(from: endDateIso)
+        
+        hekaManager.getAggregatedValueForDataType(dataType: dataType, startDate: startDate!, endDate: endDate!) { count in
+            result(count)
+        }
+    }
 
   func requestAuthorization(call: FlutterMethodCall, result: @escaping FlutterResult) {
     hekaManager.requestAuthorization {

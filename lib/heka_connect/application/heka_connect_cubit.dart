@@ -36,6 +36,13 @@ class HekaConnectCubit extends Cubit<HekaConnectState> {
     return null;
   }
 
+  Future<double?> getAggregatedData(
+          {required String dataType,
+          required DateTime startDate,
+          required DateTime endDate}) =>
+      _manager.getAggregatedData(
+          dataType: dataType, startDate: startDate, endDate: endDate);
+
   HekaConnectCubit(String userUuid, this._manager)
       : super(HekaConnectState(
           isLoading: true,

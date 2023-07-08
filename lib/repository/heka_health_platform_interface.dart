@@ -33,6 +33,15 @@ abstract class HekaHealthPlatform extends PlatformInterface {
         'requestHealthKitPermissions() has not been implemented.');
   }
 
+  Future<double?> getAggregatedValueForDataType(
+    String dataType,
+    DateTime startDate,
+    DateTime endDate,
+  ) {
+    throw UnimplementedError(
+        'getAggregatedValueForDataType() has not been implemented.');
+  }
+
   Future<bool> disconnect() {
     throw UnimplementedError('disconnect() has not been implemented.');
   }

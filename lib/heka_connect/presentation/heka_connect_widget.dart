@@ -70,6 +70,20 @@ class _HekaConnectWidgetState extends State<_HekaConnectWidget> {
                               Row(
                                 mainAxisAlignment: MainAxisAlignment.end,
                                 children: [
+                                  ElevatedButton(
+                                      onPressed: () async {
+                                        final value = await context
+                                            .read<HekaConnectCubit>()
+                                            .getAggregatedData(
+                                              dataType: '',
+                                              startDate: DateTime.now()
+                                                  .subtract(
+                                                      const Duration(days: 1)),
+                                              endDate: DateTime.now(),
+                                            );
+                                        print('Count: $value');
+                                      },
+                                      child: Text('Test Aggregated Query!')),
                                   Text(
                                     'Powered by ',
                                     style:
