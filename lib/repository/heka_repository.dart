@@ -163,6 +163,13 @@ class HekaHealth {
         lastSyncTime,
       );
 
+  Future<double?> getAggregatedData(
+          {required String dataType,
+          required DateTime startDate,
+          required DateTime endDate}) =>
+      HekaHealthPlatform.instance
+          .getAggregatedValueForDataType(dataType, startDate, endDate);
+
   Future<bool> requestHealthKitPermissions() =>
       HekaHealthPlatform.instance.requestHealthKitPermissions();
 }
