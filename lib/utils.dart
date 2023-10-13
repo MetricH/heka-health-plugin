@@ -22,19 +22,4 @@ class HekaManager {
       return connection.isConnected(platformName, deviceId);
     });
   }
-
-  // Returns aggregated data for the given data type from local health store
-  // NOTE: This method is only available for iOS
-  static Future<double?> getAggregatedDataForIOS({
-    required String apiKey,
-    required String dataType,
-    required DateTime startDate,
-    required DateTime endDate,
-  }) {
-    return HekaHealth(apiKey).getAggregatedData(
-      dataType: dataType,
-      startDate: startDate,
-      endDate: endDate,
-    );
-  }
 }

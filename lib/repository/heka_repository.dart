@@ -3,9 +3,7 @@ import 'dart:developer';
 import 'dart:io';
 
 import 'package:dartz/dartz.dart';
-import 'package:heka_health/models/enabled_platform.dart';
 import 'package:heka_health/models/user_app.dart';
-import 'package:heka_health/repository/heka_health_platform_interface.dart';
 import 'package:heka_health/models/connection.dart';
 import 'package:heka_health/models/heka_health_error.dart';
 
@@ -149,27 +147,4 @@ class HekaHealth {
       client.close();
     }
   }
-
-  Future<bool> disconnectHealthKit() async =>
-      HekaHealthPlatform.instance.disconnect();
-
-  Future<bool> syncIosHealthData({
-    required String userUuid,
-    required DateTime? lastSyncTime,
-  }) async =>
-      HekaHealthPlatform.instance.syncIosHealthData(
-        _apiKey,
-        userUuid,
-        lastSyncTime,
-      );
-
-  Future<double?> getAggregatedData(
-          {required String dataType,
-          required DateTime startDate,
-          required DateTime endDate}) =>
-      HekaHealthPlatform.instance
-          .getAggregatedValueForDataType(dataType, startDate, endDate);
-
-  Future<bool> requestHealthKitPermissions() =>
-      HekaHealthPlatform.instance.requestHealthKitPermissions();
 }
