@@ -15,7 +15,7 @@ A new Flutter plugin project.
   s.source           = { :path => '.' }
   s.source_files = 'Classes/**/*'
   s.dependency 'Flutter'
-  s.dependency 'HekaCore', '~> 0.1.0'
+  s.dependency 'HekaCore', '~> 0.2.0'
 
   s.platform = :ios, '11.0'
 
