@@ -1,3 +1,7 @@
+## 0.1.1
+
+- Introduced better API contract for Apple Health.
+
 ## 0.1.0
 
 - Reworked Apple Healthkit integration.
