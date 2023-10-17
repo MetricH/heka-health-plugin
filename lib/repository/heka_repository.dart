@@ -17,13 +17,13 @@ class HekaHealth {
   HekaHealth(this._apiKey);
 
   Future<Either<HekaHealthError, UserApp>> loadApp() async {
-    final uri =
-        Uri.https(_baseUrl, '/watch_sdk/user_app_from_key', {'key': _apiKey});
+    final uri = Uri.https(_baseUrl, '/watch_sdk/user_app_from_key');
 
     final client = HttpClient();
 
     try {
       final request = await client.getUrl(uri);
+      request.headers.add('key', _apiKey);
 
       final response = await request.close();
       final responseData = await response.transform(utf8.decoder).join();
@@ -43,7 +43,6 @@ class HekaHealth {
     String userUuid,
   ) async {
     final uri = Uri.https(_baseUrl, '/watch_sdk/check_watch_connection', {
-      'key': _apiKey,
       'user_uuid': userUuid,
     });
 
@@ -51,6 +50,7 @@ class HekaHealth {
 
     try {
       final request = await client.getUrl(uri);
+      request.headers.add('key', _apiKey);
       final response = await request.close();
       if (response.statusCode == 404) {
         return left(const HekaHealthError.noConnection());
@@ -78,7 +78,6 @@ class HekaHealth {
   }) async {
     final client = HttpClient();
     final uri = Uri.https(_baseUrl, '/watch_sdk/connect_platform_for_user', {
-      'key': _apiKey,
       'user_uuid': userUuid,
     });
 
@@ -91,6 +90,7 @@ class HekaHealth {
 
     try {
       final request = await client.postUrl(uri);
+      request.headers.add('key', _apiKey);
       request.headers.contentType = ContentType.json;
       request.write(body);
 
@@ -115,7 +115,6 @@ class HekaHealth {
     String? deviceId,
   }) async {
     final uri = Uri.https(_baseUrl, '/watch_sdk/connect_platform_for_user', {
-      'key': _apiKey,
       'user_uuid': userUuid,
     });
     final client = HttpClient();
@@ -127,6 +126,7 @@ class HekaHealth {
 
     try {
       HttpClientRequest request = await client.postUrl(uri);
+      request.headers.add('key', _apiKey);
       request.headers.contentType = ContentType.json;
       request.write(jsonEncode(data));
       final response = await request.close();
