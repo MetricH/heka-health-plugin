@@ -4,6 +4,7 @@ enum HekaPlatform {
   fitbit,
   garmin,
   strava,
+  oura,
 }
 
 extension PlatformToStr on HekaPlatform {

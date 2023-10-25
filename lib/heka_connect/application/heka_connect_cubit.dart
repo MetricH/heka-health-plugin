@@ -15,6 +15,7 @@ import 'package:heka_health/providers/data_provider.dart';
 import 'package:heka_health/providers/exceptions.dart';
 import 'package:heka_health/providers/fitbit.dart';
 import 'package:heka_health/providers/google_fit.dart';
+import 'package:heka_health/providers/oura.dart';
 import 'package:heka_health/providers/strava.dart';
 import 'package:heka_health/repository/heka_repository.dart';
 
@@ -27,6 +28,7 @@ class HekaConnectCubit extends Cubit<HekaConnectState> {
     PlatformName.appleHealth: AppleHealthkit(),
     PlatformName.fitbit: Fitbit(),
     PlatformName.strava: Strava(),
+    PlatformName.oura: Oura(),
   };
 
   Future<String?> getDeviceId(String platformName) async {
@@ -93,6 +95,7 @@ class HekaConnectCubit extends Cubit<HekaConnectState> {
         platformStates: {
           ...state.platformStates,
           platformName: HekaPlatformState.error(
+            // TODO: this is wrong
             const HekaHealthError.appleHealthkitPermissionsDenied(),
             userUuid: state.userUuid,
           ),
