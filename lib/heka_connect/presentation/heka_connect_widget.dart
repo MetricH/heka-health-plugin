@@ -40,7 +40,6 @@ class _HekaConnectWidgetState extends State<_HekaConnectWidget> {
   @override
   void initState() {
     super.initState();
-    context.read<HekaConnectCubit>().loadConnections();
   }
 
   @override

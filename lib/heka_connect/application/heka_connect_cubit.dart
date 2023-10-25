@@ -44,42 +44,33 @@ class HekaConnectCubit extends Cubit<HekaConnectState> {
           userUuid: userUuid,
           loadingFailed: false,
         )) {
-    _manager.loadApp().then((value) {
+    _manager.loadAppAndConnection(userUuid).then((value) {
       value.fold((l) {
         emit(state.copyWith(paymentPlan: 'free', loadingFailed: true));
-      }, (r) {
-        _userApp = r;
+      }, (r) async {
+        _userApp = r.userApp;
+        Connection connection = r.connection;
+        Map<String, HekaPlatformState> platformStates = {};
+        // TODO: find a better way to do this
+        String? deviceId = await getDeviceId(PlatformName.appleHealth);
+        connection.connections.forEach((key, value) {
+          platformStates[key] =
+              platformStateFromConnection(connection, key, deviceId);
+        });
+        // remove google fit if on ios and vice versa
+        if (Platform.isAndroid &&
+            platformStates.containsKey(PlatformName.appleHealth)) {
+          platformStates.remove(PlatformName.appleHealth);
+        } else if (Platform.isIOS &&
+            platformStates.containsKey(PlatformName.googleFit)) {
+          platformStates.remove(PlatformName.googleFit);
+        }
         emit(state.copyWith(
-            paymentPlan: r.paymentPlan == 'free' ? 'free' : 'paid'));
+          paymentPlan: r.userApp.paymentPlan == 'free' ? 'free' : 'paid',
+          platformStates: platformStates,
+          isLoading: false,
+        ));
       });
-    });
-  }
-
-  Future<void> loadConnections() async {
-    emit(state.copyWith(isLoading: true));
-    final failureOrSuccess = await _manager.fetchConnection(state.userUuid);
-    failureOrSuccess.fold((error) {
-      emit(state.copyWith(isLoading: false, loadingFailed: true));
-    }, (connection) async {
-      Map<String, HekaPlatformState> platformStates = {};
-      // TODO: find a better way to do this
-      String? deviceId = await getDeviceId(PlatformName.appleHealth);
-      connection!.connections.forEach((key, value) {
-        platformStates[key] =
-            platformStateFromConnection(connection, key, deviceId);
-      });
-      // remove google fit if on ios and vice versa
-      if (Platform.isAndroid &&
-          platformStates.containsKey(PlatformName.appleHealth)) {
-        platformStates.remove(PlatformName.appleHealth);
-      } else if (Platform.isIOS &&
-          platformStates.containsKey(PlatformName.googleFit)) {
-        platformStates.remove(PlatformName.googleFit);
-      }
-      emit(state.copyWith(
-        isLoading: false,
-        platformStates: platformStates,
-      ));
     });
   }
 

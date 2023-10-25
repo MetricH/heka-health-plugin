@@ -7,6 +7,13 @@ import 'package:heka_health/models/user_app.dart';
 import 'package:heka_health/models/connection.dart';
 import 'package:heka_health/models/heka_health_error.dart';
 
+class HekaAppAndConnection {
+  final UserApp userApp;
+  final Connection connection;
+
+  HekaAppAndConnection(this.userApp, this.connection);
+}
+
 class HekaHealth {
   final String _apiKey;
   String get apiKey => _apiKey;
@@ -16,8 +23,10 @@ class HekaHealth {
 
   HekaHealth(this._apiKey);
 
-  Future<Either<HekaHealthError, UserApp>> loadApp() async {
-    final uri = Uri.https(_baseUrl, '/watch_sdk/user_app_from_key');
+  Future<Either<HekaHealthError, HekaAppAndConnection>> loadAppAndConnection(
+      String userUuid) async {
+    final uri = Uri.https(_baseUrl, '/watch_sdk/get_app_and_check_connection',
+        {'user_uuid': userUuid});
 
     final client = HttpClient();
 
@@ -29,9 +38,12 @@ class HekaHealth {
       final responseData = await response.transform(utf8.decoder).join();
       final decodedData = jsonDecode(responseData);
 
-      return right(UserApp.fromJson(decodedData['data']));
+      return right(HekaAppAndConnection(
+        UserApp.fromJson(decodedData['data']['app']),
+        Connection.fromJson(decodedData['data']['connection']),
+      ));
     } on Exception catch (e) {
-      log('----error loading user app-------');
+      log('----error loading user app and connection-------');
       log(e.toString());
       rethrow;
     } finally {

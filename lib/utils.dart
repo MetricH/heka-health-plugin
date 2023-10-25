@@ -10,6 +10,7 @@ class HekaManager {
       required String uuid,
       required String platformName}) async {
     var repo = HekaHealth(key);
+    // TODO: this should be cached when Heka or HekaManager is initialized
     var failureOrSuccess = await repo.fetchConnection(uuid);
     return failureOrSuccess.fold((error) => false, (connection) async {
       if (connection == null) {
