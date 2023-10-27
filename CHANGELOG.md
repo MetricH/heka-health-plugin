@@ -1,3 +1,8 @@
+## 0.1.2
+
+- Improved UI and API contract for Apple Health.
+- Introduced Oura support.
+
 ## 0.1.1
 
 - Introduced better API contract for Apple Health.
