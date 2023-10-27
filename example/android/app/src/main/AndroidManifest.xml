@@ -44,6 +44,7 @@
                 <category android:name="android.intent.category.BROWSABLE" />
                 <data android:scheme="hekahealth" android:host="fitbit" />
                 <data android:scheme="hekahealth" android:host="strava"/>
+                <data android:scheme="hekahealth" android:host="oura"/>
             </intent-filter>
 
         </activity>
