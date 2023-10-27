@@ -167,7 +167,7 @@ class _PlatformConnectCardState extends State<PlatformConnectCard> {
           style: Theme.of(context).textTheme.bodySmall,
         ),
         connected: (_, __) => Text(
-          _.lastSync == null
+          _.lastSync == null || widget.platformName == PlatformName.appleHealth
               ? ''
               : 'Last synced ${timeago.format(_.lastSync!)}',
           style: Theme.of(context).textTheme.bodySmall,
