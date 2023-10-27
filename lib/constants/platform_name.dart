@@ -30,7 +30,7 @@ Map<String, PlatformDetails> platforms = {
     true,
   ),
   'apple_healthkit': PlatformDetails(
-    'Apple Healthkit',
+    'Apple Health',
     HekaImages.appleHealth,
     true,
     false,
