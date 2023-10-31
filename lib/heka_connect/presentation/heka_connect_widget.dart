@@ -252,20 +252,20 @@ class SomethingWentWrong extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.all(8.0),
+    return const Padding(
+      padding: EdgeInsets.all(8.0),
       child: Row(
         children: [
-          const Icon(
+          Icon(
             Icons.error,
             color: Colors.grey,
             size: 32,
           ),
-          const SizedBox(width: 12),
+          SizedBox(width: 12),
           Column(
             mainAxisSize: MainAxisSize.min,
             crossAxisAlignment: CrossAxisAlignment.start,
-            children: const [
+            children: [
               Text('Oops! something went wrong',
                   style: TextStyle(fontSize: 16, color: Colors.red)),
               Text(
