@@ -28,3 +28,19 @@ extension TypeToStr on HekaDataType {
     }
   }
 }
+
+enum MenstrualEntryFlow { unspecificed, light, medium, heavy, none }
+
+class MenstrualEntry {
+  final DateTime date;
+  final MenstrualEntryFlow flow;
+  final bool isStart;
+
+  MenstrualEntry({required this.date, required int flow, required this.isStart})
+      : flow = MenstrualEntryFlow.values[flow - 1];
+
+  @override
+  String toString() {
+    return 'MenstrualEntry(date: $date, flow: $flow, isStart: $isStart)';
+  }
+}

@@ -24,4 +24,8 @@ class HekaHealthKit {
 
   static Future<bool> requestHealthKitPermissions() =>
       HekaHealthPlatform.instance.requestHealthKitPermissions();
+
+  static Future<List<Object?>> getMenstrualData(
+          {required DateTime startDate, required DateTime endDate}) =>
+      HekaHealthPlatform.instance.getMenstrualData(startDate, endDate);
 }

@@ -42,6 +42,10 @@ abstract class HekaHealthPlatform extends PlatformInterface {
         'getAggregatedValueForDataType() has not been implemented.');
   }
 
+  Future<List<Object?>> getMenstrualData(DateTime startDate, DateTime endDate) {
+    throw UnimplementedError('getMenstrualData() has not been implemented.');
+  }
+
   Future<bool> disconnect() {
     throw UnimplementedError('disconnect() has not been implemented.');
   }

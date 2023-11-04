@@ -50,6 +50,19 @@ class MethodChannelHekaHealth extends HekaHealthPlatform {
   }
 
   @override
+  Future<List<Object?>> getMenstrualData(
+      DateTime startDate, DateTime endDate) async {
+    final result = (await methodChannel.invokeMethod<List<Object?>>(
+      'getMenstrualData',
+      {
+        'startDate': startDate.toIso8601String(),
+        'endDate': endDate.toIso8601String(),
+      },
+    ));
+    return result ?? [];
+  }
+
+  @override
   Future<bool> disconnect() async {
     final result =
         (await methodChannel.invokeMethod<bool>('disconnect')) ?? false;

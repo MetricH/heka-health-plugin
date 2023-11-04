@@ -25,6 +25,9 @@ public class SwiftHekaHealthPlugin: NSObject, FlutterPlugin {
     if call.method.elementsEqual("getAggregatedValueForDataType") {
       getAggregatedValueForDataType(call: call, result: result)
     }
+    if call.method.elementsEqual("getMenstrualData") {
+      getMenstrualData(call: call, result: result)
+    }
   }
 
   func stopSyncing(call: FlutterMethodCall, result: @escaping FlutterResult) {
@@ -35,6 +38,23 @@ public class SwiftHekaHealthPlugin: NSObject, FlutterPlugin {
       } else {
         result(false)
       }
+    }
+  }
+
+  func getMenstrualData(call: FlutterMethodCall, result: @escaping FlutterResult) {
+    guard let args = call.arguments as? [String: Any?] else { return }
+    guard let startDateIso = args["startDate"]! as? String else { return }
+    guard let endDateIso = args["endDate"]! as? String else { return }
+
+    let dateFormatter = DateFormatter()
+    dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSS"
+    dateFormatter.locale = Locale(identifier: "en_US_POSIX")
+
+    let startDate = dateFormatter.date(from: startDateIso)
+    let endDate = dateFormatter.date(from: endDateIso)
+
+    hekaManager.getMenstrualData(startDate: startDate!, endDate: endDate!) { data in
+      result(data)
     }
   }
 

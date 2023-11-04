@@ -59,4 +59,31 @@ class Heka {
       endDate: endDate,
     );
   }
+
+  Future<List<MenstrualEntry>> getMenstrualData({
+    required DateTime startDate,
+    required DateTime endDate,
+  }) async {
+    // TODO: support for google fit and other platforms
+    if (!Platform.isIOS) {
+      throw Exception('This method is only available for iOS for now');
+    }
+    var data = await HekaHealthKit.getMenstrualData(
+      startDate: startDate,
+      endDate: endDate,
+    );
+    List<MenstrualEntry> entries = [];
+    for (var item in data) {
+      if (item != null) {
+        item = item as Map;
+        print(item);
+        entries.add(MenstrualEntry(
+          date: DateTime.fromMillisecondsSinceEpoch(item['date_from']),
+          flow: item['flow'],
+          isStart: item['cycle_start'] ?? false,
+        ));
+      }
+    }
+    return entries;
+  }
 }
