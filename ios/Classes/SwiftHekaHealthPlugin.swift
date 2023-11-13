@@ -1,10 +1,10 @@
 import Flutter
-import HekaCore
+import MetricCore
 import UIKit
 
 public class SwiftHekaHealthPlugin: NSObject, FlutterPlugin {
 
-  let hekaManager = HekaManager()
+  let metricManager = MetricManager()
 
   public static func register(with registrar: FlutterPluginRegistrar) {
     let channel = FlutterMethodChannel(name: "heka_health", binaryMessenger: registrar.messenger())
@@ -31,7 +31,7 @@ public class SwiftHekaHealthPlugin: NSObject, FlutterPlugin {
   }
 
   func stopSyncing(call: FlutterMethodCall, result: @escaping FlutterResult) {
-    hekaManager.stopSyncing {
+    metricManager.stopSyncing {
       sucess in
       if sucess {
         result(true)
@@ -53,7 +53,7 @@ public class SwiftHekaHealthPlugin: NSObject, FlutterPlugin {
     let startDate = dateFormatter.date(from: startDateIso)
     let endDate = dateFormatter.date(from: endDateIso)
 
-    hekaManager.getMenstrualData(startDate: startDate!, endDate: endDate!) { data in
+    metricManager.getMenstrualData(startDate: startDate!, endDate: endDate!) { data in
       result(data)
     }
   }
@@ -71,7 +71,7 @@ public class SwiftHekaHealthPlugin: NSObject, FlutterPlugin {
     let startDate = dateFormatter.date(from: startDateIso)
     let endDate = dateFormatter.date(from: endDateIso)
 
-    hekaManager.getAggregatedValueForDataType(
+    metricManager.getAggregatedValueForDataType(
       dataType: dataType, startDate: startDate!, endDate: endDate!
     ) { count in
       result(count)
@@ -79,7 +79,7 @@ public class SwiftHekaHealthPlugin: NSObject, FlutterPlugin {
   }
 
   func requestAuthorization(call: FlutterMethodCall, result: @escaping FlutterResult) {
-    hekaManager.requestAuthorization {
+    metricManager.requestAuthorization {
       sucess in
       if sucess {
         result(true)
@@ -93,7 +93,7 @@ public class SwiftHekaHealthPlugin: NSObject, FlutterPlugin {
     guard let args = call.arguments as? [String: Any?] else { return }
     guard let apiKey = args["apiKey"]! as? String else { return }
     guard let userUuid = args["userUuid"]! as? String else { return }
-    hekaManager.syncIosHealthData(apiKey: apiKey, userUuid: userUuid) {
+    metricManager.syncIosHealthData(apiKey: apiKey, userUuid: userUuid) {
       sucess in
       if sucess {
         result(true)

@@ -1,5 +1,5 @@
 import Flutter
-import HekaCore
+import MetricCore
 import UIKit
 
 @UIApplicationMain
@@ -9,7 +9,7 @@ import UIKit
     didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?
   ) -> Bool {
     GeneratedPluginRegistrant.register(with: self)
-    HekaManager().installObservers()
+    MetricManager().installObservers()
     return super.application(application, didFinishLaunchingWithOptions: launchOptions)
   }
 }
