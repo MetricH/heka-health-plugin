@@ -1,3 +1,9 @@
+## 0.2.0
+
+- Introduce API to get menstrual data
+- Implemented Metric Server integration for GFit data
+- Added support for more data types
+
 ## 0.1.2
 
 - Improved UI and API contract for Apple Health.
