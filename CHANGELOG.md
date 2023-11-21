@@ -1,3 +1,7 @@
+## 0.2.1
+
+- Upgrade dependencies.
+
 ## 0.2.0
 
 - Introduce API to get menstrual data
