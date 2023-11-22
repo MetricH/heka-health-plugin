@@ -1,3 +1,7 @@
+## 0.2.2
+
+- Fix device id related logic.
+
 ## 0.2.1
 
 - Upgrade dependencies.
