@@ -1,3 +1,7 @@
+## 0.2.3
+
+- Fixed implicit int to double conversion when getting data from server.
+
 ## 0.2.2
 
 - Fix device id related logic.
