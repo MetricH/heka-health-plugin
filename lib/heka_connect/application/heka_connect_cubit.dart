@@ -31,10 +31,11 @@ class HekaConnectCubit extends Cubit<HekaConnectState> {
     PlatformName.oura: Oura(),
   };
 
-  Future<String?> getDeviceId(String platformName) async {
-    if (platformName == PlatformName.appleHealth) {
+  Future<String?> getDeviceId() async {
+    if (Platform.isIOS) {
       return (await DeviceInfoPlugin().iosInfo).identifierForVendor;
     }
+    // we don't have device id related handling for android yet
     return null;
   }
 
@@ -53,8 +54,7 @@ class HekaConnectCubit extends Cubit<HekaConnectState> {
         _userApp = r.userApp;
         Connection connection = r.connection;
         Map<String, HekaPlatformState> platformStates = {};
-        // TODO: find a better way to do this
-        String? deviceId = await getDeviceId(PlatformName.appleHealth);
+        String? deviceId = await getDeviceId();
         connection.connections.forEach((key, value) {
           platformStates[key] =
               platformStateFromConnection(connection, key, deviceId);
@@ -141,7 +141,7 @@ class HekaConnectCubit extends Cubit<HekaConnectState> {
       userUuid: state.userUuid,
       platform: platformName,
       emailId: credentials.email,
-      deviceId: await getDeviceId(platformName),
+      deviceId: await getDeviceId(),
     );
 
     failureOrSuccess.fold((error) {
@@ -183,7 +183,7 @@ class HekaConnectCubit extends Cubit<HekaConnectState> {
     final failureOrSuccess = await _manager.disconnect(
       userUuid: uuid,
       platform: connectedPlatform.platform,
-      deviceId: await getDeviceId(connectedPlatform.platform),
+      deviceId: await getDeviceId(),
     );
 
     failureOrSuccess.fold((error) {
