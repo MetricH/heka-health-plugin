@@ -186,9 +186,14 @@ class HekaHealth {
       request.headers.contentLength = body.length;
       request.write(body);
       final response = await request.close();
+      if (response.statusCode != 200) {
+        // TODO: we should introduce a new error type for this
+        return left(const HekaHealthError.noConnection());
+      }
       final responseData = await response.transform(utf8.decoder).join();
       final decodedData = jsonDecode(responseData);
-      return right(decodedData['total'] ?? 0.0);
+      final total = decodedData['total'] ?? 0.0;
+      return right(total.toDouble());
     } on Exception catch (e) {
       log(e.toString());
       if (e is SocketException) {
