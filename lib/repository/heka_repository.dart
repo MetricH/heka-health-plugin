@@ -160,6 +160,48 @@ class HekaHealth {
     }
   }
 
+  Future<Either<HekaHealthError, List<Map>>> getMenstrualData({
+    required String userUuid,
+    required String platform,
+    required DateTime startDate,
+    required DateTime endDate,
+  }) async {
+    final uri = Uri.https(_baseUrl, '/watch_sdk/get_menstruation_data', {
+      'user_uuid': userUuid,
+    });
+
+    final client = HttpClient();
+
+    try {
+      HttpClientRequest request = await client.getUrl(uri);
+      request.headers.add('key', _apiKey);
+      request.headers.contentType = ContentType.json;
+      final body = jsonEncode({
+        'platform': platform,
+        'start_time': startDate.millisecondsSinceEpoch,
+        'end_time': endDate.millisecondsSinceEpoch,
+      });
+      request.headers.contentLength = body.length;
+      request.write(body);
+      final response = await request.close();
+      if (response.statusCode != 200) {
+        return left(const HekaHealthError.noConnection());
+      }
+      final responseData = await response.transform(utf8.decoder).join();
+      final decodedData = jsonDecode(responseData);
+      final menstrualData = decodedData['data'] as List;
+      return right(menstrualData.cast<Map>());
+    } on Exception catch (e) {
+      log(e.toString());
+      if (e is SocketException) {
+        return left(const HekaHealthError.noConnection());
+      }
+      rethrow;
+    } finally {
+      client.close();
+    }
+  }
+
   Future<Either<HekaHealthError, double>> getAggregatedDataFromServer({
     required String userUuid,
     required String platform,

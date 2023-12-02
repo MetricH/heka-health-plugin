@@ -63,27 +63,81 @@ class Heka {
   Future<List<MenstrualEntry>> getMenstrualData({
     required DateTime startDate,
     required DateTime endDate,
+    HekaPlatform? platform,
   }) async {
-    // TODO: support for google fit and other platforms
-    if (!Platform.isIOS) {
-      throw Exception('This method is only available for iOS for now');
-    }
-    var data = await HekaHealthKit.getMenstrualData(
-      startDate: startDate,
-      endDate: endDate,
-    );
-    List<MenstrualEntry> entries = [];
-    for (var item in data) {
-      if (item != null) {
-        item = item as Map;
-        print(item);
-        entries.add(MenstrualEntry(
-          date: DateTime.fromMillisecondsSinceEpoch(item['date_from']),
-          flow: item['flow'],
-          isStart: item['cycle_start'] ?? false,
-        ));
+    if (platform == null) {
+      if (Platform.isAndroid) {
+        platform = HekaPlatform.googleFit;
+      } else if (Platform.isIOS) {
+        platform = HekaPlatform.appleHealth;
       }
     }
-    return entries;
+    if (Platform.isAndroid) {
+      Either<HekaHealthError, List<Map>> data = await _manager.getMenstrualData(
+        userUuid: uuid,
+        platform: 'google_fit',
+        startDate: startDate,
+        endDate: endDate,
+      );
+      return data.fold((l) => [], (r) {
+        List<MenstrualEntry> entries = [];
+        for (var item in r) {
+          item = item as Map<String, dynamic>;
+          entries.add(MenstrualEntry(
+            date: DateTime.fromMicrosecondsSinceEpoch(item['start_time']),
+            flow: _getFlowFromGFitEnum(item['flow'] as int),
+            // we should calculate this from the data
+            isStart: false,
+          ));
+        }
+        return entries;
+      });
+    } else if (Platform.isIOS) {
+      var data = await HekaHealthKit.getMenstrualData(
+        startDate: startDate,
+        endDate: endDate,
+      );
+      List<MenstrualEntry> entries = [];
+      for (var item in data) {
+        if (item != null) {
+          item = item as Map;
+          entries.add(MenstrualEntry(
+            date: DateTime.fromMillisecondsSinceEpoch(item['date_from']),
+            flow: _getFlowFromiOSEnum(item['flow'] as int),
+            isStart: item['cycle_start'] ?? false,
+          ));
+        }
+      }
+      return entries;
+    } else {
+      throw Exception(
+          'This method is only available for Google Fit and Apple Health');
+    }
+  }
+
+  MenstrualEntryFlow _getFlowFromiOSEnum(int val) {
+    if (val == 1) {
+      return MenstrualEntryFlow.unspecificed;
+    } else if (val == 2) {
+      return MenstrualEntryFlow.light;
+    } else if (val == 3) {
+      return MenstrualEntryFlow.medium;
+    } else if (val == 4) {
+      return MenstrualEntryFlow.heavy;
+    }
+    return MenstrualEntryFlow.none;
+  }
+
+  MenstrualEntryFlow _getFlowFromGFitEnum(int val) {
+    if (val == 1) {
+      return MenstrualEntryFlow.spotting;
+    } else if (val == 2) {
+      return MenstrualEntryFlow.light;
+    } else if (val == 3) {
+      return MenstrualEntryFlow.medium;
+    } else if (val == 4) {
+      return MenstrualEntryFlow.heavy;
+    }
+    return MenstrualEntryFlow.none;
   }
 }
