@@ -1,7 +1,7 @@
 name: heka_health
 description: Integrate with Google Fit, Apple HealthKit, Strava, Fitbit and other fitness devices.
 
-version: 0.2.3
+version: 0.2.4
 homepage: https://github.com/MetricH/heka-health-plugin
 
 environment:

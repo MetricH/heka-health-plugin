@@ -1,3 +1,8 @@
+## 0.2.4
+
+- Introduce API to get data for each day across a date range.
+- Menstrual data support on Google Fit.
+
 ## 0.2.3
 
 - Fixed implicit int to double conversion when getting data from server.
