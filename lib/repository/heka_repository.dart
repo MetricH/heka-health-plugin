@@ -202,6 +202,50 @@ class HekaHealth {
     }
   }
 
+  Future<Either<HekaHealthError, List<Map<String, dynamic>>>> getDateWiseData({
+    required String userUuid,
+    required String platform,
+    required String dataType,
+    required DateTime startDate,
+    required DateTime endDate,
+  }) async {
+    final uri = Uri.https(_baseUrl, '/watch_sdk/get_date_wise_data', {
+      'user_uuid': userUuid,
+    });
+
+    final client = HttpClient();
+
+    try {
+      HttpClientRequest request = await client.getUrl(uri);
+      request.headers.add('key', _apiKey);
+      request.headers.contentType = ContentType.json;
+      final body = jsonEncode({
+        'platform': platform,
+        'data_type': dataType,
+        'start_time': startDate.millisecondsSinceEpoch,
+        'end_time': endDate.millisecondsSinceEpoch,
+      });
+      request.headers.contentLength = body.length;
+      request.write(body);
+      final response = await request.close();
+      if (response.statusCode != 200) {
+        return left(const HekaHealthError.noConnection());
+      }
+      final responseData = await response.transform(utf8.decoder).join();
+      final decodedData = jsonDecode(responseData);
+      final dateWiseData = decodedData['data'] as List;
+      return right(dateWiseData.cast<Map<String, dynamic>>());
+    } on Exception catch (e) {
+      log(e.toString());
+      if (e is SocketException) {
+        return left(const HekaHealthError.noConnection());
+      }
+      rethrow;
+    } finally {
+      client.close();
+    }
+  }
+
   Future<Either<HekaHealthError, double>> getAggregatedDataFromServer({
     required String userUuid,
     required String platform,

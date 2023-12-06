@@ -13,6 +13,31 @@ class Heka {
 
   Heka(String apiKey, this.uuid) : _manager = HekaHealth(apiKey);
 
+  Future<Map<DateTime, double>> getDateWiseForType(
+    HekaDataType type,
+    DateTime start,
+    DateTime end,
+    HekaPlatform platform,
+  ) async {
+    var resp = await _manager.getDateWiseData(
+      userUuid: uuid,
+      platform: platform.toInternalString(),
+      dataType: type.toInternalString(),
+      startDate: start,
+      endDate: end,
+    );
+    return resp.fold((l) {
+      return {};
+    }, (r) {
+      Map<DateTime, double> data = {};
+      for (var item in r) {
+        data[DateTime.fromMicrosecondsSinceEpoch(item['start_time'].toInt())] =
+            item['value'] / 1;
+      }
+      return data;
+    });
+  }
+
   Future<double?> getAggregatedForType(
     HekaDataType type,
     DateTime start,
