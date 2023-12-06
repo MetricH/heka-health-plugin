@@ -5,7 +5,6 @@ import 'package:heka_health/heka_connect/application/heka_connect_cubit.dart';
 import 'package:heka_health/heka_connect/application/heka_connect_state.dart';
 import 'package:heka_health/heka_connect/application/heka_platform_state.dart';
 import 'package:heka_health/repository/heka_repository.dart';
-import 'package:timeago/timeago.dart' as timeago;
 import 'package:url_launcher/url_launcher.dart';
 
 class HekaConnectWidget extends StatelessWidget {
