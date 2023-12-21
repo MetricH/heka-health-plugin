@@ -227,7 +227,12 @@ class _PlatformConnectCardState extends State<PlatformConnectCard> {
                     'Connect to Google Fit',
                     style: TextStyle(fontSize: 12),
                   )
-                : const Text('Connect'),
+                : (widget.platformName == PlatformName.appleHealth
+                    // TODO: we should make it customizable and allow the widget user
+                    // to configure their own labels
+                    // Continue on Apple health because of Fitelo usecase
+                    ? const Text('Continue')
+                    : const Text('Connect')),
             tokenInvalidated: (_, __) =>
                 widget.platformName == PlatformName.googleFit
                     ? const Text(
