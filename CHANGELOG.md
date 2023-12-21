@@ -1,3 +1,8 @@
+## 0.2.5
+
+- Reworking datatype permission handling in Apple Health [WIP].
+- Better extensibility for platform wise labels for buttons [WIP].
+
 ## 0.2.4
 
 - Introduce API to get data for each day across a date range.

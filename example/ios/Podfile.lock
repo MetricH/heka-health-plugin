@@ -1,20 +1,20 @@
 PODS:
-  - AppAuth (1.6.0):
-    - AppAuth/Core (= 1.6.0)
-    - AppAuth/ExternalUserAgent (= 1.6.0)
-  - AppAuth/Core (1.6.0)
-  - AppAuth/ExternalUserAgent (1.6.0):
+  - AppAuth (1.6.2):
+    - AppAuth/Core (= 1.6.2)
+    - AppAuth/ExternalUserAgent (= 1.6.2)
+  - AppAuth/Core (1.6.2)
+  - AppAuth/ExternalUserAgent (1.6.2):
     - AppAuth/Core
   - device_info_plus (0.0.1):
     - Flutter
   - Flutter (1.0.0)
   - flutter_appauth (0.0.1):
-    - AppAuth (= 1.6.0)
+    - AppAuth (= 1.6.2)
     - Flutter
   - heka_health (0.0.1):
     - Flutter
-    - MetricCore (~> 0.2.0)
-  - MetricCore (0.2.0)
+    - MetricCore (~> 0.2.1)
+  - MetricCore (0.2.1)
   - url_launcher_ios (0.0.1):
     - Flutter
 
@@ -43,13 +43,13 @@ EXTERNAL SOURCES:
     :path: ".symlinks/plugins/url_launcher_ios/ios"
 
 SPEC CHECKSUMS:
-  AppAuth: 8fca6b5563a5baef2c04bee27538025e4ceb2add
-  device_info_plus: e5c5da33f982a436e103237c0c85f9031142abed
+  AppAuth: 3bb1d1cd9340bd09f5ed189fb00b1cc28e1e8570
+  device_info_plus: c6fb39579d0f423935b0c9ce7ee2f44b71b9fce6
   Flutter: f04841e97a9d0b0a8025694d0796dd46242b2854
-  flutter_appauth: 525652bda90e43ca5eb7ed748ecc106b79d1f5a1
-  heka_health: 394bf8987185d62b47c700ffbb279115e597ace0
-  MetricCore: b3331dbdeba0848f38f41767f82cee560383d34d
-  url_launcher_ios: ae1517e5e344f5544fb090b079e11f399dfbe4d2
+  flutter_appauth: cf9b928962105b2a64a9802585d1c8adaf3e0f46
+  heka_health: 3e7f0ccd05cd1651305754aedcec3c36b09d3709
+  MetricCore: 73e7272a0d8c4bc6c880c5f3eca407d5e289b726
+  url_launcher_ios: bf5ce03e0e2088bad9cc378ea97fa0ed5b49673b
 
 PODFILE CHECKSUM: bd295fc198b245bb51189c8140d55e735c8dd822
 
