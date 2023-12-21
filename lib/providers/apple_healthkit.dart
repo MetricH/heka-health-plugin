@@ -3,6 +3,7 @@ import 'package:heka_health/models/user_app.dart';
 import 'package:heka_health/providers/data_provider.dart';
 import 'package:heka_health/repository/healthkit.dart';
 import 'package:heka_health/repository/heka_repository.dart';
+import 'package:heka_health/repository/platform_channel.dart';
 
 class AppleHealthkit extends DataProvider {
   @override
@@ -25,14 +26,14 @@ class AppleHealthkit extends DataProvider {
 
   @override
   Future<void> postDisconnect(HekaHealth manager, String userUuid) async {
-    await HekaHealthKit.disconnectHealthKit();
+    await HekaPlatformChannel.disconnect();
   }
 
   @override
   Future<void> preConnect(HekaHealth manager, String userUuid) async {
     // TODO: this will always be true according to
     // https://stackoverflow.com/questions/51231371/requesting-authorization-in-healthkit-why-the-result-is-always-successful
-    bool granted = await HekaHealthKit.requestHealthKitPermissions();
+    bool granted = await HekaPlatformChannel.connect();
     if (!granted) {
       throw Exception("HealthKit permissions not granted");
     }

@@ -1,18 +1,11 @@
-import 'dart:convert';
-import 'dart:io';
-
-import 'package:flutter_appauth/flutter_appauth.dart';
-import 'package:heka_health/constants/platform_name.dart';
-import 'package:heka_health/models/enabled_platform.dart';
 import 'package:heka_health/models/oauth2_creds.dart';
 import 'package:heka_health/models/user_app.dart';
 import 'package:heka_health/providers/data_provider.dart';
 import 'package:heka_health/repository/heka_repository.dart';
+import 'package:heka_health/repository/platform_channel.dart';
+import 'package:permission_handler/permission_handler.dart' as ph;
 
 class GoogleFit extends DataProvider {
-  final _auth = const FlutterAppAuth();
-  static const _googleIssuer = 'https://accounts.google.com';
-
   final defaultScopes = [
     'email',
     'https://www.googleapis.com/auth/fitness.activity.read',
@@ -30,27 +23,13 @@ class GoogleFit extends DataProvider {
 
   @override
   Future<OAuth2Creds?> signIn(HekaHealth manager, UserApp userApp) async {
-    EnabledPlatform platformData =
-        userApp.getEnabledPlatform(PlatformName.googleFit);
+    // TODO: move these permission handling to native code as well
+    await ph.Permission.activityRecognition.request();
+    // this is used to get distance in workouts
+    await ph.Permission.location.request();
 
-    try {
-      final authTokenResponse = await _auth.authorizeAndExchangeCode(
-        AuthorizationTokenRequest(
-          platformData.platformAppId!,
-          redirectUrl(platformData.platformAppId!),
-          issuer: _googleIssuer,
-          scopes: platformData.enabledScopes ?? defaultScopes,
-        ),
-      );
-      if (authTokenResponse != null) {
-        return OAuth2Creds(
-            refreshToken: authTokenResponse.refreshToken!,
-            email: await authTokenResponse.email);
-      }
-      return null;
-    } catch (e) {
-      return null;
-    }
+    await HekaPlatformChannel.connect();
+    return const OAuth2Creds(refreshToken: '', email: '');
   }
 
   @override
@@ -58,38 +37,10 @@ class GoogleFit extends DataProvider {
       HekaHealth manager, String userUuid, DateTime? lastSyncDate) async {}
 
   @override
-  Future<void> postDisconnect(HekaHealth manager, String userUuid) async {}
+  Future<void> postDisconnect(HekaHealth manager, String userUuid) async {
+    await HekaPlatformChannel.disconnect();
+  }
 
   @override
   Future<void> preConnect(HekaHealth manager, String userUuid) async {}
-}
-
-extension UserProfileX on AuthorizationTokenResponse {
-  Future<String?> get email async {
-    final uri = Uri.https('www.googleapis.com', 'oauth2/v1/userinfo', {
-      'access_token': accessToken,
-    });
-
-    final client = HttpClient();
-    try {
-      final request = await client.getUrl(uri);
-      final response = await request.close();
-      final responseData = await response.transform(utf8.decoder).join();
-      final decodedData = jsonDecode(responseData);
-
-      return decodedData['email'];
-    } on Exception {
-      return null;
-    } finally {
-      client.close();
-    }
-  }
-}
-
-String redirectUrl(String clientId) {
-  if (Platform.isAndroid) {
-    final parts = clientId.split('.');
-    return 'com.googleusercontent.apps.${parts.first}:/oauthredirect';
-  }
-  return '';
 }

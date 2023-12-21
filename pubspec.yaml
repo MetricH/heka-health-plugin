@@ -19,6 +19,7 @@ dependencies:
   plugin_platform_interface: ^2.0.2
   url_launcher: ^6.1.8
   device_info_plus: ^9.1.1
+  permission_handler: ^11.1.0
 
 dev_dependencies:
   flutter_test:

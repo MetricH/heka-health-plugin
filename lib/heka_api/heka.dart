@@ -6,6 +6,7 @@ import 'package:heka_health/heka_api/types.dart';
 import 'package:heka_health/models/heka_health_error.dart';
 import 'package:heka_health/repository/healthkit.dart';
 import 'package:heka_health/repository/heka_repository.dart';
+import 'package:heka_health/repository/platform_channel.dart';
 
 class Heka {
   final HekaHealth _manager;
@@ -19,23 +20,16 @@ class Heka {
     DateTime end,
     HekaPlatform platform,
   ) async {
-    var resp = await _manager.getDateWiseData(
-      userUuid: uuid,
-      platform: platform.toInternalString(),
-      dataType: type.toInternalString(),
-      startDate: start,
-      endDate: end,
-    );
-    return resp.fold((l) {
-      return {};
-    }, (r) {
-      Map<DateTime, double> data = {};
-      for (var item in r) {
-        data[DateTime.fromMicrosecondsSinceEpoch(item['start_time'].toInt())] =
-            item['value'] / 1;
-      }
-      return data;
-    });
+    if ({HekaPlatform.googleFit, HekaPlatform.appleHealth}.contains(platform)) {
+      return await HekaPlatformChannel.getDateWiseData(
+        dataType: type.toInternalString(),
+        startDate: start,
+        endDate: end,
+      );
+    } else {
+      throw Exception(
+          'This method is only available for Google Fit and Apple Health for now');
+    }
   }
 
   Future<double?> getAggregatedForType(
@@ -45,19 +39,13 @@ class Heka {
     HekaPlatform platform,
   ) async {
     if (platform == HekaPlatform.googleFit) {
-      Either<HekaHealthError, double> resp =
-          await _manager.getAggregatedDataFromServer(
-        userUuid: uuid,
-        platform: 'google_fit',
-        dataType: type.toInternalString(),
-        startDate: start,
-        endDate: end,
-      );
-      return resp.fold((l) {
-        return null;
-      }, (r) {
-        return r;
-      });
+      Map<DateTime, double> data =
+          await getDateWiseForType(type, start, end, platform);
+      double sum = 0;
+      for (var item in data.values) {
+        sum += item;
+      }
+      return sum;
     } else if (platform == HekaPlatform.appleHealth) {
       return HekaHealthKit.getAggregatedData(
         dataType: type.toInternalString(),

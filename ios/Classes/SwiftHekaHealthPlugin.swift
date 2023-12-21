@@ -28,6 +28,9 @@ public class SwiftHekaHealthPlugin: NSObject, FlutterPlugin {
     if call.method.elementsEqual("getMenstrualData") {
       getMenstrualData(call: call, result: result)
     }
+    if call.method.elementsEqual("getDateWiseData") {
+      getDateWiseData(call: call, result: result)
+    }
   }
 
   func stopSyncing(call: FlutterMethodCall, result: @escaping FlutterResult) {
@@ -75,6 +78,27 @@ public class SwiftHekaHealthPlugin: NSObject, FlutterPlugin {
       dataType: dataType, startDate: startDate!, endDate: endDate!
     ) { count in
       result(count)
+    }
+  }
+
+  func getDateWiseData(call: FlutterMethodCall, result: @escaping FlutterResult) {
+    guard let args = call.arguments as? [String: Any?] else { return }
+    guard let dataType = args["dataType"]! as? String else { return }
+    guard let startDateIso = args["startTime"]! as? String else { return }
+    guard let endDateIso = args["endTime"]! as? String else { return }
+
+    let dateFormatter = DateFormatter()
+    dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSS"
+    dateFormatter.locale = Locale(identifier: "en_US_POSIX")
+
+    let startDate = dateFormatter.date(from: startDateIso)
+    let endDate = dateFormatter.date(from: endDateIso)
+    print("calling getDateWiseData")
+
+    metricManager.getDateWiseData(
+      dataType: dataType, startDate: startDate!, endDate: endDate!
+    ) { data in
+      result(data)
     }
   }
 

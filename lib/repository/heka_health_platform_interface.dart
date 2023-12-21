@@ -23,6 +23,10 @@ abstract class HekaHealthPlatform extends PlatformInterface {
     _instance = instance;
   }
 
+  Future<bool> connect() {
+    throw UnimplementedError('connect() has not been implemented.');
+  }
+
   Future<bool> syncIosHealthData(
       String apiKey, String userUuid, DateTime? lastSyncDate) {
     throw UnimplementedError('syncIosHealthData() has not been implemented.');
@@ -31,6 +35,14 @@ abstract class HekaHealthPlatform extends PlatformInterface {
   Future<bool> requestHealthKitPermissions() {
     throw UnimplementedError(
         'requestHealthKitPermissions() has not been implemented.');
+  }
+
+  Future<Map<DateTime, double>> getDateWiseData(
+    String dataType,
+    DateTime startDate,
+    DateTime endDate,
+  ) {
+    throw UnimplementedError('getDateWiseData() has not been implemented.');
   }
 
   Future<double?> getAggregatedValueForDataType(
@@ -48,5 +60,9 @@ abstract class HekaHealthPlatform extends PlatformInterface {
 
   Future<bool> disconnect() {
     throw UnimplementedError('disconnect() has not been implemented.');
+  }
+
+  Future<bool> requestGoogleAuth() {
+    throw UnimplementedError('requestGoogleAuth() has not been implemented.');
   }
 }

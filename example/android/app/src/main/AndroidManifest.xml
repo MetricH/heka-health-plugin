@@ -1,5 +1,6 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.heka.health.heka_health_example">
+   <uses-permission android:name="android.permission.ACTIVITY_RECOGNITION"/>
    <application
         xmlns:tools="http://schemas.android.com/tools"
         android:label="heka_health_example"

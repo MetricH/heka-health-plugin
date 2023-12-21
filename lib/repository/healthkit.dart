@@ -1,9 +1,6 @@
 import 'package:heka_health/repository/heka_health_platform_interface.dart';
 
 class HekaHealthKit {
-  static Future<bool> disconnectHealthKit() async =>
-      HekaHealthPlatform.instance.disconnect();
-
   static Future<bool> syncIosHealthData({
     required String apiKey,
     required String userUuid,
@@ -21,9 +18,6 @@ class HekaHealthKit {
           required DateTime endDate}) =>
       HekaHealthPlatform.instance
           .getAggregatedValueForDataType(dataType, startDate, endDate);
-
-  static Future<bool> requestHealthKitPermissions() =>
-      HekaHealthPlatform.instance.requestHealthKitPermissions();
 
   static Future<List<Object?>> getMenstrualData(
           {required DateTime startDate, required DateTime endDate}) =>

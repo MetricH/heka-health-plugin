@@ -1,8 +1,8 @@
 group 'com.heka.health.heka_health'
-version '1.0-SNAPSHOT'
+version '1.2'
 
 buildscript {
-    ext.kotlin_version = '1.6.10'
+    ext.kotlin_version = '1.8.0'
     repositories {
         google()
         mavenCentral()
@@ -43,4 +43,12 @@ android {
     defaultConfig {
         minSdkVersion 16
     }
+}
+
+dependencies {
+    def composeBom = platform('androidx.compose:compose-bom:2022.10.00')
+    implementation(composeBom)
+    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
+    implementation("com.google.android.gms:play-services-fitness:21.1.0")
+    implementation("com.google.android.gms:play-services-auth:20.2.0")
 }
