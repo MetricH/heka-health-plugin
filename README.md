@@ -8,4 +8,4 @@ The Heka smartwatch integration makes it easy to integrate various watches and r
 
 ## Documentation
 
-Check out our documentation at [docs](https://docs.hekahealth.co/).
+Check out our documentation at [docs](https://docs.metric.health/).

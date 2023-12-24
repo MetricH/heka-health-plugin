@@ -76,10 +76,10 @@ class _HekaConnectWidgetState extends State<_HekaConnectWidget> {
                                   InkWell(
                                     onTap: () {
                                       launchUrl(Uri.parse(
-                                          'https://www.hekahealth.co/'));
+                                          'https://www.metric.health/'));
                                     },
                                     child: const Text(
-                                      'Heka',
+                                      'Metric',
                                       style: TextStyle(
                                         color: Color(
                                           0xff2351C1,
