@@ -1,3 +1,4 @@
+import 'package:heka_health/models/heka_health_error.dart';
 import 'package:heka_health/models/oauth2_creds.dart';
 import 'package:heka_health/models/user_app.dart';
 import 'package:heka_health/providers/data_provider.dart';
@@ -24,11 +25,18 @@ class GoogleFit extends DataProvider {
   @override
   Future<OAuth2Creds?> signIn(HekaHealth manager, UserApp userApp) async {
     // TODO: move these permission handling to native code as well
-    await ph.Permission.activityRecognition.request();
+    ph.PermissionStatus status =
+        await ph.Permission.activityRecognition.request();
+    if (status.isDenied) {
+      throw const HekaHealthError.preConnectError();
+    }
     // this is used to get distance in workouts
     await ph.Permission.location.request();
 
-    await HekaPlatformChannel.connect();
+    bool granted = await HekaPlatformChannel.connect();
+    if (!granted) {
+      throw const HekaHealthError.preConnectError();
+    }
     return const OAuth2Creds(refreshToken: '', email: '');
   }
 
