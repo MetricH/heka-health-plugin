@@ -9,6 +9,9 @@ class HekaHealthError with _$HekaHealthError {
   const factory HekaHealthError.googleClientIdNotRegistered(
           {@Default('Google Client ID not registered!') String message}) =
       _GoogleClientIdNotRegistered;
+  const factory HekaHealthError.preConnectError(
+      {@Default('Something went wrong! Grant all requested permissions.')
+      String message}) = _PreConnectError;
   const factory HekaHealthError.appleHealthkitPermissionsDenied(
           {@Default('Apple Healthkit permissions denied!') String message}) =
       _AppleHealthkitPermissionsDenied;

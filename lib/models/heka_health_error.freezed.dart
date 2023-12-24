@@ -21,6 +21,7 @@ mixin _$HekaHealthError {
   TResult when<TResult extends Object?>({
     required TResult Function(String message) noConnection,
     required TResult Function(String message) googleClientIdNotRegistered,
+    required TResult Function(String message) preConnectError,
     required TResult Function(String message) appleHealthkitPermissionsDenied,
   }) =>
       throw _privateConstructorUsedError;
@@ -28,6 +29,7 @@ mixin _$HekaHealthError {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(String message)? noConnection,
     TResult? Function(String message)? googleClientIdNotRegistered,
+    TResult? Function(String message)? preConnectError,
     TResult? Function(String message)? appleHealthkitPermissionsDenied,
   }) =>
       throw _privateConstructorUsedError;
@@ -35,6 +37,7 @@ mixin _$HekaHealthError {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(String message)? noConnection,
     TResult Function(String message)? googleClientIdNotRegistered,
+    TResult Function(String message)? preConnectError,
     TResult Function(String message)? appleHealthkitPermissionsDenied,
     required TResult orElse(),
   }) =>
@@ -44,6 +47,7 @@ mixin _$HekaHealthError {
     required TResult Function(_NoConnection value) noConnection,
     required TResult Function(_GoogleClientIdNotRegistered value)
         googleClientIdNotRegistered,
+    required TResult Function(_PreConnectError value) preConnectError,
     required TResult Function(_AppleHealthkitPermissionsDenied value)
         appleHealthkitPermissionsDenied,
   }) =>
@@ -53,6 +57,7 @@ mixin _$HekaHealthError {
     TResult? Function(_NoConnection value)? noConnection,
     TResult? Function(_GoogleClientIdNotRegistered value)?
         googleClientIdNotRegistered,
+    TResult? Function(_PreConnectError value)? preConnectError,
     TResult? Function(_AppleHealthkitPermissionsDenied value)?
         appleHealthkitPermissionsDenied,
   }) =>
@@ -62,6 +67,7 @@ mixin _$HekaHealthError {
     TResult Function(_NoConnection value)? noConnection,
     TResult Function(_GoogleClientIdNotRegistered value)?
         googleClientIdNotRegistered,
+    TResult Function(_PreConnectError value)? preConnectError,
     TResult Function(_AppleHealthkitPermissionsDenied value)?
         appleHealthkitPermissionsDenied,
     required TResult orElse(),
@@ -107,22 +113,22 @@ class _$HekaHealthErrorCopyWithImpl<$Res, $Val extends HekaHealthError>
 }
 
 /// @nodoc
-abstract class _$$_NoConnectionCopyWith<$Res>
+abstract class _$$NoConnectionImplCopyWith<$Res>
     implements $HekaHealthErrorCopyWith<$Res> {
-  factory _$$_NoConnectionCopyWith(
-          _$_NoConnection value, $Res Function(_$_NoConnection) then) =
-      __$$_NoConnectionCopyWithImpl<$Res>;
+  factory _$$NoConnectionImplCopyWith(
+          _$NoConnectionImpl value, $Res Function(_$NoConnectionImpl) then) =
+      __$$NoConnectionImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call({String message});
 }
 
 /// @nodoc
-class __$$_NoConnectionCopyWithImpl<$Res>
-    extends _$HekaHealthErrorCopyWithImpl<$Res, _$_NoConnection>
-    implements _$$_NoConnectionCopyWith<$Res> {
-  __$$_NoConnectionCopyWithImpl(
-      _$_NoConnection _value, $Res Function(_$_NoConnection) _then)
+class __$$NoConnectionImplCopyWithImpl<$Res>
+    extends _$HekaHealthErrorCopyWithImpl<$Res, _$NoConnectionImpl>
+    implements _$$NoConnectionImplCopyWith<$Res> {
+  __$$NoConnectionImplCopyWithImpl(
+      _$NoConnectionImpl _value, $Res Function(_$NoConnectionImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -130,7 +136,7 @@ class __$$_NoConnectionCopyWithImpl<$Res>
   $Res call({
     Object? message = null,
   }) {
-    return _then(_$_NoConnection(
+    return _then(_$NoConnectionImpl(
       message: null == message
           ? _value.message
           : message // ignore: cast_nullable_to_non_nullable
@@ -141,8 +147,9 @@ class __$$_NoConnectionCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_NoConnection extends _NoConnection {
-  const _$_NoConnection({this.message = 'Something went wrong!'}) : super._();
+class _$NoConnectionImpl extends _NoConnection {
+  const _$NoConnectionImpl({this.message = 'Something went wrong!'})
+      : super._();
 
   @override
   @JsonKey()
@@ -157,7 +164,7 @@ class _$_NoConnection extends _NoConnection {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_NoConnection &&
+            other is _$NoConnectionImpl &&
             (identical(other.message, message) || other.message == message));
   }
 
@@ -167,14 +174,15 @@ class _$_NoConnection extends _NoConnection {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_NoConnectionCopyWith<_$_NoConnection> get copyWith =>
-      __$$_NoConnectionCopyWithImpl<_$_NoConnection>(this, _$identity);
+  _$$NoConnectionImplCopyWith<_$NoConnectionImpl> get copyWith =>
+      __$$NoConnectionImplCopyWithImpl<_$NoConnectionImpl>(this, _$identity);
 
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(String message) noConnection,
     required TResult Function(String message) googleClientIdNotRegistered,
+    required TResult Function(String message) preConnectError,
     required TResult Function(String message) appleHealthkitPermissionsDenied,
   }) {
     return noConnection(message);
@@ -185,6 +193,7 @@ class _$_NoConnection extends _NoConnection {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(String message)? noConnection,
     TResult? Function(String message)? googleClientIdNotRegistered,
+    TResult? Function(String message)? preConnectError,
     TResult? Function(String message)? appleHealthkitPermissionsDenied,
   }) {
     return noConnection?.call(message);
@@ -195,6 +204,7 @@ class _$_NoConnection extends _NoConnection {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(String message)? noConnection,
     TResult Function(String message)? googleClientIdNotRegistered,
+    TResult Function(String message)? preConnectError,
     TResult Function(String message)? appleHealthkitPermissionsDenied,
     required TResult orElse(),
   }) {
@@ -210,6 +220,7 @@ class _$_NoConnection extends _NoConnection {
     required TResult Function(_NoConnection value) noConnection,
     required TResult Function(_GoogleClientIdNotRegistered value)
         googleClientIdNotRegistered,
+    required TResult Function(_PreConnectError value) preConnectError,
     required TResult Function(_AppleHealthkitPermissionsDenied value)
         appleHealthkitPermissionsDenied,
   }) {
@@ -222,6 +233,7 @@ class _$_NoConnection extends _NoConnection {
     TResult? Function(_NoConnection value)? noConnection,
     TResult? Function(_GoogleClientIdNotRegistered value)?
         googleClientIdNotRegistered,
+    TResult? Function(_PreConnectError value)? preConnectError,
     TResult? Function(_AppleHealthkitPermissionsDenied value)?
         appleHealthkitPermissionsDenied,
   }) {
@@ -234,6 +246,7 @@ class _$_NoConnection extends _NoConnection {
     TResult Function(_NoConnection value)? noConnection,
     TResult Function(_GoogleClientIdNotRegistered value)?
         googleClientIdNotRegistered,
+    TResult Function(_PreConnectError value)? preConnectError,
     TResult Function(_AppleHealthkitPermissionsDenied value)?
         appleHealthkitPermissionsDenied,
     required TResult orElse(),
@@ -246,36 +259,37 @@ class _$_NoConnection extends _NoConnection {
 }
 
 abstract class _NoConnection extends HekaHealthError {
-  const factory _NoConnection({final String message}) = _$_NoConnection;
+  const factory _NoConnection({final String message}) = _$NoConnectionImpl;
   const _NoConnection._() : super._();
 
   @override
   String get message;
   @override
   @JsonKey(ignore: true)
-  _$$_NoConnectionCopyWith<_$_NoConnection> get copyWith =>
+  _$$NoConnectionImplCopyWith<_$NoConnectionImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$$_GoogleClientIdNotRegisteredCopyWith<$Res>
+abstract class _$$GoogleClientIdNotRegisteredImplCopyWith<$Res>
     implements $HekaHealthErrorCopyWith<$Res> {
-  factory _$$_GoogleClientIdNotRegisteredCopyWith(
-          _$_GoogleClientIdNotRegistered value,
-          $Res Function(_$_GoogleClientIdNotRegistered) then) =
-      __$$_GoogleClientIdNotRegisteredCopyWithImpl<$Res>;
+  factory _$$GoogleClientIdNotRegisteredImplCopyWith(
+          _$GoogleClientIdNotRegisteredImpl value,
+          $Res Function(_$GoogleClientIdNotRegisteredImpl) then) =
+      __$$GoogleClientIdNotRegisteredImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call({String message});
 }
 
 /// @nodoc
-class __$$_GoogleClientIdNotRegisteredCopyWithImpl<$Res>
-    extends _$HekaHealthErrorCopyWithImpl<$Res, _$_GoogleClientIdNotRegistered>
-    implements _$$_GoogleClientIdNotRegisteredCopyWith<$Res> {
-  __$$_GoogleClientIdNotRegisteredCopyWithImpl(
-      _$_GoogleClientIdNotRegistered _value,
-      $Res Function(_$_GoogleClientIdNotRegistered) _then)
+class __$$GoogleClientIdNotRegisteredImplCopyWithImpl<$Res>
+    extends _$HekaHealthErrorCopyWithImpl<$Res,
+        _$GoogleClientIdNotRegisteredImpl>
+    implements _$$GoogleClientIdNotRegisteredImplCopyWith<$Res> {
+  __$$GoogleClientIdNotRegisteredImplCopyWithImpl(
+      _$GoogleClientIdNotRegisteredImpl _value,
+      $Res Function(_$GoogleClientIdNotRegisteredImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -283,7 +297,7 @@ class __$$_GoogleClientIdNotRegisteredCopyWithImpl<$Res>
   $Res call({
     Object? message = null,
   }) {
-    return _then(_$_GoogleClientIdNotRegistered(
+    return _then(_$GoogleClientIdNotRegisteredImpl(
       message: null == message
           ? _value.message
           : message // ignore: cast_nullable_to_non_nullable
@@ -294,8 +308,8 @@ class __$$_GoogleClientIdNotRegisteredCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_GoogleClientIdNotRegistered extends _GoogleClientIdNotRegistered {
-  const _$_GoogleClientIdNotRegistered(
+class _$GoogleClientIdNotRegisteredImpl extends _GoogleClientIdNotRegistered {
+  const _$GoogleClientIdNotRegisteredImpl(
       {this.message = 'Google Client ID not registered!'})
       : super._();
 
@@ -312,7 +326,7 @@ class _$_GoogleClientIdNotRegistered extends _GoogleClientIdNotRegistered {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_GoogleClientIdNotRegistered &&
+            other is _$GoogleClientIdNotRegisteredImpl &&
             (identical(other.message, message) || other.message == message));
   }
 
@@ -322,15 +336,16 @@ class _$_GoogleClientIdNotRegistered extends _GoogleClientIdNotRegistered {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_GoogleClientIdNotRegisteredCopyWith<_$_GoogleClientIdNotRegistered>
-      get copyWith => __$$_GoogleClientIdNotRegisteredCopyWithImpl<
-          _$_GoogleClientIdNotRegistered>(this, _$identity);
+  _$$GoogleClientIdNotRegisteredImplCopyWith<_$GoogleClientIdNotRegisteredImpl>
+      get copyWith => __$$GoogleClientIdNotRegisteredImplCopyWithImpl<
+          _$GoogleClientIdNotRegisteredImpl>(this, _$identity);
 
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(String message) noConnection,
     required TResult Function(String message) googleClientIdNotRegistered,
+    required TResult Function(String message) preConnectError,
     required TResult Function(String message) appleHealthkitPermissionsDenied,
   }) {
     return googleClientIdNotRegistered(message);
@@ -341,6 +356,7 @@ class _$_GoogleClientIdNotRegistered extends _GoogleClientIdNotRegistered {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(String message)? noConnection,
     TResult? Function(String message)? googleClientIdNotRegistered,
+    TResult? Function(String message)? preConnectError,
     TResult? Function(String message)? appleHealthkitPermissionsDenied,
   }) {
     return googleClientIdNotRegistered?.call(message);
@@ -351,6 +367,7 @@ class _$_GoogleClientIdNotRegistered extends _GoogleClientIdNotRegistered {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(String message)? noConnection,
     TResult Function(String message)? googleClientIdNotRegistered,
+    TResult Function(String message)? preConnectError,
     TResult Function(String message)? appleHealthkitPermissionsDenied,
     required TResult orElse(),
   }) {
@@ -366,6 +383,7 @@ class _$_GoogleClientIdNotRegistered extends _GoogleClientIdNotRegistered {
     required TResult Function(_NoConnection value) noConnection,
     required TResult Function(_GoogleClientIdNotRegistered value)
         googleClientIdNotRegistered,
+    required TResult Function(_PreConnectError value) preConnectError,
     required TResult Function(_AppleHealthkitPermissionsDenied value)
         appleHealthkitPermissionsDenied,
   }) {
@@ -378,6 +396,7 @@ class _$_GoogleClientIdNotRegistered extends _GoogleClientIdNotRegistered {
     TResult? Function(_NoConnection value)? noConnection,
     TResult? Function(_GoogleClientIdNotRegistered value)?
         googleClientIdNotRegistered,
+    TResult? Function(_PreConnectError value)? preConnectError,
     TResult? Function(_AppleHealthkitPermissionsDenied value)?
         appleHealthkitPermissionsDenied,
   }) {
@@ -390,6 +409,7 @@ class _$_GoogleClientIdNotRegistered extends _GoogleClientIdNotRegistered {
     TResult Function(_NoConnection value)? noConnection,
     TResult Function(_GoogleClientIdNotRegistered value)?
         googleClientIdNotRegistered,
+    TResult Function(_PreConnectError value)? preConnectError,
     TResult Function(_AppleHealthkitPermissionsDenied value)?
         appleHealthkitPermissionsDenied,
     required TResult orElse(),
@@ -403,37 +423,34 @@ class _$_GoogleClientIdNotRegistered extends _GoogleClientIdNotRegistered {
 
 abstract class _GoogleClientIdNotRegistered extends HekaHealthError {
   const factory _GoogleClientIdNotRegistered({final String message}) =
-      _$_GoogleClientIdNotRegistered;
+      _$GoogleClientIdNotRegisteredImpl;
   const _GoogleClientIdNotRegistered._() : super._();
 
   @override
   String get message;
   @override
   @JsonKey(ignore: true)
-  _$$_GoogleClientIdNotRegisteredCopyWith<_$_GoogleClientIdNotRegistered>
+  _$$GoogleClientIdNotRegisteredImplCopyWith<_$GoogleClientIdNotRegisteredImpl>
       get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$$_AppleHealthkitPermissionsDeniedCopyWith<$Res>
+abstract class _$$PreConnectErrorImplCopyWith<$Res>
     implements $HekaHealthErrorCopyWith<$Res> {
-  factory _$$_AppleHealthkitPermissionsDeniedCopyWith(
-          _$_AppleHealthkitPermissionsDenied value,
-          $Res Function(_$_AppleHealthkitPermissionsDenied) then) =
-      __$$_AppleHealthkitPermissionsDeniedCopyWithImpl<$Res>;
+  factory _$$PreConnectErrorImplCopyWith(_$PreConnectErrorImpl value,
+          $Res Function(_$PreConnectErrorImpl) then) =
+      __$$PreConnectErrorImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call({String message});
 }
 
 /// @nodoc
-class __$$_AppleHealthkitPermissionsDeniedCopyWithImpl<$Res>
-    extends _$HekaHealthErrorCopyWithImpl<$Res,
-        _$_AppleHealthkitPermissionsDenied>
-    implements _$$_AppleHealthkitPermissionsDeniedCopyWith<$Res> {
-  __$$_AppleHealthkitPermissionsDeniedCopyWithImpl(
-      _$_AppleHealthkitPermissionsDenied _value,
-      $Res Function(_$_AppleHealthkitPermissionsDenied) _then)
+class __$$PreConnectErrorImplCopyWithImpl<$Res>
+    extends _$HekaHealthErrorCopyWithImpl<$Res, _$PreConnectErrorImpl>
+    implements _$$PreConnectErrorImplCopyWith<$Res> {
+  __$$PreConnectErrorImplCopyWithImpl(
+      _$PreConnectErrorImpl _value, $Res Function(_$PreConnectErrorImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -441,7 +458,7 @@ class __$$_AppleHealthkitPermissionsDeniedCopyWithImpl<$Res>
   $Res call({
     Object? message = null,
   }) {
-    return _then(_$_AppleHealthkitPermissionsDenied(
+    return _then(_$PreConnectErrorImpl(
       message: null == message
           ? _value.message
           : message // ignore: cast_nullable_to_non_nullable
@@ -452,9 +469,173 @@ class __$$_AppleHealthkitPermissionsDeniedCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_AppleHealthkitPermissionsDenied
+class _$PreConnectErrorImpl extends _PreConnectError {
+  const _$PreConnectErrorImpl(
+      {this.message = 'Something went wrong! Grant all requested permissions.'})
+      : super._();
+
+  @override
+  @JsonKey()
+  final String message;
+
+  @override
+  String toString() {
+    return 'HekaHealthError.preConnectError(message: $message)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$PreConnectErrorImpl &&
+            (identical(other.message, message) || other.message == message));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, message);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$PreConnectErrorImplCopyWith<_$PreConnectErrorImpl> get copyWith =>
+      __$$PreConnectErrorImplCopyWithImpl<_$PreConnectErrorImpl>(
+          this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(String message) noConnection,
+    required TResult Function(String message) googleClientIdNotRegistered,
+    required TResult Function(String message) preConnectError,
+    required TResult Function(String message) appleHealthkitPermissionsDenied,
+  }) {
+    return preConnectError(message);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(String message)? noConnection,
+    TResult? Function(String message)? googleClientIdNotRegistered,
+    TResult? Function(String message)? preConnectError,
+    TResult? Function(String message)? appleHealthkitPermissionsDenied,
+  }) {
+    return preConnectError?.call(message);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(String message)? noConnection,
+    TResult Function(String message)? googleClientIdNotRegistered,
+    TResult Function(String message)? preConnectError,
+    TResult Function(String message)? appleHealthkitPermissionsDenied,
+    required TResult orElse(),
+  }) {
+    if (preConnectError != null) {
+      return preConnectError(message);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_NoConnection value) noConnection,
+    required TResult Function(_GoogleClientIdNotRegistered value)
+        googleClientIdNotRegistered,
+    required TResult Function(_PreConnectError value) preConnectError,
+    required TResult Function(_AppleHealthkitPermissionsDenied value)
+        appleHealthkitPermissionsDenied,
+  }) {
+    return preConnectError(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_NoConnection value)? noConnection,
+    TResult? Function(_GoogleClientIdNotRegistered value)?
+        googleClientIdNotRegistered,
+    TResult? Function(_PreConnectError value)? preConnectError,
+    TResult? Function(_AppleHealthkitPermissionsDenied value)?
+        appleHealthkitPermissionsDenied,
+  }) {
+    return preConnectError?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_NoConnection value)? noConnection,
+    TResult Function(_GoogleClientIdNotRegistered value)?
+        googleClientIdNotRegistered,
+    TResult Function(_PreConnectError value)? preConnectError,
+    TResult Function(_AppleHealthkitPermissionsDenied value)?
+        appleHealthkitPermissionsDenied,
+    required TResult orElse(),
+  }) {
+    if (preConnectError != null) {
+      return preConnectError(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _PreConnectError extends HekaHealthError {
+  const factory _PreConnectError({final String message}) =
+      _$PreConnectErrorImpl;
+  const _PreConnectError._() : super._();
+
+  @override
+  String get message;
+  @override
+  @JsonKey(ignore: true)
+  _$$PreConnectErrorImplCopyWith<_$PreConnectErrorImpl> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$AppleHealthkitPermissionsDeniedImplCopyWith<$Res>
+    implements $HekaHealthErrorCopyWith<$Res> {
+  factory _$$AppleHealthkitPermissionsDeniedImplCopyWith(
+          _$AppleHealthkitPermissionsDeniedImpl value,
+          $Res Function(_$AppleHealthkitPermissionsDeniedImpl) then) =
+      __$$AppleHealthkitPermissionsDeniedImplCopyWithImpl<$Res>;
+  @override
+  @useResult
+  $Res call({String message});
+}
+
+/// @nodoc
+class __$$AppleHealthkitPermissionsDeniedImplCopyWithImpl<$Res>
+    extends _$HekaHealthErrorCopyWithImpl<$Res,
+        _$AppleHealthkitPermissionsDeniedImpl>
+    implements _$$AppleHealthkitPermissionsDeniedImplCopyWith<$Res> {
+  __$$AppleHealthkitPermissionsDeniedImplCopyWithImpl(
+      _$AppleHealthkitPermissionsDeniedImpl _value,
+      $Res Function(_$AppleHealthkitPermissionsDeniedImpl) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? message = null,
+  }) {
+    return _then(_$AppleHealthkitPermissionsDeniedImpl(
+      message: null == message
+          ? _value.message
+          : message // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$AppleHealthkitPermissionsDeniedImpl
     extends _AppleHealthkitPermissionsDenied {
-  const _$_AppleHealthkitPermissionsDenied(
+  const _$AppleHealthkitPermissionsDeniedImpl(
       {this.message = 'Apple Healthkit permissions denied!'})
       : super._();
 
@@ -471,7 +652,7 @@ class _$_AppleHealthkitPermissionsDenied
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_AppleHealthkitPermissionsDenied &&
+            other is _$AppleHealthkitPermissionsDeniedImpl &&
             (identical(other.message, message) || other.message == message));
   }
 
@@ -481,16 +662,17 @@ class _$_AppleHealthkitPermissionsDenied
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_AppleHealthkitPermissionsDeniedCopyWith<
-          _$_AppleHealthkitPermissionsDenied>
-      get copyWith => __$$_AppleHealthkitPermissionsDeniedCopyWithImpl<
-          _$_AppleHealthkitPermissionsDenied>(this, _$identity);
+  _$$AppleHealthkitPermissionsDeniedImplCopyWith<
+          _$AppleHealthkitPermissionsDeniedImpl>
+      get copyWith => __$$AppleHealthkitPermissionsDeniedImplCopyWithImpl<
+          _$AppleHealthkitPermissionsDeniedImpl>(this, _$identity);
 
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(String message) noConnection,
     required TResult Function(String message) googleClientIdNotRegistered,
+    required TResult Function(String message) preConnectError,
     required TResult Function(String message) appleHealthkitPermissionsDenied,
   }) {
     return appleHealthkitPermissionsDenied(message);
@@ -501,6 +683,7 @@ class _$_AppleHealthkitPermissionsDenied
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(String message)? noConnection,
     TResult? Function(String message)? googleClientIdNotRegistered,
+    TResult? Function(String message)? preConnectError,
     TResult? Function(String message)? appleHealthkitPermissionsDenied,
   }) {
     return appleHealthkitPermissionsDenied?.call(message);
@@ -511,6 +694,7 @@ class _$_AppleHealthkitPermissionsDenied
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(String message)? noConnection,
     TResult Function(String message)? googleClientIdNotRegistered,
+    TResult Function(String message)? preConnectError,
     TResult Function(String message)? appleHealthkitPermissionsDenied,
     required TResult orElse(),
   }) {
@@ -526,6 +710,7 @@ class _$_AppleHealthkitPermissionsDenied
     required TResult Function(_NoConnection value) noConnection,
     required TResult Function(_GoogleClientIdNotRegistered value)
         googleClientIdNotRegistered,
+    required TResult Function(_PreConnectError value) preConnectError,
     required TResult Function(_AppleHealthkitPermissionsDenied value)
         appleHealthkitPermissionsDenied,
   }) {
@@ -538,6 +723,7 @@ class _$_AppleHealthkitPermissionsDenied
     TResult? Function(_NoConnection value)? noConnection,
     TResult? Function(_GoogleClientIdNotRegistered value)?
         googleClientIdNotRegistered,
+    TResult? Function(_PreConnectError value)? preConnectError,
     TResult? Function(_AppleHealthkitPermissionsDenied value)?
         appleHealthkitPermissionsDenied,
   }) {
@@ -550,6 +736,7 @@ class _$_AppleHealthkitPermissionsDenied
     TResult Function(_NoConnection value)? noConnection,
     TResult Function(_GoogleClientIdNotRegistered value)?
         googleClientIdNotRegistered,
+    TResult Function(_PreConnectError value)? preConnectError,
     TResult Function(_AppleHealthkitPermissionsDenied value)?
         appleHealthkitPermissionsDenied,
     required TResult orElse(),
@@ -563,14 +750,14 @@ class _$_AppleHealthkitPermissionsDenied
 
 abstract class _AppleHealthkitPermissionsDenied extends HekaHealthError {
   const factory _AppleHealthkitPermissionsDenied({final String message}) =
-      _$_AppleHealthkitPermissionsDenied;
+      _$AppleHealthkitPermissionsDeniedImpl;
   const _AppleHealthkitPermissionsDenied._() : super._();
 
   @override
   String get message;
   @override
   @JsonKey(ignore: true)
-  _$$_AppleHealthkitPermissionsDeniedCopyWith<
-          _$_AppleHealthkitPermissionsDenied>
+  _$$AppleHealthkitPermissionsDeniedImplCopyWith<
+          _$AppleHealthkitPermissionsDeniedImpl>
       get copyWith => throw _privateConstructorUsedError;
 }

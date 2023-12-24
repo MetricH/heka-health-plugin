@@ -95,8 +95,7 @@ class HekaConnectCubit extends Cubit<HekaConnectState> {
         platformStates: {
           ...state.platformStates,
           platformName: HekaPlatformState.error(
-            // TODO: this is wrong
-            const HekaHealthError.appleHealthkitPermissionsDenied(),
+            const HekaHealthError.preConnectError(),
             userUuid: state.userUuid,
           ),
         },
