@@ -42,14 +42,11 @@ abstract class $ConnectedPlatformCopyWith<$Res> {
       _$ConnectedPlatformCopyWithImpl<$Res, ConnectedPlatform>;
   @useResult
   $Res call(
-      {@JsonKey(name: 'platform_name')
-          String platform,
-      @JsonKey(name: 'logged_in')
-          bool loggedIn,
-      @JsonKey(name: 'last_sync')
-          DateTime? lastSync,
+      {@JsonKey(name: 'platform_name') String platform,
+      @JsonKey(name: 'logged_in') bool loggedIn,
+      @JsonKey(name: 'last_sync') DateTime? lastSync,
       @JsonKey(name: 'connected_device_uuids')
-          List<String>? connectedDevicesUUIDs});
+      List<String>? connectedDevicesUUIDs});
 }
 
 /// @nodoc
@@ -92,30 +89,27 @@ class _$ConnectedPlatformCopyWithImpl<$Res, $Val extends ConnectedPlatform>
 }
 
 /// @nodoc
-abstract class _$$_ConnectedPlatformCopyWith<$Res>
+abstract class _$$ConnectedPlatformImplCopyWith<$Res>
     implements $ConnectedPlatformCopyWith<$Res> {
-  factory _$$_ConnectedPlatformCopyWith(_$_ConnectedPlatform value,
-          $Res Function(_$_ConnectedPlatform) then) =
-      __$$_ConnectedPlatformCopyWithImpl<$Res>;
+  factory _$$ConnectedPlatformImplCopyWith(_$ConnectedPlatformImpl value,
+          $Res Function(_$ConnectedPlatformImpl) then) =
+      __$$ConnectedPlatformImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
-      {@JsonKey(name: 'platform_name')
-          String platform,
-      @JsonKey(name: 'logged_in')
-          bool loggedIn,
-      @JsonKey(name: 'last_sync')
-          DateTime? lastSync,
+      {@JsonKey(name: 'platform_name') String platform,
+      @JsonKey(name: 'logged_in') bool loggedIn,
+      @JsonKey(name: 'last_sync') DateTime? lastSync,
       @JsonKey(name: 'connected_device_uuids')
-          List<String>? connectedDevicesUUIDs});
+      List<String>? connectedDevicesUUIDs});
 }
 
 /// @nodoc
-class __$$_ConnectedPlatformCopyWithImpl<$Res>
-    extends _$ConnectedPlatformCopyWithImpl<$Res, _$_ConnectedPlatform>
-    implements _$$_ConnectedPlatformCopyWith<$Res> {
-  __$$_ConnectedPlatformCopyWithImpl(
-      _$_ConnectedPlatform _value, $Res Function(_$_ConnectedPlatform) _then)
+class __$$ConnectedPlatformImplCopyWithImpl<$Res>
+    extends _$ConnectedPlatformCopyWithImpl<$Res, _$ConnectedPlatformImpl>
+    implements _$$ConnectedPlatformImplCopyWith<$Res> {
+  __$$ConnectedPlatformImplCopyWithImpl(_$ConnectedPlatformImpl _value,
+      $Res Function(_$ConnectedPlatformImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -126,7 +120,7 @@ class __$$_ConnectedPlatformCopyWithImpl<$Res>
     Object? lastSync = freezed,
     Object? connectedDevicesUUIDs = freezed,
   }) {
-    return _then(_$_ConnectedPlatform(
+    return _then(_$ConnectedPlatformImpl(
       platform: null == platform
           ? _value.platform
           : platform // ignore: cast_nullable_to_non_nullable
@@ -149,21 +143,18 @@ class __$$_ConnectedPlatformCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$_ConnectedPlatform extends _ConnectedPlatform {
-  const _$_ConnectedPlatform(
-      {@JsonKey(name: 'platform_name')
-          required this.platform,
-      @JsonKey(name: 'logged_in')
-          required this.loggedIn,
-      @JsonKey(name: 'last_sync')
-          required this.lastSync,
+class _$ConnectedPlatformImpl extends _ConnectedPlatform {
+  const _$ConnectedPlatformImpl(
+      {@JsonKey(name: 'platform_name') required this.platform,
+      @JsonKey(name: 'logged_in') required this.loggedIn,
+      @JsonKey(name: 'last_sync') required this.lastSync,
       @JsonKey(name: 'connected_device_uuids')
-          required final List<String>? connectedDevicesUUIDs})
+      required final List<String>? connectedDevicesUUIDs})
       : _connectedDevicesUUIDs = connectedDevicesUUIDs,
         super._();
 
-  factory _$_ConnectedPlatform.fromJson(Map<String, dynamic> json) =>
-      _$$_ConnectedPlatformFromJson(json);
+  factory _$ConnectedPlatformImpl.fromJson(Map<String, dynamic> json) =>
+      _$$ConnectedPlatformImplFromJson(json);
 
   @override
   @JsonKey(name: 'platform_name')
@@ -195,7 +186,7 @@ class _$_ConnectedPlatform extends _ConnectedPlatform {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_ConnectedPlatform &&
+            other is _$ConnectedPlatformImpl &&
             (identical(other.platform, platform) ||
                 other.platform == platform) &&
             (identical(other.loggedIn, loggedIn) ||
@@ -214,13 +205,13 @@ class _$_ConnectedPlatform extends _ConnectedPlatform {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_ConnectedPlatformCopyWith<_$_ConnectedPlatform> get copyWith =>
-      __$$_ConnectedPlatformCopyWithImpl<_$_ConnectedPlatform>(
+  _$$ConnectedPlatformImplCopyWith<_$ConnectedPlatformImpl> get copyWith =>
+      __$$ConnectedPlatformImplCopyWithImpl<_$ConnectedPlatformImpl>(
           this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_ConnectedPlatformToJson(
+    return _$$ConnectedPlatformImplToJson(
       this,
     );
   }
@@ -228,19 +219,16 @@ class _$_ConnectedPlatform extends _ConnectedPlatform {
 
 abstract class _ConnectedPlatform extends ConnectedPlatform {
   const factory _ConnectedPlatform(
-          {@JsonKey(name: 'platform_name')
-              required final String platform,
-          @JsonKey(name: 'logged_in')
-              required final bool loggedIn,
-          @JsonKey(name: 'last_sync')
-              required final DateTime? lastSync,
+          {@JsonKey(name: 'platform_name') required final String platform,
+          @JsonKey(name: 'logged_in') required final bool loggedIn,
+          @JsonKey(name: 'last_sync') required final DateTime? lastSync,
           @JsonKey(name: 'connected_device_uuids')
-              required final List<String>? connectedDevicesUUIDs}) =
-      _$_ConnectedPlatform;
+          required final List<String>? connectedDevicesUUIDs}) =
+      _$ConnectedPlatformImpl;
   const _ConnectedPlatform._() : super._();
 
   factory _ConnectedPlatform.fromJson(Map<String, dynamic> json) =
-      _$_ConnectedPlatform.fromJson;
+      _$ConnectedPlatformImpl.fromJson;
 
   @override
   @JsonKey(name: 'platform_name')
@@ -256,6 +244,6 @@ abstract class _ConnectedPlatform extends ConnectedPlatform {
   List<String>? get connectedDevicesUUIDs;
   @override
   @JsonKey(ignore: true)
-  _$$_ConnectedPlatformCopyWith<_$_ConnectedPlatform> get copyWith =>
+  _$$ConnectedPlatformImplCopyWith<_$ConnectedPlatformImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

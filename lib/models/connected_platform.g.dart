@@ -6,8 +6,9 @@ part of 'connected_platform.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$_ConnectedPlatform _$$_ConnectedPlatformFromJson(Map<String, dynamic> json) =>
-    _$_ConnectedPlatform(
+_$ConnectedPlatformImpl _$$ConnectedPlatformImplFromJson(
+        Map<String, dynamic> json) =>
+    _$ConnectedPlatformImpl(
       platform: json['platform_name'] as String,
       loggedIn: json['logged_in'] as bool,
       lastSync: json['last_sync'] == null
@@ -18,8 +19,8 @@ _$_ConnectedPlatform _$$_ConnectedPlatformFromJson(Map<String, dynamic> json) =>
           .toList(),
     );
 
-Map<String, dynamic> _$$_ConnectedPlatformToJson(
-        _$_ConnectedPlatform instance) =>
+Map<String, dynamic> _$$ConnectedPlatformImplToJson(
+        _$ConnectedPlatformImpl instance) =>
     <String, dynamic>{
       'platform_name': instance.platform,
       'logged_in': instance.loggedIn,

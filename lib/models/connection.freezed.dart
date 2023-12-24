@@ -73,11 +73,11 @@ class _$ConnectionCopyWithImpl<$Res, $Val extends Connection>
 }
 
 /// @nodoc
-abstract class _$$_ConnectionCopyWith<$Res>
+abstract class _$$ConnectionImplCopyWith<$Res>
     implements $ConnectionCopyWith<$Res> {
-  factory _$$_ConnectionCopyWith(
-          _$_Connection value, $Res Function(_$_Connection) then) =
-      __$$_ConnectionCopyWithImpl<$Res>;
+  factory _$$ConnectionImplCopyWith(
+          _$ConnectionImpl value, $Res Function(_$ConnectionImpl) then) =
+      __$$ConnectionImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
@@ -86,11 +86,11 @@ abstract class _$$_ConnectionCopyWith<$Res>
 }
 
 /// @nodoc
-class __$$_ConnectionCopyWithImpl<$Res>
-    extends _$ConnectionCopyWithImpl<$Res, _$_Connection>
-    implements _$$_ConnectionCopyWith<$Res> {
-  __$$_ConnectionCopyWithImpl(
-      _$_Connection _value, $Res Function(_$_Connection) _then)
+class __$$ConnectionImplCopyWithImpl<$Res>
+    extends _$ConnectionCopyWithImpl<$Res, _$ConnectionImpl>
+    implements _$$ConnectionImplCopyWith<$Res> {
+  __$$ConnectionImplCopyWithImpl(
+      _$ConnectionImpl _value, $Res Function(_$ConnectionImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -99,7 +99,7 @@ class __$$_ConnectionCopyWithImpl<$Res>
     Object? userUuid = null,
     Object? connections = null,
   }) {
-    return _then(_$_Connection(
+    return _then(_$ConnectionImpl(
       userUuid: null == userUuid
           ? _value.userUuid
           : userUuid // ignore: cast_nullable_to_non_nullable
@@ -114,15 +114,15 @@ class __$$_ConnectionCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$_Connection extends _Connection {
-  const _$_Connection(
+class _$ConnectionImpl extends _Connection {
+  const _$ConnectionImpl(
       {@JsonKey(name: 'user_uuid') required this.userUuid,
       required final Map<String, ConnectedPlatform?> connections})
       : _connections = connections,
         super._();
 
-  factory _$_Connection.fromJson(Map<String, dynamic> json) =>
-      _$$_ConnectionFromJson(json);
+  factory _$ConnectionImpl.fromJson(Map<String, dynamic> json) =>
+      _$$ConnectionImplFromJson(json);
 
 // ignore: invalid_annotation_target
   @override
@@ -145,7 +145,7 @@ class _$_Connection extends _Connection {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_Connection &&
+            other is _$ConnectionImpl &&
             (identical(other.userUuid, userUuid) ||
                 other.userUuid == userUuid) &&
             const DeepCollectionEquality()
@@ -160,12 +160,12 @@ class _$_Connection extends _Connection {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_ConnectionCopyWith<_$_Connection> get copyWith =>
-      __$$_ConnectionCopyWithImpl<_$_Connection>(this, _$identity);
+  _$$ConnectionImplCopyWith<_$ConnectionImpl> get copyWith =>
+      __$$ConnectionImplCopyWithImpl<_$ConnectionImpl>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_ConnectionToJson(
+    return _$$ConnectionImplToJson(
       this,
     );
   }
@@ -175,11 +175,11 @@ abstract class _Connection extends Connection {
   const factory _Connection(
           {@JsonKey(name: 'user_uuid') required final String userUuid,
           required final Map<String, ConnectedPlatform?> connections}) =
-      _$_Connection;
+      _$ConnectionImpl;
   const _Connection._() : super._();
 
   factory _Connection.fromJson(Map<String, dynamic> json) =
-      _$_Connection.fromJson;
+      _$ConnectionImpl.fromJson;
 
   @override // ignore: invalid_annotation_target
   @JsonKey(name: 'user_uuid')
@@ -188,6 +188,6 @@ abstract class _Connection extends Connection {
   Map<String, ConnectedPlatform?> get connections;
   @override
   @JsonKey(ignore: true)
-  _$$_ConnectionCopyWith<_$_Connection> get copyWith =>
+  _$$ConnectionImplCopyWith<_$ConnectionImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

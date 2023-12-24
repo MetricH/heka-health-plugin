@@ -88,11 +88,11 @@ class _$EnabledPlatformCopyWithImpl<$Res, $Val extends EnabledPlatform>
 }
 
 /// @nodoc
-abstract class _$$_EnabledPlatformCopyWith<$Res>
+abstract class _$$EnabledPlatformImplCopyWith<$Res>
     implements $EnabledPlatformCopyWith<$Res> {
-  factory _$$_EnabledPlatformCopyWith(
-          _$_EnabledPlatform value, $Res Function(_$_EnabledPlatform) then) =
-      __$$_EnabledPlatformCopyWithImpl<$Res>;
+  factory _$$EnabledPlatformImplCopyWith(_$EnabledPlatformImpl value,
+          $Res Function(_$EnabledPlatformImpl) then) =
+      __$$EnabledPlatformImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
@@ -103,11 +103,11 @@ abstract class _$$_EnabledPlatformCopyWith<$Res>
 }
 
 /// @nodoc
-class __$$_EnabledPlatformCopyWithImpl<$Res>
-    extends _$EnabledPlatformCopyWithImpl<$Res, _$_EnabledPlatform>
-    implements _$$_EnabledPlatformCopyWith<$Res> {
-  __$$_EnabledPlatformCopyWithImpl(
-      _$_EnabledPlatform _value, $Res Function(_$_EnabledPlatform) _then)
+class __$$EnabledPlatformImplCopyWithImpl<$Res>
+    extends _$EnabledPlatformCopyWithImpl<$Res, _$EnabledPlatformImpl>
+    implements _$$EnabledPlatformImplCopyWith<$Res> {
+  __$$EnabledPlatformImplCopyWithImpl(
+      _$EnabledPlatformImpl _value, $Res Function(_$EnabledPlatformImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -118,7 +118,7 @@ class __$$_EnabledPlatformCopyWithImpl<$Res>
     Object? platformAppSecret = freezed,
     Object? enabledScopes = freezed,
   }) {
-    return _then(_$_EnabledPlatform(
+    return _then(_$EnabledPlatformImpl(
       platformName: null == platformName
           ? _value.platformName
           : platformName // ignore: cast_nullable_to_non_nullable
@@ -141,20 +141,17 @@ class __$$_EnabledPlatformCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$_EnabledPlatform implements _EnabledPlatform {
-  const _$_EnabledPlatform(
-      {@JsonKey(name: 'platform_name')
-          required this.platformName,
-      @JsonKey(name: 'platform_app_id')
-          required this.platformAppId,
-      @JsonKey(name: 'platform_app_secret')
-          required this.platformAppSecret,
+class _$EnabledPlatformImpl implements _EnabledPlatform {
+  const _$EnabledPlatformImpl(
+      {@JsonKey(name: 'platform_name') required this.platformName,
+      @JsonKey(name: 'platform_app_id') required this.platformAppId,
+      @JsonKey(name: 'platform_app_secret') required this.platformAppSecret,
       @JsonKey(name: 'enabled_scopes')
-          required final List<String>? enabledScopes})
+      required final List<String>? enabledScopes})
       : _enabledScopes = enabledScopes;
 
-  factory _$_EnabledPlatform.fromJson(Map<String, dynamic> json) =>
-      _$$_EnabledPlatformFromJson(json);
+  factory _$EnabledPlatformImpl.fromJson(Map<String, dynamic> json) =>
+      _$$EnabledPlatformImplFromJson(json);
 
   @override
   @JsonKey(name: 'platform_name')
@@ -185,7 +182,7 @@ class _$_EnabledPlatform implements _EnabledPlatform {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_EnabledPlatform &&
+            other is _$EnabledPlatformImpl &&
             (identical(other.platformName, platformName) ||
                 other.platformName == platformName) &&
             (identical(other.platformAppId, platformAppId) ||
@@ -204,12 +201,13 @@ class _$_EnabledPlatform implements _EnabledPlatform {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_EnabledPlatformCopyWith<_$_EnabledPlatform> get copyWith =>
-      __$$_EnabledPlatformCopyWithImpl<_$_EnabledPlatform>(this, _$identity);
+  _$$EnabledPlatformImplCopyWith<_$EnabledPlatformImpl> get copyWith =>
+      __$$EnabledPlatformImplCopyWithImpl<_$EnabledPlatformImpl>(
+          this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_EnabledPlatformToJson(
+    return _$$EnabledPlatformImplToJson(
       this,
     );
   }
@@ -217,17 +215,15 @@ class _$_EnabledPlatform implements _EnabledPlatform {
 
 abstract class _EnabledPlatform implements EnabledPlatform {
   const factory _EnabledPlatform(
-      {@JsonKey(name: 'platform_name')
-          required final String platformName,
-      @JsonKey(name: 'platform_app_id')
-          required final String? platformAppId,
+      {@JsonKey(name: 'platform_name') required final String platformName,
+      @JsonKey(name: 'platform_app_id') required final String? platformAppId,
       @JsonKey(name: 'platform_app_secret')
-          required final String? platformAppSecret,
+      required final String? platformAppSecret,
       @JsonKey(name: 'enabled_scopes')
-          required final List<String>? enabledScopes}) = _$_EnabledPlatform;
+      required final List<String>? enabledScopes}) = _$EnabledPlatformImpl;
 
   factory _EnabledPlatform.fromJson(Map<String, dynamic> json) =
-      _$_EnabledPlatform.fromJson;
+      _$EnabledPlatformImpl.fromJson;
 
   @override
   @JsonKey(name: 'platform_name')
@@ -243,6 +239,6 @@ abstract class _EnabledPlatform implements EnabledPlatform {
   List<String>? get enabledScopes;
   @override
   @JsonKey(ignore: true)
-  _$$_EnabledPlatformCopyWith<_$_EnabledPlatform> get copyWith =>
+  _$$EnabledPlatformImplCopyWith<_$EnabledPlatformImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

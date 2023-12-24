@@ -38,9 +38,8 @@ abstract class $UserAppCopyWith<$Res> {
   @useResult
   $Res call(
       {@JsonKey(name: 'enabled_platforms')
-          List<EnabledPlatform> enabledPlatforms,
-      @JsonKey(name: 'payment_plan')
-          String paymentPlan});
+      List<EnabledPlatform> enabledPlatforms,
+      @JsonKey(name: 'payment_plan') String paymentPlan});
 }
 
 /// @nodoc
@@ -73,24 +72,24 @@ class _$UserAppCopyWithImpl<$Res, $Val extends UserApp>
 }
 
 /// @nodoc
-abstract class _$$_UserAppCopyWith<$Res> implements $UserAppCopyWith<$Res> {
-  factory _$$_UserAppCopyWith(
-          _$_UserApp value, $Res Function(_$_UserApp) then) =
-      __$$_UserAppCopyWithImpl<$Res>;
+abstract class _$$UserAppImplCopyWith<$Res> implements $UserAppCopyWith<$Res> {
+  factory _$$UserAppImplCopyWith(
+          _$UserAppImpl value, $Res Function(_$UserAppImpl) then) =
+      __$$UserAppImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
       {@JsonKey(name: 'enabled_platforms')
-          List<EnabledPlatform> enabledPlatforms,
-      @JsonKey(name: 'payment_plan')
-          String paymentPlan});
+      List<EnabledPlatform> enabledPlatforms,
+      @JsonKey(name: 'payment_plan') String paymentPlan});
 }
 
 /// @nodoc
-class __$$_UserAppCopyWithImpl<$Res>
-    extends _$UserAppCopyWithImpl<$Res, _$_UserApp>
-    implements _$$_UserAppCopyWith<$Res> {
-  __$$_UserAppCopyWithImpl(_$_UserApp _value, $Res Function(_$_UserApp) _then)
+class __$$UserAppImplCopyWithImpl<$Res>
+    extends _$UserAppCopyWithImpl<$Res, _$UserAppImpl>
+    implements _$$UserAppImplCopyWith<$Res> {
+  __$$UserAppImplCopyWithImpl(
+      _$UserAppImpl _value, $Res Function(_$UserAppImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -99,7 +98,7 @@ class __$$_UserAppCopyWithImpl<$Res>
     Object? enabledPlatforms = null,
     Object? paymentPlan = null,
   }) {
-    return _then(_$_UserApp(
+    return _then(_$UserAppImpl(
       enabledPlatforms: null == enabledPlatforms
           ? _value._enabledPlatforms
           : enabledPlatforms // ignore: cast_nullable_to_non_nullable
@@ -114,17 +113,16 @@ class __$$_UserAppCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$_UserApp extends _UserApp {
-  _$_UserApp(
+class _$UserAppImpl extends _UserApp {
+  _$UserAppImpl(
       {@JsonKey(name: 'enabled_platforms')
-          required final List<EnabledPlatform> enabledPlatforms,
-      @JsonKey(name: 'payment_plan')
-          required this.paymentPlan})
+      required final List<EnabledPlatform> enabledPlatforms,
+      @JsonKey(name: 'payment_plan') required this.paymentPlan})
       : _enabledPlatforms = enabledPlatforms,
         super._();
 
-  factory _$_UserApp.fromJson(Map<String, dynamic> json) =>
-      _$$_UserAppFromJson(json);
+  factory _$UserAppImpl.fromJson(Map<String, dynamic> json) =>
+      _$$UserAppImplFromJson(json);
 
   final List<EnabledPlatform> _enabledPlatforms;
   @override
@@ -149,7 +147,7 @@ class _$_UserApp extends _UserApp {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_UserApp &&
+            other is _$UserAppImpl &&
             const DeepCollectionEquality()
                 .equals(other._enabledPlatforms, _enabledPlatforms) &&
             (identical(other.paymentPlan, paymentPlan) ||
@@ -164,12 +162,12 @@ class _$_UserApp extends _UserApp {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_UserAppCopyWith<_$_UserApp> get copyWith =>
-      __$$_UserAppCopyWithImpl<_$_UserApp>(this, _$identity);
+  _$$UserAppImplCopyWith<_$UserAppImpl> get copyWith =>
+      __$$UserAppImplCopyWithImpl<_$UserAppImpl>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_UserAppToJson(
+    return _$$UserAppImplToJson(
       this,
     );
   }
@@ -177,13 +175,13 @@ class _$_UserApp extends _UserApp {
 
 abstract class _UserApp extends UserApp {
   factory _UserApp(
-      {@JsonKey(name: 'enabled_platforms')
+          {@JsonKey(name: 'enabled_platforms')
           required final List<EnabledPlatform> enabledPlatforms,
-      @JsonKey(name: 'payment_plan')
-          required final String paymentPlan}) = _$_UserApp;
+          @JsonKey(name: 'payment_plan') required final String paymentPlan}) =
+      _$UserAppImpl;
   _UserApp._() : super._();
 
-  factory _UserApp.fromJson(Map<String, dynamic> json) = _$_UserApp.fromJson;
+  factory _UserApp.fromJson(Map<String, dynamic> json) = _$UserAppImpl.fromJson;
 
   @override
   @JsonKey(name: 'enabled_platforms')
@@ -193,6 +191,6 @@ abstract class _UserApp extends UserApp {
   String get paymentPlan;
   @override
   @JsonKey(ignore: true)
-  _$$_UserAppCopyWith<_$_UserApp> get copyWith =>
+  _$$UserAppImplCopyWith<_$UserAppImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

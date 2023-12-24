@@ -135,21 +135,22 @@ class _$HekaPlatformStateCopyWithImpl<$Res, $Val extends HekaPlatformState>
 }
 
 /// @nodoc
-abstract class _$$_InitialCopyWith<$Res>
+abstract class _$$InitialImplCopyWith<$Res>
     implements $HekaPlatformStateCopyWith<$Res> {
-  factory _$$_InitialCopyWith(
-          _$_Initial value, $Res Function(_$_Initial) then) =
-      __$$_InitialCopyWithImpl<$Res>;
+  factory _$$InitialImplCopyWith(
+          _$InitialImpl value, $Res Function(_$InitialImpl) then) =
+      __$$InitialImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call({String userUuid});
 }
 
 /// @nodoc
-class __$$_InitialCopyWithImpl<$Res>
-    extends _$HekaPlatformStateCopyWithImpl<$Res, _$_Initial>
-    implements _$$_InitialCopyWith<$Res> {
-  __$$_InitialCopyWithImpl(_$_Initial _value, $Res Function(_$_Initial) _then)
+class __$$InitialImplCopyWithImpl<$Res>
+    extends _$HekaPlatformStateCopyWithImpl<$Res, _$InitialImpl>
+    implements _$$InitialImplCopyWith<$Res> {
+  __$$InitialImplCopyWithImpl(
+      _$InitialImpl _value, $Res Function(_$InitialImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -157,7 +158,7 @@ class __$$_InitialCopyWithImpl<$Res>
   $Res call({
     Object? userUuid = null,
   }) {
-    return _then(_$_Initial(
+    return _then(_$InitialImpl(
       userUuid: null == userUuid
           ? _value.userUuid
           : userUuid // ignore: cast_nullable_to_non_nullable
@@ -168,8 +169,8 @@ class __$$_InitialCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_Initial implements _Initial {
-  const _$_Initial({required this.userUuid});
+class _$InitialImpl implements _Initial {
+  const _$InitialImpl({required this.userUuid});
 
   @override
   final String userUuid;
@@ -183,7 +184,7 @@ class _$_Initial implements _Initial {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_Initial &&
+            other is _$InitialImpl &&
             (identical(other.userUuid, userUuid) ||
                 other.userUuid == userUuid));
   }
@@ -194,8 +195,8 @@ class _$_Initial implements _Initial {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_InitialCopyWith<_$_Initial> get copyWith =>
-      __$$_InitialCopyWithImpl<_$_Initial>(this, _$identity);
+  _$$InitialImplCopyWith<_$InitialImpl> get copyWith =>
+      __$$InitialImplCopyWithImpl<_$InitialImpl>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -301,33 +302,33 @@ class _$_Initial implements _Initial {
 }
 
 abstract class _Initial implements HekaPlatformState {
-  const factory _Initial({required final String userUuid}) = _$_Initial;
+  const factory _Initial({required final String userUuid}) = _$InitialImpl;
 
   @override
   String get userUuid;
   @override
   @JsonKey(ignore: true)
-  _$$_InitialCopyWith<_$_Initial> get copyWith =>
+  _$$InitialImplCopyWith<_$InitialImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$$_CheckingConnectionCopyWith<$Res>
+abstract class _$$CheckingConnectionImplCopyWith<$Res>
     implements $HekaPlatformStateCopyWith<$Res> {
-  factory _$$_CheckingConnectionCopyWith(_$_CheckingConnection value,
-          $Res Function(_$_CheckingConnection) then) =
-      __$$_CheckingConnectionCopyWithImpl<$Res>;
+  factory _$$CheckingConnectionImplCopyWith(_$CheckingConnectionImpl value,
+          $Res Function(_$CheckingConnectionImpl) then) =
+      __$$CheckingConnectionImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call({String userUuid});
 }
 
 /// @nodoc
-class __$$_CheckingConnectionCopyWithImpl<$Res>
-    extends _$HekaPlatformStateCopyWithImpl<$Res, _$_CheckingConnection>
-    implements _$$_CheckingConnectionCopyWith<$Res> {
-  __$$_CheckingConnectionCopyWithImpl(
-      _$_CheckingConnection _value, $Res Function(_$_CheckingConnection) _then)
+class __$$CheckingConnectionImplCopyWithImpl<$Res>
+    extends _$HekaPlatformStateCopyWithImpl<$Res, _$CheckingConnectionImpl>
+    implements _$$CheckingConnectionImplCopyWith<$Res> {
+  __$$CheckingConnectionImplCopyWithImpl(_$CheckingConnectionImpl _value,
+      $Res Function(_$CheckingConnectionImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -335,7 +336,7 @@ class __$$_CheckingConnectionCopyWithImpl<$Res>
   $Res call({
     Object? userUuid = null,
   }) {
-    return _then(_$_CheckingConnection(
+    return _then(_$CheckingConnectionImpl(
       userUuid: null == userUuid
           ? _value.userUuid
           : userUuid // ignore: cast_nullable_to_non_nullable
@@ -346,8 +347,8 @@ class __$$_CheckingConnectionCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_CheckingConnection implements _CheckingConnection {
-  const _$_CheckingConnection({required this.userUuid});
+class _$CheckingConnectionImpl implements _CheckingConnection {
+  const _$CheckingConnectionImpl({required this.userUuid});
 
   @override
   final String userUuid;
@@ -361,7 +362,7 @@ class _$_CheckingConnection implements _CheckingConnection {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_CheckingConnection &&
+            other is _$CheckingConnectionImpl &&
             (identical(other.userUuid, userUuid) ||
                 other.userUuid == userUuid));
   }
@@ -372,8 +373,8 @@ class _$_CheckingConnection implements _CheckingConnection {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_CheckingConnectionCopyWith<_$_CheckingConnection> get copyWith =>
-      __$$_CheckingConnectionCopyWithImpl<_$_CheckingConnection>(
+  _$$CheckingConnectionImplCopyWith<_$CheckingConnectionImpl> get copyWith =>
+      __$$CheckingConnectionImplCopyWithImpl<_$CheckingConnectionImpl>(
           this, _$identity);
 
   @override
@@ -481,33 +482,33 @@ class _$_CheckingConnection implements _CheckingConnection {
 
 abstract class _CheckingConnection implements HekaPlatformState {
   const factory _CheckingConnection({required final String userUuid}) =
-      _$_CheckingConnection;
+      _$CheckingConnectionImpl;
 
   @override
   String get userUuid;
   @override
   @JsonKey(ignore: true)
-  _$$_CheckingConnectionCopyWith<_$_CheckingConnection> get copyWith =>
+  _$$CheckingConnectionImplCopyWith<_$CheckingConnectionImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$$_NoConnectionCopyWith<$Res>
+abstract class _$$NoConnectionImplCopyWith<$Res>
     implements $HekaPlatformStateCopyWith<$Res> {
-  factory _$$_NoConnectionCopyWith(
-          _$_NoConnection value, $Res Function(_$_NoConnection) then) =
-      __$$_NoConnectionCopyWithImpl<$Res>;
+  factory _$$NoConnectionImplCopyWith(
+          _$NoConnectionImpl value, $Res Function(_$NoConnectionImpl) then) =
+      __$$NoConnectionImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call({String userUuid});
 }
 
 /// @nodoc
-class __$$_NoConnectionCopyWithImpl<$Res>
-    extends _$HekaPlatformStateCopyWithImpl<$Res, _$_NoConnection>
-    implements _$$_NoConnectionCopyWith<$Res> {
-  __$$_NoConnectionCopyWithImpl(
-      _$_NoConnection _value, $Res Function(_$_NoConnection) _then)
+class __$$NoConnectionImplCopyWithImpl<$Res>
+    extends _$HekaPlatformStateCopyWithImpl<$Res, _$NoConnectionImpl>
+    implements _$$NoConnectionImplCopyWith<$Res> {
+  __$$NoConnectionImplCopyWithImpl(
+      _$NoConnectionImpl _value, $Res Function(_$NoConnectionImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -515,7 +516,7 @@ class __$$_NoConnectionCopyWithImpl<$Res>
   $Res call({
     Object? userUuid = null,
   }) {
-    return _then(_$_NoConnection(
+    return _then(_$NoConnectionImpl(
       userUuid: null == userUuid
           ? _value.userUuid
           : userUuid // ignore: cast_nullable_to_non_nullable
@@ -526,8 +527,8 @@ class __$$_NoConnectionCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_NoConnection implements _NoConnection {
-  const _$_NoConnection({required this.userUuid});
+class _$NoConnectionImpl implements _NoConnection {
+  const _$NoConnectionImpl({required this.userUuid});
 
   @override
   final String userUuid;
@@ -541,7 +542,7 @@ class _$_NoConnection implements _NoConnection {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_NoConnection &&
+            other is _$NoConnectionImpl &&
             (identical(other.userUuid, userUuid) ||
                 other.userUuid == userUuid));
   }
@@ -552,8 +553,8 @@ class _$_NoConnection implements _NoConnection {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_NoConnectionCopyWith<_$_NoConnection> get copyWith =>
-      __$$_NoConnectionCopyWithImpl<_$_NoConnection>(this, _$identity);
+  _$$NoConnectionImplCopyWith<_$NoConnectionImpl> get copyWith =>
+      __$$NoConnectionImplCopyWithImpl<_$NoConnectionImpl>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -660,22 +661,22 @@ class _$_NoConnection implements _NoConnection {
 
 abstract class _NoConnection implements HekaPlatformState {
   const factory _NoConnection({required final String userUuid}) =
-      _$_NoConnection;
+      _$NoConnectionImpl;
 
   @override
   String get userUuid;
   @override
   @JsonKey(ignore: true)
-  _$$_NoConnectionCopyWith<_$_NoConnection> get copyWith =>
+  _$$NoConnectionImplCopyWith<_$NoConnectionImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$$_TokenInvalidatedCopyWith<$Res>
+abstract class _$$TokenInvalidatedImplCopyWith<$Res>
     implements $HekaPlatformStateCopyWith<$Res> {
-  factory _$$_TokenInvalidatedCopyWith(
-          _$_TokenInvalidated value, $Res Function(_$_TokenInvalidated) then) =
-      __$$_TokenInvalidatedCopyWithImpl<$Res>;
+  factory _$$TokenInvalidatedImplCopyWith(_$TokenInvalidatedImpl value,
+          $Res Function(_$TokenInvalidatedImpl) then) =
+      __$$TokenInvalidatedImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call({ConnectedPlatform connection, String userUuid});
@@ -684,11 +685,11 @@ abstract class _$$_TokenInvalidatedCopyWith<$Res>
 }
 
 /// @nodoc
-class __$$_TokenInvalidatedCopyWithImpl<$Res>
-    extends _$HekaPlatformStateCopyWithImpl<$Res, _$_TokenInvalidated>
-    implements _$$_TokenInvalidatedCopyWith<$Res> {
-  __$$_TokenInvalidatedCopyWithImpl(
-      _$_TokenInvalidated _value, $Res Function(_$_TokenInvalidated) _then)
+class __$$TokenInvalidatedImplCopyWithImpl<$Res>
+    extends _$HekaPlatformStateCopyWithImpl<$Res, _$TokenInvalidatedImpl>
+    implements _$$TokenInvalidatedImplCopyWith<$Res> {
+  __$$TokenInvalidatedImplCopyWithImpl(_$TokenInvalidatedImpl _value,
+      $Res Function(_$TokenInvalidatedImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -697,7 +698,7 @@ class __$$_TokenInvalidatedCopyWithImpl<$Res>
     Object? connection = null,
     Object? userUuid = null,
   }) {
-    return _then(_$_TokenInvalidated(
+    return _then(_$TokenInvalidatedImpl(
       null == connection
           ? _value.connection
           : connection // ignore: cast_nullable_to_non_nullable
@@ -720,8 +721,8 @@ class __$$_TokenInvalidatedCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_TokenInvalidated implements _TokenInvalidated {
-  const _$_TokenInvalidated(this.connection, {required this.userUuid});
+class _$TokenInvalidatedImpl implements _TokenInvalidated {
+  const _$TokenInvalidatedImpl(this.connection, {required this.userUuid});
 
   @override
   final ConnectedPlatform connection;
@@ -737,7 +738,7 @@ class _$_TokenInvalidated implements _TokenInvalidated {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_TokenInvalidated &&
+            other is _$TokenInvalidatedImpl &&
             (identical(other.connection, connection) ||
                 other.connection == connection) &&
             (identical(other.userUuid, userUuid) ||
@@ -750,8 +751,9 @@ class _$_TokenInvalidated implements _TokenInvalidated {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_TokenInvalidatedCopyWith<_$_TokenInvalidated> get copyWith =>
-      __$$_TokenInvalidatedCopyWithImpl<_$_TokenInvalidated>(this, _$identity);
+  _$$TokenInvalidatedImplCopyWith<_$TokenInvalidatedImpl> get copyWith =>
+      __$$TokenInvalidatedImplCopyWithImpl<_$TokenInvalidatedImpl>(
+          this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -858,34 +860,34 @@ class _$_TokenInvalidated implements _TokenInvalidated {
 
 abstract class _TokenInvalidated implements HekaPlatformState {
   const factory _TokenInvalidated(final ConnectedPlatform connection,
-      {required final String userUuid}) = _$_TokenInvalidated;
+      {required final String userUuid}) = _$TokenInvalidatedImpl;
 
   ConnectedPlatform get connection;
   @override
   String get userUuid;
   @override
   @JsonKey(ignore: true)
-  _$$_TokenInvalidatedCopyWith<_$_TokenInvalidated> get copyWith =>
+  _$$TokenInvalidatedImplCopyWith<_$TokenInvalidatedImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$$_MakingConnectionCopyWith<$Res>
+abstract class _$$MakingConnectionImplCopyWith<$Res>
     implements $HekaPlatformStateCopyWith<$Res> {
-  factory _$$_MakingConnectionCopyWith(
-          _$_MakingConnection value, $Res Function(_$_MakingConnection) then) =
-      __$$_MakingConnectionCopyWithImpl<$Res>;
+  factory _$$MakingConnectionImplCopyWith(_$MakingConnectionImpl value,
+          $Res Function(_$MakingConnectionImpl) then) =
+      __$$MakingConnectionImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call({String userUuid});
 }
 
 /// @nodoc
-class __$$_MakingConnectionCopyWithImpl<$Res>
-    extends _$HekaPlatformStateCopyWithImpl<$Res, _$_MakingConnection>
-    implements _$$_MakingConnectionCopyWith<$Res> {
-  __$$_MakingConnectionCopyWithImpl(
-      _$_MakingConnection _value, $Res Function(_$_MakingConnection) _then)
+class __$$MakingConnectionImplCopyWithImpl<$Res>
+    extends _$HekaPlatformStateCopyWithImpl<$Res, _$MakingConnectionImpl>
+    implements _$$MakingConnectionImplCopyWith<$Res> {
+  __$$MakingConnectionImplCopyWithImpl(_$MakingConnectionImpl _value,
+      $Res Function(_$MakingConnectionImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -893,7 +895,7 @@ class __$$_MakingConnectionCopyWithImpl<$Res>
   $Res call({
     Object? userUuid = null,
   }) {
-    return _then(_$_MakingConnection(
+    return _then(_$MakingConnectionImpl(
       userUuid: null == userUuid
           ? _value.userUuid
           : userUuid // ignore: cast_nullable_to_non_nullable
@@ -904,8 +906,8 @@ class __$$_MakingConnectionCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_MakingConnection implements _MakingConnection {
-  const _$_MakingConnection({required this.userUuid});
+class _$MakingConnectionImpl implements _MakingConnection {
+  const _$MakingConnectionImpl({required this.userUuid});
 
   @override
   final String userUuid;
@@ -919,7 +921,7 @@ class _$_MakingConnection implements _MakingConnection {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_MakingConnection &&
+            other is _$MakingConnectionImpl &&
             (identical(other.userUuid, userUuid) ||
                 other.userUuid == userUuid));
   }
@@ -930,8 +932,9 @@ class _$_MakingConnection implements _MakingConnection {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_MakingConnectionCopyWith<_$_MakingConnection> get copyWith =>
-      __$$_MakingConnectionCopyWithImpl<_$_MakingConnection>(this, _$identity);
+  _$$MakingConnectionImplCopyWith<_$MakingConnectionImpl> get copyWith =>
+      __$$MakingConnectionImplCopyWithImpl<_$MakingConnectionImpl>(
+          this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -1038,33 +1041,33 @@ class _$_MakingConnection implements _MakingConnection {
 
 abstract class _MakingConnection implements HekaPlatformState {
   const factory _MakingConnection({required final String userUuid}) =
-      _$_MakingConnection;
+      _$MakingConnectionImpl;
 
   @override
   String get userUuid;
   @override
   @JsonKey(ignore: true)
-  _$$_MakingConnectionCopyWith<_$_MakingConnection> get copyWith =>
+  _$$MakingConnectionImplCopyWith<_$MakingConnectionImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$$_DisconnectingCopyWith<$Res>
+abstract class _$$DisconnectingImplCopyWith<$Res>
     implements $HekaPlatformStateCopyWith<$Res> {
-  factory _$$_DisconnectingCopyWith(
-          _$_Disconnecting value, $Res Function(_$_Disconnecting) then) =
-      __$$_DisconnectingCopyWithImpl<$Res>;
+  factory _$$DisconnectingImplCopyWith(
+          _$DisconnectingImpl value, $Res Function(_$DisconnectingImpl) then) =
+      __$$DisconnectingImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call({String userUuid});
 }
 
 /// @nodoc
-class __$$_DisconnectingCopyWithImpl<$Res>
-    extends _$HekaPlatformStateCopyWithImpl<$Res, _$_Disconnecting>
-    implements _$$_DisconnectingCopyWith<$Res> {
-  __$$_DisconnectingCopyWithImpl(
-      _$_Disconnecting _value, $Res Function(_$_Disconnecting) _then)
+class __$$DisconnectingImplCopyWithImpl<$Res>
+    extends _$HekaPlatformStateCopyWithImpl<$Res, _$DisconnectingImpl>
+    implements _$$DisconnectingImplCopyWith<$Res> {
+  __$$DisconnectingImplCopyWithImpl(
+      _$DisconnectingImpl _value, $Res Function(_$DisconnectingImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -1072,7 +1075,7 @@ class __$$_DisconnectingCopyWithImpl<$Res>
   $Res call({
     Object? userUuid = null,
   }) {
-    return _then(_$_Disconnecting(
+    return _then(_$DisconnectingImpl(
       userUuid: null == userUuid
           ? _value.userUuid
           : userUuid // ignore: cast_nullable_to_non_nullable
@@ -1083,8 +1086,8 @@ class __$$_DisconnectingCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_Disconnecting implements _Disconnecting {
-  const _$_Disconnecting({required this.userUuid});
+class _$DisconnectingImpl implements _Disconnecting {
+  const _$DisconnectingImpl({required this.userUuid});
 
   @override
   final String userUuid;
@@ -1098,7 +1101,7 @@ class _$_Disconnecting implements _Disconnecting {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_Disconnecting &&
+            other is _$DisconnectingImpl &&
             (identical(other.userUuid, userUuid) ||
                 other.userUuid == userUuid));
   }
@@ -1109,8 +1112,8 @@ class _$_Disconnecting implements _Disconnecting {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_DisconnectingCopyWith<_$_Disconnecting> get copyWith =>
-      __$$_DisconnectingCopyWithImpl<_$_Disconnecting>(this, _$identity);
+  _$$DisconnectingImplCopyWith<_$DisconnectingImpl> get copyWith =>
+      __$$DisconnectingImplCopyWithImpl<_$DisconnectingImpl>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -1217,22 +1220,22 @@ class _$_Disconnecting implements _Disconnecting {
 
 abstract class _Disconnecting implements HekaPlatformState {
   const factory _Disconnecting({required final String userUuid}) =
-      _$_Disconnecting;
+      _$DisconnectingImpl;
 
   @override
   String get userUuid;
   @override
   @JsonKey(ignore: true)
-  _$$_DisconnectingCopyWith<_$_Disconnecting> get copyWith =>
+  _$$DisconnectingImplCopyWith<_$DisconnectingImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$$_ConnectedCopyWith<$Res>
+abstract class _$$ConnectedImplCopyWith<$Res>
     implements $HekaPlatformStateCopyWith<$Res> {
-  factory _$$_ConnectedCopyWith(
-          _$_Connected value, $Res Function(_$_Connected) then) =
-      __$$_ConnectedCopyWithImpl<$Res>;
+  factory _$$ConnectedImplCopyWith(
+          _$ConnectedImpl value, $Res Function(_$ConnectedImpl) then) =
+      __$$ConnectedImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call({ConnectedPlatform connection, String userUuid});
@@ -1241,11 +1244,11 @@ abstract class _$$_ConnectedCopyWith<$Res>
 }
 
 /// @nodoc
-class __$$_ConnectedCopyWithImpl<$Res>
-    extends _$HekaPlatformStateCopyWithImpl<$Res, _$_Connected>
-    implements _$$_ConnectedCopyWith<$Res> {
-  __$$_ConnectedCopyWithImpl(
-      _$_Connected _value, $Res Function(_$_Connected) _then)
+class __$$ConnectedImplCopyWithImpl<$Res>
+    extends _$HekaPlatformStateCopyWithImpl<$Res, _$ConnectedImpl>
+    implements _$$ConnectedImplCopyWith<$Res> {
+  __$$ConnectedImplCopyWithImpl(
+      _$ConnectedImpl _value, $Res Function(_$ConnectedImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -1254,7 +1257,7 @@ class __$$_ConnectedCopyWithImpl<$Res>
     Object? connection = null,
     Object? userUuid = null,
   }) {
-    return _then(_$_Connected(
+    return _then(_$ConnectedImpl(
       null == connection
           ? _value.connection
           : connection // ignore: cast_nullable_to_non_nullable
@@ -1277,8 +1280,8 @@ class __$$_ConnectedCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_Connected implements _Connected {
-  const _$_Connected(this.connection, {required this.userUuid});
+class _$ConnectedImpl implements _Connected {
+  const _$ConnectedImpl(this.connection, {required this.userUuid});
 
   @override
   final ConnectedPlatform connection;
@@ -1294,7 +1297,7 @@ class _$_Connected implements _Connected {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_Connected &&
+            other is _$ConnectedImpl &&
             (identical(other.connection, connection) ||
                 other.connection == connection) &&
             (identical(other.userUuid, userUuid) ||
@@ -1307,8 +1310,8 @@ class _$_Connected implements _Connected {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_ConnectedCopyWith<_$_Connected> get copyWith =>
-      __$$_ConnectedCopyWithImpl<_$_Connected>(this, _$identity);
+  _$$ConnectedImplCopyWith<_$ConnectedImpl> get copyWith =>
+      __$$ConnectedImplCopyWithImpl<_$ConnectedImpl>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -1415,22 +1418,23 @@ class _$_Connected implements _Connected {
 
 abstract class _Connected implements HekaPlatformState {
   const factory _Connected(final ConnectedPlatform connection,
-      {required final String userUuid}) = _$_Connected;
+      {required final String userUuid}) = _$ConnectedImpl;
 
   ConnectedPlatform get connection;
   @override
   String get userUuid;
   @override
   @JsonKey(ignore: true)
-  _$$_ConnectedCopyWith<_$_Connected> get copyWith =>
+  _$$ConnectedImplCopyWith<_$ConnectedImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$$_ErrorCopyWith<$Res>
+abstract class _$$ErrorImplCopyWith<$Res>
     implements $HekaPlatformStateCopyWith<$Res> {
-  factory _$$_ErrorCopyWith(_$_Error value, $Res Function(_$_Error) then) =
-      __$$_ErrorCopyWithImpl<$Res>;
+  factory _$$ErrorImplCopyWith(
+          _$ErrorImpl value, $Res Function(_$ErrorImpl) then) =
+      __$$ErrorImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call({HekaHealthError error, String userUuid});
@@ -1439,10 +1443,11 @@ abstract class _$$_ErrorCopyWith<$Res>
 }
 
 /// @nodoc
-class __$$_ErrorCopyWithImpl<$Res>
-    extends _$HekaPlatformStateCopyWithImpl<$Res, _$_Error>
-    implements _$$_ErrorCopyWith<$Res> {
-  __$$_ErrorCopyWithImpl(_$_Error _value, $Res Function(_$_Error) _then)
+class __$$ErrorImplCopyWithImpl<$Res>
+    extends _$HekaPlatformStateCopyWithImpl<$Res, _$ErrorImpl>
+    implements _$$ErrorImplCopyWith<$Res> {
+  __$$ErrorImplCopyWithImpl(
+      _$ErrorImpl _value, $Res Function(_$ErrorImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -1451,7 +1456,7 @@ class __$$_ErrorCopyWithImpl<$Res>
     Object? error = null,
     Object? userUuid = null,
   }) {
-    return _then(_$_Error(
+    return _then(_$ErrorImpl(
       null == error
           ? _value.error
           : error // ignore: cast_nullable_to_non_nullable
@@ -1474,8 +1479,8 @@ class __$$_ErrorCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_Error implements _Error {
-  const _$_Error(this.error, {required this.userUuid});
+class _$ErrorImpl implements _Error {
+  const _$ErrorImpl(this.error, {required this.userUuid});
 
   @override
   final HekaHealthError error;
@@ -1491,7 +1496,7 @@ class _$_Error implements _Error {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_Error &&
+            other is _$ErrorImpl &&
             (identical(other.error, error) || other.error == error) &&
             (identical(other.userUuid, userUuid) ||
                 other.userUuid == userUuid));
@@ -1503,8 +1508,8 @@ class _$_Error implements _Error {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_ErrorCopyWith<_$_Error> get copyWith =>
-      __$$_ErrorCopyWithImpl<_$_Error>(this, _$identity);
+  _$$ErrorImplCopyWith<_$ErrorImpl> get copyWith =>
+      __$$ErrorImplCopyWithImpl<_$ErrorImpl>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -1611,13 +1616,13 @@ class _$_Error implements _Error {
 
 abstract class _Error implements HekaPlatformState {
   const factory _Error(final HekaHealthError error,
-      {required final String userUuid}) = _$_Error;
+      {required final String userUuid}) = _$ErrorImpl;
 
   HekaHealthError get error;
   @override
   String get userUuid;
   @override
   @JsonKey(ignore: true)
-  _$$_ErrorCopyWith<_$_Error> get copyWith =>
+  _$$ErrorImplCopyWith<_$ErrorImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

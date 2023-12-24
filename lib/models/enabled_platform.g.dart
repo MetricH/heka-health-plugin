@@ -6,8 +6,9 @@ part of 'enabled_platform.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$_EnabledPlatform _$$_EnabledPlatformFromJson(Map<String, dynamic> json) =>
-    _$_EnabledPlatform(
+_$EnabledPlatformImpl _$$EnabledPlatformImplFromJson(
+        Map<String, dynamic> json) =>
+    _$EnabledPlatformImpl(
       platformName: json['platform_name'] as String,
       platformAppId: json['platform_app_id'] as String?,
       platformAppSecret: json['platform_app_secret'] as String?,
@@ -16,7 +17,8 @@ _$_EnabledPlatform _$$_EnabledPlatformFromJson(Map<String, dynamic> json) =>
           .toList(),
     );
 
-Map<String, dynamic> _$$_EnabledPlatformToJson(_$_EnabledPlatform instance) =>
+Map<String, dynamic> _$$EnabledPlatformImplToJson(
+        _$EnabledPlatformImpl instance) =>
     <String, dynamic>{
       'platform_name': instance.platformName,
       'platform_app_id': instance.platformAppId,

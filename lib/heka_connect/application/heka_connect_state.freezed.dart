@@ -87,11 +87,11 @@ class _$HekaConnectStateCopyWithImpl<$Res, $Val extends HekaConnectState>
 }
 
 /// @nodoc
-abstract class _$$_HekaConnectStateCopyWith<$Res>
+abstract class _$$HekaConnectStateImplCopyWith<$Res>
     implements $HekaConnectStateCopyWith<$Res> {
-  factory _$$_HekaConnectStateCopyWith(
-          _$_HekaConnectState value, $Res Function(_$_HekaConnectState) then) =
-      __$$_HekaConnectStateCopyWithImpl<$Res>;
+  factory _$$HekaConnectStateImplCopyWith(_$HekaConnectStateImpl value,
+          $Res Function(_$HekaConnectStateImpl) then) =
+      __$$HekaConnectStateImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
@@ -103,11 +103,11 @@ abstract class _$$_HekaConnectStateCopyWith<$Res>
 }
 
 /// @nodoc
-class __$$_HekaConnectStateCopyWithImpl<$Res>
-    extends _$HekaConnectStateCopyWithImpl<$Res, _$_HekaConnectState>
-    implements _$$_HekaConnectStateCopyWith<$Res> {
-  __$$_HekaConnectStateCopyWithImpl(
-      _$_HekaConnectState _value, $Res Function(_$_HekaConnectState) _then)
+class __$$HekaConnectStateImplCopyWithImpl<$Res>
+    extends _$HekaConnectStateCopyWithImpl<$Res, _$HekaConnectStateImpl>
+    implements _$$HekaConnectStateImplCopyWith<$Res> {
+  __$$HekaConnectStateImplCopyWithImpl(_$HekaConnectStateImpl _value,
+      $Res Function(_$HekaConnectStateImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -119,7 +119,7 @@ class __$$_HekaConnectStateCopyWithImpl<$Res>
     Object? paymentPlan = freezed,
     Object? loadingFailed = null,
   }) {
-    return _then(_$_HekaConnectState(
+    return _then(_$HekaConnectStateImpl(
       isLoading: null == isLoading
           ? _value.isLoading
           : isLoading // ignore: cast_nullable_to_non_nullable
@@ -146,8 +146,8 @@ class __$$_HekaConnectStateCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_HekaConnectState implements _HekaConnectState {
-  const _$_HekaConnectState(
+class _$HekaConnectStateImpl implements _HekaConnectState {
+  const _$HekaConnectStateImpl(
       {required this.isLoading,
       required this.userUuid,
       required final Map<String, HekaPlatformState> platformStates,
@@ -181,7 +181,7 @@ class _$_HekaConnectState implements _HekaConnectState {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_HekaConnectState &&
+            other is _$HekaConnectStateImpl &&
             (identical(other.isLoading, isLoading) ||
                 other.isLoading == isLoading) &&
             (identical(other.userUuid, userUuid) ||
@@ -206,8 +206,9 @@ class _$_HekaConnectState implements _HekaConnectState {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_HekaConnectStateCopyWith<_$_HekaConnectState> get copyWith =>
-      __$$_HekaConnectStateCopyWithImpl<_$_HekaConnectState>(this, _$identity);
+  _$$HekaConnectStateImplCopyWith<_$HekaConnectStateImpl> get copyWith =>
+      __$$HekaConnectStateImplCopyWithImpl<_$HekaConnectStateImpl>(
+          this, _$identity);
 }
 
 abstract class _HekaConnectState implements HekaConnectState {
@@ -216,7 +217,7 @@ abstract class _HekaConnectState implements HekaConnectState {
       required final String userUuid,
       required final Map<String, HekaPlatformState> platformStates,
       required final String? paymentPlan,
-      required final bool loadingFailed}) = _$_HekaConnectState;
+      required final bool loadingFailed}) = _$HekaConnectStateImpl;
 
   @override
   bool get isLoading;
@@ -230,6 +231,6 @@ abstract class _HekaConnectState implements HekaConnectState {
   bool get loadingFailed;
   @override
   @JsonKey(ignore: true)
-  _$$_HekaConnectStateCopyWith<_$_HekaConnectState> get copyWith =>
+  _$$HekaConnectStateImplCopyWith<_$HekaConnectStateImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

@@ -6,8 +6,8 @@ part of 'connection.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$_Connection _$$_ConnectionFromJson(Map<String, dynamic> json) =>
-    _$_Connection(
+_$ConnectionImpl _$$ConnectionImplFromJson(Map<String, dynamic> json) =>
+    _$ConnectionImpl(
       userUuid: json['user_uuid'] as String,
       connections: (json['connections'] as Map<String, dynamic>).map(
         (k, e) => MapEntry(
@@ -18,7 +18,7 @@ _$_Connection _$$_ConnectionFromJson(Map<String, dynamic> json) =>
       ),
     );
 
-Map<String, dynamic> _$$_ConnectionToJson(_$_Connection instance) =>
+Map<String, dynamic> _$$ConnectionImplToJson(_$ConnectionImpl instance) =>
     <String, dynamic>{
       'user_uuid': instance.userUuid,
       'connections':

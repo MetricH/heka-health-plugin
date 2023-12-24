@@ -63,22 +63,22 @@ class _$OAuth2CredsCopyWithImpl<$Res, $Val extends OAuth2Creds>
 }
 
 /// @nodoc
-abstract class _$$_OAuth2CredsCopyWith<$Res>
+abstract class _$$OAuth2CredsImplCopyWith<$Res>
     implements $OAuth2CredsCopyWith<$Res> {
-  factory _$$_OAuth2CredsCopyWith(
-          _$_OAuth2Creds value, $Res Function(_$_OAuth2Creds) then) =
-      __$$_OAuth2CredsCopyWithImpl<$Res>;
+  factory _$$OAuth2CredsImplCopyWith(
+          _$OAuth2CredsImpl value, $Res Function(_$OAuth2CredsImpl) then) =
+      __$$OAuth2CredsImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call({String refreshToken, String? email});
 }
 
 /// @nodoc
-class __$$_OAuth2CredsCopyWithImpl<$Res>
-    extends _$OAuth2CredsCopyWithImpl<$Res, _$_OAuth2Creds>
-    implements _$$_OAuth2CredsCopyWith<$Res> {
-  __$$_OAuth2CredsCopyWithImpl(
-      _$_OAuth2Creds _value, $Res Function(_$_OAuth2Creds) _then)
+class __$$OAuth2CredsImplCopyWithImpl<$Res>
+    extends _$OAuth2CredsCopyWithImpl<$Res, _$OAuth2CredsImpl>
+    implements _$$OAuth2CredsImplCopyWith<$Res> {
+  __$$OAuth2CredsImplCopyWithImpl(
+      _$OAuth2CredsImpl _value, $Res Function(_$OAuth2CredsImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -87,7 +87,7 @@ class __$$_OAuth2CredsCopyWithImpl<$Res>
     Object? refreshToken = null,
     Object? email = freezed,
   }) {
-    return _then(_$_OAuth2Creds(
+    return _then(_$OAuth2CredsImpl(
       refreshToken: null == refreshToken
           ? _value.refreshToken
           : refreshToken // ignore: cast_nullable_to_non_nullable
@@ -102,8 +102,8 @@ class __$$_OAuth2CredsCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_OAuth2Creds extends _OAuth2Creds {
-  const _$_OAuth2Creds({required this.refreshToken, required this.email})
+class _$OAuth2CredsImpl extends _OAuth2Creds {
+  const _$OAuth2CredsImpl({required this.refreshToken, required this.email})
       : super._();
 
   @override
@@ -120,7 +120,7 @@ class _$_OAuth2Creds extends _OAuth2Creds {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_OAuth2Creds &&
+            other is _$OAuth2CredsImpl &&
             (identical(other.refreshToken, refreshToken) ||
                 other.refreshToken == refreshToken) &&
             (identical(other.email, email) || other.email == email));
@@ -132,14 +132,14 @@ class _$_OAuth2Creds extends _OAuth2Creds {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_OAuth2CredsCopyWith<_$_OAuth2Creds> get copyWith =>
-      __$$_OAuth2CredsCopyWithImpl<_$_OAuth2Creds>(this, _$identity);
+  _$$OAuth2CredsImplCopyWith<_$OAuth2CredsImpl> get copyWith =>
+      __$$OAuth2CredsImplCopyWithImpl<_$OAuth2CredsImpl>(this, _$identity);
 }
 
 abstract class _OAuth2Creds extends OAuth2Creds {
   const factory _OAuth2Creds(
       {required final String refreshToken,
-      required final String? email}) = _$_OAuth2Creds;
+      required final String? email}) = _$OAuth2CredsImpl;
   const _OAuth2Creds._() : super._();
 
   @override
@@ -148,6 +148,6 @@ abstract class _OAuth2Creds extends OAuth2Creds {
   String? get email;
   @override
   @JsonKey(ignore: true)
-  _$$_OAuth2CredsCopyWith<_$_OAuth2Creds> get copyWith =>
+  _$$OAuth2CredsImplCopyWith<_$OAuth2CredsImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
