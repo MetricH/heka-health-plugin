@@ -1,3 +1,10 @@
+## 0.2.6 (Upcoming)
+
+- Robust and better Google fit integration.
+- Support date wise API for Apple Health.
+- Introduce ability to set custom on connect labels.
+- Better error message around connect.
+
 ## 0.2.5
 
 - Reworking datatype permission handling in Apple Health [WIP].
