@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:heka_health/constants/platform_name.dart';
+import 'package:heka_health/heka_api/platforms.dart';
 import 'package:heka_health/heka_connect/application/heka_connect_cubit.dart';
 import 'package:heka_health/heka_connect/application/heka_connect_state.dart';
 import 'package:heka_health/heka_connect/application/heka_platform_state.dart';
@@ -10,26 +11,32 @@ import 'package:url_launcher/url_launcher.dart';
 class HekaConnectWidget extends StatelessWidget {
   final HekaHealth hekaHealth;
   final String userUuid;
+  final Map<HekaPlatform, String> platformConnectLabels;
   const HekaConnectWidget({
     super.key,
     required this.hekaHealth,
     required this.userUuid,
+    this.platformConnectLabels = const {},
   });
 
   @override
   Widget build(BuildContext context) {
+    Map<String, String> platformConnectLabelsStr = platformConnectLabels.map(
+      (key, value) => MapEntry(key.toInternalString(), value),
+    );
     return BlocProvider(
       create: (context) => HekaConnectCubit(
         userUuid,
         hekaHealth,
       ),
-      child: const _HekaConnectWidget(),
+      child: _HekaConnectWidget(platformConnectLabelsStr),
     );
   }
 }
 
 class _HekaConnectWidget extends StatefulWidget {
-  const _HekaConnectWidget();
+  final Map<String, String> platformConnectLabels;
+  const _HekaConnectWidget(this.platformConnectLabels);
 
   @override
   State<_HekaConnectWidget> createState() => _HekaConnectWidgetState();
@@ -62,6 +69,8 @@ class _HekaConnectWidgetState extends State<_HekaConnectWidget> {
                               (e) => PlatformConnectCard(
                                 platformName: e.key,
                                 state: e.value,
+                                platformConnectLabel:
+                                    widget.platformConnectLabels[e.key],
                               ),
                             ),
                             if (state.paymentPlan == 'free') ...[
@@ -106,16 +115,28 @@ class _HekaConnectWidgetState extends State<_HekaConnectWidget> {
 class PlatformConnectCard extends StatefulWidget {
   final String platformName;
   final HekaPlatformState state;
+  final String? platformConnectLabel;
   const PlatformConnectCard({
     super.key,
     required this.platformName,
     required this.state,
+    this.platformConnectLabel,
   });
   @override
   State<PlatformConnectCard> createState() => _PlatformConnectCardState();
 }
 
 class _PlatformConnectCardState extends State<PlatformConnectCard> {
+  String _getPlatformConnectLabel() {
+    if (widget.platformConnectLabel != null) {
+      return widget.platformConnectLabel!;
+    }
+    // Google Fit guidelines want us to use "Connect to Google Fit" instead of "Connect"
+    return widget.platformName == PlatformName.googleFit
+        ? 'Connect to Google Fit'
+        : 'Connect';
+  }
+
   @override
   Widget build(BuildContext context) {
     PlatformDetails platformDetails = platforms[widget.platformName]!;
@@ -222,17 +243,17 @@ class _PlatformConnectCardState extends State<PlatformConnectCard> {
             initial: (_) => const Text(''),
             checkingConnection: (_) => const Text('...'),
             disconnecting: (_) => const Text('...'),
-            noConnection: (_) => widget.platformName == PlatformName.googleFit
-                ? const Text(
-                    'Connect to Google Fit',
-                    style: TextStyle(fontSize: 12),
-                  )
-                : (widget.platformName == PlatformName.appleHealth
-                    // TODO: we should make it customizable and allow the widget user
-                    // to configure their own labels
-                    // Continue on Apple health because of Fitelo usecase
-                    ? const Text('Continue')
-                    : const Text('Connect')),
+            noConnection: (_) {
+              String label = _getPlatformConnectLabel();
+              double fontSize = 16;
+              if (label.length > 10) {
+                fontSize = 12;
+              }
+              return Text(
+                _getPlatformConnectLabel(),
+                style: TextStyle(fontSize: fontSize),
+              );
+            },
             tokenInvalidated: (_, __) =>
                 widget.platformName == PlatformName.googleFit
                     ? const Text(
