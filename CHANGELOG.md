@@ -1,4 +1,4 @@
-## 0.2.6 (Upcoming)
+## 0.2.6
 
 - Robust and better Google fit integration.
 - Support date wise API for Apple Health.
