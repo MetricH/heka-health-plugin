@@ -1,3 +1,7 @@
+## 0.2.7
+
+- Downgrade permission_handler to support older Flutter versions.
+
 ## 0.2.6
 
 - Robust and better Google fit integration.
