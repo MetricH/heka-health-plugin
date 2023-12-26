@@ -31,7 +31,7 @@ class GoogleFit extends DataProvider {
       throw const HekaHealthError.preConnectError();
     }
     // this is used to get distance in workouts
-    await ph.Permission.location.request();
+    // await ph.Permission.location.request();
 
     bool granted = await HekaPlatformChannel.connect();
     if (!granted) {
