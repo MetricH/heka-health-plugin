@@ -70,7 +70,6 @@ class MethodChannelHekaHealth extends HekaHealthPlatform {
         return {};
       }
       Map<DateTime, double> data = {};
-      print(result);
       for (Map item in result) {
         double value = item['value'].toDouble();
         DateTime date =
